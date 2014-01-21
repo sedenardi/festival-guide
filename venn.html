@@ -6,6 +6,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="http://d3js.org/d3.v2.min.js"></script>
+    <script src="./mds.js"></script>
+    <script src="./numeric-1.2.6.min.js"></script>
     <script src="./venn.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
@@ -19,9 +21,9 @@ var sets = [{label: "Coachella", size: 165}, {label: "GovBall", size: 68}, {labe
   overlaps = [{sets: [0,1], size: 20}, {sets: [0,2], size: 11}, {sets: [1,2], size: 10}, {sets: [0,1,2], size: 4}];
 
 // get positions for each set
-sets = venn.venn(sets, overlaps);
+sets = venn.venn(sets, overlaps, {layoutFunction: venn.classicMDSLayout});
 
 // draw the diagram in the 'simple_example' div
-venn.drawD3Diagram(d3.select(".venn_d"), sets, 300, 300);
+venn.drawD3Diagram(d3.select(".venn_d"), sets, 600, 600);
   </script>
 </html>
