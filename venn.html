@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Festival Guide - Venn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="http://d3js.org/d3.v2.min.js"></script>
+    <script src="./venn.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class='venn_d'></div>
+  </body>
+  <script>
+// define sets and set set intersections
+var sets = [{label: "Coachella", size: 165}, {label: "GovBall", size: 68}, {label: "Firefly", size: 105}],
+  overlaps = [{sets: [0,1], size: 20}, {sets: [0,2], size: 11}, {sets: [1,2], size: 10}, {sets: [0,1,2], size: 4}];
+
+// get positions for each set
+sets = venn.venn(sets, overlaps);
+
+// draw the diagram in the 'simple_example' div
+venn.drawD3Diagram(d3.select(".venn_d"), sets, 300, 300);
+  </script>
+</html>
