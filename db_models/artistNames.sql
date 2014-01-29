@@ -1,5 +1,5 @@
 CREATE TABLE `artistnames` (
-  `artistNameId` INT(11) NOT NULL,
+  `artistNameId` INT(11) NOT NULL AUTO_INCREMENT,
   `artistId` INT(11) NOT NULL,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`artistNameId`),
