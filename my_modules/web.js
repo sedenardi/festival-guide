@@ -26,14 +26,43 @@ var Web = function(config, rootDir) {
     app.use(express.static(rootDir + config.web.folders.static));
   });
   
-  app.get('/', function (req, res) {
-    
+  app.get('/artistsWithAppearances', function (req, res) {
+    var sql = 
+'Select \
+  ar.artistId, \
+  ar.artist as artistName, \
+  ap.appearanceId, \
+  ap.setTime, \
+  fest.festivalId, \
+  fest.festival, \
+  fest.week, \
+  fest.location, \
+  fest.startDate, \
+  fest.endDate \
+from artists ar \
+  inner join appearances ap \
+    on ap.artistId = ar.artistId \
+  inner join festivals fest \
+    on fest.festivalId = ap.festivalId;';
+    db.query({
+      sql: sql,
+      inserts: []
+    }, function(err, dbRes) {
+      if (err) {
+        console.log(JSON.stringify(err));
+        res.end();
+        return;
+      }
+      res.render('artistsWithAppearances', {
+        artists: dbRes
+      });      
+    });
   }); 
 
   this.startServer = function() {
     db.connect(config, 'WEB', function webDB() {
       app.listen(config.web.port, function webStarted() {
-        console.log('Created web server');
+        console.log('Created web server on port ' + config.web.port);
       });
     });
   };
