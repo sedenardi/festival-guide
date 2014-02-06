@@ -1,0 +1,16 @@
+{
+  "mysql": {
+    "host": "dbhost",
+    "post": "port",
+    "user": "username",
+    "password": "password",
+    "database": "dbname"
+  },
+  "web": {
+    "port": "",
+    "folders": {
+      "layouts": "",
+      "partials": "",
+      "static": ""
+    }
+}
