@@ -7,7 +7,7 @@
     <pre></pre>
     <pre></pre>
     <script>
-var array = [{ 
+var festivals = [{ 
   festivalId: '1', 
   festival: 'Coachella',
   index: 0
@@ -51,12 +51,12 @@ var appendBase = function(baseObj,festival) {
   };
 }
 
-for (var i = 0; i < array.length; i++) {
+for (var i = 0; i < festivals.length; i++) {
   var d_length = data.length;
   for (var j = 0; j < d_length; j++) {
-    data.push(appendBase(data[j],array[i]));
+    data.push(appendBase(data[j],festivals[i]));
   }
-  data.push(buildBase(array[i]));
+  data.push(buildBase(festivals[i]));
 }
 
 var setBase = 'select CONCAT(\'[\',';
