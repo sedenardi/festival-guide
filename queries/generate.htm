@@ -9,13 +9,20 @@
     <script>
 var array = [{ 
   festivalId: '1', 
-  festival: 'Coachella' 
+  festival: 'Coachella',
+  index: 0
 },{ 
   festivalId: '3', 
-  festival: 'Firefly' 
+  festival: 'Firefly',
+  index: 1
+},{ 
+  festivalId: '4', 
+  festival: 'Governor\'s Ball',
+  index: 2
 },{ 
   festivalId: '5', 
-  festival: 'Hangout' 
+  festival: 'Hangout',
+  index: 3
 }];
 var data = [];
 
@@ -64,7 +71,7 @@ for (var i = 0; i < data.length; i++) {
       overlap += '),\'}, \',';
     }
     for (var j = 0; j < data[i].fests.length; j++) {
-      tag += data[i].fests[j].festivalId;
+      tag += data[i].fests[j].index;
       if (j + 1 == data[i].fests.length) {
         tag += ']';  
       } else {
@@ -78,8 +85,8 @@ for (var i = 0; i < data.length; i++) {
     if (setArray.length > 0) {
       set += '),\'}, \',';
     }
-    set += '\'{label: "' + data[i].fests[0].festival + '", size: \',' + 
-      data[i].sql;
+    set += '\'{label: "' + data[i].fests[0].festival.replace('\'','\\\'') + 
+      '", size: \',' + data[i].sql;
     setArray.push(set);
   }
 }
