@@ -2,7 +2,8 @@ var events = require('events'),
   express = require('express'),
   hbars = require('./hbars.js'),
   util = require('util'),
-  db = require('./db.js');
+  db = require('./db.js'),
+  queries = require('./queries.js');
 
 var Web = function(config, rootDir) {
   if(!(this instanceof Web)) return new Web(config, rootDir);
@@ -57,7 +58,38 @@ from artists ar \
         artists: dbRes
       });      
     });
-  }); 
+  });
+
+  app.get('/getVennDiagramData', function (req, res) {
+    if (typeof req.query.festivalIds !== 'undefined') {
+    db.query({
+      sql: queries.getOrderedFestivals(req.query.festivalIds),
+      inserts: []
+    }, function (err, festivals) {
+      if (err) {
+        console.log(JSON.stringify(err));
+        res.end();
+        return;
+      }
+      var q = queries.getOverlapsForFestivals(festivals);
+      db.query({
+        sql: q.sets + ' ' + q.overlaps,
+        inserts: []
+      }, function (innErr, dbRes) {
+        if (innErr) {
+          console.log(JSON.stringify(innErr));
+          res.end();
+          return;
+        }
+        res.render('test', {
+          result: dbRes
+        });        
+      })
+    });
+    } else {
+      res.json(402, { error: 'Must specify festivalIds.'});
+    }
+  });
 
   this.startServer = function() {
     db.connect(config, 'WEB', function webDB() {
