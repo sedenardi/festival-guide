@@ -91,7 +91,7 @@ for (var i = 0; i < data.length; i++) {
   }
 }
 var sets = setBase + setArray.join('\n') + '),\'}]\');';
-var overlaps = overlapBase + overlapArray.join('\n') + '),\'}]\');';
+var overlaps = (overlapArray.length > 1 ? (overlapBase + overlapArray.join('\n') + '),\'}]\');') : "" );
 document.getElementsByTagName("pre")[0].innerHTML=sets;
 document.getElementsByTagName("pre")[1].innerHTML=overlaps;
     </script>
