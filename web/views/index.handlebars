@@ -32,15 +32,9 @@ $('.checkbox').change(function() {
         festivalIds: festivalIds,
       },
       success: function (response) {
-var sets = response.sets,
-  overlaps = response.overlaps;
-
-// get positions for each set
-sets = venn.venn(sets, overlaps, {layoutFunction: venn.classicMDSLayout});
-
-// draw the diagram in the 'simple_example' div
-//venn.drawD3Diagram(d3.select(".venn_d"), sets, 600, 600, null, overlaps);
-venn.drawD3Diagram(d3.select(".venn_d"), sets, 600, 600, null);
+        var sets = venn.venn(response.sets, response.overlaps, {layoutFunction: venn.classicMDSLayout});
+        //venn.drawD3Diagram(d3.select('.venn_d'), sets, 600, 600, null, response.overlaps);
+        venn.drawD3Diagram(d3.select('.venn_d'), sets, 600, 600, null, null);
       }
     });
   } else {
