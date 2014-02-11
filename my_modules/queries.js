@@ -19,6 +19,14 @@ from artists ar \
     on fest.festivalId = ap.festivalId;';
   };
 
+  this.getUniqueFestivals = function() {
+    return 'select * from festivals where festivalId <> 2;';
+  };
+
+  this.getAllFestivals = function() {
+    return 'select * from festivals;';
+  };
+
   this.getOrderedFestivals = function(festivalIds) {
     return 'Select \
               festivalId, \
@@ -49,7 +57,7 @@ from artists ar \
       a.push(festival);
       return {
         sql: baseObj.sql + ' \n and exists (select 1 from appearances a' +
-          festival.festivalId + ' \n  where a' + baseObj.fests[0].festivalId + 
+          festival.festivalId + '  where a' + baseObj.fests[0].festivalId + 
           '.artistId = a' + festival.festivalId + '.artistId' +
           ' and a' + festival.festivalId + '.festivalId = ' + 
           festival.festivalId + ')',
@@ -77,22 +85,22 @@ from artists ar \
           overlap += '),\'}, \',';
         }
         for (var j = 0; j < data[i].fests.length; j++) {
-          tag += data[i].fests[j].idx;
+          tag += data[i].fests[j].idx - 1;
           if (j + 1 == data[i].fests.length) {
             tag += ']';  
           } else {
             tag += ','
           }
         }
-        overlap += '\'{sets: ' + tag + ', size: \',' + data[i].sql;
+        overlap += '\'{"sets": ' + tag + ', "size": \',' + data[i].sql;
         overlapArray.push(overlap);
       } else {
         var set = '';
         if (setArray.length > 0) {
           set += '),\'}, \',';
         }
-        set += '\'{label: "' + data[i].fests[0].festival.replace('\'','\\\'') + 
-          '", size: \',' + data[i].sql;
+        set += '\'{"label": "' + data[i].fests[0].festival.replace('\'','\\\'') + 
+          '", "size": \',' + data[i].sql;
         setArray.push(set);
       }
     }

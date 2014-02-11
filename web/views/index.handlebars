@@ -1,0 +1,50 @@
+<div id="venn">
+  <div style="width: 100%; display: table;">
+    <div id="festivalCheckboxes" style="width: 200px; float:left; margin-left: 20px;">
+    {{#each festivals}}
+      <div class="checkbox">
+        <label><input class="festivalCheckbox" type="checkbox" value="{{festivalId}}">{{festival}}</label>
+      </div>
+    {{/each}}
+    </div>
+    <div style="margin-left: 250px;">
+      <div class='venn_d'></div>
+    </div>
+  </div>
+
+</div>
+<script src="http://d3js.org/d3.v2.js"></script>
+<script src="./mds.js"></script>
+<script src="./numeric-1.2.6.min.js"></script>
+<script src="./venn.js"></script>
+<script>
+$('.checkbox').change(function() {
+  var l = $('.festivalCheckbox:checked').length;
+  if (l === 2 || l === 3) {
+    var festivalIds = $.map($('.festivalCheckbox:checked'), function(v, i){
+      return v.value;
+    }).join(',');
+    $('.venn_d').html('');
+    $.ajax({
+      url: '/getVennDiagramData',
+      type: 'GET',
+      data: {
+        festivalIds: festivalIds,
+      },
+      success: function (response) {
+var sets = response.sets,
+  overlaps = response.overlaps;
+
+// get positions for each set
+sets = venn.venn(sets, overlaps, {layoutFunction: venn.classicMDSLayout});
+
+// draw the diagram in the 'simple_example' div
+//venn.drawD3Diagram(d3.select(".venn_d"), sets, 600, 600, null, overlaps);
+venn.drawD3Diagram(d3.select(".venn_d"), sets, 600, 600, null);
+      }
+    });
+  } else {
+  }
+});
+
+</script>

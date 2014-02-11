@@ -26,12 +26,28 @@ var Web = function(config, rootDir) {
     app.use(app.router);
     app.use(express.static(rootDir + config.web.folders.static));
   });
+
+  app.get('/', function (req, res) {
+    db.query({
+      sql: queries.getUniqueFestivals(),
+      inserts: []
+    }, function (err,fests) {
+      if (err) {
+        console.log(JSON.stringify(err));
+        res.end();
+        return;
+      }
+      res.render('index', {
+        festivals: fests
+      });
+    });
+  });
   
   app.get('/artistsWithAppearances', function (req, res) {
     db.query({
       sql: queries.getAllArtistsAndAppearances(),
       inserts: []
-    }, function(err, dbRes) {
+    }, function (err, dbRes) {
       if (err) {
         console.log(JSON.stringify(err));
         res.end();
@@ -65,8 +81,8 @@ var Web = function(config, rootDir) {
             return;
           }
           res.json({
-            sets: dbRes[0][0].sets,
-            overlaps: dbRes[1][0].overlaps
+            sets: JSON.parse(dbRes[0][0].sets),
+            overlaps: JSON.parse(dbRes[1][0].overlaps)
           });        
         });
       });
@@ -81,9 +97,12 @@ var Web = function(config, rootDir) {
         sql: queries.getInCommonForFestivals(req.query.festivalIds),
         inserts: []
       }, function (err, artists) {
-        res.json({
-          artists: artists
-        });
+        if (err) {
+          console.log(JSON.stringify(err));
+          res.end();
+          return;
+        }
+        res.json(artists);
       })
     } else {
       res.json(402, { error: 'Must specify festivalIds.'});
