@@ -4,7 +4,8 @@
     "post": "port",
     "user": "username",
     "password": "password",
-    "database": "dbname"
+    "database": "dbname",
+    "multipleStatements": "true"
   },
   "web": {
     "port": "",
