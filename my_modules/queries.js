@@ -1,14 +1,33 @@
 var queries = function() {
 
+  this.getAllArtistsAndAppearances = function() {
+    return 'Select \
+  ar.artistId, \
+  ar.artist as artistName, \
+  ap.appearanceId, \
+  ap.setTime, \
+  fest.festivalId, \
+  fest.festival, \
+  fest.week, \
+  fest.location, \
+  fest.startDate, \
+  fest.endDate \
+from artists ar \
+  inner join appearances ap \
+    on ap.artistId = ar.artistId \
+  inner join festivals fest \
+    on fest.festivalId = ap.festivalId;';
+  };
+
   this.getOrderedFestivals = function(festivalIds) {
     return 'Select \
-  festivalId, \
-  festival, \
-  @curRow := @curRow + 1 AS idx \
-from festivals f \
-join (select @curRow := 0) r \
-where festivalId in (' + festivalIds + ') \
-order by festivalId asc;';
+              festivalId, \
+              festival, \
+              @curRow := @curRow + 1 AS idx \
+            from festivals f \
+            join (select @curRow := 0) r \
+            where festivalId in (' + festivalIds + ') \
+            order by festivalId asc;';
   };
 
   this.getOverlapsForFestivals = function(festivals) {
@@ -83,7 +102,27 @@ order by festivalId asc;';
       sets: sets,
       overlaps: overlaps
     };
-  }
+  };
+
+  this.getInCommonForFestivals = function(festivalIds) {
+    var festivals = festivalIds.split(',');
+    var query = 'Select ar.* from artists ar';
+
+    var appendBase = function(id,index) {
+      return ' \n ' + (index === 0 ? 'where' : 'and') + 
+        ' exists (select 1 from appearances a' + id + 
+        ' \n  where ar.artistId = a' + id + '.artistId' +
+        ' and a' + id + '.festivalId = ' + id + ')';
+    }
+
+    for (var i = 0; i < festivals.length; i++) {
+      query += appendBase(festivals[i],i);
+    }
+
+    query += ';';
+
+    return query;
+  };
 };
 
 module.exports = new queries();

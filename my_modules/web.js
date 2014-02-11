@@ -28,25 +28,8 @@ var Web = function(config, rootDir) {
   });
   
   app.get('/artistsWithAppearances', function (req, res) {
-    var sql = 
-'Select \
-  ar.artistId, \
-  ar.artist as artistName, \
-  ap.appearanceId, \
-  ap.setTime, \
-  fest.festivalId, \
-  fest.festival, \
-  fest.week, \
-  fest.location, \
-  fest.startDate, \
-  fest.endDate \
-from artists ar \
-  inner join appearances ap \
-    on ap.artistId = ar.artistId \
-  inner join festivals fest \
-    on fest.festivalId = ap.festivalId;';
     db.query({
-      sql: sql,
+      sql: queries.getAllArtistsAndAppearances(),
       inserts: []
     }, function(err, dbRes) {
       if (err) {
@@ -62,30 +45,46 @@ from artists ar \
 
   app.get('/getVennDiagramData', function (req, res) {
     if (typeof req.query.festivalIds !== 'undefined') {
-    db.query({
-      sql: queries.getOrderedFestivals(req.query.festivalIds),
-      inserts: []
-    }, function (err, festivals) {
-      if (err) {
-        console.log(JSON.stringify(err));
-        res.end();
-        return;
-      }
-      var q = queries.getOverlapsForFestivals(festivals);
       db.query({
-        sql: q.sets + ' ' + q.overlaps,
+        sql: queries.getOrderedFestivals(req.query.festivalIds),
         inserts: []
-      }, function (innErr, dbRes) {
-        if (innErr) {
-          console.log(JSON.stringify(innErr));
+      }, function (err, festivals) {
+        if (err) {
+          console.log(JSON.stringify(err));
           res.end();
           return;
         }
-        res.render('test', {
-          result: dbRes
-        });        
+        var q = queries.getOverlapsForFestivals(festivals);
+        db.query({
+          sql: q.sets + ' ' + q.overlaps,
+          inserts: []
+        }, function (innErr, dbRes) {
+          if (innErr) {
+            console.log(JSON.stringify(innErr));
+            res.end();
+            return;
+          }
+          res.json({
+            sets: dbRes[0][0].sets,
+            overlaps: dbRes[1][0].overlaps
+          });        
+        });
+      });
+    } else {
+      res.json(402, { error: 'Must specify festivalIds.'});
+    }
+  });
+
+  app.get('/getCommonArtists', function (req, res) {
+    if (typeof req.query.festivalIds !== 'undefined') {
+      db.query({
+        sql: queries.getInCommonForFestivals(req.query.festivalIds),
+        inserts: []
+      }, function (err, artists) {
+        res.json({
+          artists: artists
+        });
       })
-    });
     } else {
       res.json(402, { error: 'Must specify festivalIds.'});
     }
