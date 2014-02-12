@@ -480,7 +480,7 @@
                .style("fill", function(d, i) { return textFillColours(i); })
                .text(function(d) { return d.label; });
 
-        if (typeof overlaps !== "undefined") {
+        if (overlaps !== null) {
             overlaps = venn.getIntersectionCenters(dataset, overlaps);
 
             var intersects = svg.selectAll("intersects")
@@ -519,7 +519,7 @@
             .attr("x", function(d) { return d.x; })
             .attr("y", function(d) { return d.y; });
 
-        if (typeof overlaps !== "undefined") {
+        if (overlaps !== null) {
             overlaps = venn.getIntersectionCenters(dataset, overlaps);
 
             element.selectAll("intersects")
