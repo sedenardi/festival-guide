@@ -30,6 +30,6 @@
       array.push('\'' + artist.replace('\'','\\\'') + '\'');
     });
     
-    $('#outputJSONArea').val(array.join(', '));
+    $('#outputJSONArea').val('VALUES(' + array.join('),(') + ');');
   });
 </script>
