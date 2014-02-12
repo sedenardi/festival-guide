@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>NO Jazz Fest Artist Parser</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body style="padding:20px;">
+    <h3>Parse Artists from - <a href="view-source:http://lineup.nojazzfest.com/" target="_blank">http://lineup.nojazzfest.com/</a></h3>
+    <br />
+    <div>
+      <textarea class="form-control" id="inputArea" placeholder="Paste source from http://lineup.nojazzfest.com/" rows="10"></textarea>
+      <button type="button" class="btn btn-success" id="btnParse">Get Artists</button>
+    </div>
+    <br/>
+    <div>
+      <h5>JSON<span id="lenJSON"></span></h5>
+      <textarea class="form-control" id="outputJSONArea" rows="10"></textarea>
+    </div>
+  </body>
+</html>
+</script>
+<script type="text/javascript">
+  $('#btnParse').click(function() {    
+    var rawHtml = $('#inputArea').val();
+    var items = $(rawHtml).find('li');
+    var array = [];
+    $.each(items, function(i,v) {
+      var artist = $(v).children('a').text();
+      array.push('\'' + artist.replace('\'','\\\'') + '\'');
+    });
+    
+    $('#outputJSONArea').val(array.join(', '));
+  });
+</script>
