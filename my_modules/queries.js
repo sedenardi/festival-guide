@@ -1,5 +1,9 @@
 var queries = function() {
 
+  this.getAllArtists = function() {
+    return "select * from artists;";
+  };
+
   this.getAllArtistsAndAppearances = function() {
     return 'Select \
   ar.artistId, \

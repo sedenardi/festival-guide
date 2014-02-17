@@ -28,6 +28,10 @@ var Web = function(config, rootDir) {
   });
 
   app.get('/', function (req, res) {
+    res.render('index');
+  });
+
+  app.get('/venn', function (req, res) {
     db.query({
       sql: queries.getUniqueFestivals(),
       inserts: []
@@ -37,9 +41,16 @@ var Web = function(config, rootDir) {
         res.end();
         return;
       }
-      res.render('index', {
+      res.render('venn', {
+        layout: false,
         festivals: fests
       });
+    });
+  });
+
+  app.get('/artists', function (req, res) {
+    res.render('artists', {
+        layout: false      
     });
   });
   
@@ -59,7 +70,7 @@ var Web = function(config, rootDir) {
     });
   });
 
-  app.get('/getVennDiagramData', function (req, res) {
+  app.get('/getVennDiagramData.json', function (req, res) {
     if (typeof req.query.festivalIds !== 'undefined') {
       db.query({
         sql: queries.getOrderedFestivals(req.query.festivalIds),
@@ -91,7 +102,7 @@ var Web = function(config, rootDir) {
     }
   });
 
-  app.get('/getCommonArtists', function (req, res) {
+  app.get('/getCommonArtists.json', function (req, res) {
     if (typeof req.query.festivalIds !== 'undefined') {
       db.query({
         sql: queries.getInCommonForFestivals(req.query.festivalIds),
@@ -107,6 +118,20 @@ var Web = function(config, rootDir) {
     } else {
       res.json(402, { error: 'Must specify festivalIds.'});
     }
+  });
+
+  app.get('/getAllArtists.json', function (req, res) {
+    db.query({
+      sql: queries.getAllArtists(),
+      inserts: []
+    }, function (err, artists) {
+      if (err) {
+        console.log(JSON.stringify(err));
+        res.end();
+        return;
+      }
+      res.json(artists);
+    })
   });
 
   this.startServer = function() {

@@ -1,0 +1,30 @@
+<h4>Look up artist's festival information</h4>
+<input type="text" class="form-control" id="artistInput" placeholder="Enter artist">
+<hr>
+<div id="artistInfo">
+</div>
+<script>
+$(document).ready(function() {
+  var artists = new Bloodhound({
+    datumTokenizer: function(d) { 
+      return Bloodhound.tokenizers.whitespace(d.artist); 
+    },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    limit: 10,
+    prefetch: {
+      url: '/getAllArtists.json',
+      filter: function(list) {
+        return list;
+      }
+    }
+  });
+   
+  artists.initialize();
+   
+  $('#artistInput').typeahead(null, {
+    name: 'artists',
+    displayKey: 'artist',
+    source: artists.ttAdapter()
+  });
+});
+</script>

@@ -1,0 +1,39 @@
+<h4>Choose up to 3 festivals</h3>
+<div id="vennBody">
+  <div id="festivalCheckboxes">
+  {{#each festivals}}
+    <div class="checkbox">
+      <label><input class="festivalCheckbox" type="checkbox" value="{{festivalId}}">{{festival}}</label>
+    </div>
+  {{/each}}
+    <div class="checkbox">
+      <label><input class="festivalCheckbox" type="checkbox" value="-1">All Others</label>
+    </div>
+  </div>
+  <div id='venn_d'></div>
+</div>
+<script>
+$('.checkbox').change(function() {
+  var l = $('.festivalCheckbox:checked').length;
+  if (l === 2 || l === 3) {
+    var festivalIds = $.map($('.festivalCheckbox:checked'), function(v, i){
+      return v.value;
+    }).join(',');
+    $('.venn_d').html('');
+    $.ajax({
+      url: '/getVennDiagramData.json',
+      type: 'GET',
+      data: {
+        festivalIds: festivalIds,
+      },
+      success: function (response) {
+        var sets = venn.venn(response.sets, response.overlaps);
+        //venn.drawD3Diagram(d3.select('.venn_d'), sets, 600, 600, null, response.overlaps);
+        venn.drawD3Diagram(d3.select('#venn_d'), sets, 600, 600, null, null);
+      }
+    });
+  } else {
+  }
+});
+
+</script>

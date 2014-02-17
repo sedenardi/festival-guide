@@ -1,0 +1,23 @@
+body {
+  padding: 10px;
+}
+
+#artistInput {
+  width: 500px;
+}
+
+#vennBody {
+  width: 100%; 
+  height: 100%;
+  display: table;
+}
+
+#festivalCheckboxes {
+  width: 200px; 
+  float: left; 
+  margin-left: 20px;
+}
+
+#venn_d {
+  margin-left: 250px;
+}
