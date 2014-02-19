@@ -134,6 +134,24 @@ var Web = function(config, rootDir) {
     })
   });
 
+  app.get('/getArtistInfo.json', function (req, res) {
+    if (typeof req.query.artistId !== 'undefined') {
+      db.query({
+        sql: queries.getArtistInfo(req.query.artistId),
+        inserts: []
+      }, function (err, artistInfo) {
+        if (err) {
+          console.log(JSON.stringify(err));
+          res.end();
+          return;
+        }
+        res.json(artistInfo);
+      });
+    } else {
+      res.json(402, { error: 'Must specify artistId.'});
+    }
+  });
+
   this.startServer = function() {
     db.connect(config, 'WEB', function webDB() {
       app.listen(config.web.port, function webStarted() {

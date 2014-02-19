@@ -5,6 +5,8 @@
 </div>
 <script>
 $(document).ready(function() {
+  var artistReq = null;
+
   var artists = new Bloodhound({
     datumTokenizer: function(d) { 
       return Bloodhound.tokenizers.whitespace(d.artist); 
@@ -24,7 +26,27 @@ $(document).ready(function() {
   $('#artistInput').typeahead(null, {
     name: 'artists',
     displayKey: 'artist',
-    source: artists.ttAdapter()
+    source: artists.ttAdapter(),
+    templates: {
+      suggestion: function(d) {
+        return '<p class="artistName">' + d.artist + '</p>';
+      }
+    }
+  }).bind('typeahead:selected', function (obj, datum){
+    if (artistReq !== null) {
+      artistReq.abort();
+    }
+    artistReq = $.ajax({
+      url: '/getArtistInfo.json',
+      type: 'GET',
+      data: {
+        artistId: datum.artistId
+      },
+      success: function (response) {
+        artistReq = null;
+        $('#artistInfo').html('<pre>' + JSON.stringify(response,null,2) + '</pre>');
+      }
+    });
   });
 });
 </script>

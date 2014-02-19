@@ -1,7 +1,7 @@
 var queries = function() {
 
   this.getAllArtists = function() {
-    return "select * from artists;";
+    return 'select * from artists;';
   };
 
   this.getAllArtistsAndAppearances = function() {
@@ -21,6 +21,26 @@ from artists ar \
     on ap.artistId = ar.artistId \
   inner join festivals fest \
     on fest.festivalId = ap.festivalId;';
+  };
+
+  this.getArtistInfo = function(artistId) {
+    return 'Select \
+  ar.artistId, \
+  ar.artist as artistName, \
+  ap.appearanceId, \
+  ap.setTime, \
+  fest.festivalId, \
+  fest.festival, \
+  fest.week, \
+  fest.location, \
+  fest.startDate, \
+  fest.endDate \
+from artists ar \
+  inner join appearances ap \
+    on ap.artistId = ar.artistId \
+  inner join festivals fest \
+    on fest.festivalId = ap.festivalId \
+where ar.artistId = ' + artistId + ';';
   };
 
   this.getUniqueFestivals = function() {
