@@ -1,0 +1,41 @@
+<h4>Choose a festival</h3>
+<div id="festivalBody">
+  <div id="festivalNav">
+    <ul class="nav nav-pills nav-stacked nav-festivals">
+    {{#each festivals}}
+      <li><a href="#" data-festival-id="{{festivalId}}">{{festivalWithWeek this}}</a></li>
+    {{/each}}
+    </ul>
+  </div>
+  <div id="festivalInfo"></div>
+</div>
+<script>
+var festivalReq = null;
+
+$('.nav-festivals li a').click(function(e) {
+  $('.nav-festivals li').removeClass('active');
+  var parent = $(this).parent('li');
+  if (!$(parent).hasClass('active')) {
+    $(parent).addClass('active');
+    fetchFestivalInfo($(this).attr('data-festival-id'));
+  }
+  e.preventDefault();
+});
+
+var fetchFestivalInfo = function (festivalId) {
+  if (festivalReq !== null) {
+    festivalReq.abort();
+  }
+  festivalReq = $.ajax({
+    url: '/getFestivalInfo',
+    type: 'GET',
+    data: {
+      festivalId: festivalId
+    },
+    success: function (response) {
+      artistReq = festivalReq;
+      $('#festivalInfo').html(response);
+    }
+  });
+};
+</script>

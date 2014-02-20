@@ -4,25 +4,6 @@ var queries = function() {
     return 'select * from artists;';
   };
 
-  this.getAllArtistsAndAppearances = function() {
-    return 'Select \
-  ar.artistId, \
-  ar.artist as artistName, \
-  ap.appearanceId, \
-  ap.setTime, \
-  fest.festivalId, \
-  fest.festival, \
-  fest.week, \
-  fest.location, \
-  fest.startDate, \
-  fest.endDate \
-from artists ar \
-  inner join appearances ap \
-    on ap.artistId = ar.artistId \
-  inner join festivals fest \
-    on fest.festivalId = ap.festivalId;';
-  };
-
   this.getArtistInfo = function(artistId) {
     return 'Select \
   ap.appearanceId, \
@@ -44,8 +25,34 @@ order by fest.startDate asc;';
     return 'select * from festivals where festivalId <> 2;';
   };
 
-  this.getAllFestivals = function() {
-    return 'select * from festivals;';
+  this.getFestival = function(festivalId) {
+    return 'select * from festivals where festivalId = ' + festivalId + ';';
+  };
+
+  this.getFestivalInfo = function(festivalId) {
+    return {
+      festival: this.getFestival(festivalId),
+      artists: this.getArtistsForFestival(festivalId)
+    };
+  };
+
+  this.getAllFestivals = function(orderBy) {
+    return 'select * from festivals ' + 
+      (typeof orderBy !== 'undefined' ? 
+        'order by ' + orderBy + ' asc' : '') + ';';
+  };
+
+  this.getArtistsForFestival = function(festivalId) {
+    return 'select \
+  ar.artistId, \
+  ar.artist, \
+  app.appearanceId, \
+  app.setTime \
+from artists ar \
+  inner join appearances app \
+    on app.artistId = ar.artistId \
+where app.festivalId = ' + festivalId + 
+' order by artist asc;';
   };
 
   this.getOrderedFestivals = function(festivalIds) {

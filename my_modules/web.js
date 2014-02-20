@@ -53,21 +53,45 @@ var Web = function(config, rootDir) {
         layout: false      
     });
   });
-  
-  app.get('/artistsWithAppearances', function (req, res) {
+
+  app.get('/festivals', function (req, res) {
     db.query({
-      sql: queries.getAllArtistsAndAppearances(),
+      sql: queries.getAllFestivals('startDate'),
       inserts: []
-    }, function (err, dbRes) {
+    }, function (err,fests) {
       if (err) {
         console.log(JSON.stringify(err));
         res.end();
         return;
       }
-      res.render('artistsWithAppearances', {
-        artists: dbRes
-      });      
+      res.render('festivals', {
+        layout: false,
+        festivals: fests
+      });
     });
+  });
+
+  app.get('/getFestivalInfo', function (req, res) {
+    if (typeof req.query.festivalId !== 'undefined') {
+      var q = queries.getFestivalInfo(req.query.festivalId);
+      db.query({
+        sql: q.festival + ' ' + q.artists,
+        inserts: []
+      }, function (err, dbRes) {
+        if (err) {
+          console.log(JSON.stringify(err));
+          res.end();
+          return;
+        }
+        res.render('festivalInfo', {
+          layout: false,
+          festival: dbRes[0][0],
+          artists: dbRes[1]
+        });
+      });
+    } else {
+      res.json(402, { error: 'Must specify festivalId.'});
+    }
   });
 
   app.get('/getVennDiagramData.json', function (req, res) {
