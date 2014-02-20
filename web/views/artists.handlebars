@@ -5,7 +5,7 @@
 </div>
 <script>
 $(document).ready(function() {
-  var artistReq = null;
+  var artistReq = null, currentArtist = 0;
 
   var artists = new Bloodhound({
     datumTokenizer: function(d) { 
@@ -15,9 +15,7 @@ $(document).ready(function() {
     limit: 10,
     prefetch: {
       url: '/getAllArtists.json',
-      filter: function(list) {
-        return list;
-      }
+      ttl: 600000
     }
   });
    
@@ -33,20 +31,23 @@ $(document).ready(function() {
       }
     }
   }).bind('typeahead:selected', function (obj, datum){
-    if (artistReq !== null) {
-      artistReq.abort();
-    }
-    artistReq = $.ajax({
-      url: '/getArtistInfo.json',
-      type: 'GET',
-      data: {
-        artistId: datum.artistId
-      },
-      success: function (response) {
-        artistReq = null;
-        $('#artistInfo').html('<pre>' + JSON.stringify(response,null,2) + '</pre>');
+    if (currentArtist !== datum.artistId) {
+      currentArtist = datum.artistId;
+      if (artistReq !== null) {
+        artistReq.abort();
       }
-    });
+      artistReq = $.ajax({
+        url: '/getArtistInfo',
+        type: 'GET',
+        data: {
+          artistId: datum.artistId
+        },
+        success: function (response) {
+          artistReq = null;
+          $('#artistInfo').html(response);
+        }
+      });
+    }
   });
 });
 </script>

@@ -28,8 +28,8 @@ $('.checkbox').change(function() {
       },
       success: function (response) {
         var sets = venn.venn(response.sets, response.overlaps);
-        //venn.drawD3Diagram(d3.select('.venn_d'), sets, 600, 600, null, response.overlaps);
         $('#venn_d').html('');
+        //venn.drawD3Diagram(d3.select('.venn_d'), sets, 600, 600, null, response.overlaps);
         venn.drawD3Diagram(d3.select('#venn_d'), sets, 600, 600, null, null);
       }
     });
