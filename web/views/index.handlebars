@@ -29,13 +29,15 @@ $('#homeTabs a').click(function (e) {
   if ($(parent).hasClass('featureTab')) {
     var feature = $(parent).attr('data-feature');
     var featureDiv = $('#' + feature);
-    $.ajax({
-      url: '/' + feature,
-      type: 'GET',
-      success: function (response) {
-        $(featureDiv).html(response);
-      }
-    });
+    if (!$(featureDiv).html().length) {
+      $.ajax({
+        url: '/' + feature,
+        type: 'GET',
+        success: function (response) {
+          $(featureDiv).html(response);
+        }
+      });
+    }
     window.location.hash = '#' + feature;
   } else {
     window.location.hash = '';
