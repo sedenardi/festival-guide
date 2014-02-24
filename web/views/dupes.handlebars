@@ -1,0 +1,44 @@
+<h4>Identify and handle duplicates</h4>
+<div id="dedupeBody">
+  <table>
+    <tbody>
+    {{#each dupes}}
+      {{> dupe this}}
+    {{/each}}
+    </tbody>
+  </table>
+</div>
+<script>
+$('.dupeButton').click(function() {
+  var id1 = $(this).attr('data-artist-id1');
+  var id2 = $(this).attr('data-artist-id2');
+  var parent = $(this).parents('tr');
+  $.ajax({
+    url: '/fixDupe',
+    type: 'GET',
+    data: {
+      artistId1: id1,
+      artistId2: id2
+    },
+    success: function (response) {
+      $(parent).remove();   
+    }
+  });
+});
+$('.notDupeButton').click(function() {
+  var id1 = $(this).attr('data-artist-id1');
+  var id2 = $(this).attr('data-artist-id2');
+  var parent = $(this).parents('tr');
+  $.ajax({
+    url: '/falsePositive',
+    type: 'GET',
+    data: {
+      artistId1: id1,
+      artistId2: id2
+    },
+    success: function (response) {
+      $(parent).remove();   
+    }
+  });
+});
+</script>

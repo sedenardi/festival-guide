@@ -38,7 +38,7 @@ var Web = function(config, rootDir) {
     }, function (err,fests) {
       if (err) {
         console.log(JSON.stringify(err));
-        res.end();
+        res.send(500);
         return;
       }
       res.render('venn', {
@@ -61,7 +61,7 @@ var Web = function(config, rootDir) {
     }, function (err,fests) {
       if (err) {
         console.log(JSON.stringify(err));
-        res.end();
+        res.send(500);
         return;
       }
       res.render('festivals', {
@@ -80,7 +80,7 @@ var Web = function(config, rootDir) {
       }, function (err, dbRes) {
         if (err) {
           console.log(JSON.stringify(err));
-          res.end();
+          res.send(500);
           return;
         }
         res.render('festivalInfo', {
@@ -112,7 +112,7 @@ var Web = function(config, rootDir) {
         }, function (innErr, dbRes) {
           if (innErr) {
             console.log(JSON.stringify(innErr));
-            res.end();
+            res.send(500);
             return;
           }
           res.json({
@@ -134,7 +134,7 @@ var Web = function(config, rootDir) {
       }, function (err, artists) {
         if (err) {
           console.log(JSON.stringify(err));
-          res.end();
+          res.send(500);
           return;
         }
         res.json(artists);
@@ -151,8 +151,8 @@ var Web = function(config, rootDir) {
     }, function (err, artists) {
       if (err) {
         console.log(JSON.stringify(err));
-        res.end();
-        return;
+          res.send(500);
+          return;
       }
       res.json(artists);
     })
@@ -166,7 +166,7 @@ var Web = function(config, rootDir) {
       }, function (err, artistInfo) {
         if (err) {
           console.log(JSON.stringify(err));
-          res.end();
+          res.send(500);
           return;
         }
         res.json(artistInfo);
@@ -184,7 +184,7 @@ var Web = function(config, rootDir) {
       }, function (err, artistInfo) {
         if (err) {
           console.log(JSON.stringify(err));
-          res.end();
+          res.send(500);
           return;
         }
         res.render('artistInfo', {
@@ -194,6 +194,61 @@ var Web = function(config, rootDir) {
       });
     } else {
       res.json(402, { error: 'Must specify artistId.'});
+    }
+  });
+
+  app.get('/dupes', function (req, res) {
+    db.query({
+      sql: 'call getDupes();',
+      inserts: []
+    }, function (err, dbRes) {
+      if (err) {
+          console.log(JSON.stringify(err));
+          res.send(500);
+          return;
+      }
+      res.render('dupes', {
+        layout: false,
+        dupes: dbRes[0]
+      });
+    });
+  });
+
+  app.get('/fixDupe', function (req, res) {
+    if (typeof req.query.artistId1 !== 'undefined' &&
+      typeof req.query.artistId2 !== 'undefined') {
+      db.query({
+        sql: 'call fixDupe(?,?)',
+        inserts: [req.query.artistId1, req.query.artistId2]
+      }, function (err, dbRes) {
+        if (err) {
+          console.log(JSON.stringify(err));
+          res.send(500);
+          return;
+        }
+        res.send(200);
+      });
+    } else {
+      res.json(402, { error: 'Must specify artistId1 and artistId2.'});      
+    }
+  });
+
+  app.get('/falsePositive', function (req, res) {
+    if (typeof req.query.artistId1 !== 'undefined' &&
+      typeof req.query.artistId2 !== 'undefined') {
+      db.query({
+        sql: 'call markFalsePositive(?,?)',
+        inserts: [req.query.artistId1, req.query.artistId2]
+      }, function (err, dbRes) {
+        if (err) {
+          console.log(JSON.stringify(err));
+          res.send(500);
+          return;
+        }
+        res.send(200);
+      });
+    } else {
+      res.json(402, { error: 'Must specify artistId1 and artistId2.'});      
     }
   });
 
