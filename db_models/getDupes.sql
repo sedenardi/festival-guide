@@ -32,6 +32,7 @@ select
 	m.artistId2,
 	a2.artist as artist2,
 	matches,
+	(select count(1) from hashes h where h.artistId = m.artistId1) - matches + 
 	(select count(1) from hashes h where h.artistId = m.artistId2) - matches as diff
 from matches m
 	inner join artists a1
