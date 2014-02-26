@@ -37,7 +37,7 @@ var disconnect = function() {
 
 /**** FUNCTIONS ****/
 var query = function(cmd, next) {
-  var sql = connection.format(cmd.sql || cmd, cmd.inserts || []);
+  var sql = connection.format(cmd.sql, cmd.inserts);
   connection.query(sql, next);
 };
 

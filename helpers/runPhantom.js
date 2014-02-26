@@ -6,6 +6,12 @@ var db = require('../my_modules/db'),
     fs = require('fs'),
     _und = require('underscore');
 
+
+/*
+ * USAGE:  node runPhantom.js <festivalName>
+ * DEPS:   phantomjs (can be installed thru system's pkg mngr
+ */
+
 var festivalName = process.argv[2];
 var cleanupAfterFetch = true;
 
