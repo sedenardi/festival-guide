@@ -18,6 +18,10 @@ body {
   margin-left: 20px;
 }
 
+#venn_d {
+  margin-left: 250px;
+}
+
 #festivalBody {
   width: 100%; 
   height: 100%;
@@ -42,10 +46,6 @@ body {
   padding-bottom: 5px;
   border: 1px solid;  
   border-radius: 4px;
-}
-
-#venn_d {
-  margin-left: 250px;
 }
 
 /*.typeahead,

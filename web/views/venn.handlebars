@@ -29,8 +29,10 @@ $('.checkbox').change(function() {
       success: function (response) {
         var sets = venn.venn(response.sets, response.overlaps);
         $('#venn_d').html('');
-        //venn.drawD3Diagram(d3.select('.venn_d'), sets, 600, 600, null, response.overlaps);
-        venn.drawD3Diagram(d3.select('#venn_d'), sets, 600, 600, null, null);
+        var height = $(window).height() - 10 - 43 - 39 - 10 - 5;
+        var width = $(window).width() - 10 - 20 - 200 - 200 - 20 - 10 - 50;
+        venn.drawD3Diagram(d3.select('#venn_d'), sets, width, height, null, null);
+        wireupCircles();
       }
     });
   } else {
@@ -43,4 +45,30 @@ $('.checkbox').change(function() {
   }
 });
 
+var wireupCircles = function() {
+  $('circle').unbind('click');
+  $('circle').click(function (e) {
+    var x = e.offsetX || e.layerX, 
+      y = e.offsetY || e.layerY;
+    var set = [];
+    $.each($('circle'), function(i, v) {
+      if (pointInCircle(x, y, v)) {
+        set.push($(v).attr('index'));
+      }
+    });
+    alert(set);
+  });
+};
+
+var pointInCircle = function(x,y,circle) {
+  var dx = Math.abs(x - $(circle).attr('cx')),
+    dy = Math.abs(y - $(circle).attr('cy')),
+    r = $(circle).attr('r');
+  if (dx + dy <= r)
+    return true;
+  else if (dx > r || dy > r)
+    return false;
+  else
+    return (dx*dx + dy*dy <= r*r);
+};
 </script>

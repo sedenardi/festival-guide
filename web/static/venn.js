@@ -49,6 +49,12 @@
     /** Returns the distance necessary for two circles of radius r1 + r2 to
     have the overlap area 'overlap' */
     venn.distanceFromIntersectArea = function(r1, r2, overlap) {
+        // handle complete overlapped circles
+        if (Math.min(r1, r2) * Math.min(r1,r2) * Math.PI < overlap) {
+            console.log("overlapped" + r1 + " " + r2 + " " + overlap);
+            return Math.abs(r1 - r2);
+        }
+
         return venn.bisect(function(distance) {
             return circleIntersection.circleOverlap(r1, r2, distance) - overlap;
         }, 0, r1 + r2);
@@ -426,22 +432,7 @@
                 solution : simplex[0]};
     };
 
-    venn.getIntersectionCenters = function(dataset, overlaps) {
-        for (var i = 0; i < overlaps.length; i++) {
-            var points = [];
-            for (var j = 0; j < overlaps[i].sets.length; j++) {
-                points.push({
-                    x: dataset[overlaps[i].sets[j]].x,
-                    y: dataset[overlaps[i].sets[j]].y,
-                    weight: 1/(dataset[overlaps[i].sets[j]].radius)
-                });
-            }
-            overlaps[i].center = circleIntersection.getWeightedCenter(points);
-        }
-        return overlaps;
-    };
-
-    venn.drawD3Diagram = function(element, dataset, width, height, parameters, overlaps) {
+    venn.drawD3Diagram = function(element, dataset, width, height, parameters) {
         parameters = parameters || {};
 
         var colours = d3.scale.category10(),
@@ -463,16 +454,17 @@
                          .enter()
                          .append("g");
 
-        nodes.append("circle")
+        var circles = nodes.append("circle")
                .attr("r",  function(d) { return d.radius; })
                .style("fill-opacity", nodeOpacity)
                .attr("cx", function(d) { return d.x; })
                .attr("cy", function(d) { return d.y; })
                .style("stroke", function(d, i) { return circleStrokeColours(i); })
                .style("stroke-width", function(d, i) { return circleStrokeWidth(i); })
-               .style("fill", function(d, i) { return circleFillColours(i); });
+               .style("fill", function(d, i) { return circleFillColours(i); })
+               .attr("index", function(d, i) { return i; });
 
-        nodes.append("text")
+        var text = nodes.append("text")
                .attr("x", function(d) { return d.x; })
                .attr("y", function(d) { return d.y; })
                .attr("text-anchor", "middle")
@@ -480,25 +472,13 @@
                .style("fill", function(d, i) { return textFillColours(i); })
                .text(function(d) { return d.label; });
 
-        if (overlaps !== null) {
-            overlaps = venn.getIntersectionCenters(dataset, overlaps);
-
-            var intersects = svg.selectAll("intersects")
-                                .data(overlaps)
-                                .enter()
-                                .append("g");
-
-            intersects.append("text")
-                   .attr("x", function(d) { return d.center.x; })
-                   .attr("y", function(d) { return d.center.y; })
-                   .attr("text-anchor", "middle")
-                   .style("stroke", function(d, i) { return '#000000'; })
-                   .style("fill", function(d, i) { return '#000000'; })
-                   .text(function(d) { return d.size; });
-        }
+        return {'svg' : svg,
+                'nodes' : nodes,
+                'circles' : circles,
+                'text' : text };
     };
 
-    venn.updateD3Diagram = function(element, dataset, overlaps) {
+    venn.updateD3Diagram = function(element, dataset) {
         var svg = element.select("svg"),
             width = parseInt(svg.attr('width'), 10),
             height = parseInt(svg.attr('height'), 10);
@@ -510,7 +490,8 @@
             .duration(400)
             .attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; })
-            .attr("r",  function(d) { return d.radius; });
+            .attr("r",  function(d) { return d.radius; })
+            .attr("index", function(d, i) { return i; });
 
         element.selectAll("text")
             .data(dataset)
@@ -518,18 +499,6 @@
             .duration(400)
             .attr("x", function(d) { return d.x; })
             .attr("y", function(d) { return d.y; });
-
-        if (overlaps !== null) {
-            overlaps = venn.getIntersectionCenters(dataset, overlaps);
-
-            element.selectAll("intersects")
-                .data(overlaps)
-                .transition()
-                .duration(400)
-                .attr("x", function(d) { return d.center.x; })
-                .attr("y", function(d) { return d.center.y; })
-                .text(function(d) { return d.size; });
-        }
     };
 }(window.venn = window.venn || {}));
 (function(circleIntersection) {
@@ -753,20 +722,6 @@
         }
         center.x /= points.length;
         center.y /= points.length;
-        return center;
-    };
-
-    /** Returns the weighted center of a bunch of points */
-    circleIntersection.getWeightedCenter = function(points) {
-        var center = { x: 0, y: 0};
-        var weightSum = 0;
-        for (var i =0; i < points.length; ++i ) {
-            center.x += points[i].x * points[i].weight;
-            center.y += points[i].y * points[i].weight;
-            weightSum += points[i].weight;
-        }
-        center.x /= weightSum;
-        center.y /= weightSum;
         return center;
     };
 }(window.circleIntersection = window.circleIntersection || {}));
