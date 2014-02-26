@@ -11,8 +11,28 @@
     </div>
   </div>
   <div id='venn_d'></div>
+  <div id='vennModal' class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          Artists In Commom
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Artist 1</li>
+            <li>Artist 2</li>
+            <li>Artist 3</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
+$('#vennModal').modal({
+  show: false
+});
+
 $('.checkbox').change(function() {  
   var l = $('.festivalCheckbox:checked').length;
   if (l === 2 || l === 3) {
@@ -56,8 +76,14 @@ var wireupCircles = function() {
         set.push($(v).attr('index'));
       }
     });
-    alert(set);
+    //alert(set);
+    createPopover(x, y, set);
   });
+};
+
+var createPopover = function(x, y, set) {
+
+  $('#vennModal').modal('show');
 };
 
 var pointInCircle = function(x,y,circle) {
