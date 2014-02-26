@@ -1,19 +1,28 @@
 {
   "name": "festival-guide",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Sanders DeNardi",
+  "contributors": [
+    "Alex Ehrnschwender <alex@crunchdeveloment.com> (http://ehrns.com)"
+  ],
   "description": "Analyzing and visualizing music festivals.",
   "main": "festival-guide.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/sedenardi/festival-guide"
   },
-  "dependencies" : {
-    "mysql": "*",
-    "express": "*",
-    "express3-handlebars": "*",
-    "handlebars": "*",
-    "moment": "*"
+  "dependencies": {
+    "express": "~3.0.6",
+    "mysql": "~2.1.0",
+    "handlebars": "~2.0.0-alpha.1",
+    "moment": "~2.5.1",
+    "express3-handlebars": "~0.5.0",
+    "migrate": "~0.1.4",
+    "async": "~0.2.10",
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.1"
   },
   "engines": {
     "node": ">=0.10"
