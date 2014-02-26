@@ -1,11 +1,11 @@
 - Venn diagram
-- [ ] 3 festival max checkbox
-- [ ] Hover-over artist list
+- [X] 3 festival max checkbox
+- [ ] Popup of artist comparison
 - Artist Mapping
 - [ ] Dropping pins at appearances
 - [ ] Drawing route
 - Backend tools
 - [ ] Artist editor
 - [ ] Appearance editor
-- [ ] De-duper
+- [X] De-duper
 - [ ] Festival info import
