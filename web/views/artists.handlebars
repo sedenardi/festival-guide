@@ -1,8 +1,7 @@
 <h4>Look up artist's festival information</h4>
 <input type="text" class="form-control" id="artistInput" placeholder="Enter artist">
 <hr>
-<div id="artistInfo">
-</div>
+<div id="map-canvas"></div>
 <script>
 $(document).ready(function() {
   var artistReq = null, currentArtist = 0;
@@ -37,17 +36,86 @@ $(document).ready(function() {
         artistReq.abort();
       }
       artistReq = $.ajax({
-        url: '/getArtistInfo',
+        url: '/getArtistInfo.json',
         type: 'GET',
         data: {
           artistId: datum.artistId
         },
         success: function (response) {
-          artistReq = null;
-          $('#artistInfo').html(response);
+          clearMarkers();
+          $.each(response, function (i ,v) {
+            pinFestival(v);
+          });
         }
       });
     }
   });
+
+  var height = $(window).height() - 10 - 43 - 39 - 34 - 41 - 10;
+  var width = $(window).width() - 10 - 10;
+  $('#map-canvas').css('height',height);
+  $('#map-canvas').css('width',width);
+
+  var geocoder = new google.maps.Geocoder,
+    infowindow = new google.maps.InfoWindow(),
+    map,
+    mapMarkers = [];
+  geocoder.geocode( { 'address': 'United States of America'}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      var myOptions = {
+        zoom: 4,
+        maxZoom: 10,
+        minZoom: 3,
+        center: results[0].geometry.location,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: false,
+        scrollwheel: true,
+        draggable: true,
+        navigationControl: true,
+        mapTypeControl: false,
+        scaleControl: true,
+        disableDoubleClickZoom: false
+      };
+
+      map = new google.maps.Map($("#map-canvas")[0], myOptions);
+      
+    } else {
+      alert("Google Maps error: " + status);
+    }
+  });
+
+  var pinFestival = function(festival) {
+    geocoder.geocode( { 'address': festival.location }, function(results, status) {
+      if (status ==google.maps.GeocoderStatus.OK) {
+        var marker = new google.maps.Marker({
+          position: results[0].geometry.location,
+          map: map
+        });
+        google.maps.event.addListener(marker, 'click', (function(marker) {
+          return function() {
+            infowindow.setContent(infoWindowContent(festival));
+            infowindow.open(map, marker);
+          }
+        })(marker));
+        mapMarkers.push(marker);
+      } else {
+        alert("Google Maps error: " + status);
+      }
+    })
+  };
+
+  var clearMarkers = function() {
+    $.each(mapMarkers, function (i,v) {
+      v.setMap(null);
+    });
+    mapMarkers.length = 0;
+  };
+
+  var infoWindowContent = function(festival) {
+    return festival.festival + '<br>' + 
+      festival.location + '<br>' + 
+      moment(festival.startDate).format('dddd, MMMM Do') + 
+        ' to ' + moment(festival.endDate).format('dddd, MMMM Do');
+  };
 });
 </script>
