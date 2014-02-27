@@ -1,4 +1,4 @@
-<h4>Choose up to 3 festivals to compare</h3>
+<h4>Choose up to 3 festivals to compare, click overlapping areas to see common artists</h3>
 <div id="vennBody">
   <div id="festivalCheckboxes">
   {{#each festivals}}
@@ -74,7 +74,9 @@ var wireupCircles = function() {
         set.push($(v).attr('index'));
       }
     });
-    createPopover(x, y, set);
+    if (set.length > 1) {
+      createPopover(x, y, set);
+    }
   });
 };
 
@@ -101,6 +103,8 @@ var createPopover = function(x, y, set) {
       festivalIds: festivalIds.join(',')
     },
     success: function (response) {
+      var count = $(response).find('li').length;
+      $('#vennModal .modal-header').html(modalTitle + ' (' + count + ' artists)');
       $('#vennModal .modal-body').html(response);
     }
   });
