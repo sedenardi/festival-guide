@@ -470,6 +470,7 @@
                .attr("text-anchor", "middle")
                .style("stroke", function(d, i) { return textStrokeColours(i); })
                .style("fill", function(d, i) { return textFillColours(i); })
+               .attr("index", function(d, i) { return i; })
                .text(function(d) { return d.label; });
 
         return {'svg' : svg,
@@ -490,8 +491,7 @@
             .duration(400)
             .attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; })
-            .attr("r",  function(d) { return d.radius; })
-            .attr("index", function(d, i) { return i; });
+            .attr("r",  function(d) { return d.radius; });
 
         element.selectAll("text")
             .data(dataset)
