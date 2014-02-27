@@ -161,6 +161,24 @@ var Web = function(config, rootDir) {
     })
   });
 
+  app.get('/getFestivalsForArtist.json', function (req, res) {
+    if (typeof req.query.artistId !== 'undefined') {
+      db.query({
+        sql: queries.getFestivalsForArtist(req.query.artistId),
+        inserts: []
+      }, function (err, festivals) {
+        if (err) {
+          console.log(JSON.stringify(err));
+          res.send(500);
+          return;
+        }
+        res.json(festivals);
+      });
+    } else {
+      res.json(402, { error: 'Must specify artistId.'});
+    }
+  });
+
   app.get('/getArtistInfo.json', function (req, res) {
     if (typeof req.query.artistId !== 'undefined') {
       db.query({

@@ -21,6 +21,24 @@ where ap.artistId = ' + artistId + ' \
 order by fest.startDate asc;';
   };
 
+  this.getFestivalsForArtist = function(artistId) {
+    return 'Select \
+  GROUP_CONCAT(ap.appearanceId separator \',\') as appearanceIds, \
+  GROUP_CONCAT(ap.setTime separator \',\') as setTimes, \
+  GROUP_CONCAT(fest.festivalId separator \',\') as festivalIds, \
+  fest.festival, \
+  GROUP_CONCAT(fest.week separator \',\') as weeks, \
+  GROUP_CONCAT(distinct fest.location separator \',\') as location, \
+  GROUP_CONCAT(fest.startDate separator \',\') as startDates, \
+  GROUP_CONCAT(fest.endDate separator \',\') as endDates \
+from appearances ap \
+  inner join festivals fest \
+    on fest.festivalId = ap.festivalId \
+where ap.artistId = ' + artistId + ' \
+group by festival \
+order by startDate;'
+  };
+
   this.getUniqueFestivals = function() {
     return 'select * from festivals where festivalId <> 2;';
   };

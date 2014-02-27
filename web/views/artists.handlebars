@@ -36,7 +36,7 @@ $(document).ready(function() {
         artistReq.abort();
       }
       artistReq = $.ajax({
-        url: '/getArtistInfo.json',
+        url: '/getFestivalsForArtist.json',
         type: 'GET',
         data: {
           artistId: datum.artistId
@@ -112,10 +112,21 @@ $(document).ready(function() {
   };
 
   var infoWindowContent = function(festival) {
+    var start = festival.startDates.split(','),
+      end = festival.endDates.split(','),
+      dateString = '';
+
+    $.each(start, function(i, v) {
+      dateString += moment(v).format('dddd, MMMM Do') + 
+        ' to ' + moment(end[i]).format('dddd, MMMM Do');
+      if (i <= start.length - 2) {
+        dateString += '<br>';
+      }
+    });
+
     return festival.festival + '<br>' + 
       festival.location + '<br>' + 
-      moment(festival.startDate).format('dddd, MMMM Do') + 
-        ' to ' + moment(festival.endDate).format('dddd, MMMM Do');
+      dateString;
   };
 });
 </script>
