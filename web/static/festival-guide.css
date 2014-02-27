@@ -34,6 +34,10 @@ body {
   margin-left: 20px;
 }
 
+#festivalInfo {
+  margin-left: 240px;
+}
+
 .nav-festivals li {
   height: 20px;
 }
@@ -42,8 +46,8 @@ body {
 }
 
 .artist {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   border: 1px solid;  
   border-radius: 4px;
 }
