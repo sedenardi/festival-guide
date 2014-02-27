@@ -155,7 +155,7 @@ where app.festivalId = ' + festivalId +
       query += appendBase(festivals[i],i);
     }
 
-    query += ';';
+    query += ' order by ar.artist;';
     return query;
   };
 };
