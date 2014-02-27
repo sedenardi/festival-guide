@@ -126,7 +126,7 @@ var Web = function(config, rootDir) {
     }
   });
 
-  app.get('/getCommonArtists.json', function (req, res) {
+  app.get('/getCommonArtists', function (req, res) {
     if (typeof req.query.festivalIds !== 'undefined') {
       db.query({
         sql: queries.getInCommonForFestivals(req.query.festivalIds),
@@ -137,7 +137,10 @@ var Web = function(config, rootDir) {
           res.send(500);
           return;
         }
-        res.json(artists);
+        res.render('artistList', {
+          layout: false,
+          artists: artists
+        });
       })
     } else {
       res.json(402, { error: 'Must specify festivalIds.'});

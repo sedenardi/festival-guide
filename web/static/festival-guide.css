@@ -48,6 +48,10 @@ body {
   border-radius: 4px;
 }
 
+.artistList {
+  margin-left: -20px;
+}
+
 /*.typeahead,
 .tt-query,
 .tt-hint {

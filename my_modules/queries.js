@@ -128,7 +128,7 @@ where app.festivalId = ' + festivalId +
           set += '),\'}, \',';
         }
         set += '\'{"label": "' + data[i].fests[0].festival.replace('\'','\\\'') + 
-          '", "size": \',' + data[i].sql;
+          '", "festivalId": "' + data[i].fests[0].festivalId + '", "size": \',' + data[i].sql;
         setArray.push(set);
       }
     }
@@ -156,7 +156,6 @@ where app.festivalId = ' + festivalId +
     }
 
     query += ';';
-
     return query;
   };
 };

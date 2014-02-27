@@ -18,11 +18,6 @@
           Artists In Commom
         </div>
         <div class="modal-body">
-          <ul>
-            <li>Artist 1</li>
-            <li>Artist 2</li>
-            <li>Artist 3</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -32,6 +27,8 @@
 $('#vennModal').modal({
   show: false
 });
+
+var vennFestivals;
 
 $('.checkbox').change(function() {  
   var l = $('.festivalCheckbox:checked').length;
@@ -47,11 +44,12 @@ $('.checkbox').change(function() {
         festivalIds: festivalIds,
       },
       success: function (response) {
-        var sets = venn.venn(response.sets, response.overlaps);
+        vennFestivals = response.sets;
+        var data = venn.venn(response.sets, response.overlaps);
         $('#venn_d').html('');
-        var height = $(window).height() - 10 - 43 - 39 - 10 - 5;
+        var height = $(window).height() - 10 - 43 - 39-  10 - 5;
         var width = $(window).width() - 10 - 20 - 200 - 200 - 20 - 10 - 50;
-        venn.drawD3Diagram(d3.select('#venn_d'), sets, width, height, null, null);
+        venn.drawD3Diagram(d3.select('#venn_d'), data, width, height, null, null);
         wireupCircles();
       }
     });
@@ -76,14 +74,36 @@ var wireupCircles = function() {
         set.push($(v).attr('index'));
       }
     });
-    //alert(set);
     createPopover(x, y, set);
   });
 };
 
 var createPopover = function(x, y, set) {
-
+  var modalTitle = '',
+    festivalIds = [];
+  $.each(set, function(i, v) {
+    modalTitle += vennFestivals[v].label;
+    festivalIds.push(vennFestivals[v].festivalId);
+    if (i < set.length - 2) {
+      modalTitle += ', ';
+    } 
+    if (i === set.length - 2) {
+      modalTitle += ' and ';
+    }
+  });
+  $('#vennModal .modal-header').html(modalTitle);
+  $('#vennModal .modal-body').html('Loading artists...');
   $('#vennModal').modal('show');
+  $.ajax({
+    url: '/getCommonArtists',
+    type: 'GET',
+    data: {
+      festivalIds: festivalIds.join(',')
+    },
+    success: function (response) {
+      $('#vennModal .modal-body').html(response);
+    }
+  });
 };
 
 var pointInCircle = function(x,y,circle) {
