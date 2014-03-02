@@ -3,6 +3,13 @@
 <hr>
 <div id="map-canvas"></div>
 <script>
+ var geocoder = new google.maps.Geocoder,
+  infowindow = new google.maps.InfoWindow(),
+  map,
+  mapMarkers = [],
+  directionsDisplay,
+  directionsService;
+
 $(document).ready(function() {
   var artistReq = null, currentArtist = 0;
 
@@ -43,9 +50,13 @@ $(document).ready(function() {
         },
         success: function (response) {
           clearMarkers();
-          $.each(response, function (i ,v) {
-            pinFestival(v);
-          });
+          if (response.length > 1 && response.length <= 10) {
+            plotFestivals(response);
+          } else {
+            $.each(response, function (i ,v) {
+              pinFestival(v);
+            });
+          }          
         }
       });
     }
@@ -54,12 +65,8 @@ $(document).ready(function() {
   var height = $(window).height() - 10 - 43 - 39 - 34 - 41 - 10;
   var width = $(window).width() - 10 - 10;
   $('#map-canvas').css('height',height);
-  $('#map-canvas').css('width',width);
+  //$('#map-canvas').css('width',width);
 
-  var geocoder = new google.maps.Geocoder,
-    infowindow = new google.maps.InfoWindow(),
-    map,
-    mapMarkers = [];
   geocoder.geocode( { 'address': 'United States of America'}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       var myOptions = {
@@ -78,6 +85,10 @@ $(document).ready(function() {
       };
 
       map = new google.maps.Map($("#map-canvas")[0], myOptions);
+      directionsDisplay = new google.maps.DirectionsRenderer();
+      directionsDisplay.setMap(map);
+      directionsService = new google.maps.DirectionsService();
+
       
     } else {
       alert("Google Maps error: " + status);
@@ -87,17 +98,7 @@ $(document).ready(function() {
   var pinFestival = function(festival) {
     geocoder.geocode( { 'address': festival.location }, function(results, status) {
       if (status ==google.maps.GeocoderStatus.OK) {
-        var marker = new google.maps.Marker({
-          position: results[0].geometry.location,
-          map: map
-        });
-        google.maps.event.addListener(marker, 'click', (function(marker) {
-          return function() {
-            infowindow.setContent(infoWindowContent(festival));
-            infowindow.open(map, marker);
-          }
-        })(marker));
-        mapMarkers.push(marker);
+        dropMarker(results[0].geometry.location, festival);
       } else {
         alert("Google Maps error: " + status);
       }
@@ -109,6 +110,20 @@ $(document).ready(function() {
       v.setMap(null);
     });
     mapMarkers.length = 0;
+  };
+
+  var dropMarker = function(location, festival) {
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+    google.maps.event.addListener(marker, 'click', (function(marker) {
+      return function() {
+        infowindow.setContent(infoWindowContent(festival));
+        infowindow.open(map, marker);
+      }
+    })(marker));
+    mapMarkers.push(marker);
   };
 
   var infoWindowContent = function(festival) {
@@ -127,6 +142,41 @@ $(document).ready(function() {
     return festival.festival + '<br>' + 
       festival.location + '<br>' + 
       dateString;
+  };
+
+  var plotFestivals = function(festivals) {
+    var waypts = [];
+    for (var i = 1; i < festivals.length - 1; i++) {
+      waypts.push({
+        location: festivals[i].location,
+        stopover: true
+      });
+    }
+    var request = {
+      origin: festivals[0].location,
+      destination: festivals[festivals.length - 1].location,
+      waypoints: waypts,
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+        dropDirectionMarkers(response.routes[0].legs, festivals);
+      } else {
+        alert("Google Maps error: " + status);
+      }
+    })
+  };
+
+  var dropDirectionMarkers = function(route, festivals) {
+    setTimeout(function() {
+      console.log(route);
+      console.log(festivals);
+      for (var i = 0; i < route.length; i++) {
+        dropMarker(route[i].start_location, festivals[i]);
+      }
+      dropMarker(route[route.length - 1].end_location, festivals[route.length]);
+    }, 500);
   };
 });
 </script>

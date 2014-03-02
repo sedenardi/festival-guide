@@ -6,6 +6,10 @@ body {
   width: 500px;
 }
 
+#map-canvas {
+  width: 100%;
+}
+
 #vennBody {
   width: 100%; 
   height: 100%;
