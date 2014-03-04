@@ -86,6 +86,11 @@ $(document).ready(function() {
 
       map = new google.maps.Map($("#map-canvas")[0], myOptions);
       directionsDisplay = new google.maps.DirectionsRenderer();
+      directionsDisplay.setOptions({
+        draggable: false,
+        suppressInfoWindows: false,
+        suppressMarkers: true
+      });
       directionsDisplay.setMap(map);
       directionsService = new google.maps.DirectionsService();
 
@@ -112,10 +117,11 @@ $(document).ready(function() {
     mapMarkers.length = 0;
   };
 
-  var dropMarker = function(location, festival) {
+  var dropMarker = function(location, festival, marker) {
     var marker = new google.maps.Marker({
       position: location,
-      map: map
+      map: map,
+      icon: marker
     });
     google.maps.event.addListener(marker, 'click', (function(marker) {
       return function() {
@@ -169,14 +175,14 @@ $(document).ready(function() {
   };
 
   var dropDirectionMarkers = function(route, festivals) {
-    setTimeout(function() {
-      console.log(route);
-      console.log(festivals);
-      for (var i = 0; i < route.length; i++) {
-        dropMarker(route[i].start_location, festivals[i]);
-      }
-      dropMarker(route[route.length - 1].end_location, festivals[route.length]);
-    }, 500);
+    console.log(route);
+    console.log(festivals);
+    for (var i = 0; i < route.length; i++) {
+      var markerImg = '/images/marker' + (i + 1) + '.png';
+      dropMarker(route[i].start_location, festivals[i], markerImg);
+    }
+    var markerImg = '/images/marker' + (route.length + 1) + '.png';
+    dropMarker(route[route.length - 1].end_location, festivals[route.length], markerImg);
   };
 });
 </script>
