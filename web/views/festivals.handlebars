@@ -33,7 +33,7 @@ var fetchFestivalInfo = function (festivalId) {
       festivalId: festivalId
     },
     success: function (response) {
-      artistReq = festivalReq;
+      festivalReq = null;
       $('#festivalInfo').html(response);
     }
   });

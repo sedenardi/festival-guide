@@ -83,10 +83,37 @@ var Web = function(config, rootDir) {
           res.send(500);
           return;
         }
+        var artists = [];
+        for (var i = 0; i < dbRes[1].length; i++) {
+          if (i%3 === 0) {
+            artists.push(dbRes[1].slice(i,i+3));
+          }
+        }
         res.render('festivalInfo', {
           layout: false,
           festival: dbRes[0][0],
-          artists: dbRes[1]
+          artists: artists
+        });
+      });
+    } else {
+      res.json(402, { error: 'Must specify festivalId.'});
+    }
+  });
+
+  app.get('/getArtistPopover', function (req, res) {
+    if (typeof req.query.artistId !== 'undefined') {
+      db.query({
+        sql: queries.getArtistInfo(req.query.artistId),
+        inserts: []
+      }, function (err, dbRes) {
+        if (err) {
+          console.log(JSON.stringify(err));
+          res.send(500);
+          return;
+        }
+        res.render('artistPopover', {
+          layout: false,
+          info: dbRes
         });
       });
     } else {

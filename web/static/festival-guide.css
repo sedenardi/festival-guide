@@ -60,6 +60,14 @@ body {
   margin-left: -20px;
 }
 
+.artistName {
+  cursor: pointer;
+}
+
+.popoverList {
+  margin-left: -20px;
+}
+
 /*.typeahead,
 .tt-query,
 .tt-hint {

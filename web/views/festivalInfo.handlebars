@@ -1,4 +1,47 @@
 <h4>{{>appearance festival}}</h4>
-{{#each artists}}
-{{> artist this}}
-{{/each}}
+<table class="table table-striped">
+  <tbody>
+    {{#each artists}}
+    <tr>
+      {{#each this}}
+      <td>{{>artist this}}</td>
+      {{/each}}
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<div id="artistPopover" style="display:none;">
+Loading...
+</div>
+<script>
+var req;
+$('.artistName').popover({
+  placement: 'bottom',
+  trigger: 'hover click',
+  title: 'Artist Info',
+  html: true,
+  content: function() {
+    return $('#artistPopover').html();
+  }
+});
+$('.artistName').on('show.bs.popover', function() {
+  var artistId = $(this).attr('data-artist-id');
+  getArtistInfo(artistId);
+});
+var getArtistInfo = function(artistId) {
+  if (req != null) {
+    req.abort();
+  }
+  req = $.ajax({
+    url: '/getArtistPopover',
+    type: 'GET',
+    data: {
+      artistId: artistId
+    },
+    success: function (response) {
+      req = null;
+      $('.popover-content').html(response);
+    }
+  });
+};
+</script>
