@@ -1,9 +1,9 @@
 - Venn diagram
 - [X] 3 festival max checkbox
-- [ ] Popup of artist comparison
+- [X] Popup of artist comparison
 - Artist Mapping
-- [ ] Dropping pins at appearances
-- [ ] Drawing route
+- [X] Dropping pins at appearances
+- [X] Drawing route
 - Backend tools
 - [ ] Artist editor
 - [ ] Appearance editor
