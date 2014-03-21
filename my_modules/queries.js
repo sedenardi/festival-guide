@@ -1,11 +1,15 @@
 var queries = function() {
 
   this.getAllArtists = function() {
-    return 'select * from artists;';
+    return {
+      sql: 'select * from artists;',
+      inserts: []
+    };
   };
 
   this.getArtistInfo = function(artistId) {
-    return 'Select \
+    return {
+      sql: 'Select \
   ap.appearanceId, \
   ap.setTime, \
   fest.festivalId, \
@@ -17,12 +21,15 @@ var queries = function() {
 from appearances ap \
   inner join festivals fest \
     on fest.festivalId = ap.festivalId \
-where ap.artistId = ' + artistId + ' \
-order by fest.startDate asc;';
+where ap.artistId = ? \
+order by fest.startDate asc;',
+      inserts: [artistId]
+    };
   };
 
   this.getFestivalsForArtist = function(artistId) {
-    return 'Select \
+    return {
+      sql: 'Select \
   GROUP_CONCAT(ap.appearanceId separator \',\') as appearanceIds, \
   GROUP_CONCAT(ap.setTime separator \',\') as setTimes, \
   GROUP_CONCAT(fest.festivalId separator \',\') as festivalIds, \
@@ -34,34 +41,49 @@ order by fest.startDate asc;';
 from appearances ap \
   inner join festivals fest \
     on fest.festivalId = ap.festivalId \
-where ap.artistId = ' + artistId + ' \
+where ap.artistId = ? \
 group by festival \
-order by startDate;'
+order by startDate;',
+      inserts: [artistId]
+    };
   };
 
   this.getUniqueFestivals = function() {
-    return 'select * from festivals where festivalId <> 2;';
+    return {
+      sql: 'select * from festivals where festivalId <> 2;',
+      inserts: []
+    };
   };
 
   this.getFestival = function(festivalId) {
-    return 'select * from festivals where festivalId = ' + festivalId + ';';
+    return {
+      sql: 'select * from festivals where festivalId = ?;',
+      inserts: [festivalId]
+    };
   };
 
   this.getFestivalInfo = function(festivalId) {
+    var q1 = this.getFestival(festivalId);
+    var q2 = this.getArtistsForFestival(festivalId);
     return {
-      festival: this.getFestival(festivalId),
-      artists: this.getArtistsForFestival(festivalId)
+      sql: q1.sql + q2.sql,
+      inserts: q1.inserts.concat(q2.inserts)
     };
   };
 
   this.getAllFestivals = function(orderBy) {
-    return 'select * from festivals ' + 
+    var q = 'select * from festivals ' + 
       (typeof orderBy !== 'undefined' ? 
         'order by ' + orderBy + ' asc' : '') + ';';
+    return {
+      sql: q,
+      inserts: []
+    };
   };
 
   this.getArtistsForFestival = function(festivalId) {
-    return 'select \
+    return {
+      sql: 'select \
   ar.artistId, \
   ar.artist, \
   app.appearanceId, \
@@ -69,19 +91,24 @@ order by startDate;'
 from artists ar \
   inner join appearances app \
     on app.artistId = ar.artistId \
-where app.festivalId = ' + festivalId + 
-' order by artist asc;';
+where app.festivalId = ? \
+ order by artist asc;',
+      inserts: [festivalId]
+    };
   };
 
   this.getOrderedFestivals = function(festivalIds) {
-    return 'Select \
+    return {
+      sql: 'Select \
               festivalId, \
               festival, \
               @curRow := @curRow + 1 AS idx \
             from festivals f \
-            join (select @curRow := 0) r \
+              inner join (select @curRow := 0) r \
             where festivalId in (' + festivalIds + ') \
-            order by festivalId asc;';
+            order by festivalId asc;',
+      inserts: []
+    };
   };
 
   this.getOverlapsForFestivals = function(festivals) {
@@ -153,8 +180,8 @@ where app.festivalId = ' + festivalId +
     var sets = setBase + setArray.join('\n') + '),\'}]\') as sets;';
     var overlaps = overlapBase + overlapArray.join('\n') + '),\'}]\') as overlaps;';
     return {
-      sets: sets,
-      overlaps: overlaps
+      sql: sets + overlaps,
+      inserts: []
     };
   };
 
@@ -174,7 +201,10 @@ where app.festivalId = ' + festivalId +
     }
 
     query += ' order by ar.artist;';
-    return query;
+    return {
+      sql: query,
+      inserts: []
+    };
   };
 };
 

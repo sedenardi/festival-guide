@@ -32,10 +32,7 @@ var Web = function(config, rootDir) {
   });
 
   app.get('/venn', function (req, res) {
-    db.query({
-      sql: queries.getUniqueFestivals(),
-      inserts: []
-    }, function (err,fests) {
+    db.query(queries.getUniqueFestivals(), function (err,fests) {
       if (err) {
         console.log(JSON.stringify(err));
         res.send(500);
@@ -55,10 +52,7 @@ var Web = function(config, rootDir) {
   });
 
   app.get('/festivals', function (req, res) {
-    db.query({
-      sql: queries.getAllFestivals('startDate'),
-      inserts: []
-    }, function (err,fests) {
+    db.query(queries.getAllFestivals('startDate'), function (err,fests) {
       if (err) {
         console.log(JSON.stringify(err));
         res.send(500);
@@ -73,11 +67,8 @@ var Web = function(config, rootDir) {
 
   app.get('/getFestivalInfo', function (req, res) {
     if (typeof req.query.festivalId !== 'undefined') {
-      var q = queries.getFestivalInfo(req.query.festivalId);
-      db.query({
-        sql: q.festival + ' ' + q.artists,
-        inserts: []
-      }, function (err, dbRes) {
+      db.query(queries.getFestivalInfo(req.query.festivalId), 
+        function (err, dbRes) {
         if (err) {
           console.log(JSON.stringify(err));
           res.send(500);
@@ -102,10 +93,8 @@ var Web = function(config, rootDir) {
 
   app.get('/getArtistPopover', function (req, res) {
     if (typeof req.query.artistId !== 'undefined') {
-      db.query({
-        sql: queries.getArtistInfo(req.query.artistId),
-        inserts: []
-      }, function (err, dbRes) {
+      db.query(queries.getArtistInfo(req.query.artistId), 
+        function (err, dbRes) {
         if (err) {
           console.log(JSON.stringify(err));
           res.send(500);
@@ -123,20 +112,15 @@ var Web = function(config, rootDir) {
 
   app.get('/getVennDiagramData.json', function (req, res) {
     if (typeof req.query.festivalIds !== 'undefined') {
-      db.query({
-        sql: queries.getOrderedFestivals(req.query.festivalIds),
-        inserts: []
-      }, function (err, festivals) {
+      db.query(queries.getOrderedFestivals(req.query.festivalIds), 
+        function (err, festivals) {
         if (err) {
           console.log(JSON.stringify(err));
           res.end();
           return;
         }
-        var q = queries.getOverlapsForFestivals(festivals);
-        db.query({
-          sql: q.sets + ' ' + q.overlaps,
-          inserts: []
-        }, function (innErr, dbRes) {
+        db.query(queries.getOverlapsForFestivals(festivals), 
+          function (innErr, dbRes) {
           if (innErr) {
             console.log(JSON.stringify(innErr));
             res.send(500);
@@ -155,10 +139,8 @@ var Web = function(config, rootDir) {
 
   app.get('/getCommonArtists', function (req, res) {
     if (typeof req.query.festivalIds !== 'undefined') {
-      db.query({
-        sql: queries.getInCommonForFestivals(req.query.festivalIds),
-        inserts: []
-      }, function (err, artists) {
+      db.query(queries.getInCommonForFestivals(req.query.festivalIds), 
+        function (err, artists) {
         if (err) {
           console.log(JSON.stringify(err));
           res.send(500);
@@ -175,10 +157,7 @@ var Web = function(config, rootDir) {
   });
 
   app.get('/getAllArtists.json', function (req, res) {
-    db.query({
-      sql: queries.getAllArtists(),
-      inserts: []
-    }, function (err, artists) {
+    db.query(queries.getAllArtists(), function (err, artists) {
       if (err) {
         console.log(JSON.stringify(err));
           res.send(500);
@@ -190,10 +169,8 @@ var Web = function(config, rootDir) {
 
   app.get('/getFestivalsForArtist.json', function (req, res) {
     if (typeof req.query.artistId !== 'undefined') {
-      db.query({
-        sql: queries.getFestivalsForArtist(req.query.artistId),
-        inserts: []
-      }, function (err, festivals) {
+      db.query(queries.getFestivalsForArtist(req.query.artistId), 
+        function (err, festivals) {
         if (err) {
           console.log(JSON.stringify(err));
           res.send(500);
@@ -208,10 +185,8 @@ var Web = function(config, rootDir) {
 
   app.get('/getArtistInfo.json', function (req, res) {
     if (typeof req.query.artistId !== 'undefined') {
-      db.query({
-        sql: queries.getArtistInfo(req.query.artistId),
-        inserts: []
-      }, function (err, artistInfo) {
+      db.query(queries.getArtistInfo(req.query.artistId), 
+        function (err, artistInfo) {
         if (err) {
           console.log(JSON.stringify(err));
           res.send(500);
@@ -226,10 +201,8 @@ var Web = function(config, rootDir) {
 
   app.get('/getArtistInfo', function (req, res) {
     if (typeof req.query.artistId !== 'undefined') {
-      db.query({
-        sql: queries.getArtistInfo(req.query.artistId),
-        inserts: []
-      }, function (err, artistInfo) {
+      db.query(queries.getArtistInfo(req.query.artistId), 
+        function (err, artistInfo) {
         if (err) {
           console.log(JSON.stringify(err));
           res.send(500);
