@@ -1,0 +1,138 @@
+{
+  "1": {
+    "festivalId": 1,
+    "festival": "Coachella",
+    "week": 1,
+    "location": "Indio, CA",
+    "startDate": "2014-04-11T04:00:00.000Z",
+    "endDate": "2014-04-13T04:00:00.000Z"
+  },
+  "2": {
+    "festivalId": 2,
+    "festival": "Coachella",
+    "week": 2,
+    "location": "Indio, CA",
+    "startDate": "2014-04-18T04:00:00.000Z",
+    "endDate": "2014-04-20T04:00:00.000Z"
+  },
+  "3": {
+    "festivalId": 3,
+    "festival": "Firefly",
+    "week": null,
+    "location": "Dover, DE",
+    "startDate": "2014-06-19T04:00:00.000Z",
+    "endDate": "2014-06-22T04:00:00.000Z"
+  },
+  "4": {
+    "festivalId": 4,
+    "festival": "Governor's Ball",
+    "week": null,
+    "location": "New York, NY",
+    "startDate": "2014-06-06T04:00:00.000Z",
+    "endDate": "2014-06-08T04:00:00.000Z"
+  },
+  "5": {
+    "festivalId": 5,
+    "festival": "Hangout",
+    "week": null,
+    "location": "Gulf Shores, AL",
+    "startDate": "2014-05-16T04:00:00.000Z",
+    "endDate": "2014-05-18T04:00:00.000Z"
+  },
+  "6": {
+    "festivalId": 6,
+    "festival": "New Orleans Jazz Festival",
+    "week": null,
+    "location": "New Orleans, LA",
+    "startDate": "2014-04-25T04:00:00.000Z",
+    "endDate": "2014-05-04T04:00:00.000Z"
+  },
+  "7": {
+    "festivalId": 7,
+    "festival": "Shaky Knees",
+    "week": null,
+    "location": "Atlanta, GA",
+    "startDate": "2014-05-09T04:00:00.000Z",
+    "endDate": "2014-05-11T04:00:00.000Z"
+  },
+  "8": {
+    "festivalId": 8,
+    "festival": "CounterPoint",
+    "week": null,
+    "location": "Kingston Downs, GA",
+    "startDate": "2014-04-25T04:00:00.000Z",
+    "endDate": "2014-04-27T04:00:00.000Z"
+  },
+  "9": {
+    "festivalId": 9,
+    "festival": "Mountain Jam",
+    "week": null,
+    "location": "Hunter, NY",
+    "startDate": "2014-06-05T04:00:00.000Z",
+    "endDate": "2014-06-08T04:00:00.000Z"
+  },
+  "10": {
+    "festivalId": 10,
+    "festival": "Wakarusa",
+    "week": null,
+    "location": "Ozark, AR",
+    "startDate": "2014-06-05T04:00:00.000Z",
+    "endDate": "2014-06-08T04:00:00.000Z"
+  },
+  "11": {
+    "festivalId": 11,
+    "festival": "Big Guava",
+    "week": null,
+    "location": "Tampa, FL",
+    "startDate": "2014-05-02T04:00:00.000Z",
+    "endDate": "2014-05-04T04:00:00.000Z"
+  },
+  "12": {
+    "festivalId": 12,
+    "festival": "Electric Forest",
+    "week": null,
+    "location": "Rothbury, MI",
+    "startDate": "2014-06-26T04:00:00.000Z",
+    "endDate": "2014-06-29T04:00:00.000Z"
+  },
+  "13": {
+    "festivalId": 13,
+    "festival": "Sasquatch! Memorial Day",
+    "week": null,
+    "location": "Quincy, WA",
+    "startDate": "2014-05-23T04:00:00.000Z",
+    "endDate": "2014-05-25T04:00:00.000Z"
+  },
+  "14": {
+    "festivalId": 14,
+    "festival": "Sasquatch! Fourth of July",
+    "week": null,
+    "location": "Quincy, WA",
+    "startDate": "2014-07-04T04:00:00.000Z",
+    "endDate": "2014-07-06T04:00:00.000Z"
+  },
+  "15": {
+    "festivalId": 15,
+    "festival": "Summer Camp",
+    "week": null,
+    "location": "Chillicothe, IL",
+    "startDate": "2014-05-23T04:00:00.000Z",
+    "endDate": "2014-05-25T04:00:00.000Z"
+  },
+  "16": {
+    "festivalId": 16,
+    "festival": "Moogfest",
+    "week": null,
+    "location": "Asheville, NC",
+    "startDate": "2014-04-23T04:00:00.000Z",
+    "endDate": "2014-04-27T04:00:00.000Z"
+  },
+  "17": {
+    "festivalId": 17,
+    "festival": "Bonnaroo",
+    "week": null,
+    "location": "Manchester, TN",
+    "startDate": "2014-06-12T04:00:00.000Z",
+    "endDate": "2014-06-15T04:00:00.000Z"
+  }
+}

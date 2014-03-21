@@ -273,6 +273,60 @@ var Web = function(config, rootDir) {
     }
   });
 
+  app.get('/dump/artists.json', function (req,res) {
+    db.query(queries.getAllArtists(), function (err, dbRes) {
+      if (err) {
+        console.log(JSON.stringify(err));
+        res.send(500);
+        return;
+      }
+      var artists = {};
+      for (var i = 0; i < dbRes.length; i++) {
+        artists[dbRes[i].artistId] = dbRes[i];
+      }
+      res.json(artists);
+    });
+  });
+
+  app.get('/dump/festivals.json', function (req,res) {
+    db.query(queries.getAllFestivals(), function (err, dbRes) {
+      if (err) {
+        console.log(JSON.stringify(err));
+        res.send(500);
+        return;
+      }
+      var festivals = {};
+      for (var i = 0; i < dbRes.length; i++) {
+        festivals[dbRes[i].festivalId] = dbRes[i];
+      }
+      res.json(festivals);
+    });
+  });
+
+  app.get('/dump/appearances.json', function (req,res) {
+    db.query(queries.getAllAppearances(), function (err, dbRes) {
+      if (err) {
+        console.log(JSON.stringify(err));
+        res.send(500);
+        return;
+      }
+      var appearances = {};
+      appearances.byArtist = {};
+      appearances.byFestival= {};
+      for (var i = 0; i < dbRes.length; i++) {
+        if (typeof appearances.byArtist[dbRes[i].artistId] === 'undefined') {
+          appearances.byArtist[dbRes[i].artistId] = [];
+        }
+        appearances.byArtist[dbRes[i].artistId].push(dbRes[i].festivalId);
+        if (typeof appearances.byFestival[dbRes[i].festivalId] === 'undefined') {
+          appearances.byFestival[dbRes[i].festivalId] = [];
+        }
+        appearances.byFestival[dbRes[i].festivalId].push(dbRes[i].artistId);
+      }
+      res.json(appearances);
+    });
+  });
+
   this.startServer = function() {
     db.connect(config, 'WEB', function webDB() {
       app.listen(config.web.port, function webStarted() {

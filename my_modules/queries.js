@@ -206,6 +206,14 @@ where app.festivalId = ? \
       inserts: []
     };
   };
+
+  this.getAllAppearances = function() {
+    return {
+      sql: 'select * from appearances;',
+      inserts: []
+    };
+  };
+
 };
 
 module.exports = new queries();
