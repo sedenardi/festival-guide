@@ -11,6 +11,7 @@
     <script src="http://d3js.org/d3.v2.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
     <script src="./static/venn.js"></script>
+    <script src="./static/festival-guide.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="./static/festival-guide.css" rel="stylesheet">
@@ -33,67 +34,5 @@
       <div class="tab-pane fade" id="venn"></div>
       <div class="tab-pane fade" id="dupes"></div>
     </div>
-    <script>
-var festivalJSON, artistJSON, appearanceJSON;
-$(document).ready(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-    $('.nav-tabs a[href=#'+url.split('#')[1]+']').click();
-  }
-  $.ajax({
-    url: './artists.json',
-    cache: true,
-    success: function(data) {
-      artistJSON = data;
-    }               
-  });
-  $.ajax({
-    url: './festivals.json',
-    cache: true,
-    success: function(data) {
-      festivalJSON = data;
-    }               
-  });
-  $.ajax({
-    url: './appearances.json',
-    cache: true,
-    success: function(data) {
-      appearanceJSON = data;
-    }               
-  });
-});
-
-$('#homeTabs a').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-  var parent = $(this).parent('li');
-  if ($(parent).hasClass('featureTab')) {
-    var feature = $(parent).attr('data-feature');
-    var featureDiv = $('#' + feature);
-    if (feature === 'festivals') {
-      var o = {};
-      o.festivals = [];
-      for (var key in festivalJSON) {
-        o.festivals.push(festivalJSON[key]);
-      }
-      console.log(o);
-      $.ajax({
-        url: './views/festivals.handlebars',
-        cache: true,
-        success: function(data) {
-          var template = Handlebars.compile(data);
-          $(featureDiv).html(template(o));
-        }               
-      });
-    }
-    /*if (!$(featureDiv).html().length) {
-      
-    }*/
-    window.location.hash = '#' + feature;
-  } else {
-    window.location.hash = '';
-  }
-});
-    </script>
   </body>
 </html>
