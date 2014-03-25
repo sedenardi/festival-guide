@@ -30,9 +30,57 @@
         <h4>Pick a feature above.</h4>
       </div>
       <div class="tab-pane fade" id="artists"></div>
-      <div class="tab-pane fade" id="festivals"></div>
+      <div class="tab-pane fade" id="festivals">
+        <div id="festivalBody">
+          <div id="festivalNav">
+          </div>
+          <div id="festivalInfo"></div>
+        </div>
+      </div>
       <div class="tab-pane fade" id="venn"></div>
       <div class="tab-pane fade" id="dupes"></div>
     </div>
+
+    <script id="festivalNav-template" type="text/x-handlebars-template">
+      <h4>Choose a festival</h3>
+      <ul class="nav nav-pills nav-stacked nav-festivals">
+      {{#each festivals}}
+        <li><a href="#" data-festival-id="{{festivalId}}">{{festivalWithWeek this}}</a></li>
+      {{/each}}
+      </ul>
+    </script>
+
+    <script id="appearance-partial" type="text/x-handlebars-template">
+      <span class="appearance">{{festivalWithWeek this}} - {{location}} - {{prettyDateRange this}}</span>
+    </script>
+
+    <script id="artist-partial" type="text/x-handlebars-template">
+      <span class="artistName" data-artist-id="{{artistId}}">{{artist}}</span>
+    </script>
+
+    <script id="artistPopover-template" type="text/x-handlebars-template">
+      Festivals:
+      <ul class="popoverList">
+      {{#each info}}
+        <li>{{festivalWithWeek this}}</li>
+      {{/each}}
+      <ul>
+    </script>
+
+    <script id="festivalInfo-template" type="text/x-handlebars-template">
+      <h4>{{>appearance festival}}</h4>
+      <table class="table table-striped">
+        <tbody>
+          {{#each artists}}
+          <tr>
+            {{#each this}}
+            <td>{{>artist this}}</td>
+            {{/each}}
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </script>
+
   </body>
 </html>
