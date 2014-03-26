@@ -2,7 +2,7 @@ var queries = function() {
 
   this.getAllArtists = function() {
     return {
-      sql: 'select * from artists;',
+      sql: 'select * from artists order by artist asc;',
       inserts: []
     };
   };
@@ -209,7 +209,12 @@ where app.festivalId = ? \
 
   this.getAllAppearances = function() {
     return {
-      sql: 'select * from appearances;',
+      sql: 'select ap.* from appearances ap \
+        inner join artists ar \
+          on ar.artistId = ap.artistId \
+        inner join festivals f \
+          on f.festivalId = ap.festivalId \
+      order by ar.artist asc, f.startDate asc;',
       inserts: []
     };
   };
