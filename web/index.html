@@ -7,7 +7,7 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
     <script src="http://cdn.jsdelivr.net/typeahead.js/0.10.1/typeahead.bundle.js"></script>
-    <script src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
     <script src="http://d3js.org/d3.v2.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
     <script src="./static/venn.js"></script>
@@ -42,7 +42,24 @@
           <div id="festivalInfo"></div>
         </div>
       </div>
-      <div class="tab-pane fade" id="venn"></div>
+      <div class="tab-pane fade" id="venn">
+        <h4>Choose up to 3 festivals to compare, click overlapping areas to see common artists</h3>
+        <div id="vennBody">
+          <div id="festivalCheckboxes"></div>
+          <div id='venn_d'></div>
+          <div id='vennModal' class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  Artists In Commom
+                </div>
+                <div class="modal-body">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="tab-pane fade" id="dupes"></div>
     </div>
 
@@ -85,6 +102,14 @@
           {{/each}}
         </tbody>
       </table>
+    </script>
+
+    <script id="festivalCheckboxes-template" type="text/x-handlebars-template">
+      {{#each festivals}}
+        <div class="checkbox">
+          <label><input class="festivalCheckbox" type="checkbox" value="{{festivalId}}">{{festival}}</label>
+        </div>
+      {{/each}}
     </script>
 
   </body>

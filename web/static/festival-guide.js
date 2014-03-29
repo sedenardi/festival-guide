@@ -35,6 +35,7 @@ var finishLoading = function() {
     wireupTabs();
     loadArtistTab();
     loadFestivalTab();
+    loadVennTab();
     var url = document.location.toString();
     if (url.match('#')) {
       $('.nav-tabs a[href=#'+url.split('#')[1]+']').click();
@@ -142,23 +143,6 @@ var loadArtistTab = function() {
           pinFestival(v);
         });
       }
-      /*artistReq = $.ajax({
-        url: '/getFestivalsForArtist.json',
-        type: 'GET',
-        data: {
-          artistId: datum.artistId
-        },
-        success: function (response) {
-          clearMarkers();
-          if (response.length > 1 && response.length <= 10) {
-            plotFestivals(response);
-          } else {
-            $.each(response, function (i ,v) {
-              pinFestival(v);
-            });
-          }          
-        }
-      });*/
     }
   });
 
@@ -343,4 +327,20 @@ var wireupArtistPopover = function() {
       return pop(o);
     }
   });
+};
+
+var loadVennTab = function() {
+  var o = {};
+  o.festivals = [];
+  for (var key in festivalJSON) {
+    var exists = false;
+    $.each(o.festivals, function(i,v) {
+      exists = exists || festivalJSON[key].festival === v.festival;
+    });
+    if (!exists) {
+      o.festivals.push(festivalJSON[key]);
+    }
+  }
+  var nav = Handlebars.compile($('#festivalCheckboxes-template').html());
+  $('#festivalCheckboxes').html(nav(o));
 };
