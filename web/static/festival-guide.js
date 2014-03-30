@@ -343,4 +343,154 @@ var loadVennTab = function() {
   }
   var nav = Handlebars.compile($('#festivalCheckboxes-template').html());
   $('#festivalCheckboxes').html(nav(o));
+  wireupVennTab();
+};
+
+var wireupVennTab = function() {
+  $('.checkbox').change(function() {  
+    var l = $('.festivalCheckbox:checked').length;
+    if (l === 2 || l === 3) {
+      var festivalIds = $.map($('.festivalCheckbox:checked'), function(v, i){
+        return v.value;
+      });
+      $('#venn_d').html('');
+      makeVennDiagram(festivalIds);
+    } else {
+      $('#venn_d').html('');
+    }
+    if (l === 3) {
+      $('.festivalCheckbox:not(:checked)').prop('disabled',true);
+    } else {
+      $('.festivalCheckbox').prop('disabled',false);
+    }
+  });
+};
+
+var vennFestivals;
+var makeVennDiagram = function(festivalIds) {
+  vennFestivals = [];
+  $.each(festivalIds, function(i,v) {
+    vennFestivals.push({
+      label: festivalJSON[v].festival,
+      size: appearanceJSON.byFestival[v].length,
+      festivalId: v
+    });
+  });
+  var overlaps = getOverlaps(festivalIds);
+  var data = venn.venn(vennFestivals, overlaps);
+  var height = $(window).height() - 10 - 43 - 39-  10 - 5;
+  var width = $(window).width() - 10 - 20 - 200 - 200 - 20 - 10 - 50;
+  venn.drawD3Diagram(d3.select('#venn_d'), data, width, height, null, null);
+  wireupCircles();
+};
+
+var getOverlaps = function(festivalIds) {
+  var data = [], overlaps = [];
+  for (var i = 0; i < festivalIds.length; i++) {
+    var fest = {
+      festivals: [i],
+      artists: appearanceJSON.byFestival[festivalIds[i]]
+    };
+    var d_length = data.length;
+    for (var j = 0; j < d_length; j++) {
+      data.push(loopJoin(data[j], fest));
+    }
+    data.push(fest);
+  }
+  for (var i = 0; i < data.length; i++) {
+    if (data[i].festivals.length > 1) {
+      overlaps.push({
+        sets: data[i].festivals,
+        size: data[i].artists.length
+      });
+    }
+  }
+  return overlaps;
+};
+
+
+var loopJoin = function(o1, o2) {
+  var o = {
+    festivals: o1.festivals.concat(o2.festivals),
+    artists: []
+  };
+  for (var i = 0; i < o1.artists.length; i++) {
+    var exists = false;
+    for (var j = 0; j < o2.artists.length; j++) {
+      exists = exists || (o1.artists[i] === o2.artists[j]);
+    }
+    if (exists) {
+      o.artists.push(o1.artists[i]);
+    }
+  }
+  return o;
+};
+
+var wireupCircles = function() {
+  $('circle').unbind('click');
+  $('circle').click(function (e) {
+    var x = e.offsetX || e.layerX, 
+      y = e.offsetY || e.layerY;
+    var set = [];
+    $.each($('circle'), function(i, v) {
+      if (pointInCircle(x, y, v)) {
+        set.push($(v).attr('index'));
+      }
+    });
+    if (set.length > 1) {
+      createPopover(x, y, set);
+    }
+  });
+};
+
+var pointInCircle = function(x,y,circle) {
+  var dx = Math.abs(x - $(circle).attr('cx')),
+    dy = Math.abs(y - $(circle).attr('cy')),
+    r = $(circle).attr('r');
+  if (dx + dy <= r)
+    return true;
+  else if (dx > r || dy > r)
+    return false;
+  else
+    return (dx*dx + dy*dy <= r*r);
+};
+
+var createPopover = function(x, y, set) {
+  var modalTitle = '',
+    festivalIds = [];
+  $.each(set, function(i, v) {
+    modalTitle += vennFestivals[v].label;
+    festivalIds.push(vennFestivals[v].festivalId);
+    if (i < set.length - 2) {
+      modalTitle += ', ';
+    } 
+    if (i === set.length - 2) {
+      modalTitle += ' and ';
+    }
+  });
+  var artists = getCommonArtists(festivalIds);
+  $('#vennModal .modal-header').html(modalTitle + ' (' + artists.length + ' artists)');
+  var modalBody = Handlebars.compile($('#artistList-template').html());
+  $('#vennModal .modal-body').html(modalBody({
+    artists: artists
+  }));
+  $('#vennModal').modal('show');
+};
+
+var getCommonArtists = function(festivalIds) {
+  var artists = [];
+  var data = {
+    festivals: [festivalIds[0]],
+    artists: appearanceJSON.byFestival[festivalIds[0]]
+  };
+  for (var i = 1; i < festivalIds.length; i++) {
+    data = loopJoin(data, {
+      festivals: [festivalIds[i]],
+      artists: appearanceJSON.byFestival[festivalIds[i]]
+    });
+  }
+  for (var i = 0; i < data.artists.length; i++) {
+    artists.push(artistJSON[data.artists[i]]);
+  }
+  return artists;
 };

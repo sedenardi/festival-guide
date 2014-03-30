@@ -112,5 +112,17 @@
       {{/each}}
     </script>
 
+    <script id="artistList-template" type="text/x-handlebars-template">
+      {{#if artists.length}}
+      <ul class="artistList">
+      {{#each artists}}
+        <li>{{this.artist}}</li>
+      {{/each}}
+      </ul>
+      {{else}}
+      <h5>No artists</h5>
+      {{/if}}
+    </script>
+
   </body>
 </html>
