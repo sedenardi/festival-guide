@@ -134,5 +134,53 @@
     "location": "Manchester, TN",
     "startDate": "2014-06-12T04:00:00.000Z",
     "endDate": "2014-06-15T04:00:00.000Z"
+  },
+  "18": {
+    "festivalId": 18,
+    "festival": "Gathering of the Vibes",
+    "week": null,
+    "location": "Bridgeport, CT",
+    "startDate": "2014-07-31T04:00:00.000Z",
+    "endDate": "2014-08-03T04:00:00.000Z"
+  },
+  "19": {
+    "festivalId": 19,
+    "festival": "Osheaga",
+    "week": null,
+    "location": "Parc Jean-Drapeau, Montreal",
+    "startDate": "2014-08-01T04:00:00.000Z",
+    "endDate": "2014-08-03T04:00:00.000Z"
+  },
+  "20": {
+    "festivalId": 20,
+    "festival": "Summerfest",
+    "week": null,
+    "location": "Milwaukee, WI",
+    "startDate": "2014-06-25T04:00:00.000Z",
+    "endDate": "2014-07-06T04:00:00.000Z"
+  },
+  "21": {
+    "festivalId": 21,
+    "festival": "Lollapalooza",
+    "week": null,
+    "location": "Chicago, IL",
+    "startDate": "2014-08-01T04:00:00.000Z",
+    "endDate": "2014-08-03T04:00:00.000Z"
+  },
+  "22": {
+    "festivalId": 22,
+    "festival": "Forecastle",
+    "week": null,
+    "location": "Louisville, KY",
+    "startDate": "2014-07-18T04:00:00.000Z",
+    "endDate": "2014-07-20T04:00:00.000Z"
+  },
+  "23": {
+    "festivalId": 23,
+    "festival": "Pitchfork Music Fest",
+    "week": null,
+    "location": "Chicago, IL",
+    "startDate": "2014-07-18T04:00:00.000Z",
+    "endDate": "2014-07-20T04:00:00.000Z"
   }
 }

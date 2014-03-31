@@ -5335,10 +5335,6 @@
     "artistId": 2758,
     "artist": "Caveman"
   },
-  "2759": {
-    "artistId": 2759,
-    "artist": "Big Sams Funky Nation"
-  },
   "2760": {
     "artistId": 2760,
     "artist": "Jon Batiste"
@@ -5434,5 +5430,973 @@
   "2798": {
     "artistId": 2798,
     "artist": "Treasure Fingers"
+  },
+  "2799": {
+    "artistId": 2799,
+    "artist": "Widespread Panic"
+  },
+  "2800": {
+    "artistId": 2800,
+    "artist": "The Disco Biscuits with Mickey Hart & Bill Kreutzmann"
+  },
+  "2801": {
+    "artistId": 2801,
+    "artist": "Maceo Parker"
+  },
+  "2802": {
+    "artistId": 2802,
+    "artist": "Rodrigo y Gabriela"
+  },
+  "2803": {
+    "artistId": 2803,
+    "artist": "Joe Russo's Almost Dead"
+  },
+  "2804": {
+    "artistId": 2804,
+    "artist": "Ryan Montbleau & Friends"
+  },
+  "2805": {
+    "artistId": 2805,
+    "artist": "Keller William's Grateful Grass featuring Jeff Austin and Reed Mathis"
+  },
+  "2806": {
+    "artistId": 2806,
+    "artist": "Leftover Salmon Featuring Bill Payne of Little Feat"
+  },
+  "2807": {
+    "artistId": 2807,
+    "artist": "Rusted Root"
+  },
+  "2808": {
+    "artistId": 2808,
+    "artist": "Strangefolk"
+  },
+  "2809": {
+    "artistId": 2809,
+    "artist": "Kung Fu"
+  },
+  "2810": {
+    "artistId": 2810,
+    "artist": "Dumpstaphunk"
+  },
+  "2811": {
+    "artistId": 2811,
+    "artist": "American Babies"
+  },
+  "2812": {
+    "artistId": 2812,
+    "artist": "Donna The Buffalo"
+  },
+  "2813": {
+    "artistId": 2813,
+    "artist": "McLovins"
+  },
+  "2814": {
+    "artistId": 2814,
+    "artist": "Love Canon"
+  },
+  "2815": {
+    "artistId": 2815,
+    "artist": "The Main Squeeze"
+  },
+  "2816": {
+    "artistId": 2816,
+    "artist": "Digital Tape Machine"
+  },
+  "2817": {
+    "artistId": 2817,
+    "artist": "Langhorne Slim & The Law"
+  },
+  "2818": {
+    "artistId": 2818,
+    "artist": "Deep Banana Blackout"
+  },
+  "2819": {
+    "artistId": 2819,
+    "artist": "Band Together"
+  },
+  "2820": {
+    "artistId": 2820,
+    "artist": "Andy The Music Man"
+  },
+  "2821": {
+    "artistId": 2821,
+    "artist": "School of Rock Allstars"
+  },
+  "2830": {
+    "artistId": 2830,
+    "artist": "!!!"
+  },
+  "2831": {
+    "artistId": 2831,
+    "artist": "Against Me!"
+  },
+  "2832": {
+    "artistId": 2832,
+    "artist": "Awolnation"
+  },
+  "2833": {
+    "artistId": 2833,
+    "artist": "Bas"
+  },
+  "2834": {
+    "artistId": 2834,
+    "artist": "Basecamp"
+  },
+  "2835": {
+    "artistId": 2835,
+    "artist": "Basia Bulat"
+  },
+  "2836": {
+    "artistId": 2836,
+    "artist": "Bear Mountain"
+  },
+  "2837": {
+    "artistId": 2837,
+    "artist": "Beat Market"
+  },
+  "2838": {
+    "artistId": 2838,
+    "artist": "Breach"
+  },
+  "2839": {
+    "artistId": 2839,
+    "artist": "Chase & Status"
+  },
+  "2840": {
+    "artistId": 2840,
+    "artist": "Clockwork"
+  },
+  "2841": {
+    "artistId": 2841,
+    "artist": "Cyril Hahn"
+  },
+  "2842": {
+    "artistId": 2842,
+    "artist": "Dear Frederic"
+  },
+  "2843": {
+    "artistId": 2843,
+    "artist": "Dream Koala"
+  },
+  "2844": {
+    "artistId": 2844,
+    "artist": "Four Tet"
+  },
+  "2845": {
+    "artistId": 2845,
+    "artist": "Foxtrott"
+  },
+  "2846": {
+    "artistId": 2846,
+    "artist": "Grandtheft"
+  },
+  "2847": {
+    "artistId": 2847,
+    "artist": "Hospitality"
+  },
+  "2848": {
+    "artistId": 2848,
+    "artist": "J.Cole"
+  },
+  "2849": {
+    "artistId": 2849,
+    "artist": "Jimmy Hunt"
+  },
+  "2850": {
+    "artistId": 2850,
+    "artist": "Joey Bada$$"
+  },
+  "2851": {
+    "artistId": 2851,
+    "artist": "July Talk"
+  },
+  "2852": {
+    "artistId": 2852,
+    "artist": "Kevin Drew"
+  },
+  "2853": {
+    "artistId": 2853,
+    "artist": "Kid Ink"
+  },
+  "2854": {
+    "artistId": 2854,
+    "artist": "Le Trouble"
+  },
+  "2855": {
+    "artistId": 2855,
+    "artist": "London Grammar"
+  },
+  "2856": {
+    "artistId": 2856,
+    "artist": "Lykke Li"
+  },
+  "2857": {
+    "artistId": 2857,
+    "artist": "Mahaut Mondino"
+  },
+  "2858": {
+    "artistId": 2858,
+    "artist": "Manchester Orchestra"
+  },
+  "2859": {
+    "artistId": 2859,
+    "artist": "Matt Mays"
+  },
+  "2860": {
+    "artistId": 2860,
+    "artist": "Nick Cave & The Bad Seeds"
+  },
+  "2861": {
+    "artistId": 2861,
+    "artist": "Odesza"
+  },
+  "2862": {
+    "artistId": 2862,
+    "artist": "Old Crow Medicine Show"
+  },
+  "2863": {
+    "artistId": 2863,
+    "artist": "Royal Canoe"
+  },
+  "2864": {
+    "artistId": 2864,
+    "artist": "SBTRKT"
+  },
+  "2865": {
+    "artistId": 2865,
+    "artist": "Sam Roberts Band"
+  },
+  "2866": {
+    "artistId": 2866,
+    "artist": "Savoy"
+  },
+  "2867": {
+    "artistId": 2867,
+    "artist": "Serena Ryder"
+  },
+  "2868": {
+    "artistId": 2868,
+    "artist": "The Beaches"
+  },
+  "2869": {
+    "artistId": 2869,
+    "artist": "The Kooks"
+  },
+  "2870": {
+    "artistId": 2870,
+    "artist": "The Men"
+  },
+  "2871": {
+    "artistId": 2871,
+    "artist": "The Temper Trap"
+  },
+  "2872": {
+    "artistId": 2872,
+    "artist": "Tom Trago"
+  },
+  "2873": {
+    "artistId": 2873,
+    "artist": "Volcano Choir"
+  },
+  "2874": {
+    "artistId": 2874,
+    "artist": "Von Pariahs"
+  },
+  "2875": {
+    "artistId": 2875,
+    "artist": "Zomboy"
+  },
+  "2893": {
+    "artistId": 2893,
+    "artist": "Rise Against"
+  },
+  "2894": {
+    "artistId": 2894,
+    "artist": "Kip Moore"
+  },
+  "2895": {
+    "artistId": 2895,
+    "artist": "Ray LaMontagne"
+  },
+  "2896": {
+    "artistId": 2896,
+    "artist": "Joan Jett & The Blackhearts"
+  },
+  "2897": {
+    "artistId": 2897,
+    "artist": "Brand New"
+  },
+  "2898": {
+    "artistId": 2898,
+    "artist": "The Neighbourhood"
+  },
+  "2899": {
+    "artistId": 2899,
+    "artist": "Ludacris"
+  },
+  "2900": {
+    "artistId": 2900,
+    "artist": "Five Finger Death Punch"
+  },
+  "2901": {
+    "artistId": 2901,
+    "artist": "Neon Trees"
+  },
+  "2902": {
+    "artistId": 2902,
+    "artist": "The Airbourne Toxic Event"
+  },
+  "2903": {
+    "artistId": 2903,
+    "artist": "B.o.B."
+  },
+  "2904": {
+    "artistId": 2904,
+    "artist": "Melissa Etheridge"
+  },
+  "2905": {
+    "artistId": 2905,
+    "artist": "Bonnie Raitt"
+  },
+  "2906": {
+    "artistId": 2906,
+    "artist": "REO Speedwagon"
+  },
+  "2907": {
+    "artistId": 2907,
+    "artist": "Ben Harper & Charlie Musselwhite"
+  },
+  "2908": {
+    "artistId": 2908,
+    "artist": "Cheap Trick"
+  },
+  "2909": {
+    "artistId": 2909,
+    "artist": ".38 Special"
+  },
+  "2910": {
+    "artistId": 2910,
+    "artist": "Jake Miller"
+  },
+  "2911": {
+    "artistId": 2911,
+    "artist": "Kool and the Gang"
+  },
+  "2912": {
+    "artistId": 2912,
+    "artist": "O.A.R."
+  },
+  "2913": {
+    "artistId": 2913,
+    "artist": "Wailers"
+  },
+  "2914": {
+    "artistId": 2914,
+    "artist": "Los Lonely Boys"
+  },
+  "2915": {
+    "artistId": 2915,
+    "artist": "Scotty McCreery"
+  },
+  "2916": {
+    "artistId": 2916,
+    "artist": "Pentatonix"
+  },
+  "2917": {
+    "artistId": 2917,
+    "artist": "SoMo"
+  },
+  "2918": {
+    "artistId": 2918,
+    "artist": "George Thorogood & The Destroyers"
+  },
+  "2919": {
+    "artistId": 2919,
+    "artist": "DJ Pauly D"
+  },
+  "2920": {
+    "artistId": 2920,
+    "artist": "Kansas"
+  },
+  "2921": {
+    "artistId": 2921,
+    "artist": "Nitty Gritty Dirt Band"
+  },
+  "2922": {
+    "artistId": 2922,
+    "artist": "Michael McDonald"
+  },
+  "2923": {
+    "artistId": 2923,
+    "artist": "Clay Walker"
+  },
+  "2924": {
+    "artistId": 2924,
+    "artist": "The Crystal Method"
+  },
+  "2925": {
+    "artistId": 2925,
+    "artist": "Dennis DeYoung: The Music Of Styx"
+  },
+  "2926": {
+    "artistId": 2926,
+    "artist": "Matisyahu"
+  },
+  "2927": {
+    "artistId": 2927,
+    "artist": "Crowder"
+  },
+  "2928": {
+    "artistId": 2928,
+    "artist": "Best Coast"
+  },
+  "2929": {
+    "artistId": 2929,
+    "artist": "Taj Mahal Trio"
+  },
+  "2930": {
+    "artistId": 2930,
+    "artist": "David Nail"
+  },
+  "2931": {
+    "artistId": 2931,
+    "artist": "Delta Rae"
+  },
+  "2932": {
+    "artistId": 2932,
+    "artist": "James Hunter Six"
+  },
+  "2933": {
+    "artistId": 2933,
+    "artist": "Rise Against"
+  },
+  "2934": {
+    "artistId": 2934,
+    "artist": "Kip Moore"
+  },
+  "2935": {
+    "artistId": 2935,
+    "artist": "Ray LaMontagne"
+  },
+  "2936": {
+    "artistId": 2936,
+    "artist": "Joan Jett & The Blackhearts"
+  },
+  "2937": {
+    "artistId": 2937,
+    "artist": "Brand New"
+  },
+  "2938": {
+    "artistId": 2938,
+    "artist": "The Neighbourhood"
+  },
+  "2939": {
+    "artistId": 2939,
+    "artist": "Ludacris"
+  },
+  "2940": {
+    "artistId": 2940,
+    "artist": "Five Finger Death Punch"
+  },
+  "2941": {
+    "artistId": 2941,
+    "artist": "Neon Trees"
+  },
+  "2942": {
+    "artistId": 2942,
+    "artist": "The Airbourne Toxic Event"
+  },
+  "2943": {
+    "artistId": 2943,
+    "artist": "B.o.B."
+  },
+  "2944": {
+    "artistId": 2944,
+    "artist": "Melissa Etheridge"
+  },
+  "2945": {
+    "artistId": 2945,
+    "artist": "Bonnie Raitt"
+  },
+  "2946": {
+    "artistId": 2946,
+    "artist": "REO Speedwagon"
+  },
+  "2947": {
+    "artistId": 2947,
+    "artist": "Ben Harper & Charlie Musselwhite"
+  },
+  "2948": {
+    "artistId": 2948,
+    "artist": "Cheap Trick"
+  },
+  "2949": {
+    "artistId": 2949,
+    "artist": ".38 Special"
+  },
+  "2950": {
+    "artistId": 2950,
+    "artist": "Jake Miller"
+  },
+  "2951": {
+    "artistId": 2951,
+    "artist": "Kool and the Gang"
+  },
+  "2952": {
+    "artistId": 2952,
+    "artist": "O.A.R."
+  },
+  "2953": {
+    "artistId": 2953,
+    "artist": "Wailers"
+  },
+  "2954": {
+    "artistId": 2954,
+    "artist": "Los Lonely Boys"
+  },
+  "2955": {
+    "artistId": 2955,
+    "artist": "Scotty McCreery"
+  },
+  "2956": {
+    "artistId": 2956,
+    "artist": "Pentatonix"
+  },
+  "2957": {
+    "artistId": 2957,
+    "artist": "SoMo"
+  },
+  "2958": {
+    "artistId": 2958,
+    "artist": "George Thorogood & The Destroyers"
+  },
+  "2959": {
+    "artistId": 2959,
+    "artist": "DJ Pauly D"
+  },
+  "2960": {
+    "artistId": 2960,
+    "artist": "Kansas"
+  },
+  "2961": {
+    "artistId": 2961,
+    "artist": "Nitty Gritty Dirt Band"
+  },
+  "2962": {
+    "artistId": 2962,
+    "artist": "Michael McDonald"
+  },
+  "2963": {
+    "artistId": 2963,
+    "artist": "Clay Walker"
+  },
+  "2964": {
+    "artistId": 2964,
+    "artist": "The Crystal Method"
+  },
+  "2965": {
+    "artistId": 2965,
+    "artist": "Dennis DeYoung: The Music Of Styx"
+  },
+  "2966": {
+    "artistId": 2966,
+    "artist": "Matisyahu"
+  },
+  "2967": {
+    "artistId": 2967,
+    "artist": "Crowder"
+  },
+  "2968": {
+    "artistId": 2968,
+    "artist": "Best Coast"
+  },
+  "2969": {
+    "artistId": 2969,
+    "artist": "Taj Mahal Trio"
+  },
+  "2970": {
+    "artistId": 2970,
+    "artist": "David Nail"
+  },
+  "2971": {
+    "artistId": 2971,
+    "artist": "Delta Rae"
+  },
+  "2972": {
+    "artistId": 2972,
+    "artist": "James Hunter Six"
+  },
+  "3020": {
+    "artistId": 3020,
+    "artist": "Eminem"
+  },
+  "3021": {
+    "artistId": 3021,
+    "artist": "Kings of Leon"
+  },
+  "3022": {
+    "artistId": 3022,
+    "artist": "Sebastian Ingrosso"
+  },
+  "3023": {
+    "artistId": 3023,
+    "artist": "cut / copy"
+  },
+  "3024": {
+    "artistId": 3024,
+    "artist": "Fitz & The Tantrums"
+  },
+  "3025": {
+    "artistId": 3025,
+    "artist": "Dimitri Vegas & Like Mike"
+  },
+  "3026": {
+    "artistId": 3026,
+    "artist": "Rebelution"
+  },
+  "3027": {
+    "artistId": 3027,
+    "artist": "Glen Hansard"
+  },
+  "3028": {
+    "artistId": 3028,
+    "artist": "J. Roddy Walston & The Business"
+  },
+  "3029": {
+    "artistId": 3029,
+    "artist": "The Airborne Toxic Event"
+  },
+  "3030": {
+    "artistId": 3030,
+    "artist": "Iggy Azalea"
+  },
+  "3031": {
+    "artistId": 3031,
+    "artist": "Joachim Garraud"
+  },
+  "3032": {
+    "artistId": 3032,
+    "artist": "Z-Trip"
+  },
+  "3033": {
+    "artistId": 3033,
+    "artist": "Sander Kleinenberg"
+  },
+  "3034": {
+    "artistId": 3034,
+    "artist": "Rich Homie Quan "
+  },
+  "3035": {
+    "artistId": 3035,
+    "artist": "Perry/Etty vs Joachim Garraud"
+  },
+  "3036": {
+    "artistId": 3036,
+    "artist": "jhené aiko"
+  },
+  "3037": {
+    "artistId": 3037,
+    "artist": "Jungle"
+  },
+  "3038": {
+    "artistId": 3038,
+    "artist": "Wildcat! Wildcat!"
+  },
+  "3039": {
+    "artistId": 3039,
+    "artist": "Crizzly"
+  },
+  "3040": {
+    "artistId": 3040,
+    "artist": "Bomba Estéreo"
+  },
+  "3041": {
+    "artistId": 3041,
+    "artist": "Francisca Valenzuela "
+  },
+  "3042": {
+    "artistId": 3042,
+    "artist": "Into It. Over It. "
+  },
+  "3043": {
+    "artistId": 3043,
+    "artist": "Royal Blood"
+  },
+  "3044": {
+    "artistId": 3044,
+    "artist": "Kausea"
+  },
+  "3045": {
+    "artistId": 3045,
+    "artist": "Brillz"
+  },
+  "3046": {
+    "artistId": 3046,
+    "artist": "The So So Glos"
+  },
+  "3047": {
+    "artistId": 3047,
+    "artist": "Jacob Plant"
+  },
+  "3048": {
+    "artistId": 3048,
+    "artist": "Joywave"
+  },
+  "3049": {
+    "artistId": 3049,
+    "artist": "Bebe Rexha "
+  },
+  "3050": {
+    "artistId": 3050,
+    "artist": "Betty Who"
+  },
+  "3051": {
+    "artistId": 3051,
+    "artist": "Jon Batiste and Stay Human"
+  },
+  "3052": {
+    "artistId": 3052,
+    "artist": "Benjamin Booker"
+  },
+  "3053": {
+    "artistId": 3053,
+    "artist": "Crass Mammoth"
+  },
+  "3054": {
+    "artistId": 3054,
+    "artist": "The Last Internationale"
+  },
+  "3055": {
+    "artistId": 3055,
+    "artist": "Wallpaper."
+  },
+  "3056": {
+    "artistId": 3056,
+    "artist": "Cardiknox"
+  },
+  "3057": {
+    "artistId": 3057,
+    "artist": "Charlie Hirsch"
+  },
+  "3058": {
+    "artistId": 3058,
+    "artist": "of Verona"
+  },
+  "3059": {
+    "artistId": 3059,
+    "artist": "Highly Suspect"
+  },
+  "3060": {
+    "artistId": 3060,
+    "artist": "Plastic Visions"
+  },
+  "3061": {
+    "artistId": 3061,
+    "artist": "Oyinda"
+  },
+  "3062": {
+    "artistId": 3062,
+    "artist": "Rocky Business"
+  },
+  "3083": {
+    "artistId": 3083,
+    "artist": "Nickel Creek"
+  },
+  "3084": {
+    "artistId": 3084,
+    "artist": "Dwight Yoakam"
+  },
+  "3085": {
+    "artistId": 3085,
+    "artist": "Sharon Jones & The Dap-Kings"
+  },
+  "3086": {
+    "artistId": 3086,
+    "artist": "Gary Clark Jr."
+  },
+  "3087": {
+    "artistId": 3087,
+    "artist": "Jason Isbell & The 400 Unit"
+  },
+  "3088": {
+    "artistId": 3088,
+    "artist": "JJ Grey & Mofro"
+  },
+  "3089": {
+    "artistId": 3089,
+    "artist": "Slint"
+  },
+  "3090": {
+    "artistId": 3090,
+    "artist": "Sun Kil Moon"
+  },
+  "3091": {
+    "artistId": 3091,
+    "artist": "The Black Lips"
+  },
+  "3092": {
+    "artistId": 3092,
+    "artist": "Brett Dennen"
+  },
+  "3093": {
+    "artistId": 3093,
+    "artist": "Nightmares On Wax (live)"
+  },
+  "3094": {
+    "artistId": 3094,
+    "artist": "Charli XCX"
+  },
+  "3095": {
+    "artistId": 3095,
+    "artist": "Spanish Gold"
+  },
+  "3096": {
+    "artistId": 3096,
+    "artist": "Drew Holcomb & The Neighbors"
+  },
+  "3097": {
+    "artistId": 3097,
+    "artist": "Avey Tare's Slasher Flicks"
+  },
+  "3098": {
+    "artistId": 3098,
+    "artist": "Hayes Carll"
+  },
+  "3099": {
+    "artistId": 3099,
+    "artist": "Willie Watson"
+  },
+  "3100": {
+    "artistId": 3100,
+    "artist": "Old Baby"
+  },
+  "3101": {
+    "artistId": 3101,
+    "artist": "Blue Sky Black Death"
+  },
+  "3102": {
+    "artistId": 3102,
+    "artist": "Matrimony"
+  },
+  "3103": {
+    "artistId": 3103,
+    "artist": "Mount Moriah"
+  },
+  "3104": {
+    "artistId": 3104,
+    "artist": "Seluah"
+  },
+  "3105": {
+    "artistId": 3105,
+    "artist": "JaLin Roze"
+  },
+  "3106": {
+    "artistId": 3106,
+    "artist": "Jill Andrews"
+  },
+  "3107": {
+    "artistId": 3107,
+    "artist": "Goodbye June"
+  },
+  "3114": {
+    "artistId": 3114,
+    "artist": "Death Grips"
+  },
+  "3115": {
+    "artistId": 3115,
+    "artist": "Isaiah Rashad"
+  },
+  "3116": {
+    "artistId": 3116,
+    "artist": "The Haxan Cloak"
+  },
+  "3117": {
+    "artistId": 3117,
+    "artist": "Hundred Waters"
+  },
+  "3118": {
+    "artistId": 3118,
+    "artist": "SZA"
+  },
+  "3121": {
+    "artistId": 3121,
+    "artist": "St. Vincent"
+  },
+  "3122": {
+    "artistId": 3122,
+    "artist": "The Field"
+  },
+  "3123": {
+    "artistId": 3123,
+    "artist": "FKA Twigs"
+  },
+  "3124": {
+    "artistId": 3124,
+    "artist": "Wild Beasts"
+  },
+  "3125": {
+    "artistId": 3125,
+    "artist": "The Julie Ruin"
+  },
+  "3126": {
+    "artistId": 3126,
+    "artist": "Kelela"
+  },
+  "3127": {
+    "artistId": 3127,
+    "artist": "The Range"
+  },
+  "3128": {
+    "artistId": 3128,
+    "artist": "Mas Ysa"
+  },
+  "3129": {
+    "artistId": 3129,
+    "artist": "Empress Of"
+  },
+  "3130": {
+    "artistId": 3130,
+    "artist": "Circulatory System"
+  },
+  "3131": {
+    "artistId": 3131,
+    "artist": "Twin Peaks"
+  },
+  "3132": {
+    "artistId": 3132,
+    "artist": "Ka"
+  },
+  "3136": {
+    "artistId": 3136,
+    "artist": "Kendrick Lamar"
+  },
+  "3137": {
+    "artistId": 3137,
+    "artist": "Slowdive"
+  },
+  "3138": {
+    "artistId": 3138,
+    "artist": "DIIV"
+  },
+  "3139": {
+    "artistId": 3139,
+    "artist": "Hudson Mohawke"
+  },
+  "3140": {
+    "artistId": 3140,
+    "artist": "DJ Rashad & DJ Spinn"
+  },
+  "3141": {
+    "artistId": 3141,
+    "artist": "Perfect Pussy"
+  },
+  "3142": {
+    "artistId": 3142,
+    "artist": "Mutual Benefit"
+  },
+  "3143": {
+    "artistId": 3143,
+    "artist": "Speedy Ortiz"
   }
 }

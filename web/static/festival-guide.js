@@ -66,6 +66,12 @@ var wireupTabs  = function() {
     var parent = $(this).parent('li');
     if ($(parent).hasClass('featureTab')) {
       var feature = $(parent).attr('data-feature');
+      if (feature === 'artists') {
+        setTimeout(function() {
+          google.maps.event.trigger(map, "resize");
+          map.setCenter(mapCenter);
+        }, 200);
+      }
       window.location.hash = '#' + feature;
     } else {
       window.location.hash = '';
@@ -80,7 +86,8 @@ var geocoder = new google.maps.Geocoder,
   directionsDisplay,
   directionsService,
   artistReq = null, 
-  currentArtist = 0;
+  currentArtist = 0,
+  mapCenter;
 
 var loadArtistTab = function() {
   var artistAuto = [];
@@ -152,6 +159,7 @@ var loadArtistTab = function() {
 
   geocoder.geocode( { 'address': 'United States of America'}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
+      mapCenter = results[0].geometry.location;
       var myOptions = {
         zoom: 4,
         maxZoom: 10,
@@ -168,16 +176,14 @@ var loadArtistTab = function() {
       };
 
       map = new google.maps.Map($("#map-canvas")[0], myOptions);
+      //mapCenter = map.getCenter();
       directionsDisplay = new google.maps.DirectionsRenderer();
       directionsDisplay.setOptions({
         draggable: false,
         suppressInfoWindows: false,
         suppressMarkers: true
       });
-      directionsDisplay.setMap(map);
       directionsService = new google.maps.DirectionsService();
-
-      
     } else {
       alert("Google Maps error: " + status);
     }
@@ -199,6 +205,7 @@ var clearMarkers = function() {
     v.setMap(null);
   });
   mapMarkers.length = 0;
+  directionsDisplay.setMap(null);
 };
 
 var dropMarker = function(location, festival, marker) {
@@ -249,6 +256,7 @@ var plotFestivals = function(festivals) {
   directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
+      directionsDisplay.setMap(map);
       dropDirectionMarkers(response.routes[0].legs, festivals);
     } else {
       alert("Google Maps error: " + status);

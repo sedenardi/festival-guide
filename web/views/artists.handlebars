@@ -91,10 +91,7 @@ $(document).ready(function() {
         suppressInfoWindows: false,
         suppressMarkers: true
       });
-      directionsDisplay.setMap(map);
       directionsService = new google.maps.DirectionsService();
-
-      
     } else {
       alert("Google Maps error: " + status);
     }
@@ -115,6 +112,7 @@ $(document).ready(function() {
       v.setMap(null);
     });
     mapMarkers.length = 0;
+    directionsDisplay.setMap(null);
   };
 
   var dropMarker = function(location, festival, marker) {
@@ -167,6 +165,7 @@ $(document).ready(function() {
     directionsService.route(request, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
+        directionsDisplay.setMap(map);
         dropDirectionMarkers(response.routes[0].legs, festivals);
       } else {
         alert("Google Maps error: " + status);
