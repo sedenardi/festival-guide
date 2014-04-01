@@ -174,5 +174,21 @@
     "location": "Chicago, IL",
     "startDate": "2014-07-18T04:00:00.000Z",
     "endDate": "2014-07-20T04:00:00.000Z"
+  },
+  "24": {
+    "festivalId": 24,
+    "festival": "Sweetlife",
+    "week": null,
+    "location": "Columbia, MD",
+    "startDate": "2014-05-10T04:00:00.000Z",
+    "endDate": "2014-05-10T04:00:00.000Z"
+  },
+  "25": {
+    "festivalId": 25,
+    "festival": "Hudson Project",
+    "week": null,
+    "location": "Saugerties, NY",
+    "startDate": "2014-07-11T04:00:00.000Z",
+    "endDate": "2014-07-13T04:00:00.000Z"
   }
 }
