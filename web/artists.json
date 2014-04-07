@@ -4295,10 +4295,6 @@
     "artistId": 2423,
     "artist": "Sharon Van Etten"
   },
-  "2424": {
-    "artistId": 2424,
-    "artist": "Carolina Chocolate Drops"
-  },
   "2427": {
     "artistId": 2427,
     "artist": "Tchami"
@@ -6094,5 +6090,293 @@
   "3172": {
     "artistId": 3172,
     "artist": "Tauk"
+  },
+  "3181": {
+    "artistId": 3181,
+    "artist": "Kid Rock"
+  },
+  "3182": {
+    "artistId": 3182,
+    "artist": "Avenged Sevenfold"
+  },
+  "3183": {
+    "artistId": 3183,
+    "artist": "Snoop Dogg"
+  },
+  "3184": {
+    "artistId": 3184,
+    "artist": "Patti LaBelle"
+  },
+  "3185": {
+    "artistId": 3185,
+    "artist": "311"
+  },
+  "3186": {
+    "artistId": 3186,
+    "artist": "Juicy J"
+  },
+  "3187": {
+    "artistId": 3187,
+    "artist": "Jerry Lee Lewis"
+  },
+  "3188": {
+    "artistId": 3188,
+    "artist": "Seether"
+  },
+  "3189": {
+    "artistId": 3189,
+    "artist": "Bootsy Collins"
+  },
+  "3190": {
+    "artistId": 3190,
+    "artist": "Blues Traveler"
+  },
+  "3191": {
+    "artistId": 3191,
+    "artist": "Bone Thugs-N-Harmony"
+  },
+  "3192": {
+    "artistId": 3192,
+    "artist": "Wolfmother"
+  },
+  "3193": {
+    "artistId": 3193,
+    "artist": "Anthrax"
+  },
+  "3194": {
+    "artistId": 3194,
+    "artist": "Dickey Betts & The Great Southern"
+  },
+  "3195": {
+    "artistId": 3195,
+    "artist": "Buddy Guy"
+  },
+  "3196": {
+    "artistId": 3196,
+    "artist": "Canned Heat"
+  },
+  "3197": {
+    "artistId": 3197,
+    "artist": "Project Pat"
+  },
+  "3198": {
+    "artistId": 3198,
+    "artist": "Leftover Salmon"
+  },
+  "3199": {
+    "artistId": 3199,
+    "artist": "Los Rabanes "
+  },
+  "3200": {
+    "artistId": 3200,
+    "artist": "The Dandy Warhols"
+  },
+  "3201": {
+    "artistId": 3201,
+    "artist": "Tommy Castro"
+  },
+  "3202": {
+    "artistId": 3202,
+    "artist": "Lord T & Eloise"
+  },
+  "3203": {
+    "artistId": 3203,
+    "artist": "The Carolina Chocolate Drops"
+  },
+  "3204": {
+    "artistId": 3204,
+    "artist": "Eric Gales"
+  },
+  "3205": {
+    "artistId": 3205,
+    "artist": "Ana Popovic"
+  },
+  "3206": {
+    "artistId": 3206,
+    "artist": "Black Stone Cherry"
+  },
+  "3207": {
+    "artistId": 3207,
+    "artist": "Surrender the Fall"
+  },
+  "3208": {
+    "artistId": 3208,
+    "artist": "Tony Joe White"
+  },
+  "3209": {
+    "artistId": 3209,
+    "artist": "Kenny Neal"
+  },
+  "3210": {
+    "artistId": 3210,
+    "artist": "Reba Russell"
+  },
+  "3211": {
+    "artistId": 3211,
+    "artist": "Memphis Dawls"
+  },
+  "3212": {
+    "artistId": 3212,
+    "artist": "Will Tucker"
+  },
+  "3213": {
+    "artistId": 3213,
+    "artist": "Blind Mississippi Morris"
+  },
+  "3214": {
+    "artistId": 3214,
+    "artist": "Brandon Bailey"
+  },
+  "3215": {
+    "artistId": 3215,
+    "artist": "Daddy Mack Blues Band"
+  },
+  "3216": {
+    "artistId": 3216,
+    "artist": "David Evans"
+  },
+  "3217": {
+    "artistId": 3217,
+    "artist": "FreeWorld"
+  },
+  "3218": {
+    "artistId": 3218,
+    "artist": "Fuzzy Jeffries"
+  },
+  "3219": {
+    "artistId": 3219,
+    "artist": "Ghost Town Blues Band"
+  },
+  "3220": {
+    "artistId": 3220,
+    "artist": "Herman Green"
+  },
+  "3221": {
+    "artistId": 3221,
+    "artist": "Sonny Burgess & the Legendary Pacers"
+  },
+  "3222": {
+    "artistId": 3222,
+    "artist": "Kenny Brown"
+  },
+  "3223": {
+    "artistId": 3223,
+    "artist": "Leo Bud Welch"
+  },
+  "3224": {
+    "artistId": 3224,
+    "artist": "Lucky Peterson"
+  },
+  "3225": {
+    "artistId": 3225,
+    "artist": "Quinn Sullivan"
+  },
+  "3226": {
+    "artistId": 3226,
+    "artist": "Robert \"Wolfman\" Belfour"
+  },
+  "3245": {
+    "artistId": 3245,
+    "artist": "The Del McCoury Band"
+  },
+  "3247": {
+    "artistId": 3247,
+    "artist": "Punch Brothers"
+  },
+  "3248": {
+    "artistId": 3248,
+    "artist": "Hard Working Americans"
+  },
+  "3249": {
+    "artistId": 3249,
+    "artist": "Darkwave"
+  },
+  "3250": {
+    "artistId": 3250,
+    "artist": "The Budos Band"
+  },
+  "3251": {
+    "artistId": 3251,
+    "artist": "Incidental Animals"
+  },
+  "3252": {
+    "artistId": 3252,
+    "artist": "The Travelin' McCourys"
+  },
+  "3253": {
+    "artistId": 3253,
+    "artist": "Bill Frisell - GUITAR IN THE SPACE AGE!"
+  },
+  "3254": {
+    "artistId": 3254,
+    "artist": "Ernest Ranglin & Avila"
+  },
+  "3255": {
+    "artistId": 3255,
+    "artist": "Stanley Jordan Trio"
+  },
+  "3257": {
+    "artistId": 3257,
+    "artist": "The Duhks"
+  },
+  "3258": {
+    "artistId": 3258,
+    "artist": "The California Honeydrops"
+  },
+  "3260": {
+    "artistId": 3260,
+    "artist": "Avi Buffalo"
+  },
+  "3261": {
+    "artistId": 3261,
+    "artist": "Sturgill Simpson"
+  },
+  "3262": {
+    "artistId": 3262,
+    "artist": "Ashleigh Flynn & The Back Porch Majority"
+  },
+  "3263": {
+    "artistId": 3263,
+    "artist": "Hey Marseilles"
+  },
+  "3264": {
+    "artistId": 3264,
+    "artist": "Sierra Hull"
+  },
+  "3265": {
+    "artistId": 3265,
+    "artist": "Afrolicious"
+  },
+  "3266": {
+    "artistId": 3266,
+    "artist": "Steve Poltz"
+  },
+  "3267": {
+    "artistId": 3267,
+    "artist": "Heather Maloney + Darlingside"
+  },
+  "3268": {
+    "artistId": 3268,
+    "artist": "Scott Pemberton"
+  },
+  "3269": {
+    "artistId": 3269,
+    "artist": "RonKat Spearman's Katdelic"
+  },
+  "3270": {
+    "artistId": 3270,
+    "artist": "SambaDá"
+  },
+  "3271": {
+    "artistId": 3271,
+    "artist": "Hollow Wood"
+  },
+  "3272": {
+    "artistId": 3272,
+    "artist": "T Sisters"
+  },
+  "3273": {
+    "artistId": 3273,
+    "artist": "Living Folklore"
   }
 }

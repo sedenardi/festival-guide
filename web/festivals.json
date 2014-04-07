@@ -190,5 +190,21 @@
     "location": "Saugerties, NY",
     "startDate": "2014-07-11T04:00:00.000Z",
     "endDate": "2014-07-13T04:00:00.000Z"
+  },
+  "26": {
+    "festivalId": 26,
+    "festival": "Beale Street Music Festival",
+    "week": null,
+    "location": "Memphis, TN",
+    "startDate": "2014-05-04T04:00:00.000Z",
+    "endDate": "2014-05-06T04:00:00.000Z"
+  },
+  "27": {
+    "festivalId": 27,
+    "festival": "High Sierra",
+    "week": null,
+    "location": "Quincy, CA",
+    "startDate": "2014-07-03T04:00:00.000Z",
+    "endDate": "2014-07-06T04:00:00.000Z"
   }
 }
