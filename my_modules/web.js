@@ -289,7 +289,7 @@ var Web = function(config, rootDir) {
   });
 
   app.get('/dump/festivals.json', function (req,res) {
-    db.query(queries.getAllFestivals(), function (err, dbRes) {
+    db.query(queries.getAllFestivals('startDate'), function (err, dbRes) {
       if (err) {
         console.log(JSON.stringify(err));
         res.send(500);

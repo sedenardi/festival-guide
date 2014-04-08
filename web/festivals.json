@@ -206,5 +206,21 @@
     "location": "Quincy, CA",
     "startDate": "2014-07-03T04:00:00.000Z",
     "endDate": "2014-07-06T04:00:00.000Z"
+  },
+  "28": {
+    "festivalId": 28,
+    "festival": "Outside Lands",
+    "week": null,
+    "location": "San Francisco, CA",
+    "startDate": "2014-08-08T04:00:00.000Z",
+    "endDate": "2014-08-10T04:00:00.000Z"
+  },
+  "29": {
+    "festivalId": 29,
+    "festival": "NXNE",
+    "week": null,
+    "location": "Toronto",
+    "startDate": "2014-06-13T04:00:00.000Z",
+    "endDate": "2014-06-22T04:00:00.000Z"
   }
 }

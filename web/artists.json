@@ -6378,5 +6378,609 @@
   "3273": {
     "artistId": 3273,
     "artist": "Living Folklore"
+  },
+  "3274": {
+    "artistId": 3274,
+    "artist": "Tom Petty & the Heartbreakers"
+  },
+  "3275": {
+    "artistId": 3275,
+    "artist": "Macklemore & Ryan Lewis"
+  },
+  "3276": {
+    "artistId": 3276,
+    "artist": "Tiësto"
+  },
+  "3277": {
+    "artistId": 3277,
+    "artist": "Death Cab For Cutie"
+  },
+  "3279": {
+    "artistId": 3279,
+    "artist": "Paolo Nutini"
+  },
+  "3280": {
+    "artistId": 3280,
+    "artist": "Kacey Musgraves"
+  },
+  "3281": {
+    "artistId": 3281,
+    "artist": "Run the Jewels (El-P & Killer Mike)"
+  },
+  "3282": {
+    "artistId": 3282,
+    "artist": "Christopher Owens"
+  },
+  "3283": {
+    "artistId": 3283,
+    "artist": "Woods"
+  },
+  "3284": {
+    "artistId": 3284,
+    "artist": "Watsky"
+  },
+  "3285": {
+    "artistId": 3285,
+    "artist": "Mikal Cronin"
+  },
+  "3286": {
+    "artistId": 3286,
+    "artist": "Imelda May"
+  },
+  "3287": {
+    "artistId": 3287,
+    "artist": "The Brothers Comatose"
+  },
+  "3288": {
+    "artistId": 3288,
+    "artist": "Gardens & Villa"
+  },
+  "3289": {
+    "artistId": 3289,
+    "artist": "Tumbleweed Wanderers"
+  },
+  "3290": {
+    "artistId": 3290,
+    "artist": "Givers"
+  },
+  "3291": {
+    "artistId": 3291,
+    "artist": "Finish Ticket"
+  },
+  "3292": {
+    "artistId": 3292,
+    "artist": "Night Terrors of 1927"
+  },
+  "3293": {
+    "artistId": 3293,
+    "artist": "Trails and Ways"
+  },
+  "3294": {
+    "artistId": 3294,
+    "artist": "Nocona"
+  },
+  "3305": {
+    "artistId": 3305,
+    "artist": "A Sol Mechanic"
+  },
+  "3306": {
+    "artistId": 3306,
+    "artist": "ALVVAYS"
+  },
+  "3307": {
+    "artistId": 3307,
+    "artist": "Amity Beach"
+  },
+  "3308": {
+    "artistId": 3308,
+    "artist": "Animal Parts"
+  },
+  "3309": {
+    "artistId": 3309,
+    "artist": "The Anna Thompsons"
+  },
+  "3310": {
+    "artistId": 3310,
+    "artist": "Apeshit Simians"
+  },
+  "3311": {
+    "artistId": 3311,
+    "artist": "Ark Analog"
+  },
+  "3312": {
+    "artistId": 3312,
+    "artist": "Army of Infants"
+  },
+  "3313": {
+    "artistId": 3313,
+    "artist": "Ascot Royals"
+  },
+  "3314": {
+    "artistId": 3314,
+    "artist": "Astro"
+  },
+  "3315": {
+    "artistId": 3315,
+    "artist": "The Audible Doctor"
+  },
+  "3316": {
+    "artistId": 3316,
+    "artist": "Bailiff"
+  },
+  "3317": {
+    "artistId": 3317,
+    "artist": "Baked Goods"
+  },
+  "3318": {
+    "artistId": 3318,
+    "artist": "Balancer"
+  },
+  "3319": {
+    "artistId": 3319,
+    "artist": "The Barr Brothers"
+  },
+  "3320": {
+    "artistId": 3320,
+    "artist": "Beach Season"
+  },
+  "3321": {
+    "artistId": 3321,
+    "artist": "Beca"
+  },
+  "3322": {
+    "artistId": 3322,
+    "artist": "Beliefs"
+  },
+  "3323": {
+    "artistId": 3323,
+    "artist": "Beyond the Mountain"
+  },
+  "3324": {
+    "artistId": 3324,
+    "artist": "b.FUNK"
+  },
+  "3325": {
+    "artistId": 3325,
+    "artist": "Black Alley"
+  },
+  "3326": {
+    "artistId": 3326,
+    "artist": "The Black Diamond Express"
+  },
+  "3327": {
+    "artistId": 3327,
+    "artist": "The Black Fever"
+  },
+  "3328": {
+    "artistId": 3328,
+    "artist": "Bugs in the Dark"
+  },
+  "3329": {
+    "artistId": 3329,
+    "artist": "The Bynars"
+  },
+  "3330": {
+    "artistId": 3330,
+    "artist": "Calvin Love"
+  },
+  "3331": {
+    "artistId": 3331,
+    "artist": "Camera"
+  },
+  "3332": {
+    "artistId": 3332,
+    "artist": "Canailles"
+  },
+  "3333": {
+    "artistId": 3333,
+    "artist": "Chalk And Numbers"
+  },
+  "3334": {
+    "artistId": 3334,
+    "artist": "CHAMPION LOVER"
+  },
+  "3335": {
+    "artistId": 3335,
+    "artist": "Christian Hansen"
+  },
+  "3336": {
+    "artistId": 3336,
+    "artist": "Circuit Des Yeux"
+  },
+  "3337": {
+    "artistId": 3337,
+    "artist": "The Cliks"
+  },
+  "3338": {
+    "artistId": 3338,
+    "artist": "Colornoise"
+  },
+  "3339": {
+    "artistId": 3339,
+    "artist": "Conrad Clifton"
+  },
+  "3340": {
+    "artistId": 3340,
+    "artist": "Constantina"
+  },
+  "3341": {
+    "artistId": 3341,
+    "artist": "Cory Kendrix"
+  },
+  "3342": {
+    "artistId": 3342,
+    "artist": "Criminal Hygiene"
+  },
+  "3343": {
+    "artistId": 3343,
+    "artist": "Cultfever"
+  },
+  "3344": {
+    "artistId": 3344,
+    "artist": "Culture Reject"
+  },
+  "3345": {
+    "artistId": 3345,
+    "artist": "The Cunninghams"
+  },
+  "3346": {
+    "artistId": 3346,
+    "artist": "Dance Laury Dance"
+  },
+  "3347": {
+    "artistId": 3347,
+    "artist": "Dance Movie"
+  },
+  "3348": {
+    "artistId": 3348,
+    "artist": "Daniel Lopatin (of Oneohtrix Point Never) DJ"
+  },
+  "3349": {
+    "artistId": 3349,
+    "artist": "Daniel Moir"
+  },
+  "3350": {
+    "artistId": 3350,
+    "artist": "David Rosales"
+  },
+  "3351": {
+    "artistId": 3351,
+    "artist": "Death Hymn Number 9"
+  },
+  "3352": {
+    "artistId": 3352,
+    "artist": "Decent Lovers"
+  },
+  "3353": {
+    "artistId": 3353,
+    "artist": "Devin Miles"
+  },
+  "3354": {
+    "artistId": 3354,
+    "artist": "Dick Rodan"
+  },
+  "3355": {
+    "artistId": 3355,
+    "artist": "DJ Fusion (FuseBox Radio Broadcast)"
+  },
+  "3356": {
+    "artistId": 3356,
+    "artist": "DJ Jonathan Toubin"
+  },
+  "3357": {
+    "artistId": 3357,
+    "artist": "doomsquad"
+  },
+  "3358": {
+    "artistId": 3358,
+    "artist": "Eagulls"
+  },
+  "3359": {
+    "artistId": 3359,
+    "artist": "ELEKTRISK GØNNER"
+  },
+  "3360": {
+    "artistId": 3360,
+    "artist": "Elvyn"
+  },
+  "3361": {
+    "artistId": 3361,
+    "artist": "Fast Romantics"
+  },
+  "3362": {
+    "artistId": 3362,
+    "artist": "Federal Lights"
+  },
+  "3363": {
+    "artistId": 3363,
+    "artist": "First You Get The Sugar"
+  },
+  "3364": {
+    "artistId": 3364,
+    "artist": "Freeman Dre & the Kitchen Party"
+  },
+  "3365": {
+    "artistId": 3365,
+    "artist": "Freeze-Tag"
+  },
+  "3366": {
+    "artistId": 3366,
+    "artist": "Fuck Buttons"
+  },
+  "3367": {
+    "artistId": 3367,
+    "artist": "Glasser"
+  },
+  "3368": {
+    "artistId": 3368,
+    "artist": "Golden Bloom"
+  },
+  "3369": {
+    "artistId": 3369,
+    "artist": "The Golden Dogs"
+  },
+  "3370": {
+    "artistId": 3370,
+    "artist": "The Great Wilderness"
+  },
+  "3371": {
+    "artistId": 3371,
+    "artist": "Gunner & Smith"
+  },
+  "3372": {
+    "artistId": 3372,
+    "artist": "Hands & Teeth"
+  },
+  "3373": {
+    "artistId": 3373,
+    "artist": "Happy Fangs"
+  },
+  "3374": {
+    "artistId": 3374,
+    "artist": "Hollywood FLOSS"
+  },
+  "3375": {
+    "artistId": 3375,
+    "artist": "Hunters"
+  },
+  "3376": {
+    "artistId": 3376,
+    "artist": "The Ian Fays"
+  },
+  "3377": {
+    "artistId": 3377,
+    "artist": "The Immortals Project feat. El Da Sensei"
+  },
+  "3378": {
+    "artistId": 3378,
+    "artist": "J’Nai"
+  },
+  "3379": {
+    "artistId": 3379,
+    "artist": "Juan Wauters"
+  },
+  "3380": {
+    "artistId": 3380,
+    "artist": "The Kickstand Band"
+  },
+  "3381": {
+    "artistId": 3381,
+    "artist": "Krazy Drayz"
+  },
+  "3382": {
+    "artistId": 3382,
+    "artist": "Lakes of Canada"
+  },
+  "3383": {
+    "artistId": 3383,
+    "artist": "Lindy"
+  },
+  "3384": {
+    "artistId": 3384,
+    "artist": "Low"
+  },
+  "3385": {
+    "artistId": 3385,
+    "artist": "Lynn Jackson"
+  },
+  "3386": {
+    "artistId": 3386,
+    "artist": "Lyric Dubee"
+  },
+  "3387": {
+    "artistId": 3387,
+    "artist": "The Maladies of Adam Stokes"
+  },
+  "3388": {
+    "artistId": 3388,
+    "artist": "Mark Wilkinson"
+  },
+  "3389": {
+    "artistId": 3389,
+    "artist": "The Marvelous Beauhunks"
+  },
+  "3390": {
+    "artistId": 3390,
+    "artist": "Meatbodies"
+  },
+  "3391": {
+    "artistId": 3391,
+    "artist": "METZ"
+  },
+  "3392": {
+    "artistId": 3392,
+    "artist": "Mibbs (of Pac Div)"
+  },
+  "3393": {
+    "artistId": 3393,
+    "artist": "MoneyPenny"
+  },
+  "3394": {
+    "artistId": 3394,
+    "artist": "Nive Nielsen & The Deer Children"
+  },
+  "3395": {
+    "artistId": 3395,
+    "artist": "Odonis Odonis"
+  },
+  "3396": {
+    "artistId": 3396,
+    "artist": "Oneohtrix Point Never"
+  },
+  "3397": {
+    "artistId": 3397,
+    "artist": "The oOohh Baby Gimme Mores"
+  },
+  "3398": {
+    "artistId": 3398,
+    "artist": "Paradise Animals"
+  },
+  "3399": {
+    "artistId": 3399,
+    "artist": "Paul Fonfara and Painted Saints"
+  },
+  "3400": {
+    "artistId": 3400,
+    "artist": "Pet Sun"
+  },
+  "3401": {
+    "artistId": 3401,
+    "artist": "The Pinz"
+  },
+  "3402": {
+    "artistId": 3402,
+    "artist": "Pistol George Warren"
+  },
+  "3403": {
+    "artistId": 3403,
+    "artist": "The Pizza Underground"
+  },
+  "3404": {
+    "artistId": 3404,
+    "artist": "Redanda"
+  },
+  "3405": {
+    "artistId": 3405,
+    "artist": "Relic (aka Rel McCoy)"
+  },
+  "3406": {
+    "artistId": 3406,
+    "artist": "Rhye"
+  },
+  "3407": {
+    "artistId": 3407,
+    "artist": "The Rucksack Willies"
+  },
+  "3408": {
+    "artistId": 3408,
+    "artist": "Saint Rich"
+  },
+  "3409": {
+    "artistId": 3409,
+    "artist": "Shawn William Clarke"
+  },
+  "3410": {
+    "artistId": 3410,
+    "artist": "Sherman Downey and The Ambiguous Case"
+  },
+  "3411": {
+    "artistId": 3411,
+    "artist": "Shivering Timbers"
+  },
+  "3412": {
+    "artistId": 3412,
+    "artist": "Shock T’s"
+  },
+  "3413": {
+    "artistId": 3413,
+    "artist": "Silent Movie Type"
+  },
+  "3414": {
+    "artistId": 3414,
+    "artist": "Silvergun & Spleen"
+  },
+  "3415": {
+    "artistId": 3415,
+    "artist": "Slow Down, Molasses"
+  },
+  "3416": {
+    "artistId": 3416,
+    "artist": "Smooth Hound Smith"
+  },
+  "3417": {
+    "artistId": 3417,
+    "artist": "SNOWMINE"
+  },
+  "3418": {
+    "artistId": 3418,
+    "artist": "Spiritualized"
+  },
+  "3419": {
+    "artistId": 3419,
+    "artist": "Sue Newberry & The Law"
+  },
+  "3420": {
+    "artistId": 3420,
+    "artist": "Sumo Cyco"
+  },
+  "3421": {
+    "artistId": 3421,
+    "artist": "Sunrise and Good People"
+  },
+  "3422": {
+    "artistId": 3422,
+    "artist": "Swans"
+  },
+  "3423": {
+    "artistId": 3423,
+    "artist": "Swearin’"
+  },
+  "3424": {
+    "artistId": 3424,
+    "artist": "Tartar Control"
+  },
+  "3425": {
+    "artistId": 3425,
+    "artist": "Thus Owls"
+  },
+  "3426": {
+    "artistId": 3426,
+    "artist": "Tied to Machines"
+  },
+  "3427": {
+    "artistId": 3427,
+    "artist": "Tim Hecker"
+  },
+  "3428": {
+    "artistId": 3428,
+    "artist": "Tiny Hearts"
+  },
+  "3429": {
+    "artistId": 3429,
+    "artist": "The Treasures"
+  },
+  "3430": {
+    "artistId": 3430,
+    "artist": "The Unicorn Patrol"
+  },
+  "3431": {
+    "artistId": 3431,
+    "artist": "Unwed Mothers"
+  },
+  "3432": {
+    "artistId": 3432,
+    "artist": "V For Escargot"
+  },
+  "3433": {
+    "artistId": 3433,
+    "artist": "Waiting For Henry"
+  },
+  "3434": {
+    "artistId": 3434,
+    "artist": "Weeknight"
+  },
+  "3435": {
+    "artistId": 3435,
+    "artist": "White Mystery"
   }
 }
