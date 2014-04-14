@@ -763,10 +763,6 @@
     "artistId": 194,
     "artist": "Gregory Alan Isakov"
   },
-  "195": {
-    "artistId": 195,
-    "artist": "Griswolds"
-  },
   "196": {
     "artistId": 196,
     "artist": "Haerts"
@@ -970,10 +966,6 @@
   "248": {
     "artistId": 248,
     "artist": "Typhoon"
-  },
-  "249": {
-    "artistId": 249,
-    "artist": "Unlikely Candidates"
   },
   "250": {
     "artistId": 250,
@@ -4975,10 +4967,6 @@
     "artistId": 2719,
     "artist": "Kanye West"
   },
-  "2720": {
-    "artistId": 2720,
-    "artist": "Lionel Ritchie"
-  },
   "2721": {
     "artistId": 2721,
     "artist": "Frank Ocean"
@@ -5071,14 +5059,6 @@
     "artistId": 2745,
     "artist": "Polica"
   },
-  "2746": {
-    "artistId": 2746,
-    "artist": "Dakhrabrakha"
-  },
-  "2747": {
-    "artistId": 2747,
-    "artist": "Seun Kuti"
-  },
   "2748": {
     "artistId": 2748,
     "artist": "Hannibal Buress"
@@ -5126,10 +5106,6 @@
   "2761": {
     "artistId": 2761,
     "artist": "La Santa Cecilia"
-  },
-  "2762": {
-    "artistId": 2762,
-    "artist": "Allah Lahs"
   },
   "2763": {
     "artistId": 2763,
@@ -6982,5 +6958,745 @@
   "3435": {
     "artistId": 3435,
     "artist": "White Mystery"
+  },
+  "3560": {
+    "artistId": 3560,
+    "artist": "The Fray "
+  },
+  "3561": {
+    "artistId": 3561,
+    "artist": "Switchfoot"
+  },
+  "3563": {
+    "artistId": 3563,
+    "artist": "Bruno Mars"
+  },
+  "3564": {
+    "artistId": 3564,
+    "artist": "Lady Gaga"
+  },
+  "3565": {
+    "artistId": 3565,
+    "artist": "Brad Paisley"
+  },
+  "3566": {
+    "artistId": 3566,
+    "artist": "Darius Rucker"
+  },
+  "3567": {
+    "artistId": 3567,
+    "artist": "Joel Crouse"
+  },
+  "3568": {
+    "artistId": 3568,
+    "artist": "Dave Matthews Band"
+  },
+  "3569": {
+    "artistId": 3569,
+    "artist": "Motley Crue"
+  },
+  "3570": {
+    "artistId": 3570,
+    "artist": "Alice Cooper"
+  },
+  "3571": {
+    "artistId": 3571,
+    "artist": "Fall Out Boy"
+  },
+  "3572": {
+    "artistId": 3572,
+    "artist": "Paramore"
+  },
+  "3573": {
+    "artistId": 3573,
+    "artist": "Usher"
+  },
+  "3575": {
+    "artistId": 3575,
+    "artist": "Lionel Richie"
+  },
+  "3578": {
+    "artistId": 3578,
+    "artist": "SuperJam \"?\""
+  },
+  "3581": {
+    "artistId": 3581,
+    "artist": "Andrew Bird & the Hands of Glory"
+  },
+  "3584": {
+    "artistId": 3584,
+    "artist": "The Master Musicians of Jajouka led by Bachir Attar, with special guests Billy Martin, Marc Ribot, DJ Logic and Shahzad Ismaily"
+  },
+  "3585": {
+    "artistId": 3585,
+    "artist": "DakhaBrakha"
+  },
+  "3586": {
+    "artistId": 3586,
+    "artist": "Seun Kuti & Egypt 80"
+  },
+  "3589": {
+    "artistId": 3589,
+    "artist": "King Khan & the Shrines"
+  },
+  "3591": {
+    "artistId": 3591,
+    "artist": "Allah-Las"
+  },
+  "3593": {
+    "artistId": 3593,
+    "artist": "AM & Shawn Lee"
+  },
+  "3594": {
+    "artistId": 3594,
+    "artist": "Animals As Leaders"
+  },
+  "3595": {
+    "artistId": 3595,
+    "artist": "Ásgeir"
+  },
+  "3596": {
+    "artistId": 3596,
+    "artist": "Donald Cumming"
+  },
+  "3597": {
+    "artistId": 3597,
+    "artist": "The Dunwells"
+  },
+  "3598": {
+    "artistId": 3598,
+    "artist": "ELEL"
+  },
+  "3599": {
+    "artistId": 3599,
+    "artist": "Empires"
+  },
+  "3600": {
+    "artistId": 3600,
+    "artist": "The Futures League"
+  },
+  "3601": {
+    "artistId": 3601,
+    "artist": "The Griswolds"
+  },
+  "3602": {
+    "artistId": 3602,
+    "artist": "High and Mighty Brass Band"
+  },
+  "3603": {
+    "artistId": 3603,
+    "artist": "Jamestown Revival"
+  },
+  "3604": {
+    "artistId": 3604,
+    "artist": "Jeremy Messersmith"
+  },
+  "3605": {
+    "artistId": 3605,
+    "artist": "Kansas Bible Company"
+  },
+  "3606": {
+    "artistId": 3606,
+    "artist": "Kevin Devine"
+  },
+  "3607": {
+    "artistId": 3607,
+    "artist": "Kins"
+  },
+  "3608": {
+    "artistId": 3608,
+    "artist": "Lily & the Parlour Tricks"
+  },
+  "3609": {
+    "artistId": 3609,
+    "artist": "Monster Truck"
+  },
+  "3610": {
+    "artistId": 3610,
+    "artist": "The Orwells"
+  },
+  "3611": {
+    "artistId": 3611,
+    "artist": "Parade of Lights"
+  },
+  "3612": {
+    "artistId": 3612,
+    "artist": "The Saint Johns"
+  },
+  "3613": {
+    "artistId": 3613,
+    "artist": "Sam Hunt"
+  },
+  "3614": {
+    "artistId": 3614,
+    "artist": "Skinny Lister"
+  },
+  "3615": {
+    "artistId": 3615,
+    "artist": "Streets of Laredo"
+  },
+  "3616": {
+    "artistId": 3616,
+    "artist": "The Unlikely Candidates"
+  },
+  "3638": {
+    "artistId": 3638,
+    "artist": "Nine Inch Nails"
+  },
+  "3639": {
+    "artistId": 3639,
+    "artist": "deadmau5"
+  },
+  "3640": {
+    "artistId": 3640,
+    "artist": "Soundgarden"
+  },
+  "3641": {
+    "artistId": 3641,
+    "artist": "Metric"
+  },
+  "3642": {
+    "artistId": 3642,
+    "artist": "Blondie"
+  },
+  "3643": {
+    "artistId": 3643,
+    "artist": "Baauer"
+  },
+  "3644": {
+    "artistId": 3644,
+    "artist": "Matthew Good"
+  },
+  "3645": {
+    "artistId": 3645,
+    "artist": "Gord Downie, The Sadies"
+  },
+  "3646": {
+    "artistId": 3646,
+    "artist": "The New Pornographers"
+  },
+  "3647": {
+    "artistId": 3647,
+    "artist": "Sloan"
+  },
+  "3648": {
+    "artistId": 3648,
+    "artist": "Stars"
+  },
+  "3649": {
+    "artistId": 3649,
+    "artist": "Hayden"
+  },
+  "3650": {
+    "artistId": 3650,
+    "artist": "Dinosaur Jr."
+  },
+  "3651": {
+    "artistId": 3651,
+    "artist": "Fucked Up"
+  },
+  "3652": {
+    "artistId": 3652,
+    "artist": "Purity Ring (DJ Set)"
+  },
+  "3653": {
+    "artistId": 3653,
+    "artist": "Rich Aucoin"
+  },
+  "3654": {
+    "artistId": 3654,
+    "artist": "Gold & Youth"
+  },
+  "3655": {
+    "artistId": 3655,
+    "artist": "Flash Lightnin’"
+  },
+  "3656": {
+    "artistId": 3656,
+    "artist": "The Tontons"
+  },
+  "3657": {
+    "artistId": 3657,
+    "artist": "Tory Lanez"
+  },
+  "3658": {
+    "artistId": 3658,
+    "artist": "Yukon Blonde"
+  },
+  "3659": {
+    "artistId": 3659,
+    "artist": "Hallelujah Train Feat. Daniel Lanois, Pastor Brady Blade, Brian Blade, Brady Blade, Jr., Anders Osborne, Will Sexton, Chris Thomas, Malcolm Burn with Gospel Choir"
+  },
+  "3669": {
+    "artistId": 3669,
+    "artist": "Artist Name"
+  },
+  "3670": {
+    "artistId": 3670,
+    "artist": "100% Dynamite"
+  },
+  "3671": {
+    "artistId": 3671,
+    "artist": "A$AP Rocky"
+  },
+  "3672": {
+    "artistId": 3672,
+    "artist": "ALB"
+  },
+  "3673": {
+    "artistId": 3673,
+    "artist": "Alejandra Ribera"
+  },
+  "3674": {
+    "artistId": 3674,
+    "artist": "Alex Nevsky"
+  },
+  "3675": {
+    "artistId": 3675,
+    "artist": "Alexandre Desilets"
+  },
+  "3676": {
+    "artistId": 3676,
+    "artist": "Andee"
+  },
+  "3677": {
+    "artistId": 3677,
+    "artist": "Anonymus"
+  },
+  "3678": {
+    "artistId": 3678,
+    "artist": "Antoine Corriveau"
+  },
+  "3679": {
+    "artistId": 3679,
+    "artist": "BadBadNotGood"
+  },
+  "3680": {
+    "artistId": 3680,
+    "artist": "Beth Hart"
+  },
+  "3681": {
+    "artistId": 3681,
+    "artist": "Billy Joel"
+  },
+  "3682": {
+    "artistId": 3682,
+    "artist": "Bleu Jeans Bleu"
+  },
+  "3683": {
+    "artistId": 3683,
+    "artist": "Bobby Bazini"
+  },
+  "3684": {
+    "artistId": 3684,
+    "artist": "Brandon Santini"
+  },
+  "3685": {
+    "artistId": 3685,
+    "artist": "Brody Dalle"
+  },
+  "3686": {
+    "artistId": 3686,
+    "artist": "Bryan Adams"
+  },
+  "3687": {
+    "artistId": 3687,
+    "artist": "Cypress Hill"
+  },
+  "3688": {
+    "artistId": 3688,
+    "artist": "Da Cruz"
+  },
+  "3689": {
+    "artistId": 3689,
+    "artist": "Damien Robitaille"
+  },
+  "3690": {
+    "artistId": 3690,
+    "artist": "Daniel Bélanger"
+  },
+  "3691": {
+    "artistId": 3691,
+    "artist": "Daniel Lanois"
+  },
+  "3692": {
+    "artistId": 3692,
+    "artist": "Dans l'Shed"
+  },
+  "3693": {
+    "artistId": 3693,
+    "artist": "Dead Obies"
+  },
+  "3694": {
+    "artistId": 3694,
+    "artist": "Debo Band"
+  },
+  "3695": {
+    "artistId": 3695,
+    "artist": "DJ Dan Zimmermann"
+  },
+  "3696": {
+    "artistId": 3696,
+    "artist": "DJ Gru Ohm"
+  },
+  "3697": {
+    "artistId": 3697,
+    "artist": "Dominique Hudson"
+  },
+  "3698": {
+    "artistId": 3698,
+    "artist": "Émilie Simon"
+  },
+  "3699": {
+    "artistId": 3699,
+    "artist": "Father John Misty \"Solo\""
+  },
+  "3700": {
+    "artistId": 3700,
+    "artist": "Féfé"
+  },
+  "3701": {
+    "artistId": 3701,
+    "artist": "FM Hi Low"
+  },
+  "3702": {
+    "artistId": 3702,
+    "artist": "Gaëlle Buswel"
+  },
+  "3703": {
+    "artistId": 3703,
+    "artist": "Grand Corps Malade"
+  },
+  "3704": {
+    "artistId": 3704,
+    "artist": "Groenland"
+  },
+  "3705": {
+    "artistId": 3705,
+    "artist": "Heavy Soundz"
+  },
+  "3706": {
+    "artistId": 3706,
+    "artist": "Hommage à Félix Leclerc"
+  },
+  "3707": {
+    "artistId": 3707,
+    "artist": "Imam Baildi"
+  },
+  "3708": {
+    "artistId": 3708,
+    "artist": "Irish Moutarde"
+  },
+  "3709": {
+    "artistId": 3709,
+    "artist": "Israel Proulx"
+  },
+  "3710": {
+    "artistId": 3710,
+    "artist": "Jason Elmore & Hoodoo Witch"
+  },
+  "3711": {
+    "artistId": 3711,
+    "artist": "Jean Jean Roosevelt"
+  },
+  "3712": {
+    "artistId": 3712,
+    "artist": "Jean-Marc Couture"
+  },
+  "3713": {
+    "artistId": 3713,
+    "artist": "Jeff Jensen Band"
+  },
+  "3714": {
+    "artistId": 3714,
+    "artist": "Jill Barber"
+  },
+  "3715": {
+    "artistId": 3715,
+    "artist": "Joe Driscoll & Sekou Kouyaté"
+  },
+  "3716": {
+    "artistId": 3716,
+    "artist": "John Mayall"
+  },
+  "3717": {
+    "artistId": 3717,
+    "artist": "John Pizzarrelli Quartet"
+  },
+  "3718": {
+    "artistId": 3718,
+    "artist": "Jordan Officer"
+  },
+  "3719": {
+    "artistId": 3719,
+    "artist": "Journey"
+  },
+  "3720": {
+    "artistId": 3720,
+    "artist": "JP Soars and the Red Hots"
+  },
+  "3721": {
+    "artistId": 3721,
+    "artist": "Karim Diouf"
+  },
+  "3722": {
+    "artistId": 3722,
+    "artist": "Kevin Mark Blues Band"
+  },
+  "3723": {
+    "artistId": 3723,
+    "artist": "Klo Pelgag"
+  },
+  "3724": {
+    "artistId": 3724,
+    "artist": "L'Ampli de Québec"
+  },
+  "3725": {
+    "artistId": 3725,
+    "artist": "Laurence Hélie"
+  },
+  "3726": {
+    "artistId": 3726,
+    "artist": "Les 8 Babins"
+  },
+  "3727": {
+    "artistId": 3727,
+    "artist": "Les Chercheurs d'or"
+  },
+  "3728": {
+    "artistId": 3728,
+    "artist": "Les Soeurs Boulay"
+  },
+  "3729": {
+    "artistId": 3729,
+    "artist": "Louis-Jean Cormier"
+  },
+  "3730": {
+    "artistId": 3730,
+    "artist": "Manu Militari"
+  },
+  "3731": {
+    "artistId": 3731,
+    "artist": "Marc Dupré"
+  },
+  "3732": {
+    "artistId": 3732,
+    "artist": "Marième"
+  },
+  "3733": {
+    "artistId": 3733,
+    "artist": "Marillion"
+  },
+  "3734": {
+    "artistId": 3734,
+    "artist": "Matt Andersen and The Mellotones"
+  },
+  "3735": {
+    "artistId": 3735,
+    "artist": "Matthew Curry"
+  },
+  "3736": {
+    "artistId": 3736,
+    "artist": "Maude"
+  },
+  "3737": {
+    "artistId": 3737,
+    "artist": "Melbourne Ska Orchestra"
+  },
+  "3738": {
+    "artistId": 3738,
+    "artist": "Mokoomba"
+  },
+  "3739": {
+    "artistId": 3739,
+    "artist": "Monogrenade"
+  },
+  "3740": {
+    "artistId": 3740,
+    "artist": "Mononc' Serge"
+  },
+  "3741": {
+    "artistId": 3741,
+    "artist": "Moriarty"
+  },
+  "3742": {
+    "artistId": 3742,
+    "artist": "Mr Orange"
+  },
+  "3743": {
+    "artistId": 3743,
+    "artist": "Nadja"
+  },
+  "3744": {
+    "artistId": 3744,
+    "artist": "Neto Yuth"
+  },
+  "3745": {
+    "artistId": 3745,
+    "artist": "Nicole Willis & The Soul Investigators"
+  },
+  "3746": {
+    "artistId": 3746,
+    "artist": "NO BS! Brass Band"
+  },
+  "3747": {
+    "artistId": 3747,
+    "artist": "Noah Gundersen"
+  },
+  "3748": {
+    "artistId": 3748,
+    "artist": "Oddisee"
+  },
+  "3749": {
+    "artistId": 3749,
+    "artist": "Paul Daraîche"
+  },
+  "3750": {
+    "artistId": 3750,
+    "artist": "Philémon Cimon"
+  },
+  "3751": {
+    "artistId": 3751,
+    "artist": "Philippe Brach"
+  },
+  "3752": {
+    "artistId": 3752,
+    "artist": "Pierre Kwenders"
+  },
+  "3753": {
+    "artistId": 3753,
+    "artist": "Pierre Lapointe"
+  },
+  "3754": {
+    "artistId": 3754,
+    "artist": "PL Gravel"
+  },
+  "3755": {
+    "artistId": 3755,
+    "artist": "Radio Radio"
+  },
+  "3756": {
+    "artistId": 3756,
+    "artist": "Random Recipe"
+  },
+  "3757": {
+    "artistId": 3757,
+    "artist": "Rick L. Blues"
+  },
+  "3758": {
+    "artistId": 3758,
+    "artist": "Safia Nolin (Trio)"
+  },
+  "3759": {
+    "artistId": 3759,
+    "artist": "Salomé Leclerc"
+  },
+  "3760": {
+    "artistId": 3760,
+    "artist": "Sandra N'Kaké"
+  },
+  "3761": {
+    "artistId": 3761,
+    "artist": "Sarah Cochrane - Prix FEQ à Granby"
+  },
+  "3762": {
+    "artistId": 3762,
+    "artist": "Selwyn Birchwood Band"
+  },
+  "3763": {
+    "artistId": 3763,
+    "artist": "Seryn"
+  },
+  "3764": {
+    "artistId": 3764,
+    "artist": "Shantel & Bucovina Club Orkestar"
+  },
+  "3765": {
+    "artistId": 3765,
+    "artist": "Shout Out Out Out Out"
+  },
+  "3766": {
+    "artistId": 3766,
+    "artist": "Solids"
+  },
+  "3767": {
+    "artistId": 3767,
+    "artist": "Steve Hill"
+  },
+  "3768": {
+    "artistId": 3768,
+    "artist": "Steve Miller Band"
+  },
+  "3769": {
+    "artistId": 3769,
+    "artist": "Susie Arioli"
+  },
+  "3770": {
+    "artistId": 3770,
+    "artist": "Textures Club"
+  },
+  "3771": {
+    "artistId": 3771,
+    "artist": "The D Project"
+  },
+  "3772": {
+    "artistId": 3772,
+    "artist": "The Franklin Electric"
+  },
+  "3773": {
+    "artistId": 3773,
+    "artist": "The Paper Kites"
+  },
+  "3774": {
+    "artistId": 3774,
+    "artist": "The Posterz"
+  },
+  "3775": {
+    "artistId": 3775,
+    "artist": "The Pretty Reckless"
+  },
+  "3776": {
+    "artistId": 3776,
+    "artist": "The Rockin' Jake Band"
+  },
+  "3777": {
+    "artistId": 3777,
+    "artist": "The Seasons"
+  },
+  "3778": {
+    "artistId": 3778,
+    "artist": "The Steady Swagger"
+  },
+  "3779": {
+    "artistId": 3779,
+    "artist": "Three Days Grace"
+  },
+  "3780": {
+    "artistId": 3780,
+    "artist": "Tiken Jah Fakoly"
+  },
+  "3781": {
+    "artistId": 3781,
+    "artist": "Tire le coyote"
+  },
+  "3782": {
+    "artistId": 3782,
+    "artist": "Truckfighters"
+  },
+  "3783": {
+    "artistId": 3783,
+    "artist": "Valérie Clio chante le blues"
+  },
+  "3784": {
+    "artistId": 3784,
+    "artist": "Victor Wainwright and The WildRoots"
+  },
+  "3785": {
+    "artistId": 3785,
+    "artist": "Vincent Gagnon"
+  },
+  "3786": {
+    "artistId": 3786,
+    "artist": "Vincent Vallières \"Solo\""
   }
 }

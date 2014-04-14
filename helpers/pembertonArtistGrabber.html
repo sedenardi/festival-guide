@@ -1,15 +1,15 @@
 <html>
   <head>
-    <title>Summerfest</title>
+    <title>Pemberton</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body style="padding:20px;">
-    <h3>Parse Artists from - <a href="view-source:http://www.summerfest.com/lineup/lineup.aspx" target="_blank">http://www.summerfest.com/lineup/lineup.aspx</a></h3>
+    <h3>Parse Artists from - <a href="view-source:http://pembertonmusicfestival.com/lineup" target="_blank">http://pembertonmusicfestival.com/lineup</a></h3>
     <br />
     <div>
-      <textarea class="form-control" id="inputArea" placeholder="Paste source from http://www.summerfest.com/lineup/lineup.aspx" rows="10"></textarea>
+      <textarea class="form-control" id="inputArea" placeholder="Paste source from http://pembertonmusicfestival.com/lineup" rows="10"></textarea>
       <button type="button" class="btn btn-success" id="btnParse">Get Artists</button>
     </div>
     <br/>
@@ -23,10 +23,10 @@
 <script type="text/javascript">
   $('#btnParse').click(function() {    
     var rawHtml = $('#inputArea').val();
-    var items = $(rawHtml).find('div.elements');
+    var items = $(rawHtml).find('li.artist');
     var array = [];
     $.each(items, function(i,v) {
-      var artist = $(v).find('a.artist-link').first().text();
+      var artist = $(v).find('a').first().text();
       array.push('\'' + artist.replace('\'','\\\'') + '\'');
     });
     
