@@ -238,5 +238,13 @@
     "location": "Québec City",
     "startDate": "2014-07-03T04:00:00.000Z",
     "endDate": "2014-07-13T04:00:00.000Z"
+  },
+  "32": {
+    "festivalId": 32,
+    "festival": "Free Press Summer Festival",
+    "week": null,
+    "location": "Houston, TX",
+    "startDate": "2014-05-31T04:00:00.000Z",
+    "endDate": "2014-06-01T04:00:00.000Z"
   }
 }
