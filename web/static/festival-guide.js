@@ -203,7 +203,7 @@ var loadArtistTab = function() {
 };
 
 var pinFestival = function(festival) {
-  dropMarker(featival.location, festival);
+  dropMarker(festival.location, festival);
 };
 
 var clearMarkers = function() {

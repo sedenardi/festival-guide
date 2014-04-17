@@ -337,6 +337,8 @@ var Web = function(config, rootDir) {
       var locations = {};
       for (var i = 0; i < dbRes.length; i++) {
         locations[dbRes[i].locationId] = dbRes[i];
+        locations[dbRes[i].locationId].lat = parseFloat(dbRes[i].lat);
+        locations[dbRes[i].locationId].lng = parseFloat(dbRes[i].lng);
       }
       res.json(locations);
     });
