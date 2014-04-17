@@ -1,0 +1,176 @@
+{
+  "1": {
+    "locationId": 1,
+    "location": "Indio, CA",
+    "lat": "33.7205771",
+    "lng": "-116.21556190000001"
+  },
+  "2": {
+    "locationId": 2,
+    "location": "Dover, DE",
+    "lat": "39.158168",
+    "lng": "-75.52436820000003"
+  },
+  "3": {
+    "locationId": 3,
+    "location": "New York, NY",
+    "lat": "40.7143528",
+    "lng": "-74.0059731"
+  },
+  "4": {
+    "locationId": 4,
+    "location": "Gulf Shores, AL",
+    "lat": "30.2460361",
+    "lng": "-87.70081929999998"
+  },
+  "5": {
+    "locationId": 5,
+    "location": "New Orleans, LA",
+    "lat": "29.95106579999999",
+    "lng": "-90.0715323"
+  },
+  "6": {
+    "locationId": 6,
+    "location": "Atlanta, GA",
+    "lat": "33.7489954",
+    "lng": "-84.3879824"
+  },
+  "7": {
+    "locationId": 7,
+    "location": "Kingston Downs, GA",
+    "lat": "32.1656221",
+    "lng": "-82.90007509999998"
+  },
+  "8": {
+    "locationId": 8,
+    "location": "Hunter, NY",
+    "lat": "42.21369869999999",
+    "lng": "-74.21875410000001"
+  },
+  "9": {
+    "locationId": 9,
+    "location": "Ozark, AR",
+    "lat": "36.7227191",
+    "lng": "-92.72509170000001"
+  },
+  "10": {
+    "locationId": 10,
+    "location": "Tampa, FL",
+    "lat": "27.950575",
+    "lng": "-82.45717760000002"
+  },
+  "11": {
+    "locationId": 11,
+    "location": "Rothbury, MI",
+    "lat": "43.5072317",
+    "lng": "-86.3475717"
+  },
+  "12": {
+    "locationId": 12,
+    "location": "Quincy, WA",
+    "lat": "47.2342997",
+    "lng": "-119.85255039999998"
+  },
+  "13": {
+    "locationId": 13,
+    "location": "Chillicothe, IL",
+    "lat": "40.9222589",
+    "lng": "-89.48620249999999"
+  },
+  "14": {
+    "locationId": 14,
+    "location": "Asheville, NC",
+    "lat": "35.5950581",
+    "lng": "-82.55148689999999"
+  },
+  "15": {
+    "locationId": 15,
+    "location": "Manchester, TN",
+    "lat": "35.4817431",
+    "lng": "-86.0885993"
+  },
+  "16": {
+    "locationId": 16,
+    "location": "Bridgeport, CT",
+    "lat": "41.1865478",
+    "lng": "-73.19517669999999"
+  },
+  "17": {
+    "locationId": 17,
+    "location": "Parc Jean-Drapeau, Montreal",
+    "lat": "45.50365499999999",
+    "lng": "-73.52909"
+  },
+  "18": {
+    "locationId": 18,
+    "location": "Milwaukee, WI",
+    "lat": "43.0389025",
+    "lng": "-87.90647360000003"
+  },
+  "19": {
+    "locationId": 19,
+    "location": "Chicago, IL",
+    "lat": "41.8781136",
+    "lng": "-87.62979819999998"
+  },
+  "20": {
+    "locationId": 20,
+    "location": "Louisville, KY",
+    "lat": "38.2526647",
+    "lng": "-85.75845570000001"
+  },
+  "21": {
+    "locationId": 21,
+    "location": "Columbia, MD",
+    "lat": "39.2037144",
+    "lng": "-76.86104619999998"
+  },
+  "22": {
+    "locationId": 22,
+    "location": "Saugerties, NY",
+    "lat": "42.0775906",
+    "lng": "-73.95291259999999"
+  },
+  "23": {
+    "locationId": 23,
+    "location": "Memphis, TN",
+    "lat": "35.1495343",
+    "lng": "-90.0489801"
+  },
+  "24": {
+    "locationId": 24,
+    "location": "Quincy, CA",
+    "lat": "39.9368363",
+    "lng": "-120.94717639999999"
+  },
+  "25": {
+    "locationId": 25,
+    "location": "San Francisco, CA",
+    "lat": "37.7749295",
+    "lng": "-122.41941550000001"
+  },
+  "26": {
+    "locationId": 26,
+    "location": "Toronto",
+    "lat": "43.653226",
+    "lng": "-79.38318429999998"
+  },
+  "27": {
+    "locationId": 27,
+    "location": "Pemberton, BC",
+    "lat": "50.322028",
+    "lng": "-122.8050498"
+  },
+  "28": {
+    "locationId": 28,
+    "location": "Québec City",
+    "lat": "46.8032826",
+    "lng": "-71.242796"
+  },
+  "29": {
+    "locationId": 29,
+    "location": "Houston, TX",
+    "lat": "29.7601927",
+    "lng": "-95.36938959999998"
+  }
+}

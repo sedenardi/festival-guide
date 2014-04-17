@@ -3,17 +3,17 @@
   <head>
     <title>Festival Guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
     <script src="http://cdn.jsdelivr.net/typeahead.js/0.10.1/typeahead.bundle.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
     <script src="http://d3js.org/d3.v2.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
     <script src="./static/venn.js"></script>
     <script src="./static/festival-guide.js"></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="./static/festival-guide.css" rel="stylesheet">
   </head>
   <body>
@@ -28,6 +28,8 @@
     <div class="tab-content">
       <div class="tab-pane fade in active" id="home">
         <h4>Pick a feature above.</h4>
+        <h5><a href="mailto:sedenardi@gmail.com">Contact me</a> if you find any issues or have any comments.</h5>
+        <h5>Full source code can be found <a href="https://github.com/sedenardi/festival-guide/tree/gh-pages" target="_blank">here</a>.</h5>
       </div>
       <div class="tab-pane fade" id="artists">
         <h4>Look up artist's festival information</h4>
@@ -73,7 +75,7 @@
     </script>
 
     <script id="appearance-partial" type="text/x-handlebars-template">
-      <span class="appearance">{{festivalWithWeek this}} - {{location}} - {{prettyDateRange this}}</span>
+      <span class="appearance">{{festivalWithWeek this}} - {{location this}} - {{prettyDateRange this}}</span>
     </script>
 
     <script id="artist-partial" type="text/x-handlebars-template">

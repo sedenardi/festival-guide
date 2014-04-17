@@ -219,6 +219,13 @@ where app.festivalId = ? \
     };
   };
 
+  this.getAllLocations = function() {
+    return {
+      sql: 'select * from locations order by locationId;',
+      inserts: []
+    };
+  };
+
 };
 
 module.exports = new queries();

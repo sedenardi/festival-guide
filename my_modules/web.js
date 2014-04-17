@@ -327,6 +327,21 @@ var Web = function(config, rootDir) {
     });
   });
 
+  app.get('/dump/locations.json', function (req,res) {
+    db.query(queries.getAllLocations(), function (err, dbRes) {
+      if (err) {
+        console.log(JSON.stringify(err));
+        res.send(500);
+        return;
+      }
+      var locations = {};
+      for (var i = 0; i < dbRes.length; i++) {
+        locations[dbRes[i].locationId] = dbRes[i];
+      }
+      res.json(locations);
+    });
+  });
+
   this.startServer = function() {
     db.connect(config, 'WEB', function webDB() {
       app.listen(config.web.port, function webStarted() {

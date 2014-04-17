@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Location Grabber</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body style="padding:20px;">
+    <h3>What's the location?</h3>
+    <br />
+    <div>
+      <input type="text" id="inputArea" >
+      <button type="button" class="btn btn-success" id="btnParse">Get Location</button>
+    </div>
+    <br/>
+    <div>
+      <h5>JSON<span id="lenJSON"></span></h5>
+      <textarea class="form-control" id="outputJSONArea" rows="10"></textarea>
+    </div>
+  </body>
+</html>
+<script type="text/javascript">
+  var geocoder = new google.maps.Geocoder;
+  $('#btnParse').click(function() {    
+    var loc = $('#inputArea').val();
+    
+    geocoder.geocode( { 'address': loc }, function(results, status) {
+      if (status ==google.maps.GeocoderStatus.OK) {
+        var cmd = 'Insert into locations(location,lat,lng)\n';
+        cmd += 'VALUES(\'' + loc.trim() + '\',';
+        cmd += '\'' + results[0].geometry.location.lat() + '\',';
+        cmd += '\'' + results[0].geometry.location.lng() + '\');';
+        $('#outputJSONArea').val(cmd);
+      } else {
+        alert("Google Maps error: " + status);
+      }
+    });
+  });
+</script>

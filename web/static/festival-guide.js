@@ -1,4 +1,4 @@
-var festivalJSON, artistJSON, appearanceJSON;
+var festivalJSON, artistJSON, appearanceJSON, locationJSON;
 $(document).ready(function() {
   $.ajax({
     url: './artists.json',
@@ -24,6 +24,14 @@ $(document).ready(function() {
       finishLoading();
     }               
   });
+  $.ajax({
+    url: './locations.json',
+    cache: true,
+    success: function(data) {
+      locationJSON = data;
+      finishLoading();
+    }               
+  });
   registerHelpers();
 
 });
@@ -31,7 +39,8 @@ $(document).ready(function() {
 var finishLoading = function() {
   if (typeof artistJSON !== 'undefined' &&
     typeof festivalJSON !== 'undefined' &&
-    typeof appearanceJSON !== 'undefined') {
+    typeof appearanceJSON !== 'undefined' &&
+    typeof locationJSON !== 'undefined') {
     wireupTabs();
     loadArtistTab();
     loadFestivalTab();
@@ -53,6 +62,9 @@ var registerHelpers = function() {
   });
   Handlebars.registerHelper('festivalWithWeek', function(obj) {
     return obj.festival + (obj.week !== null ? ' (Week ' + obj.week + ')' : '');
+  });
+  Handlebars.registerHelper('location', function(obj) {
+    return obj.location.location;
   });
 
   Handlebars.registerPartial('appearance', $('#appearance-partial').html());
@@ -136,7 +148,7 @@ var loadArtistTab = function() {
             festivalId: f.festivalId,
             festival: f.festival,
             week: f.week,
-            location: f.location,
+            location: locationJSON[f.locationId],
             startDates: [f.startDate],
             endDates: [f.endDate]
           });
@@ -191,13 +203,7 @@ var loadArtistTab = function() {
 };
 
 var pinFestival = function(festival) {
-  geocoder.geocode( { 'address': festival.location }, function(results, status) {
-    if (status ==google.maps.GeocoderStatus.OK) {
-      dropMarker(results[0].geometry.location, festival);
-    } else {
-      alert("Google Maps error: " + status);
-    }
-  })
+  dropMarker(featival.location, festival);
 };
 
 var clearMarkers = function() {
@@ -235,7 +241,7 @@ var infoWindowContent = function(festival) {
   });
 
   return festival.festival + '<br>' + 
-    festival.location + '<br>' + 
+    festival.location.location + '<br>' + 
     dateString;
 };
 
@@ -243,13 +249,13 @@ var plotFestivals = function(festivals) {
   var waypts = [];
   for (var i = 1; i < festivals.length - 1; i++) {
     waypts.push({
-      location: festivals[i].location,
+      location: festivals[i].location.location,
       stopover: true
     });
   }
   var request = {
-    origin: festivals[0].location,
-    destination: festivals[festivals.length - 1].location,
+    origin: festivals[0].location.location,
+    destination: festivals[festivals.length - 1].location.location,
     waypoints: waypts,
     travelMode: google.maps.TravelMode.DRIVING
   };
@@ -299,6 +305,7 @@ var wireupFestivalTab = function() {
 var fetchFestivalInfo = function (festivalId) {
   var o = {};
   o.festival = festivalJSON[festivalId];
+  o.festival.location = locationJSON[o.festival.locationId];
   o.artists = [];
   $.each(appearanceJSON.byFestival[festivalId], function(i ,v) {
     if (i%3 === 0) {
@@ -312,7 +319,6 @@ var fetchFestivalInfo = function (festivalId) {
       o.artists.push(a);
     }
   });
-  console.log(o);
   var info = Handlebars.compile($('#festivalInfo-template').html());
   $('#festivalInfo').html(info(o));
   wireupArtistPopover();
