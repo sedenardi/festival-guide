@@ -2,51 +2,16 @@ body {
   padding: 10px;
 }
 
-#artistInput {
-  width: 500px;
+.tab-content {
+  margin-top: 50px;
 }
 
 #map-canvas {
   width: 100%;
 }
 
-#vennBody {
-  width: 100%; 
-  height: 100%;
-  display: table;
-}
-
-#festivalCheckboxes {
-  width: 200px; 
-  float: left; 
-  margin-left: 20px;
-}
-
 #venn_d {
-  margin-left: 250px;
-}
-
-#festivalBody {
-  width: 100%; 
-  height: 100%;
-  display: table;
-}
-
-#festivalNav {
-  width: 200px; 
-  float: left; 
-  margin-left: 20px;
-}
-
-#festivalInfo {
-  margin-left: 240px;
-}
-
-.nav-festivals li {
-  height: 20px;
-}
-.nav-festivals li a{
-  padding: 0 5px 0 5px;
+  margin-top: 20px;
 }
 
 .artist {
@@ -66,6 +31,11 @@ body {
 
 .popoverList {
   margin-left: -20px;
+}
+
+.modalClose {
+  cursor: pointer;
+  font-size: large;
 }
 
 /*.typeahead,

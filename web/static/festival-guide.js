@@ -33,7 +33,9 @@ $(document).ready(function() {
     }               
   });
   registerHelpers();
-
+  $('.navbar-collapse ul li a').click(function(){
+    $('.navbar-toggle:visible').click();
+  });
 });
 
 var finishLoading = function() {
@@ -47,7 +49,11 @@ var finishLoading = function() {
     loadVennTab();
     var url = document.location.toString();
     if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').click();
+      var feature = url.split('#')[1];
+      $('.navbar-nav a[href=#' + feature + ']').tab('show');
+      //$('.navbar-nav a[href=#' + feature + ']').click();
+      /*$('.featureTab').removeClass('active');
+      $('.featureTab[data-feature="' + feature + '"]').addClass('active');*/
     }
   }
 };
@@ -63,6 +69,11 @@ var registerHelpers = function() {
   Handlebars.registerHelper('festivalWithWeek', function(obj) {
     return obj.festival + (obj.week !== null ? ' (Week ' + obj.week + ')' : '');
   });
+  Handlebars.registerHelper('festivalWithDates', function(obj) {
+    return obj.festival + ' ' + 
+      moment(obj.startDate).format('M/D') + '-' + 
+      moment(obj.endDate).format('M/D');
+  });
   Handlebars.registerHelper('location', function(obj) {
     return obj.location.location;
   });
@@ -72,7 +83,7 @@ var registerHelpers = function() {
 };
 
 var wireupTabs  = function() {
-  $('#homeTabs a').click(function (e) {
+  $('.navbar-nav a').click(function (e) {
     e.preventDefault();
     $(this).tab('show');
     var parent = $(this).parent('li');
@@ -163,17 +174,20 @@ var loadArtistTab = function() {
         });
       }
     }
+    $('#artistInput').blur();
   });
 
   var height = $(window).height() - 10 - 43 - 39 - 34 - 41 - 10;
   var width = $(window).width() - 10 - 10;
   $('#map-canvas').css('height',height);
+  $('#artistInput').css('width',width);
+  var zoom = $(window).width() < 640 ? 3 : 4;
 
   geocoder.geocode( { 'address': 'United States of America'}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       mapCenter = results[0].geometry.location;
       var myOptions = {
-        zoom: 4,
+        zoom: zoom,
         maxZoom: 10,
         minZoom: 3,
         center: results[0].geometry.location,
@@ -279,26 +293,27 @@ var dropDirectionMarkers = function(route, festivals) {
   dropMarker(route[route.length - 1].end_location, festivals[route.length], markerImg);
 };
 
+var currentFestival;
 var loadFestivalTab = function() {
   var o = {};
   o.festivals = [];
   for (var key in festivalJSON) {
     o.festivals.push(festivalJSON[key]);
   }
+  o.festivals.sort(function(a,b){
+    return moment(a.startDate).valueOf() - moment(b.startDate).valueOf();
+  });
   var nav = Handlebars.compile($('#festivalNav-template').html());
   $('#festivalNav').html(nav(o));
-  wireupFestivalTab();
-};
-
-var wireupFestivalTab = function() {
-  $('.nav-festivals li a').click(function(e) {
-    var parent = $(this).parent('li');
-    if (!$(parent).hasClass('active')) {
-      $('.nav-festivals li').removeClass('active');
-      $(parent).addClass('active');
-      fetchFestivalInfo($(this).attr('data-festival-id'));
+  var width = $(window).width() - 10 - 10;
+  $('#festivalSelect').css('width',width);
+  $('#festivalSelect').select2({
+    placeholder: 'Select a festival'
+  }).on("select2-selecting", function(e) { 
+    if (e.val !== currentFestival) {
+      currentFestival = e.val;
+      fetchFestivalInfo(currentFestival);
     }
-    e.preventDefault();
   });
 };
 
@@ -335,9 +350,10 @@ var getSortedArtists = function (festivalId) {
 };
 
 var wireupArtistPopover = function() {
+  var isTouchDevice = ("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch;
   $('.artistName').popover({
     placement: 'bottom',
-    trigger: 'hover click',
+    trigger: isTouchDevice ? "click" : "hover",
     title: 'Artist Info',
     html: true,
     content: function() {
@@ -351,8 +367,14 @@ var wireupArtistPopover = function() {
       return pop(o);
     }
   });
+  /*if (isTouchDevice) {
+    $('.artistName').click(function () {
+      $('.artistName').not(this).popover('hide');
+    });
+  }*/
 };
 
+var vennWidth, vennHeight;
 var loadVennTab = function() {
   var o = {};
   o.festivals = [];
@@ -365,29 +387,27 @@ var loadVennTab = function() {
       o.festivals.push(festivalJSON[key]);
     }
   }
-  var nav = Handlebars.compile($('#festivalCheckboxes-template').html());
-  $('#festivalCheckboxes').html(nav(o));
-  wireupVennTab();
-};
-
-var wireupVennTab = function() {
-  $('.checkbox').change(function() {  
-    var l = $('.festivalCheckbox:checked').length;
-    if (l === 2 || l === 3) {
-      var festivalIds = $.map($('.festivalCheckbox:checked'), function(v, i){
-        return v.value;
-      });
+  o.festivals.sort(function(a,b){
+    return a.festival.toUpperCase().localeCompare(
+      b.festival.toUpperCase());
+  });
+  var nav = Handlebars.compile($('#vennFestivals-template').html());
+  $('#vennNav').html(nav(o));  
+  var width = $(window).width() - 10 - 10;
+  $('#vennSelect').css('width',width);
+  $('#vennSelect').select2({
+    placeholder: 'Select 2 or 3 festivals',
+    maximumSelectionSize: 3
+  }).on("change", function(e) {
+    if (e.val.length === 2 || e.val.length === 3) {
       $('#venn_d').html('');
-      makeVennDiagram(festivalIds);
+      makeVennDiagram(e.val);
     } else {
       $('#venn_d').html('');
-    }
-    if (l === 3) {
-      $('.festivalCheckbox:not(:checked)').prop('disabled',true);
-    } else {
-      $('.festivalCheckbox').prop('disabled',false);
     }
   });
+  vennWidth = $(window).width() - 10 - 10;
+  vennHeight = $(window).height() - 10 - 50 - 39 - 34 - 20 - 10;
 };
 
 var vennFestivals;
@@ -402,9 +422,7 @@ var makeVennDiagram = function(festivalIds) {
   });
   var overlaps = getOverlaps(festivalIds);
   var data = venn.venn(vennFestivals, overlaps);
-  var height = $(window).height() - 10 - 43 - 39-  10 - 5;
-  var width = $(window).width() - 10 - 20 - 200 - 200 - 20 - 10 - 50;
-  venn.drawD3Diagram(d3.select('#venn_d'), data, width, height, null, null);
+  venn.drawD3Diagram(d3.select('#venn_d'), data, vennWidth, vennHeight, null, null);
   wireupCircles();
 };
 
@@ -505,12 +523,15 @@ var createPopover = function(x, y, set) {
     }
   });
   var artists = getCommonArtists(festivalIds);
-  $('#vennModal .modal-header').html(modalTitle + ' (' + artists.length + ' artists)');
+  $('#vennModal .modalTitle').html(modalTitle + ' (' + artists.length + ' artists)');
   var modalBody = Handlebars.compile($('#artistList-template').html());
   $('#vennModal .modal-body').html(modalBody({
     artists: artists
   }));
   $('#vennModal').modal('show');
+  $('.modalClose').click(function() {
+    $('#vennModal').modal('hide');
+  });
 };
 
 var getCommonArtists = function(festivalIds) {

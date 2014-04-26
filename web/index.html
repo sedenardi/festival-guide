@@ -7,6 +7,7 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
     <script src="http://cdn.jsdelivr.net/typeahead.js/0.10.1/typeahead.bundle.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.6/select2.min.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
     <script src="http://d3js.org/d3.v2.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
@@ -14,16 +15,34 @@
     <script src="./static/festival-guide.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.6/select2.min.css" rel="stylesheet">
     <link href="./static/festival-guide.css" rel="stylesheet">
   </head>
   <body>
-    <ul id="homeTabs" class="nav nav-tabs">
-      <li class="home active"><a data-toggle="tab" href="#home">Home</a></li>
-      <li class="featureTab" data-feature="artists"><a data-toggle="tab" href="#artists">Artists</a></li>
-      <li class="featureTab" data-feature="festivals"><a data-toggle="tab" href="#festivals">Festivals</a></li>
-      <li class="featureTab" data-feature="venn"><a data-toggle="tab" href="#venn">Venn Diagram</a></li>
-      <li class="featureTab" data-feature="dupes" style="display:none;"><a data-toggle="tab" href="#dupes">DeDupe</a></li>
-    </ul>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobile-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">
+            Festival Guide
+          </span>
+        </div>
+        <div class="collapse navbar-collapse" id="mobile-collapse">
+          <ul class="nav navbar-nav">
+            <li class="home active"><a data-toggle="tab" href="#home">Home</a></li>
+            <li class="featureTab" data-feature="artists"><a data-toggle="tab" href="#artists">Artists</a></li>
+            <li class="featureTab" data-feature="festivals"><a data-toggle="tab" href="#festivals">Festivals</a></li>
+            <li class="featureTab" data-feature="venn"><a data-toggle="tab" href="#venn">Venn Diagram</a></li>
+            <li class="featureTab" data-feature="dupes" style="display:none;"><a data-toggle="tab" href="#dupes">DeDupe</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <div class="tab-content">
       <div class="tab-pane fade in active" id="home">
@@ -38,22 +57,23 @@
         <div id="map-canvas"></div>
       </div>
       <div class="tab-pane fade" id="festivals">
+        <h4>Choose a festival</h4>
         <div id="festivalBody">
-          <div id="festivalNav">
-          </div>
+          <div id="festivalNav"></div>
           <div id="festivalInfo"></div>
         </div>
       </div>
       <div class="tab-pane fade" id="venn">
         <h4>Choose up to 3 festivals to compare, click overlapping areas to see common artists</h3>
         <div id="vennBody">
-          <div id="festivalCheckboxes"></div>
+          <div id="vennNav"></div>
           <div id='venn_d'></div>
           <div id='vennModal' class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-sm">
               <div class="modal-content">
                 <div class="modal-header">
-                  Artists In Commom
+                  <span class="modalTitle">Artists In Commom</span>
+                  <span class="modalClose pull-right">&#10006;</span>
                 </div>
                 <div class="modal-body">
                 </div>
@@ -66,12 +86,12 @@
     </div>
 
     <script id="festivalNav-template" type="text/x-handlebars-template">
-      <h4>Choose a festival</h3>
-      <ul class="nav nav-pills nav-stacked nav-festivals">
+      <select id="festivalSelect">
+        <option></option>
       {{#each festivals}}
-        <li><a href="#" data-festival-id="{{festivalId}}">{{festivalWithWeek this}}</a></li>
+        <option value="{{festivalId}}">{{festivalWithDates this}}</option>
       {{/each}}
-      </ul>
+      </select>
     </script>
 
     <script id="appearance-partial" type="text/x-handlebars-template">
@@ -86,7 +106,7 @@
       Festivals:
       <ul class="popoverList">
       {{#each info}}
-        <li>{{festivalWithWeek this}}</li>
+        <li>{{festivalWithDates this}}</li>
       {{/each}}
       <ul>
     </script>
@@ -106,12 +126,13 @@
       </table>
     </script>
 
-    <script id="festivalCheckboxes-template" type="text/x-handlebars-template">
+    <script id="vennFestivals-template" type="text/x-handlebars-template">
+      <select id="vennSelect" multiple>
+        <option></option>
       {{#each festivals}}
-        <div class="checkbox">
-          <label><input class="festivalCheckbox" type="checkbox" value="{{festivalId}}">{{festival}}</label>
-        </div>
+        <option value="{{festivalId}}">{{festival}}</option>
       {{/each}}
+      </select>
     </script>
 
     <script id="artistList-template" type="text/x-handlebars-template">
