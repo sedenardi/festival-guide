@@ -457,8 +457,9 @@ var mergeJoin = function(o1, o2) {
   while( i < o1.artists.length && j < o2.artists.length ){
     if( o1.artists[i] < o2.artists[j] ) i++;
     else if( o1.artists[i] > o2.artists[j] ) j++;
-    else { o.push(o1.artists[i]); i++; j++; }
+    else { o.artists.push(o1.artists[i]); i++; j++; }
   }
+  return o;
 }
 
 var wireupCircles = function() {
