@@ -210,11 +210,9 @@ where app.festivalId = ? \
   this.getAllAppearances = function() {
     return {
       sql: 'select ap.* from appearances ap \
-        inner join artists ar \
-          on ar.artistId = ap.artistId \
         inner join festivals f \
           on f.festivalId = ap.festivalId \
-      order by ar.artist asc, f.startDate asc;',
+      order by ap.artistId asc, f.startDate asc;',
       inserts: []
     };
   };

@@ -307,14 +307,15 @@ var fetchFestivalInfo = function (festivalId) {
   o.festival = festivalJSON[festivalId];
   o.festival.location = locationJSON[o.festival.locationId];
   o.artists = [];
-  $.each(appearanceJSON.byFestival[festivalId], function(i ,v) {
+  var sortedArtistIds = getSortedArtists(festivalId);
+  $.each(sortedArtistIds, function(i ,v) {
     if (i%3 === 0) {
       var a = [artistJSON[v]];
-      if (appearanceJSON.byFestival[festivalId].length > (i+1)) {
-        a.push(artistJSON[appearanceJSON.byFestival[festivalId][i+1]]);
+      if (sortedArtistIds.length > (i+1)) {
+        a.push(artistJSON[sortedArtistIds[i+1]]);
       }
-      if (appearanceJSON.byFestival[festivalId].length > (i+2)) {
-        a.push(artistJSON[appearanceJSON.byFestival[festivalId][i+2]]);
+      if (sortedArtistIds.length > (i+2)) {
+        a.push(artistJSON[sortedArtistIds[i+2]]);
       }
       o.artists.push(a);
     }
@@ -322,6 +323,15 @@ var fetchFestivalInfo = function (festivalId) {
   var info = Handlebars.compile($('#festivalInfo-template').html());
   $('#festivalInfo').html(info(o));
   wireupArtistPopover();
+};
+
+var getSortedArtists = function (festivalId) {
+  var artistIds = appearanceJSON.byFestival[festivalId];
+  artistIds.sort(function(a,b) {
+    return artistJSON[a].artist.toUpperCase().localeCompare(
+      artistJSON[b].artist.toUpperCase());
+  });
+  return artistIds;
 };
 
 var wireupArtistPopover = function() {
@@ -407,7 +417,7 @@ var getOverlaps = function(festivalIds) {
     };
     var d_length = data.length;
     for (var j = 0; j < d_length; j++) {
-      data.push(loopJoin(data[j], fest));
+      data.push(mergeJoin(data[j], fest));
     }
     data.push(fest);
   }
@@ -422,23 +432,34 @@ var getOverlaps = function(festivalIds) {
   return overlaps;
 };
 
-
 var loopJoin = function(o1, o2) {
   var o = {
     festivals: o1.festivals.concat(o2.festivals),
     artists: []
   };
   for (var i = 0; i < o1.artists.length; i++) {
-    var exists = false;
     for (var j = 0; j < o2.artists.length; j++) {
-      exists = exists || (o1.artists[i] === o2.artists[j]);
-    }
-    if (exists) {
-      o.artists.push(o1.artists[i]);
+      if (o1.artists[i] === o2.artists[j]) {
+        o.artists.push(o1.artists[i]);
+        break;
+      }
     }
   }
   return o;
 };
+
+var mergeJoin = function(o1, o2) {
+  var o = {
+    festivals: o1.festivals.concat(o2.festivals),
+    artists: []
+  };
+  var i = 0, j = 0;
+  while( i < o1.artists.length && j < o2.artists.length ){
+    if( o1.artists[i] < o2.artists[j] ) i++;
+    else if( o1.artists[i] > o2.artists[j] ) j++;
+    else { o.push(o1.artists[i]); i++; j++; }
+  }
+}
 
 var wireupCircles = function() {
   $('circle').unbind('click');
