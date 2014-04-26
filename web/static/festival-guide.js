@@ -379,13 +379,7 @@ var loadVennTab = function() {
   var o = {};
   o.festivals = [];
   for (var key in festivalJSON) {
-    var exists = false;
-    $.each(o.festivals, function(i,v) {
-      exists = exists || festivalJSON[key].festival === v.festival;
-    });
-    if (!exists) {
-      o.festivals.push(festivalJSON[key]);
-    }
+    o.festivals.push(festivalJSON[key]);
   }
   o.festivals.sort(function(a,b){
     return a.festival.toUpperCase().localeCompare(
@@ -448,22 +442,6 @@ var getOverlaps = function(festivalIds) {
     }
   }
   return overlaps;
-};
-
-var loopJoin = function(o1, o2) {
-  var o = {
-    festivals: o1.festivals.concat(o2.festivals),
-    artists: []
-  };
-  for (var i = 0; i < o1.artists.length; i++) {
-    for (var j = 0; j < o2.artists.length; j++) {
-      if (o1.artists[i] === o2.artists[j]) {
-        o.artists.push(o1.artists[i]);
-        break;
-      }
-    }
-  }
-  return o;
 };
 
 var mergeJoin = function(o1, o2) {
@@ -541,7 +519,7 @@ var getCommonArtists = function(festivalIds) {
     artists: appearanceJSON.byFestival[festivalIds[0]]
   };
   for (var i = 1; i < festivalIds.length; i++) {
-    data = loopJoin(data, {
+    data = mergeJoin(data, {
       festivals: [festivalIds[i]],
       artists: appearanceJSON.byFestival[festivalIds[i]]
     });
