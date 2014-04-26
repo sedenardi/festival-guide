@@ -172,5 +172,11 @@
     "location": "Houston, TX",
     "lat": 29.7601927,
     "lng": -95.36938959999998
+  },
+  "30": {
+    "locationId": 30,
+    "location": "Austin, TX",
+    "lat": 30.267153,
+    "lng": -97.74306079999997
   }
 }
