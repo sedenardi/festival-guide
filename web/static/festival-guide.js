@@ -436,7 +436,6 @@ var dropLocationMarker = function(map, location) {
       infowindow.open(map, marker);
     }
   })(marker));
-  mapMarkers.push(marker);
 };
 
 var festivalMapInfoWindowContent = function(location) {
