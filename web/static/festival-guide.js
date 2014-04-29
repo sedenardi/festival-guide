@@ -442,9 +442,10 @@ var festivalMapInfoWindowContent = function(location) {
   var popup = '<div class=festivalMapLocation>' + location.location + '</div>';
   popup += '<ul class="festivalMapList">';
   var formatted = $.map(location.festivals, function(v,i) {
-    return '<li>' + v.festival + ' ' + 
+    return '<li><span class="festivalMapFest" data-festivalId="' + 
+      v.festivalId + '">' + v.festival + ' ' + 
       moment(v.startDate).format('M/D') + '-' + 
-      moment(v.endDate).format('M/D') + '</li>';
+      moment(v.endDate).format('M/D') + '</span></li>';
   });
   return popup + formatted.join('') + '</ul>';
 };

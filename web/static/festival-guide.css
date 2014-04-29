@@ -24,6 +24,10 @@ body {
   padding-left: 20px;
 }
 
+.festivalMapFest {
+  text-decoration: underline;
+}
+
 #venn_d {
   margin-top: 20px;
 }
