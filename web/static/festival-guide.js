@@ -38,6 +38,7 @@ $(document).ready(function() {
   });
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var feature = $(e.target).attr('href').split('#')[1];
+    window.location.hash = '#' + feature;
     refreshMaps(feature);
   });
 });
@@ -47,7 +48,6 @@ var finishLoading = function() {
     typeof festivalJSON !== 'undefined' &&
     typeof appearanceJSON !== 'undefined' &&
     typeof locationJSON !== 'undefined') {
-    wireupTabs();
     loadArtistTab();
     loadFestivalListTab();
     loadFestivalMapTab();
@@ -56,7 +56,6 @@ var finishLoading = function() {
     if (url.match('#')) {
       var feature = url.split('#')[1];
       $('.navbar-nav a[href=#' + feature + ']').tab('show');
-      //refreshMaps(feature);
     }
   }
 };
@@ -83,21 +82,6 @@ var registerHelpers = function() {
 
   Handlebars.registerPartial('appearance', $('#appearance-partial').html());
   Handlebars.registerPartial('artist', $('#artist-partial').html());
-};
-
-var wireupTabs  = function() {
-  $('.navbar-nav a').click(function (e) {
-    e.preventDefault();
-    $(this).tab('show');
-    var parent = $(this).parent('li');
-    if ($(parent).hasClass('featureTab')) {
-      var feature = $(parent).attr('data-feature');
-      //refreshMaps(feature);
-      window.location.hash = '#' + feature;
-    } else {
-      window.location.hash = '';
-    }
-  });
 };
 
 var refreshMaps = function(feature) {
@@ -324,7 +308,7 @@ var loadFestivalListTab = function() {
   $('#festivalSelect').css('width',width);
   $('#festivalSelect').select2({
     placeholder: 'Select a festival'
-  }).on("select2-selecting", function(e) { 
+  }).on('change', function(e) { 
     if (e.val !== currentFestival) {
       currentFestival = e.val;
       fetchFestivalInfo(currentFestival);
@@ -365,10 +349,10 @@ var getSortedArtists = function (festivalId) {
 };
 
 var wireupArtistPopover = function() {
-  var isTouchDevice = ("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch;
+  var isTouchDevice = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
   $('.artistName').popover({
     placement: 'bottom',
-    trigger: isTouchDevice ? "click" : "hover",
+    trigger: isTouchDevice ? 'click' : 'hover',
     title: 'Artist Info',
     html: true,
     content: function() {
@@ -386,7 +370,7 @@ var wireupArtistPopover = function() {
 
 var festivalMap, festivalMapCenter;
 var loadFestivalMapTab = function() {
-  var height = $(window).height() - 50 - 20 - 10;
+  var height = $(window).height() - 50 - 39 - 10;
   $('#festival-map-canvas').css('height',height);
   geocoder.geocode( { 'address': 'United States of America'}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
@@ -434,6 +418,11 @@ var dropLocationMarker = function(map, location) {
     return function() {
       infowindow.setContent(festivalMapInfoWindowContent(location));
       infowindow.open(map, marker);
+      infowindow.close();
+      setTimeout(function (){
+        infowindow.open(map, marker);
+        wireupFestivalMapPopover();
+      }, 1);
     }
   })(marker));
 };
@@ -442,12 +431,25 @@ var festivalMapInfoWindowContent = function(location) {
   var popup = '<div class=festivalMapLocation>' + location.location + '</div>';
   popup += '<ul class="festivalMapList">';
   var formatted = $.map(location.festivals, function(v,i) {
-    return '<li><span class="festivalMapFest" data-festivalId="' + 
+    return '<li><span class="festivalMapPopoverFest" data-festivalId="' + 
       v.festivalId + '">' + v.festival + ' ' + 
       moment(v.startDate).format('M/D') + '-' + 
       moment(v.endDate).format('M/D') + '</span></li>';
   });
   return popup + formatted.join('') + '</ul>';
+};
+
+var wireupFestivalMapPopover = function() {
+  $('.festivalMapPopoverFest').unbind('click');
+  $('.festivalMapPopoverFest').bind('click', function() {
+    var festivalId = $(this).attr('data-festivalId');
+    loadFestivalListTabWithFestival(festivalId);
+  });
+};
+
+var loadFestivalListTabWithFestival = function(festivalId) {
+  $('.navbar-nav a[href=#festival-list]').tab('show');
+  $('#festivalSelect').select2('val', festivalId, true);
 };
 
 var vennWidth, vennHeight;

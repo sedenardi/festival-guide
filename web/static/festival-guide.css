@@ -11,7 +11,6 @@ body {
 }
 
 #festival-map-canvas {
-  margin-top: 51px;
   width: 100%;
 }
 
@@ -24,8 +23,9 @@ body {
   padding-left: 20px;
 }
 
-.festivalMapFest {
+.festivalMapPopoverFest {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 #venn_d {
