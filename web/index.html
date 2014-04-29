@@ -36,7 +36,8 @@
           <ul class="nav navbar-nav">
             <li class="home active"><a data-toggle="tab" href="#home">Home</a></li>
             <li class="featureTab" data-feature="artists"><a data-toggle="tab" href="#artists">Artists</a></li>
-            <li class="featureTab" data-feature="festivals"><a data-toggle="tab" href="#festivals">Festivals</a></li>
+            <li class="featureTab" data-feature="festival-list"><a data-toggle="tab" href="#festival-list">Festival List</a></li>
+            <li class="featureTab" data-feature="festival-map"><a data-toggle="tab" href="#festival-map">Festival Map</a></li>
             <li class="featureTab" data-feature="venn"><a data-toggle="tab" href="#venn">Venn Diagram</a></li>
             <li class="featureTab" data-feature="dupes" style="display:none;"><a data-toggle="tab" href="#dupes">DeDupe</a></li>
           </ul>
@@ -54,13 +55,18 @@
         <h4>Look up artist's festival information</h4>
         <input type="text" class="form-control" id="artistInput" placeholder="Enter artist">
         <hr>
-        <div id="map-canvas"></div>
+        <div id="artist-map-canvas"></div>
       </div>
-      <div class="tab-pane fade" id="festivals">
+      <div class="tab-pane fade" id="festival-list">
         <h4>Choose a festival</h4>
-        <div id="festivalBody">
-          <div id="festivalNav"></div>
-          <div id="festivalInfo"></div>
+        <div id="festivalListBody">
+          <div id="festivalListNav"></div>
+          <div id="festivalListInfo"></div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="festival-map">
+        <div id="festivalMapBody">
+          <div id="festival-map-canvas"></div>
         </div>
       </div>
       <div class="tab-pane fade" id="venn">

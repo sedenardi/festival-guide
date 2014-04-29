@@ -36,6 +36,10 @@ $(document).ready(function() {
   $('.navbar-collapse ul li a').click(function(){
     $('.navbar-toggle:visible').click();
   });
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var feature = $(e.target).attr('href').split('#')[1];
+    refreshMaps(feature);
+  });
 });
 
 var finishLoading = function() {
@@ -45,15 +49,14 @@ var finishLoading = function() {
     typeof locationJSON !== 'undefined') {
     wireupTabs();
     loadArtistTab();
-    loadFestivalTab();
+    loadFestivalListTab();
+    loadFestivalMapTab();
     loadVennTab();
     var url = document.location.toString();
     if (url.match('#')) {
       var feature = url.split('#')[1];
       $('.navbar-nav a[href=#' + feature + ']').tab('show');
-      //$('.navbar-nav a[href=#' + feature + ']').click();
-      /*$('.featureTab').removeClass('active');
-      $('.featureTab[data-feature="' + feature + '"]').addClass('active');*/
+      //refreshMaps(feature);
     }
   }
 };
@@ -89,12 +92,7 @@ var wireupTabs  = function() {
     var parent = $(this).parent('li');
     if ($(parent).hasClass('featureTab')) {
       var feature = $(parent).attr('data-feature');
-      if (feature === 'artists') {
-        setTimeout(function() {
-          google.maps.event.trigger(map, "resize");
-          map.setCenter(mapCenter);
-        }, 200);
-      }
+      //refreshMaps(feature);
       window.location.hash = '#' + feature;
     } else {
       window.location.hash = '';
@@ -102,15 +100,29 @@ var wireupTabs  = function() {
   });
 };
 
+var refreshMaps = function(feature) {
+  if (feature === 'artists') {
+    setTimeout(function() {
+      google.maps.event.trigger(artistMap, "resize");
+      artistMap.setCenter(artistMapCenter);
+    }, 300);
+  } else if (feature === 'festival-map') {
+    setTimeout(function() {
+      google.maps.event.trigger(festivalMap, "resize");
+      festivalMap.setCenter(festivalMapCenter);
+    }, 300);
+  }
+}
+
 var geocoder = new google.maps.Geocoder,
   infowindow = new google.maps.InfoWindow(),
-  map,
+  artistMap,
   mapMarkers = [],
   directionsDisplay,
   directionsService,
   artistReq = null, 
   currentArtist = 0,
-  mapCenter;
+  artistMapCenter;
 
 var loadArtistTab = function() {
   var artistAuto = [];
@@ -179,45 +191,48 @@ var loadArtistTab = function() {
 
   var height = $(window).height() - 10 - 43 - 39 - 34 - 41 - 10;
   var width = $(window).width() - 10 - 10;
-  $('#map-canvas').css('height',height);
+  $('#artist-map-canvas').css('height',height);
   $('#artistInput').css('width',width);
-  var zoom = $(window).width() < 640 ? 3 : 4;
 
   geocoder.geocode( { 'address': 'United States of America'}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
-      mapCenter = results[0].geometry.location;
-      var myOptions = {
-        zoom: zoom,
-        maxZoom: 10,
-        minZoom: 3,
-        center: results[0].geometry.location,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        disableDefaultUI: false,
-        scrollwheel: true,
-        draggable: true,
-        navigationControl: true,
-        mapTypeControl: false,
-        scaleControl: true,
-        disableDoubleClickZoom: false
-      };
-
-      map = new google.maps.Map($("#map-canvas")[0], myOptions);
-      //mapCenter = map.getCenter();
-      directionsDisplay = new google.maps.DirectionsRenderer();
-      directionsDisplay.setOptions({
-        draggable: false,
-        suppressInfoWindows: false,
-        suppressMarkers: true
-      });
-      directionsService = new google.maps.DirectionsService();
+      artistMapCenter = results[0].geometry.location;
+      var myOptions = getMapOptions(results[0].geometry.location);
+      artistMap = new google.maps.Map($('#artist-map-canvas')[0], myOptions);
     } else {
       alert("Google Maps error: " + status);
     }
   });
+
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay.setOptions({
+    draggable: false,
+    suppressInfoWindows: false,
+    suppressMarkers: true
+  });
+  directionsService = new google.maps.DirectionsService();
+};
+
+var getMapOptions = function(center) {
+  var zoom = $(window).width() < 640 ? 3 : 4;
+  return {
+    zoom: zoom,
+    maxZoom: 10,
+    minZoom: 3,
+    center: center,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    disableDefaultUI: false,
+    scrollwheel: true,
+    draggable: true,
+    navigationControl: true,
+    mapTypeControl: false,
+    scaleControl: true,
+    disableDoubleClickZoom: false
+  };
 };
 
 var pinFestival = function(festival) {
-  dropMarker(festival.location, festival);
+  dropMarker(artistMap, festival.location, festival);
 };
 
 var clearMarkers = function() {
@@ -228,7 +243,7 @@ var clearMarkers = function() {
   directionsDisplay.setMap(null);
 };
 
-var dropMarker = function(location, festival, marker) {
+var dropMarker = function(map, location, festival, marker) {
   var marker = new google.maps.Marker({
     position: location,
     map: map,
@@ -236,14 +251,14 @@ var dropMarker = function(location, festival, marker) {
   });
   google.maps.event.addListener(marker, 'click', (function(marker) {
     return function() {
-      infowindow.setContent(infoWindowContent(festival));
+      infowindow.setContent(artistMapInfoWindowContent(festival));
       infowindow.open(map, marker);
     }
   })(marker));
   mapMarkers.push(marker);
 };
 
-var infoWindowContent = function(festival) {
+var artistMapInfoWindowContent = function(festival) {
   var dateString = '';
 
   $.each(festival.startDates, function(i, v) {
@@ -276,7 +291,7 @@ var plotFestivals = function(festivals) {
   directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
-      directionsDisplay.setMap(map);
+      directionsDisplay.setMap(artistMap);
       dropDirectionMarkers(response.routes[0].legs, festivals);
     } else {
       alert("Google Maps error: " + status);
@@ -287,14 +302,14 @@ var plotFestivals = function(festivals) {
 var dropDirectionMarkers = function(route, festivals) {
   for (var i = 0; i < route.length; i++) {
     var markerImg = './static/images/marker' + (i + 1) + '.png';
-    dropMarker(route[i].start_location, festivals[i], markerImg);
+    dropMarker(artistMap, route[i].start_location, festivals[i], markerImg);
   }
   var markerImg = './static/images/marker' + (route.length + 1) + '.png';
-  dropMarker(route[route.length - 1].end_location, festivals[route.length], markerImg);
+  dropMarker(artistMap, route[route.length - 1].end_location, festivals[route.length], markerImg);
 };
 
 var currentFestival;
-var loadFestivalTab = function() {
+var loadFestivalListTab = function() {
   var o = {};
   o.festivals = [];
   for (var key in festivalJSON) {
@@ -304,7 +319,7 @@ var loadFestivalTab = function() {
     return moment(a.startDate).valueOf() - moment(b.startDate).valueOf();
   });
   var nav = Handlebars.compile($('#festivalNav-template').html());
-  $('#festivalNav').html(nav(o));
+  $('#festivalListNav').html(nav(o));
   var width = $(window).width() - 10 - 10;
   $('#festivalSelect').css('width',width);
   $('#festivalSelect').select2({
@@ -336,7 +351,7 @@ var fetchFestivalInfo = function (festivalId) {
     }
   });
   var info = Handlebars.compile($('#festivalInfo-template').html());
-  $('#festivalInfo').html(info(o));
+  $('#festivalListInfo').html(info(o));
   wireupArtistPopover();
 };
 
@@ -367,11 +382,72 @@ var wireupArtistPopover = function() {
       return pop(o);
     }
   });
-  /*if (isTouchDevice) {
-    $('.artistName').click(function () {
-      $('.artistName').not(this).popover('hide');
+};
+
+var festivalMap, festivalMapCenter;
+var loadFestivalMapTab = function() {
+  var height = $(window).height() - 50 - 20 - 10;
+  $('#festival-map-canvas').css('height',height);
+  geocoder.geocode( { 'address': 'United States of America'}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      festivalMapCenter = results[0].geometry.location;
+      var myOptions = getMapOptions(results[0].geometry.location);
+      festivalMap = new google.maps.Map($('#festival-map-canvas')[0], myOptions);
+      plotAllFestivals();
+    } else {
+      alert("Google Maps error: " + status);
+    }
+  });
+};
+
+var plotAllFestivals = function() {
+  var locations = {};
+  for (var key in locationJSON) {
+    locations[key] = {
+      locationId: locationJSON[key].locationId,
+      location: locationJSON[key].location,
+      lat: locationJSON[key].lat,
+      lng: locationJSON[key].lng,
+      festivals: []
+    };
+  }
+  for (var key in festivalJSON) {
+    locations[festivalJSON[key].locationId].festivals.push({
+      festivalId: festivalJSON[key].festivalId,
+      festival: festivalJSON[key].festival,
+      week: festivalJSON[key].week,
+      startDate: festivalJSON[key].startDate,
+      endDate: festivalJSON[key].endDate
     });
-  }*/
+  }
+  for (var key in locations) {
+    dropLocationMarker(festivalMap, locations[key]);
+  }
+};
+
+var dropLocationMarker = function(map, location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+  google.maps.event.addListener(marker, 'click', (function(marker) {
+    return function() {
+      infowindow.setContent(festivalMapInfoWindowContent(location));
+      infowindow.open(map, marker);
+    }
+  })(marker));
+  mapMarkers.push(marker);
+};
+
+var festivalMapInfoWindowContent = function(location) {
+  var popup = '<div class=festivalMapLocation>' + location.location + '</div>';
+  popup += '<ul class="festivalMapList">';
+  var formatted = $.map(location.festivals, function(v,i) {
+    return '<li>' + v.festival + ' ' + 
+      moment(v.startDate).format('M/D') + '-' + 
+      moment(v.endDate).format('M/D') + '</li>';
+  });
+  return popup + formatted.join('') + '</ul>';
 };
 
 var vennWidth, vennHeight;
