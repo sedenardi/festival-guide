@@ -178,5 +178,17 @@
     "location": "Austin, TX",
     "lat": 30.267153,
     "lng": -97.74306079999997
+  },
+  "31": {
+    "locationId": 31,
+    "location": "Portland, OR",
+    "lat": 45.5234515,
+    "lng": -122.6762071
+  },
+  "32": {
+    "locationId": 32,
+    "location": "Arrington, VA",
+    "lat": 37.6840306,
+    "lng": -78.90113259999998
   }
 }

@@ -1643,10 +1643,6 @@
     "artistId": 1280,
     "artist": "Beats Antique"
   },
-  "1281": {
-    "artistId": 1281,
-    "artist": "Bob Weir and RatDog"
-  },
   "1282": {
     "artistId": 1282,
     "artist": "Chris Robinson Brotherhood"
@@ -8166,5 +8162,133 @@
   "3968": {
     "artistId": 3968,
     "artist": "The Stapletones"
+  },
+  "3969": {
+    "artistId": 3969,
+    "artist": "Shy Girls"
+  },
+  "3970": {
+    "artistId": 3970,
+    "artist": "Landlady"
+  },
+  "3972": {
+    "artistId": 3972,
+    "artist": "The Antlers"
+  },
+  "3973": {
+    "artistId": 3973,
+    "artist": "EMA"
+  },
+  "3975": {
+    "artistId": 3975,
+    "artist": "Bob Weir & Ratdog"
+  },
+  "3978": {
+    "artistId": 3978,
+    "artist": "Phil Lesh & Friends"
+  },
+  "3979": {
+    "artistId": 3979,
+    "artist": "Cabinet"
+  },
+  "3982": {
+    "artistId": 3982,
+    "artist": "Keller Williams' Grateful Grass"
+  },
+  "3984": {
+    "artistId": 3984,
+    "artist": "Widespread Panic with Steve Winwood"
+  },
+  "3985": {
+    "artistId": 3985,
+    "artist": "Wilco"
+  },
+  "3986": {
+    "artistId": 3986,
+    "artist": "Freeman"
+  },
+  "3987": {
+    "artistId": 3987,
+    "artist": "Larry Keel & Sam Bush"
+  },
+  "3988": {
+    "artistId": 3988,
+    "artist": "Bustle in Your Hedgerow"
+  },
+  "3989": {
+    "artistId": 3989,
+    "artist": "Hot Tuna Acoustic"
+  },
+  "3991": {
+    "artistId": 3991,
+    "artist": "The Allman Brothers Band"
+  },
+  "3992": {
+    "artistId": 3992,
+    "artist": "Willie Nelson"
+  },
+  "3993": {
+    "artistId": 3993,
+    "artist": "Grace Potter & the Nocturnals"
+  },
+  "3994": {
+    "artistId": 3994,
+    "artist": "Rockn' to Lockn'"
+  },
+  "3998": {
+    "artistId": 3998,
+    "artist": "Dada Life"
+  },
+  "3999": {
+    "artistId": 3999,
+    "artist": "Nicky Romero"
+  },
+  "4001": {
+    "artistId": 4001,
+    "artist": "W&W"
+  },
+  "4002": {
+    "artistId": 4002,
+    "artist": "What So Not"
+  },
+  "4003": {
+    "artistId": 4003,
+    "artist": "Autobody"
+  },
+  "4004": {
+    "artistId": 4004,
+    "artist": "Bad Bad Not Good"
+  },
+  "4006": {
+    "artistId": 4006,
+    "artist": "Midnight Conspiracy"
+  },
+  "4007": {
+    "artistId": 4007,
+    "artist": "Muzzy"
+  },
+  "4008": {
+    "artistId": 4008,
+    "artist": "The Nth Power"
+  },
+  "4009": {
+    "artistId": 4009,
+    "artist": "Ookay"
+  },
+  "4010": {
+    "artistId": 4010,
+    "artist": "Orchard Lounge"
+  },
+  "4011": {
+    "artistId": 4011,
+    "artist": "Porn and Chicken"
+  },
+  "4012": {
+    "artistId": 4012,
+    "artist": "Thibault"
+  },
+  "4013": {
+    "artistId": 4013,
+    "artist": "Zebo"
   }
 }
