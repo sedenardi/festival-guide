@@ -76,6 +76,13 @@ var registerHelpers = function() {
       moment(obj.startDate).format('M/D') + '-' + 
       moment(obj.endDate).format('M/D');
   });
+  Handlebars.registerHelper('festivalWithLocationAndDates', function(obj) {
+    var parts = obj.location.split(',');
+    var location = parts.length > 1 ? parts[1].trim() : parts[0];
+    return obj.festival + ' - ' + location + ' - ' +
+      moment(obj.startDate).format('M/D') + '-' + 
+      moment(obj.endDate).format('M/D');
+  });
   Handlebars.registerHelper('location', function(obj) {
     return obj.location.location;
   });
@@ -292,12 +299,23 @@ var dropDirectionMarkers = function(route, festivals) {
   dropMarker(artistMap, route[route.length - 1].end_location, festivals[route.length], markerImg);
 };
 
+var getFestivalWithLocation = function(festivalId) {
+  return {
+    festivalId: festivalJSON[festivalId].festivalId,
+    festival: festivalJSON[festivalId].festival,
+    week: festivalJSON[festivalId].week,
+    location: locationJSON[festivalJSON[festivalId].locationId].location,
+    startDate: festivalJSON[festivalId].startDate,
+    endDate: festivalJSON[festivalId].endDate
+  };
+}
+
 var currentFestival;
 var loadFestivalListTab = function() {
   var o = {};
   o.festivals = [];
   for (var key in festivalJSON) {
-    o.festivals.push(festivalJSON[key]);
+    o.festivals.push(getFestivalWithLocation(key));
   }
   o.festivals.sort(function(a,b){
     return moment(a.startDate).valueOf() - moment(b.startDate).valueOf();
@@ -360,7 +378,7 @@ var wireupArtistPopover = function() {
       var o = {};
       o.info = [];
       $.each(appearanceJSON.byArtist[artistId], function(i,v) {
-        o.info.push(festivalJSON[v]);
+        o.info.push(getFestivalWithLocation(v));
       });
       var pop = Handlebars.compile($('#artistPopover-template').html());
       return pop(o);

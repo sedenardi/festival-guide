@@ -96,7 +96,7 @@
       <select id="festivalSelect">
         <option></option>
       {{#each festivals}}
-        <option value="{{festivalId}}">{{festivalWithDates this}}</option>
+        <option value="{{festivalId}}">{{festivalWithLocationAndDates this}}</option>
       {{/each}}
       </select>
     </script>
@@ -113,7 +113,7 @@
       Festivals:
       <ul class="popoverList">
       {{#each info}}
-        <li>{{festivalWithDates this}}</li>
+        <li>{{festivalWithLocationAndDates this}}</li>
       {{/each}}
       <ul>
     </script>
