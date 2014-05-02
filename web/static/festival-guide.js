@@ -557,8 +557,8 @@ var mergeJoin = function(o1, o2) {
 var wireupCircles = function() {
   $('circle').unbind('click');
   $('circle').click(function (e) {
-    var x = e.offsetX || e.layerX, 
-      y = e.offsetY || e.layerY;
+    var x = e.offsetX === undefined ? e.originalEvent.layerX : e.offsetX, 
+      y = e.offsetY === undefined ? e.originalEvent.layerY : e.offsetY;
     var set = [];
     $.each($('circle'), function(i, v) {
       if (pointInCircle(x, y, v)) {
