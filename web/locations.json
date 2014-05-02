@@ -190,5 +190,11 @@
     "location": "Arrington, VA",
     "lat": 37.6840306,
     "lng": -78.90113259999998
+  },
+  "33": {
+    "locationId": 33,
+    "location": "Raleigh, NC",
+    "lat": 35.7795897,
+    "lng": -78.63817870000003
   }
 }

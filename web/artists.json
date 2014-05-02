@@ -5611,10 +5611,6 @@
     "artistId": 2932,
     "artist": "James Hunter Six"
   },
-  "2943": {
-    "artistId": 2943,
-    "artist": "B.o.B."
-  },
   "2952": {
     "artistId": 2952,
     "artist": "O.A.R."
@@ -7031,10 +7027,6 @@
     "artistId": 3586,
     "artist": "Seun Kuti & Egypt 80"
   },
-  "3589": {
-    "artistId": 3589,
-    "artist": "King Khan & the Shrines"
-  },
   "3591": {
     "artistId": 3591,
     "artist": "Allah-Las"
@@ -8290,5 +8282,377 @@
   "4013": {
     "artistId": 4013,
     "artist": "Zebo"
+  },
+  "4029": {
+    "artistId": 4029,
+    "artist": "De La Soul"
+  },
+  "4030": {
+    "artistId": 4030,
+    "artist": "Jamie XX"
+  },
+  "4031": {
+    "artistId": 4031,
+    "artist": "Death"
+  },
+  "4032": {
+    "artistId": 4032,
+    "artist": "High On Fire"
+  },
+  "4033": {
+    "artistId": 4033,
+    "artist": "Thurston Moore"
+  },
+  "4035": {
+    "artistId": 4035,
+    "artist": "IIII"
+  },
+  "4036": {
+    "artistId": 4036,
+    "artist": "How To Dress Well"
+  },
+  "4037": {
+    "artistId": 4037,
+    "artist": "White Lung"
+  },
+  "4038": {
+    "artistId": 4038,
+    "artist": "Tony Conrad"
+  },
+  "4039": {
+    "artistId": 4039,
+    "artist": "Reigning Sound"
+  },
+  "4040": {
+    "artistId": 4040,
+    "artist": "Sun Araw"
+  },
+  "4041": {
+    "artistId": 4041,
+    "artist": "Power Trip"
+  },
+  "4042": {
+    "artistId": 4042,
+    "artist": "6 String Drag"
+  },
+  "4043": {
+    "artistId": 4043,
+    "artist": "Prince Rama"
+  },
+  "4044": {
+    "artistId": 4044,
+    "artist": "American Aquarium"
+  },
+  "4045": {
+    "artistId": 4045,
+    "artist": "Deniro Farrar"
+  },
+  "4046": {
+    "artistId": 4046,
+    "artist": "Mark McGuire"
+  },
+  "4047": {
+    "artistId": 4047,
+    "artist": "Mapei"
+  },
+  "4048": {
+    "artistId": 4048,
+    "artist": "NGUZUNGUZU"
+  },
+  "4049": {
+    "artistId": 4049,
+    "artist": "Dent May"
+  },
+  "4050": {
+    "artistId": 4050,
+    "artist": "Ava Luna"
+  },
+  "4051": {
+    "artistId": 4051,
+    "artist": "The White Octave"
+  },
+  "4052": {
+    "artistId": 4052,
+    "artist": "Nik Turner's Hawkwind"
+  },
+  "4053": {
+    "artistId": 4053,
+    "artist": "Witch Mountain"
+  },
+  "4054": {
+    "artistId": 4054,
+    "artist": "SubRosa"
+  },
+  "4055": {
+    "artistId": 4055,
+    "artist": "KEN mode"
+  },
+  "4056": {
+    "artistId": 4056,
+    "artist": "YVETTE"
+  },
+  "4057": {
+    "artistId": 4057,
+    "artist": "Potty Mouth"
+  },
+  "4058": {
+    "artistId": 4058,
+    "artist": "Valient Thorr"
+  },
+  "4059": {
+    "artistId": 4059,
+    "artist": "Open Mike Eagle"
+  },
+  "4060": {
+    "artistId": 4060,
+    "artist": "Avers"
+  },
+  "4061": {
+    "artistId": 4061,
+    "artist": "Ed Schrader's Music Beat"
+  },
+  "4062": {
+    "artistId": 4062,
+    "artist": "Ryley Walker"
+  },
+  "4063": {
+    "artistId": 4063,
+    "artist": "Obnox"
+  },
+  "4064": {
+    "artistId": 4064,
+    "artist": "Lee Noble"
+  },
+  "4065": {
+    "artistId": 4065,
+    "artist": "T0W3RS"
+  },
+  "4066": {
+    "artistId": 4066,
+    "artist": "Author & Punisher"
+  },
+  "4067": {
+    "artistId": 4067,
+    "artist": "Helm"
+  },
+  "4068": {
+    "artistId": 4068,
+    "artist": "Palehound"
+  },
+  "4069": {
+    "artistId": 4069,
+    "artist": "Lonnie Walker"
+  },
+  "4070": {
+    "artistId": 4070,
+    "artist": "Guerilla Toss"
+  },
+  "4071": {
+    "artistId": 4071,
+    "artist": "Matt Kivel"
+  },
+  "4072": {
+    "artistId": 4072,
+    "artist": "Krill"
+  },
+  "4073": {
+    "artistId": 4073,
+    "artist": "Artificial Brain"
+  },
+  "4074": {
+    "artistId": 4074,
+    "artist": "Loamlands"
+  },
+  "4075": {
+    "artistId": 4075,
+    "artist": "Screature"
+  },
+  "4076": {
+    "artistId": 4076,
+    "artist": "Coke Weed"
+  },
+  "4077": {
+    "artistId": 4077,
+    "artist": "Axxa/Abraxas"
+  },
+  "4078": {
+    "artistId": 4078,
+    "artist": "New Music Raleigh Presents: Future Shock"
+  },
+  "4079": {
+    "artistId": 4079,
+    "artist": "Toon & The Real Laww"
+  },
+  "4080": {
+    "artistId": 4080,
+    "artist": "Dead Gaze"
+  },
+  "4081": {
+    "artistId": 4081,
+    "artist": "Wing Dam"
+  },
+  "4082": {
+    "artistId": 4082,
+    "artist": "The Tills"
+  },
+  "4083": {
+    "artistId": 4083,
+    "artist": "White Laces"
+  },
+  "4084": {
+    "artistId": 4084,
+    "artist": "The Nervous Ticks"
+  },
+  "4085": {
+    "artistId": 4085,
+    "artist": "Joe Scudda"
+  },
+  "4086": {
+    "artistId": 4086,
+    "artist": "Solar Halos"
+  },
+  "4087": {
+    "artistId": 4087,
+    "artist": "Dark Rooms"
+  },
+  "4088": {
+    "artistId": 4088,
+    "artist": "Last Year's Men"
+  },
+  "4089": {
+    "artistId": 4089,
+    "artist": "WELL$"
+  },
+  "4090": {
+    "artistId": 4090,
+    "artist": "Alexandra Sauser-Monnig"
+  },
+  "4091": {
+    "artistId": 4091,
+    "artist": "Sun Club"
+  },
+  "4092": {
+    "artistId": 4092,
+    "artist": "Davidians"
+  },
+  "4093": {
+    "artistId": 4093,
+    "artist": "Soft Cat"
+  },
+  "4094": {
+    "artistId": 4094,
+    "artist": "Wild Fur"
+  },
+  "4095": {
+    "artistId": 4095,
+    "artist": "Zack Mexico"
+  },
+  "4096": {
+    "artistId": 4096,
+    "artist": "Museum Mouth"
+  },
+  "4097": {
+    "artistId": 4097,
+    "artist": "Enemy Waves"
+  },
+  "4098": {
+    "artistId": 4098,
+    "artist": "First Person Plural"
+  },
+  "4099": {
+    "artistId": 4099,
+    "artist": "Paperhaus"
+  },
+  "4100": {
+    "artistId": 4100,
+    "artist": "Blanko Basnet"
+  },
+  "4101": {
+    "artistId": 4101,
+    "artist": "Holygrailers"
+  },
+  "4102": {
+    "artistId": 4102,
+    "artist": "Nest Egg"
+  },
+  "4103": {
+    "artistId": 4103,
+    "artist": "blursome"
+  },
+  "4104": {
+    "artistId": 4104,
+    "artist": "See Gulls"
+  },
+  "4105": {
+    "artistId": 4105,
+    "artist": "Y'ALL"
+  },
+  "4106": {
+    "artistId": 4106,
+    "artist": "Wowolfol"
+  },
+  "4107": {
+    "artistId": 4107,
+    "artist": "Virgins Family Band"
+  },
+  "4108": {
+    "artistId": 4108,
+    "artist": "Canine Heart Sounds"
+  },
+  "4109": {
+    "artistId": 4109,
+    "artist": "Matt Northrup"
+  },
+  "4110": {
+    "artistId": 4110,
+    "artist": "No Love"
+  },
+  "4111": {
+    "artistId": 4111,
+    "artist": "Ghostt Bllonde"
+  },
+  "4112": {
+    "artistId": 4112,
+    "artist": "Demon Eye"
+  },
+  "4113": {
+    "artistId": 4113,
+    "artist": "Cousins"
+  },
+  "4114": {
+    "artistId": 4114,
+    "artist": "Octopus Jones"
+  },
+  "4115": {
+    "artistId": 4115,
+    "artist": "Drag Sounds"
+  },
+  "4116": {
+    "artistId": 4116,
+    "artist": "Free Clinic"
+  },
+  "4117": {
+    "artistId": 4117,
+    "artist": "No Eyes"
+  },
+  "4118": {
+    "artistId": 4118,
+    "artist": "Strange Faces"
+  },
+  "4119": {
+    "artistId": 4119,
+    "artist": "Winston Facials"
+  },
+  "4120": {
+    "artistId": 4120,
+    "artist": "Bedowyn"
+  },
+  "4121": {
+    "artistId": 4121,
+    "artist": "Wailin' Storms"
+  },
+  "4122": {
+    "artistId": 4122,
+    "artist": "Young Cardinals"
   }
 }
