@@ -302,5 +302,61 @@
     "locationId": 26,
     "startDate": "2014-09-06T04:00:00.000Z",
     "endDate": "2014-09-07T04:00:00.000Z"
+  },
+  "40": {
+    "festivalId": 40,
+    "festival": "Boston Calling Spring",
+    "week": null,
+    "locationId": 34,
+    "startDate": "2014-05-23T04:00:00.000Z",
+    "endDate": "2014-05-25T04:00:00.000Z"
+  },
+  "41": {
+    "festivalId": 41,
+    "festival": "Boston Calling Fall",
+    "week": null,
+    "locationId": 34,
+    "startDate": "2014-09-05T04:00:00.000Z",
+    "endDate": "2014-09-07T04:00:00.000Z"
+  },
+  "42": {
+    "festivalId": 42,
+    "festival": "First City Festival",
+    "week": null,
+    "locationId": 35,
+    "startDate": "2014-08-23T04:00:00.000Z",
+    "endDate": "2014-08-24T04:00:00.000Z"
+  },
+  "43": {
+    "festivalId": 43,
+    "festival": "Squamish Valley Music Festival",
+    "week": null,
+    "locationId": 36,
+    "startDate": "2014-08-08T04:00:00.000Z",
+    "endDate": "2014-08-10T04:00:00.000Z"
+  },
+  "44": {
+    "festivalId": 44,
+    "festival": "Capitol Hill Block Party",
+    "week": null,
+    "locationId": 37,
+    "startDate": "2014-07-25T04:00:00.000Z",
+    "endDate": "2014-07-27T04:00:00.000Z"
+  },
+  "45": {
+    "festivalId": 45,
+    "festival": "Bunbury Music Festival",
+    "week": null,
+    "locationId": 38,
+    "startDate": "2014-07-11T04:00:00.000Z",
+    "endDate": "2014-07-13T04:00:00.000Z"
+  },
+  "46": {
+    "festivalId": 46,
+    "festival": "RBC Royal Bank Bluesfest",
+    "week": null,
+    "locationId": 39,
+    "startDate": "2014-07-03T04:00:00.000Z",
+    "endDate": "2014-07-13T04:00:00.000Z"
   }
 }

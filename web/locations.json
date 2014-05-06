@@ -196,5 +196,41 @@
     "location": "Raleigh, NC",
     "lat": 35.7795897,
     "lng": -78.63817870000003
+  },
+  "34": {
+    "locationId": 34,
+    "location": "Boston, MA",
+    "lat": 42.3584308,
+    "lng": -71.0597732
+  },
+  "35": {
+    "locationId": 35,
+    "location": "Monterey, CA",
+    "lat": 36.6002378,
+    "lng": -121.89467609999997
+  },
+  "36": {
+    "locationId": 36,
+    "location": "Squamish, BC",
+    "lat": 49.7016339,
+    "lng": -123.15581209999999
+  },
+  "37": {
+    "locationId": 37,
+    "location": "Seattle, WA",
+    "lat": 47.6062095,
+    "lng": -122.3320708
+  },
+  "38": {
+    "locationId": 38,
+    "location": "Cincinnati, OH",
+    "lat": 39.1031182,
+    "lng": -84.51201960000003
+  },
+  "39": {
+    "locationId": 39,
+    "location": "Ottawa",
+    "lat": 45.4215296,
+    "lng": -75.69719309999999
   }
 }
