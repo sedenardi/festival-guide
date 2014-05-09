@@ -358,5 +358,13 @@
     "locationId": 39,
     "startDate": "2014-07-03T04:00:00.000Z",
     "endDate": "2014-07-13T04:00:00.000Z"
+  },
+  "47": {
+    "festivalId": 47,
+    "festival": "Bumbershoot",
+    "week": null,
+    "locationId": 37,
+    "startDate": "2014-08-30T04:00:00.000Z",
+    "endDate": "2014-09-01T04:00:00.000Z"
   }
 }
