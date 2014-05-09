@@ -5,7 +5,7 @@ create procedure markFalsePositive(
 )
 begin
 
-insert into falsePositives(artistId1,artistId2)
+insert into falsepositives(artistId1,artistId2)
 values (artistId1,artistId2);
 
 end $$

@@ -20,7 +20,7 @@ from hashes h1
 		on h1.hash = h2.hash
 		and h1.artistId < h2.artistId
 where not exists
-	(select 1 from falsePositives fp
+	(select 1 from falsepositives fp
 	where fp.artistId1 = h1.artistId
 	and fp.artistId2 = h2.artistId)
 group by h1.artistId,h2.artistId
