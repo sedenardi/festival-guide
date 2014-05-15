@@ -366,5 +366,21 @@
     "locationId": 37,
     "startDate": "2014-08-30T04:00:00.000Z",
     "endDate": "2014-09-01T04:00:00.000Z"
+  },
+  "48": {
+    "festivalId": 48,
+    "festival": "Riot Fest Chicago",
+    "week": null,
+    "locationId": 19,
+    "startDate": "2014-09-12T04:00:00.000Z",
+    "endDate": "2014-09-14T04:00:00.000Z"
+  },
+  "49": {
+    "festivalId": 49,
+    "festival": "Riot Fest Denver",
+    "week": null,
+    "locationId": 40,
+    "startDate": "2014-09-19T04:00:00.000Z",
+    "endDate": "2014-09-21T04:00:00.000Z"
   }
 }
