@@ -238,5 +238,17 @@
     "location": "Denver, CO",
     "lat": 39.737567,
     "lng": -104.98471790000002
+  },
+  "41": {
+    "locationId": 41,
+    "location": "St. Louis, MO",
+    "lat": 38.6270025,
+    "lng": -90.1994042
+  },
+  "42": {
+    "locationId": 42,
+    "location": "Los Angeles, CA",
+    "lat": 34.0522342,
+    "lng": -118.2436849
   }
 }

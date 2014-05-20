@@ -9003,10 +9003,6 @@
     "artistId": 4254,
     "artist": "Iska Dhaaf"
   },
-  "4255": {
-    "artistId": 4255,
-    "artist": "The Chain Gain 1974"
-  },
   "4256": {
     "artistId": 4256,
     "artist": "Wild Ones"
@@ -9631,10 +9627,6 @@
     "artistId": 4432,
     "artist": "lady antebellum"
   },
-  "4434": {
-    "artistId": 4434,
-    "artist": "little freddie king"
-  },
   "4435": {
     "artistId": 4435,
     "artist": "long shen dao"
@@ -10159,10 +10151,6 @@
     "artistId": 4778,
     "artist": "GWAR"
   },
-  "4779": {
-    "artistId": 4779,
-    "artist": "Andrew WK"
-  },
   "4780": {
     "artistId": 4780,
     "artist": "Stiff Little Fingers"
@@ -10171,10 +10159,6 @@
     "artistId": 4781,
     "artist": "Face to Face"
   },
-  "4782": {
-    "artistId": 4782,
-    "artist": "Kurt Vile & The Violators"
-  },
   "4783": {
     "artistId": 4783,
     "artist": "Marky Ramone w/ the Bouncing Souls"
@@ -10182,10 +10166,6 @@
   "4784": {
     "artistId": 4784,
     "artist": "Wavves"
-  },
-  "4785": {
-    "artistId": 4785,
-    "artist": "Black Joe Lewis & The Honeybears"
   },
   "4786": {
     "artistId": 4786,
@@ -10218,10 +10198,6 @@
   "4793": {
     "artistId": 4793,
     "artist": "7 Seconds"
-  },
-  "4794": {
-    "artistId": 4794,
-    "artist": "Anti-Flag"
   },
   "4795": {
     "artistId": 4795,
@@ -10331,10 +10307,6 @@
     "artistId": 4883,
     "artist": "Larry and his Flask"
   },
-  "4884": {
-    "artistId": 4884,
-    "artist": "Red City Rasio"
-  },
   "4885": {
     "artistId": 4885,
     "artist": "Sole and DJ Pain I"
@@ -10346,5 +10318,293 @@
   "4887": {
     "artistId": 4887,
     "artist": "My Body Sings Electric"
+  },
+  "4894": {
+    "artistId": 4894,
+    "artist": "Kelis"
+  },
+  "4895": {
+    "artistId": 4895,
+    "artist": "Delta Spirit"
+  },
+  "4896": {
+    "artistId": 4896,
+    "artist": "Glass Animals"
+  },
+  "4897": {
+    "artistId": 4897,
+    "artist": "AJR"
+  },
+  "4898": {
+    "artistId": 4898,
+    "artist": "Alanna Royale"
+  },
+  "4899": {
+    "artistId": 4899,
+    "artist": "The Jane Shermans"
+  },
+  "4900": {
+    "artistId": 4900,
+    "artist": "Old Salt Union"
+  },
+  "4901": {
+    "artistId": 4901,
+    "artist": "Dylan McDonald & The Avians"
+  },
+  "4902": {
+    "artistId": 4902,
+    "artist": "Pretty Little Empire"
+  },
+  "4903": {
+    "artistId": 4903,
+    "artist": "Big Brother Thunder and the MasterBlasters"
+  },
+  "4910": {
+    "artistId": 4910,
+    "artist": "Caribou"
+  },
+  "4911": {
+    "artistId": 4911,
+    "artist": "Albert Hammond Jr."
+  },
+  "4912": {
+    "artistId": 4912,
+    "artist": "Todd Terje"
+  },
+  "4913": {
+    "artistId": 4913,
+    "artist": "Boris"
+  },
+  "4915": {
+    "artistId": 4915,
+    "artist": "DJ Harvey"
+  },
+  "4916": {
+    "artistId": 4916,
+    "artist": "Mount Kimbie"
+  },
+  "4917": {
+    "artistId": 4917,
+    "artist": "Kindness"
+  },
+  "4918": {
+    "artistId": 4918,
+    "artist": "Daniel Avery"
+  },
+  "4919": {
+    "artistId": 4919,
+    "artist": "Connan Mockasin"
+  },
+  "4924": {
+    "artistId": 4924,
+    "artist": "The Blood Brothers"
+  },
+  "4926": {
+    "artistId": 4926,
+    "artist": "The Bronx"
+  },
+  "4927": {
+    "artistId": 4927,
+    "artist": "John Talabot"
+  },
+  "4928": {
+    "artistId": 4928,
+    "artist": "Daphni"
+  },
+  "4929": {
+    "artistId": 4929,
+    "artist": "Presidents Of The United States Of America"
+  },
+  "4930": {
+    "artistId": 4930,
+    "artist": "Joanna Gruesome"
+  },
+  "4931": {
+    "artistId": 4931,
+    "artist": "Jessy Lanza"
+  },
+  "4932": {
+    "artistId": 4932,
+    "artist": "Balance and Composure"
+  },
+  "4939": {
+    "artistId": 4939,
+    "artist": "Judas Priest"
+  },
+  "4940": {
+    "artistId": 4940,
+    "artist": "King Diamond"
+  },
+  "4941": {
+    "artistId": 4941,
+    "artist": "Alt-J"
+  },
+  "4942": {
+    "artistId": 4942,
+    "artist": "Rocket From The Crypt"
+  },
+  "4943": {
+    "artistId": 4943,
+    "artist": "Gorilla Biscuits"
+  },
+  "4944": {
+    "artistId": 4944,
+    "artist": "Guided By Voices"
+  },
+  "4945": {
+    "artistId": 4945,
+    "artist": "Amon Amarth"
+  },
+  "4946": {
+    "artistId": 4946,
+    "artist": "Gary Numan"
+  },
+  "4947": {
+    "artistId": 4947,
+    "artist": "Yo La Tengo"
+  },
+  "4948": {
+    "artistId": 4948,
+    "artist": "The Presets"
+  },
+  "4949": {
+    "artistId": 4949,
+    "artist": "Ginuwine"
+  },
+  "4950": {
+    "artistId": 4950,
+    "artist": "Iceage"
+  },
+  "4951": {
+    "artistId": 4951,
+    "artist": "Z Trip"
+  },
+  "4952": {
+    "artistId": 4952,
+    "artist": "Hot Water Music"
+  },
+  "4953": {
+    "artistId": 4953,
+    "artist": "Sick Of It All (Blood Sweat/Scratch The Surface)"
+  },
+  "4954": {
+    "artistId": 4954,
+    "artist": "Madlib w/ Freddie Gibbs"
+  },
+  "4955": {
+    "artistId": 4955,
+    "artist": "Pissed Jeans"
+  },
+  "4956": {
+    "artistId": 4956,
+    "artist": "Yann Tiersen"
+  },
+  "4957": {
+    "artistId": 4957,
+    "artist": "Jello Biafra and the Guantanamo School of Medicine"
+  },
+  "4958": {
+    "artistId": 4958,
+    "artist": "Pallbearer"
+  },
+  "4959": {
+    "artistId": 4959,
+    "artist": "Iron Reagan"
+  },
+  "4960": {
+    "artistId": 4960,
+    "artist": "Knapsack"
+  },
+  "4961": {
+    "artistId": 4961,
+    "artist": "SOHN"
+  },
+  "4962": {
+    "artistId": 4962,
+    "artist": "Tinariwen"
+  },
+  "4963": {
+    "artistId": 4963,
+    "artist": "J Mascis"
+  },
+  "4964": {
+    "artistId": 4964,
+    "artist": "King Tuff"
+  },
+  "4965": {
+    "artistId": 4965,
+    "artist": "Say Lou Lou"
+  },
+  "4966": {
+    "artistId": 4966,
+    "artist": "Fat White Family"
+  },
+  "4967": {
+    "artistId": 4967,
+    "artist": "Chelsea Wolfe"
+  },
+  "4968": {
+    "artistId": 4968,
+    "artist": "Reputante"
+  },
+  "4969": {
+    "artistId": 4969,
+    "artist": "Roosevelt"
+  },
+  "4970": {
+    "artistId": 4970,
+    "artist": "Spider Bags"
+  },
+  "4971": {
+    "artistId": 4971,
+    "artist": "Cities Aviv"
+  },
+  "4973": {
+    "artistId": 4973,
+    "artist": "Jacuzzi"
+  },
+  "4974": {
+    "artistId": 4974,
+    "artist": "Scott H. Biram"
+  },
+  "4977": {
+    "artistId": 4977,
+    "artist": "This Will Destroy You"
+  },
+  "4978": {
+    "artistId": 4978,
+    "artist": "Zorch"
+  },
+  "4979": {
+    "artistId": 4979,
+    "artist": "Crooked Bangs"
+  },
+  "4980": {
+    "artistId": 4980,
+    "artist": "Blue, The Misfit."
+  },
+  "4981": {
+    "artistId": 4981,
+    "artist": "Dana Falconberry"
+  },
+  "4982": {
+    "artistId": 4982,
+    "artist": "Communion"
+  },
+  "4983": {
+    "artistId": 4983,
+    "artist": "The Sour Notes"
+  },
+  "4984": {
+    "artistId": 4984,
+    "artist": "Breakout"
+  },
+  "4985": {
+    "artistId": 4985,
+    "artist": "The Digital Wild"
+  },
+  "4986": {
+    "artistId": 4986,
+    "artist": "Good Field"
   }
 }

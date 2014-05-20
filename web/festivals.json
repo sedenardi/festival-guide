@@ -382,5 +382,29 @@
     "locationId": 40,
     "startDate": "2014-09-19T04:00:00.000Z",
     "endDate": "2014-09-21T04:00:00.000Z"
+  },
+  "50": {
+    "festivalId": 50,
+    "festival": "LouFest",
+    "week": null,
+    "locationId": 41,
+    "startDate": "2014-09-06T04:00:00.000Z",
+    "endDate": "2014-09-07T04:00:00.000Z"
+  },
+  "51": {
+    "festivalId": 51,
+    "festival": "FYF Fest",
+    "week": null,
+    "locationId": 42,
+    "startDate": "2014-08-23T04:00:00.000Z",
+    "endDate": "2014-08-24T04:00:00.000Z"
+  },
+  "52": {
+    "festivalId": 52,
+    "festival": "Fun Fun Fun Fest",
+    "week": null,
+    "locationId": 30,
+    "startDate": "2014-11-07T05:00:00.000Z",
+    "endDate": "2014-11-09T05:00:00.000Z"
   }
 }
