@@ -4,7 +4,7 @@ $(document).ready(function() {
     url: './artists.json',
     cache: true,
     success: function(data) {
-      artistJSON = data;
+      artistJSON = JSON.parse(data);
       finishLoading();
     }               
   });
@@ -12,7 +12,7 @@ $(document).ready(function() {
     url: './festivals.json',
     cache: true,
     success: function(data) {
-      festivalJSON = data;
+      festivalJSON = JSON.parse(data);
       finishLoading();
     }               
   });
@@ -20,7 +20,7 @@ $(document).ready(function() {
     url: './appearances.json',
     cache: true,
     success: function(data) {
-      appearanceJSON = data;
+      appearanceJSON = JSON.parse(data);
       finishLoading();
     }               
   });
@@ -28,7 +28,7 @@ $(document).ready(function() {
     url: './locations.json',
     cache: true,
     success: function(data) {
-      locationJSON = data;
+      locationJSON = JSON.parse(data);
       finishLoading();
     }               
   });
