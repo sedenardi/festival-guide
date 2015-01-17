@@ -292,10 +292,10 @@ var plotFestivals = function(festivals) {
 
 var dropDirectionMarkers = function(route, festivals) {
   for (var i = 0; i < route.length; i++) {
-    var markerImg = './static/images/marker' + (i + 1) + '.png';
+    var markerImg = './images/marker' + (i + 1) + '.png';
     dropMarker(artistMap, route[i].start_location, festivals[i], markerImg);
   }
-  var markerImg = './static/images/marker' + (route.length + 1) + '.png';
+  var markerImg = './images/marker' + (route.length + 1) + '.png';
   dropMarker(artistMap, route[route.length - 1].end_location, festivals[route.length], markerImg);
 };
 

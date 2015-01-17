@@ -14,7 +14,7 @@ $('.dupeButton').click(function() {
   var id2 = $(this).attr('data-artist-id2');
   var parent = $(this).parents('tr');
   $.ajax({
-    url: '/fixDupe',
+    url: './fixDupe',
     type: 'GET',
     data: {
       artistId1: id1,
@@ -30,7 +30,7 @@ $('.notDupeButton').click(function() {
   var id2 = $(this).attr('data-artist-id2');
   var parent = $(this).parents('tr');
   $.ajax({
-    url: '/falsePositive',
+    url: './falsePositive',
     type: 'GET',
     data: {
       artistId1: id1,
