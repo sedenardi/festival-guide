@@ -108,3 +108,13 @@ body {
 .tt-artistName {
 
 }
+
+circle {
+  cursor: pointer;
+}
+text {
+  cursor: pointer;
+}
+path {
+  cursor: pointer;
+}

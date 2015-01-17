@@ -1,3 +1,9 @@
+d3.selection.prototype.moveParentToFront = function() {
+  return this.each(function(){
+    this.parentNode.parentNode.appendChild(this.parentNode);
+  });
+};
+
 var festivalJSON, artistJSON, appearanceJSON, locationJSON;
 $(document).ready(function() {
   $.ajax({
@@ -94,12 +100,12 @@ var registerHelpers = function() {
 var refreshMaps = function(feature) {
   if (feature === 'artists') {
     setTimeout(function() {
-      google.maps.event.trigger(artistMap, "resize");
+      google.maps.event.trigger(artistMap, 'resize');
       artistMap.setCenter(artistMapCenter);
     }, 300);
   } else if (feature === 'festival-map') {
     setTimeout(function() {
-      google.maps.event.trigger(festivalMap, "resize");
+      google.maps.event.trigger(festivalMap, 'resize');
       festivalMap.setCenter(festivalMapCenter);
     }, 300);
   }
@@ -191,7 +197,7 @@ var loadArtistTab = function() {
       var myOptions = getMapOptions(results[0].geometry.location);
       artistMap = new google.maps.Map($('#artist-map-canvas')[0], myOptions);
     } else {
-      alert("Google Maps error: " + status);
+      alert('Google Maps error: ' + status);
     }
   });
 
@@ -285,7 +291,7 @@ var plotFestivals = function(festivals) {
       directionsDisplay.setMap(artistMap);
       dropDirectionMarkers(response.routes[0].legs, festivals);
     } else {
-      alert("Google Maps error: " + status);
+      alert('Google Maps error: ' + status);
     }
   })
 };
@@ -397,7 +403,7 @@ var loadFestivalMapTab = function() {
       festivalMap = new google.maps.Map($('#festival-map-canvas')[0], myOptions);
       plotAllFestivals();
     } else {
-      alert("Google Maps error: " + status);
+      alert('Google Maps error: ' + status);
     }
   });
 };
@@ -488,7 +494,7 @@ var loadVennTab = function() {
   $('#vennSelect').select2({
     placeholder: 'Select 2 or 3 festivals',
     maximumSelectionSize: 3
-  }).on("change", function(e) {
+  }).on('change', function(e) {
     if (e.val.length === 2 || e.val.length === 3) {
       $('#venn_d').html('');
       makeVennDiagram(e.val);
@@ -510,10 +516,11 @@ var makeVennDiagram = function(festivalIds) {
       festivalId: v
     });
   });
-  var overlaps = getOverlaps(festivalIds);
-  var data = venn.venn(vennFestivals, overlaps);
-  venn.drawD3Diagram(d3.select('#venn_d'), data, vennWidth, vennHeight, null, null);
-  wireupCircles();
+  var overlaps = getOverlaps(festivalIds)
+    .sort(function(a,b){ return a.sets.length - b.sets.length; });
+  var sets = venn.venn(vennFestivals, overlaps);
+  var diagram = venn.drawD3Diagram(d3.select('#venn_d'), sets, vennWidth, vennHeight);
+  wireupCircles(diagram, overlaps, sets);
 };
 
 var getOverlaps = function(festivalIds) {
@@ -554,40 +561,55 @@ var mergeJoin = function(o1, o2) {
   return o;
 }
 
-var wireupCircles = function() {
-  $('circle').unbind('click');
-  $('circle').click(function (e) {
-    var x = e.offsetX , 
-      y = e.offsetY;
-    if (x === undefined) { // FF fix
-      x = e.pageX - $('svg').offset().left;
-      y = e.pageY - $('svg').offset().top;
-    }
-    var set = [];
-    $.each($('circle'), function(i, v) {
-      if (pointInCircle(x, y, v)) {
-        set.push($(v).attr('index'));
-      }
+var wireupCircles = function(diagram, overlaps, sets) {
+  diagram.nodes
+    .style('stroke-opacity', 0)
+    .style('stroke', '#333')
+    .style('stroke-width', '1')
+    .on('mouseover', function(d, i) {
+      var selection = d3.select(this).select('circle');
+      selection.moveParentToFront()
+        .transition()
+        .style('fill-opacity', .5)
+        .style('stroke-opacity', 1);
+    })
+    .on('mouseout', function(d, i) {
+      d3.select(this).select('circle').transition()
+        .style('fill-opacity', .3)
+        .style('stroke-opacity', 0);
+    })
+    .on('click', function(d,i) {
+      createPopover([i]);
     });
-    if (set.length > 1) {
-      createPopover(x, y, set);
-    }
-  });
+
+  diagram.svg.select('g').selectAll('path')
+    .data(overlaps)
+    .enter()
+    .append('path')
+    .attr('d', function(d) {
+      return venn.intersectionAreaPath(d.sets.map(function(j) { return sets[j]; }));
+    })
+    .style('fill-opacity','0')
+    .style('fill', 'black')
+    .style('stroke-opacity', 0)
+    .style('stroke', '#333')
+    .style('stroke-width', '1')
+    .on('mouseover', function(d, i) {
+      d3.select(this).transition()
+        .style('fill-opacity', .1)
+        .style('stroke-opacity', 1);
+    })
+    .on('mouseout', function(d, i) {
+      d3.select(this).transition()
+        .style('fill-opacity', 0)
+        .style('stroke-opacity', 0);
+    })
+    .on('click', function(d) {
+      createPopover(d.sets);
+    });
 };
 
-var pointInCircle = function(x,y,circle) {
-  var dx = Math.abs(x - $(circle).attr('cx')),
-    dy = Math.abs(y - $(circle).attr('cy')),
-    r = $(circle).attr('r');
-  if (dx + dy <= r)
-    return true;
-  else if (dx > r || dy > r)
-    return false;
-  else
-    return (dx*dx + dy*dy <= r*r);
-};
-
-var createPopover = function(x, y, set) {
+var createPopover = function(set) {
   var modalTitle = '',
     festivalIds = [];
   $.each(set, function(i, v) {
