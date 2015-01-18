@@ -42,6 +42,7 @@ $(document).ready(function() {
   $('.navbar-collapse ul li a').click(function(){
     $('.navbar-toggle:visible').click();
   });
+
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var feature = $(e.target).attr('href').split('#')[1];
     window.location.hash = '#' + feature;
@@ -160,6 +161,7 @@ var loadArtistTab = function() {
           if (w.festival === f.festival) {
             w.startDates.push(f.startDate);
             w.endDates.push(f.endDate);
+            w.festivalIds.push(f.festivalId);
             pushed = true;
           }
         })
@@ -170,7 +172,8 @@ var loadArtistTab = function() {
             week: f.week,
             location: locationJSON[f.locationId],
             startDates: [f.startDate],
-            endDates: [f.endDate]
+            endDates: [f.endDate],
+            festivalIds: [f.festivalId]
           });
         }
       });
@@ -250,6 +253,7 @@ var dropMarker = function(map, location, festival, marker) {
     return function() {
       infowindow.setContent(artistMapInfoWindowContent(festival));
       infowindow.open(map, marker);
+      wireupFestivalMapPopover();
     }
   })(marker));
   mapMarkers.push(marker);
@@ -259,8 +263,9 @@ var artistMapInfoWindowContent = function(festival) {
   var dateString = '';
 
   $.each(festival.startDates, function(i, v) {
-    dateString += moment(v).format('dddd, MMMM Do') + 
-      ' to ' + moment(festival.endDates[i]).format('dddd, MMMM Do');
+    dateString += '<span class="festivalMapPopoverFest" data-festivalid="' +
+      festival.festivalIds[i] + '">' + moment(v).format('dddd, MMMM Do') + 
+      ' to ' + moment(festival.endDates[i]).format('dddd, MMMM Do') + '</span>';
     if (i <= festival.startDates.length - 2) {
       dateString += '<br>';
     }
