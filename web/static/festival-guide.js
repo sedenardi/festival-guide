@@ -194,7 +194,7 @@ var loadArtistTab = function() {
     $('#artistInput').blur();
   });
 
-  var height = $(window).height() - 10 - 43 - 39 - 34 - 41 - 10;
+  var height = $(window).height() - 10 - 43 - 39 - 34 - 32 - 10;
   var width = $(window).width() - 10 - 10;
   $('#artist-map-canvas').css('height',height);
   $('#artistInput').css('width',width);
@@ -338,8 +338,7 @@ var loadFestivalListTab = function() {
   });
   var nav = Handlebars.compile($('#festivalNav-template').html());
   $('#festivalListNav').html(nav(o));
-  var width = $(window).width() - 10 - 10;
-  $('#festivalSelect').css('width',width);
+  $('#festivalSelect').css('width','100%');
   $('#festivalSelect').select2({
     placeholder: 'Select a festival'
   }).on('change', function(e) { 
@@ -387,7 +386,6 @@ var wireupArtistPopover = function() {
   $('.artistName').popover({
     placement: 'bottom',
     trigger: isTouchDevice ? 'click' : 'hover',
-    title: 'Artist Info',
     html: true,
     content: function() {
       var artistId = $(this).attr('data-artist-id');
@@ -404,7 +402,7 @@ var wireupArtistPopover = function() {
 
 var festivalMap, festivalMapCenter;
 var loadFestivalMapTab = function() {
-  var height = $(window).height() - 50 - 39 - 10;
+  var height = $(window).height() - 50 - 53 - 10;
   $('#festival-map-canvas').css('height',height);
   geocoder.geocode( { 'address': 'United States of America'}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
