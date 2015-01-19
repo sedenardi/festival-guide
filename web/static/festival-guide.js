@@ -567,6 +567,7 @@ var mergeJoin = function(o1, o2) {
 }
 
 var wireupCircles = function(diagram, overlaps, sets) {
+  var tooltip = d3.select('#venntooltip');
   diagram.nodes
     .style('stroke-opacity', 0)
     .style('stroke', '#333')
@@ -577,11 +578,22 @@ var wireupCircles = function(diagram, overlaps, sets) {
         .transition()
         .style('fill-opacity', .5)
         .style('stroke-opacity', 1);
+
+      tooltip.transition().style("opacity", .9);
+      tooltip.text(d.size + " artists");
+      tooltip.style("left", (d3.event.pageX - 40) + "px")
+        .style("top", (d3.event.pageY - 32) + "px");
     })
     .on('mouseout', function(d, i) {
       d3.select(this).select('circle').transition()
         .style('fill-opacity', .3)
         .style('stroke-opacity', 0);
+
+      tooltip.transition().style("opacity", 0);
+    })
+    .on("mousemove", function() {
+        tooltip.style("left", (d3.event.pageX - 40) + "px")
+          .style("top", (d3.event.pageY - 32) + "px");
     })
     .on('click', function(d,i) {
       createPopover([i]);
@@ -603,11 +615,22 @@ var wireupCircles = function(diagram, overlaps, sets) {
       d3.select(this).transition()
         .style('fill-opacity', .1)
         .style('stroke-opacity', 1);
+
+      tooltip.transition().style("opacity", .9);
+      tooltip.text(d.size + " artists");
+      tooltip.style("left", (d3.event.pageX - 40) + "px")
+        .style("top", (d3.event.pageY - 32) + "px");
     })
     .on('mouseout', function(d, i) {
       d3.select(this).transition()
         .style('fill-opacity', 0)
         .style('stroke-opacity', 0);
+
+      tooltip.transition().style("opacity", 0);
+    })
+    .on("mousemove", function() {
+        tooltip.style("left", (d3.event.pageX - 40) + "px")
+          .style("top", (d3.event.pageY - 32) + "px");
     })
     .on('click', function(d) {
       createPopover(d.sets);
