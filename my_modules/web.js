@@ -153,6 +153,17 @@ var Web = function(config, rootDir) {
     });
   });
 
+  app.get('/dump/chordData.json', function (req,res) {
+    db.query(queries.getChordData(), function (err, dbRes) {
+      if (err) {
+        console.log(JSON.stringify(err));
+        res.send(500);
+        return;
+      }
+      res.json(dbRes);
+    });
+  });
+
   this.startServer = function() {
     db.connect(config, 'WEB', function webDB() {
       app.listen(config.web.port, function webStarted() {

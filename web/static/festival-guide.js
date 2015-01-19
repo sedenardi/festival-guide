@@ -4,7 +4,7 @@ d3.selection.prototype.moveParentToFront = function() {
   });
 };
 
-var festivalJSON, artistJSON, appearanceJSON, locationJSON;
+var festivalJSON, artistJSON, appearanceJSON, locationJSON, chordJSON;
 $(document).ready(function() {
   $.ajax({
     url: './artists.json',
@@ -38,6 +38,21 @@ $(document).ready(function() {
       finishLoading();
     }               
   });
+  $.ajax({
+    url: './chordData.json',
+    cache: true,
+    success: function(data) {
+      chordJSON = {};
+      for (var i = 0; i < data.length; i++) {
+        var f1 = 'f' + data[i].festivalId1;
+        var f2 = 'f' + data[i].festivalId2;
+        if (typeof chordJSON[f1] === 'undefined')
+          chordJSON[f1] = {};
+        chordJSON[f1][f2] = data[i].count;
+      }
+      finishLoading();
+    }               
+  });
   registerHelpers();
   $('.navbar-collapse ul li a').click(function(){
     $('.navbar-toggle:visible').click();
@@ -59,7 +74,8 @@ var finishLoading = function() {
   if (typeof artistJSON !== 'undefined' &&
     typeof festivalJSON !== 'undefined' &&
     typeof appearanceJSON !== 'undefined' &&
-    typeof locationJSON !== 'undefined') {
+    typeof locationJSON !== 'undefined' &&
+    typeof chordJSON !== 'undefined') {
     loadArtistTab();
     loadFestivalListTab();
     loadFestivalMapTab();
@@ -681,4 +697,18 @@ var getCommonArtists = function(festivalIds) {
     artists.push(artistJSON[data.artists[i]]);
   }
   return artists.sort(function(a,b){ return (a.artist < b.artist) ? -1 : 1; });
+};
+
+var getChordMatrix = function(festivalIds) {
+  var matrix = [];
+  for (var i = 0; i < festivalIds.length; i++) {
+    var a = [];
+    var f1 = 'f' + festivalIds[i];
+    for (var j = 0; j < festivalIds.length; j++) {
+      var f2 = 'f' + festivalIds[j];
+      a.push(chordJSON[f1][f2]);
+    }
+    matrix.push(a);
+  }
+  return matrix;
 };

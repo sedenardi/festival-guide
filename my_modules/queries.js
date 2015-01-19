@@ -224,6 +224,31 @@ where app.festivalId = ? \
     };
   };
 
+  this.getChordData = function() {
+    return {
+      sql: 'select\
+              f1.festivalId as festivalId1\
+            , f2.festivalId as festivalId2\
+            , coalesce(c.count,0) as count\
+            from festivals f1\
+              cross join festivals f2\
+              left outer join\
+                (select\
+                  a1.festivalId as festivalId1\
+                , a2.festivalId as festivalId2\
+                , count(1) as count\
+                from appearances a1\
+                  inner join appearances a2\
+                    on a2.artistId = a1.artistId\
+                where a1.festivalId <> a2.festivalId\
+                group by a1.festivalId,a2.festivalId) c\
+                on c.festivalId1 = f1.festivalId\
+                and c.festivalId2 = f2.festivalId\
+            order by f1.festivalId,f2.festivalId;',
+      inserts: []
+    };
+  };
+
 };
 
 module.exports = new queries();
