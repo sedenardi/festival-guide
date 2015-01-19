@@ -48,6 +48,11 @@ $(document).ready(function() {
     window.location.hash = '#' + feature;
     refreshMaps(feature);
   });
+
+  $('.aboutModal').click(function(e) {
+    $('#aboutModal').modal('show');
+    e.preventDefault();
+  });
 });
 
 var finishLoading = function() {
@@ -677,5 +682,5 @@ var getCommonArtists = function(festivalIds) {
   for (var i = 0; i < data.artists.length; i++) {
     artists.push(artistJSON[data.artists[i]]);
   }
-  return artists;
+  return artists.sort(function(a,b){ return (a.artist < b.artist) ? -1 : 1; });
 };

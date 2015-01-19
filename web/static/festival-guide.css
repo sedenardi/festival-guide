@@ -132,3 +132,14 @@ path {
   border-radius: 8px;
   opacity: 0;
 }
+
+#vennListContainer {
+  display: inline-block;
+}
+.vennListArtist {
+  width: 186px;
+  float: left;
+}
+.navbar-nav.navbar-right:last-child {
+margin-right: 0;
+}
