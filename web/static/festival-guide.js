@@ -80,6 +80,7 @@ var finishLoading = function() {
     loadFestivalListTab();
     loadFestivalMapTab();
     loadVennTab();
+    loadChordTab();
     var url = document.location.toString();
     if (url.match('#')) {
       var feature = url.split('#')[1];
@@ -511,10 +512,11 @@ var loadVennTab = function() {
     return a.festival.toUpperCase().localeCompare(
       b.festival.toUpperCase());
   });
-  var nav = Handlebars.compile($('#vennFestivals-template').html());
+  o.id = 'vennSelect';
+  var nav = Handlebars.compile($('#festMultiselect-template').html());
   $('#vennNav').html(nav(o));  
   var width = $(window).width() - 10 - 10;
-  $('#vennSelect').css('width',width);
+  $('#vennSelect').css('width','100%');
   $('#vennSelect').select2({
     placeholder: 'Select 2 or 3 festivals',
     maximumSelectionSize: 3
@@ -699,6 +701,57 @@ var getCommonArtists = function(festivalIds) {
   return artists.sort(function(a,b){ return (a.artist < b.artist) ? -1 : 1; });
 };
 
+var paletteMapping = [0,4,8,12,16,1,5,9,13,17,2,6,10,14,18,3,7,11,15,19];
+var chordFill = function(i) {
+  i = paletteMapping[i % palette.length];
+  return palette[i]['500'];
+};
+
+var chordWidth, chordHeight, chordFestivalIds = [];
+var loadChordTab = function() {
+  var o = {};
+  o.festivals = [];
+  for (var key in festivalJSON) {
+    o.festivals.push(festivalJSON[key]);
+  }
+  o.festivals.sort(function(a,b){
+    return a.festival.toUpperCase().localeCompare(
+      b.festival.toUpperCase());
+  });
+  o.id = 'chordSelect';
+  var nav = Handlebars.compile($('#festMultiselect-template').html());
+  $('#chordNav').html(nav(o));
+  $('#chordSelect').css('width','100%');
+  $('#chordSelect').select2({
+    placeholder: 'Select at least 3 festivals',
+    maximumSelectionSize: 20
+  }).on('change', function(e) {
+    if (e.added)
+      chordFestivalIds.push(e.added.id);
+    else
+      chordFestivalIds = chordFestivalIds.filter(function(ele) {
+        return ele !== e.removed.id;
+      });
+
+    $('#chordNav .select2-search-choice').removeClass('chordChoice');
+    if (e.val.length > 2) {
+      $.each($('#chordNav .select2-search-choice'), function(i,v) {
+        $(v).css('background-color', chordFill(i));
+        var rgb = $(v).css('background-color');
+        var rgba = (rgb.slice(0,rgb.length-1) + ',.5)').replace('rgb','rgba');
+        $(v).css('background-color', rgba);
+        $(v).addClass('chordChoice');
+      });
+      $('#chordBody').html('');
+      makeChordDiagram(chordFestivalIds);
+    } else {
+      $('#chordBody').html('');
+    }
+  });
+  chordWidth = $(window).width() - 10 - 10;
+  chordHeight = $(window).height() - 10 - 50 - 39 - 34 - 30 - 10;
+};
+
 var getChordMatrix = function(festivalIds) {
   var matrix = [];
   for (var i = 0; i < festivalIds.length; i++) {
@@ -711,4 +764,60 @@ var getChordMatrix = function(festivalIds) {
     matrix.push(a);
   }
   return matrix;
+};
+
+var makeChordDiagram = function(festivalIds) {
+  var innerRadius = Math.min(chordWidth, chordHeight) * .41,
+      outerRadius = innerRadius * 1.1;
+
+  var matrix = getChordMatrix(festivalIds);
+  var chord = d3.layout.chord()
+    .padding(.05)
+    .sortSubgroups(d3.descending)
+    .matrix(matrix);
+
+  var svg = d3.select('#chordBody').append('svg')
+    .attr('width', chordWidth)
+    .attr('height', chordHeight)
+    .append('g')
+    .attr('id', 'circle')
+    .attr('transform', 'translate(' + vennWidth / 2 + ',' + vennHeight / 2 + ')');  
+
+  svg.append("circle")
+    .attr("r", outerRadius);
+
+  var chordFade = function(opacity) {
+    return function(g, i) {
+      svg.selectAll('.chord path')
+        .filter(function(d) { return d.source.index != i && d.target.index != i; })
+        .transition()
+        .style('opacity', opacity);
+    };
+  };
+
+  svg.append('g').selectAll('path')
+    .data(chord.groups)
+    .enter().append('path')
+    .style('fill', function(d) { return chordFill(d.index); })
+    .style('stroke', 'grey')
+    .style('stroke-width', '1')
+    .attr('d', d3.svg.arc().innerRadius(innerRadius).outerRadius(outerRadius))
+    .on('mouseover', function(d,i) {
+      chordPaths.classed("fade", function(p) {
+        return p.source.index != i
+            && p.target.index != i;
+      });
+    });
+    //.on('mouseout', chordFade(.6));
+
+  var chordPaths = svg.append('g')
+    .attr('class', 'chord')
+    .selectAll('path')
+    .data(chord.chords)
+    .enter().append('path')
+    .attr('d', d3.svg.chord().radius(innerRadius))
+    .style('fill', function(d) { return chordFill(d.target.index); })
+    .style('stroke', 'grey')
+    .style('stroke-width', '1')
+    .style('opacity', .6);
 };

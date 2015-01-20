@@ -150,5 +150,22 @@ path {
   float: left;
 }
 .navbar-nav.navbar-right:last-child {
-margin-right: 0;
+  margin-right: 0;
+}
+
+#chordBody {
+  margin-top: 20px;
+}
+
+#circle:hover path.fade {
+  display: none;
+}
+
+circle {
+  fill: none;
+  pointer-events: all;
+}
+
+.chordChoice {
+  background-image: none !important;
 }

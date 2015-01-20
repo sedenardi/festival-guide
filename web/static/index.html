@@ -12,6 +12,7 @@
     <script src="http://d3js.org/d3.v3.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
     <script src="./venn.js"></script>
+    <script src="./palette.js"></script>
     <script src="./festival-guide.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
@@ -90,7 +91,9 @@
         </div>
       </div>
       <div class="tab-pane fade" id="chord">
-        
+        <h4>Choose at least 3 festivals to compare, click connections to see common artists</h3>
+        <div id="chordNav"></div>
+        <div id="chordBody"></div>
       </div>
     </div>
     <div id="venntooltip"></div>
@@ -164,8 +167,8 @@
       </table>
     </script>
 
-    <script id="vennFestivals-template" type="text/x-handlebars-template">
-      <select id="vennSelect" multiple>
+    <script id="festMultiselect-template" type="text/x-handlebars-template">
+      <select id="{{id}}" multiple>
         <option></option>
       {{#each festivals}}
         <option value="{{festivalId}}">{{festivalWithWeek this}}</option>
