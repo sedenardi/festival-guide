@@ -125,21 +125,23 @@ circle {
 text {
   cursor: pointer;
 }
-path {
+.chord path {
   cursor: pointer;
 }
 
-#venntooltip {
+#tooltip {
   position: absolute;
   text-align: center;
-  width: 80px;
-  height: 24px;
   background: #333;
   color: #ddd;
   padding: 2px;
   border: 0px;
   border-radius: 8px;
-  opacity: 0;
+  display: none;
+  opacity: .9;
+}
+#tooltipText {
+  padding: 0 5px;
 }
 
 #vennListContainer {

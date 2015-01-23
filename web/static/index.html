@@ -75,19 +75,7 @@
         <h4>Choose up to 3 festivals to compare, click overlapping areas to see common artists</h3>
         <div id="vennBody">
           <div id="vennNav"></div>
-          <div id='venn_d'></div>
-          <div id='vennModal' class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-sm">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <span class="modalTitle">Artists In Commom</span>
-                  <span class="modalClose pull-right">&#10006;</span>
-                </div>
-                <div class="modal-body">
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id='venn_d'></div>          
         </div>
       </div>
       <div class="tab-pane fade" id="chord">
@@ -96,7 +84,21 @@
         <div id="chordBody"></div>
       </div>
     </div>
-    <div id="venntooltip"></div>
+    <div id="tooltip">
+      <div id="tooltipText"></div>
+    </div>
+    <div id='commonArtistModal' class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="modalTitle">Artists In Commom</span>
+            <span class="modalClose pull-right">&#10006;</span>
+          </div>
+          <div class="modal-body">
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
       <div class="modal-dialog">
