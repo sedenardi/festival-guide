@@ -4,13 +4,20 @@ d3.selection.prototype.moveParentToFront = function() {
   });
 };
 
-var festivalJSON, artistJSON, appearanceJSON, locationJSON, chordJSON;
+var festivalJSON, artistJSON, appearanceJSON, 
+    locationJSON, chordJSON, artistAuto = [];
 $(document).ready(function() {
   $.ajax({
     url: './artists.json',
     cache: true,
     success: function(data) {
       artistJSON = data;
+      for (var key in artistJSON) {
+        artistAuto.push(artistJSON[key]);
+      }
+      artistAuto.sort(function(a,b) {
+        return a.artist.toUpperCase().localeCompare(b.artist.toUpperCase());
+      });
       finishLoading();
     }
   });
@@ -81,6 +88,7 @@ var finishLoading = function() {
     loadFestivalMapTab();
     loadVennTab();
     loadChordTab();
+    loadSuggestTab();
     var url = document.location.toString();
     if (url.match('#')) {
       var feature = url.split('#')[1];
@@ -145,10 +153,6 @@ var geocoder = new google.maps.Geocoder,
   artistMapCenter;
 
 var loadArtistTab = function() {
-  var artistAuto = [];
-  for (var key in artistJSON) {
-    artistAuto.push(artistJSON[key]);
-  }
   var artists = new Bloodhound({
     datumTokenizer: function(d) {
       return Bloodhound.tokenizers.whitespace(d.artist);
@@ -733,7 +737,7 @@ var loadChordTab = function() {
   $('#chordSelect').css('width','100%');
   $('#chordSelect').select2({
     placeholder: 'Select at least 3 festivals',
-    maximumSelectionSize: 20
+    maximumSelectionSize: 100
   }).on('change', function(e) {
     if (e.added)
       chordFestivalIds.push(e.added.id);
@@ -856,4 +860,35 @@ var makeChordDiagram = function(festivalIds) {
           festId2 = festivalIds[d.target.index];
       createPopover([festId1,festId2]);
     });
+};
+
+var loadSuggestTab = function() {
+  var suggestAuto = [];
+  for (var i = 0; i < artistAuto.length; i++) {
+    suggestAuto.push({
+      id: artistAuto[i].artistId,
+      text: artistAuto[i].artist
+    })
+  }
+  $('#suggestInput').css('width','100%');
+  $('#suggestInput').select2({
+    data: suggestAuto,
+    placeholder: 'Enter artists',
+    multiple: true,
+    query: function (q) {
+      var pageSize = 20,
+          results  = [];
+      if (q.term && q.term !== '') {
+        results = this.data.filter(function (v) {
+          return (v.text.toLowerCase().indexOf(q.term.toLowerCase()) > -1);
+        });
+      } else if (q.term === '') {
+        results = this.data;
+      }
+      q.callback({
+        results: results.slice((q.page - 1) * pageSize, q.page * pageSize),
+        more: results.length >= q.page * pageSize
+      });
+    }
+  })
 };
