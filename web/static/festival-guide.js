@@ -105,6 +105,10 @@ var registerHelpers = function() {
     return moment(obj.startDate).format('dddd, MMMM Do') +
       ' to ' + moment(obj.endDate).format('dddd, MMMM Do');
   });
+  Handlebars.registerHelper('simpleDateRange', function(obj) {
+    return moment(obj.startDate).format('M/D') +
+      ' to ' + moment(obj.endDate).format('M/D');
+  });
   Handlebars.registerHelper('festivalWithWeek', function(obj) {
     return obj.festival + (obj.week !== null ? ' (Week ' + obj.week + ')' : '');
   });
@@ -121,7 +125,16 @@ var registerHelpers = function() {
       moment(obj.endDate).format('M/D');
   });
   Handlebars.registerHelper('location', function(obj) {
-    return obj.location.location;
+    return locationJSON[obj.locationId].location;
+  });
+  Handlebars.registerHelper('joinArtists', function(obj) {
+    var s = '';
+    for (var i = 0; i < obj.length; i++) {
+      s += obj[i].artist;
+      if (i < obj.length - 1)
+        s += ', ';
+    }
+    return s;
   });
 
   Handlebars.registerPartial('appearance', $('#appearance-partial').html());
@@ -373,7 +386,6 @@ var loadFestivalListTab = function() {
 var fetchFestivalInfo = function (festivalId) {
   var o = {};
   o.festival = festivalJSON[festivalId];
-  o.festival.location = locationJSON[o.festival.locationId];
   o.artists = [];
   var sortedArtistIds = getSortedArtists(festivalId);
   $.each(sortedArtistIds, function(i ,v) {
@@ -891,4 +903,54 @@ var loadSuggestTab = function() {
       });
     }
   })
+  .on('change', function(e) {
+    var fests = getSuggestedFestivals(e.val);
+    $('#suggestBody').html('');
+    if (fests.length) {
+      var template = Handlebars.compile($('#suggest-template').html());
+      $('#suggestBody').html(template(fests));
+    }
+    console.log(fests);
+  });
+};
+
+var getSuggestedFestivals = function(artistIds) {
+  var festivals = {}, maxArtist = 0;
+  for (var i = 0; i < artistIds.length; i++) {
+    var artist = artistJSON[artistIds[i]];
+    var festIds = appearanceJSON.byArtist[artist.artistId];
+    for (var j = 0; j < festIds.length; j++) {
+      var festId = festIds[j];
+      if (typeof festivals[festId] === 'undefined') {
+        festivals[festId] = {
+          festival: festivalJSON[festId],
+          artists: [artist]
+        };
+      } else {
+        festivals[festId].artists.push(artist);
+      }
+      if (festivals[festId].artists.length > maxArtist) {
+        maxArtist = festivals[festId].artists.length;
+      }
+    }
+  }
+  var tier1 = (maxArtist/3),
+      tier2 = tier1 * 2;
+  var festArray = [];
+  for (var festId in festivals) {
+    var f = festivals[festId];
+    if (f.artists.length <= tier1)
+      f.class = 'tier1';
+    else if (f.artists.length <= tier2)
+      f.class = 'tier2';
+    else
+      f.class = 'tier3';
+    festArray.push(f);
+  }
+  festArray.sort(function(a,b) {
+    return a.artists.length !== b.artists.length ?
+      b.artists.length - a.artists.length :
+      a.festival.festival.toUpperCase().localeCompare(b.festival.festival.toUpperCase());
+  });
+  return festArray;
 };

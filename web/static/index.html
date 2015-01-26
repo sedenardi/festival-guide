@@ -197,5 +197,21 @@
       {{/if}}
     </script>
 
+    <script id="suggest-template" type="text/x-handlebars-template">
+      {{#each this}}
+      <div class="suggestResult {{this.class}}" data-festivalId="{{this.festival.festivalId}}">
+        <div class="suggestFestivalName">
+          {{this.artists.length}} - {{this.festival.festival}}
+        </div>
+        <div class="suggestFestivalInfo">
+          {{location this.festival}} - {{simpleDateRange this.festival}}
+        </div>
+        <div class="suggestArtists">
+          {{joinArtists this.artists}}
+        </div>
+      </div>
+      {{/each}}
+    </script>
+
   </body>
 </html>

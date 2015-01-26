@@ -171,3 +171,36 @@ circle {
 .chordChoice {
   background-image: none !important;
 }
+
+.suggestResult {
+  border-color: #333;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  padding: 5px 10px;
+  float: left;
+  margin: 10px 0 0 10px;
+}
+.suggestResult:last-child {
+  margin-bottom: 10px;
+}
+
+.suggestFestivalName {
+  font-size: 16px;
+}
+.suggestFestivalInfo {
+  font-size: 12px;
+}
+.suggestArtists {
+  font-size: 13px;
+}
+
+.tier1 {
+  background-color: #FFAB91;
+}
+.tier2 {
+  background-color: #FFF59D;
+}
+.tier3 {
+  background-color: #A5D6A7;
+}
