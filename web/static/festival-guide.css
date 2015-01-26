@@ -204,3 +204,7 @@ circle {
 .tier3 {
   background-color: #A5D6A7;
 }
+
+#wcsuggestBody {
+  margin-top: 20px;
+}
