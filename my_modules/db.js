@@ -1,66 +1,98 @@
-var mysql = require('mysql');
+var mysql = require('mysql'),
+  logger = require('./logger.js');
 
-var connection;
+var DB = function(config){
 
-var handleDisconnect = function(config, caller, next) {
-  connection = mysql.createConnection(config.mysql); // Recreate the connection, since
-                                                  // the old one cannot be reused.
+  var self = this;
+  var connection;
+  
+  this.connect = function(caller, next) {
+    handleDisconnect(caller,next);
+  };
 
-  connection.connect(function(err) {              // The server is either down
-    if(err) {                                     // or restarting (takes a while sometimes).
-      console.log('MYSQL-' + caller + ': error when connecting to db: ', err);
-      setTimeout(handleDisconnect(config,'self',next), 2000); // We introduce a delay before attempting to reconnect,
-    } else {                              // to avoid a hot loop, and to allow our node script to
-      console.log('MYSQL-' + caller + ': connect success'); // process asynchronous requests in the meantime.
-      next();
-    }                                     // If you're also serving http, display a 503 error
-  });
-  connection.on('error', function(err) {
-    console.log('MYSQL-' + caller + ': db error ', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-      handleDisconnect(config,'self',function(){});                         // lost due to either server restart, or a
-    } else {                                      // connnection idle timeout (the wait_timeout
-      throw err;                                  // server variable configures this)
-    }
-  });
-};  
+  var handleDisconnect = function(caller, next) {
+    connection = mysql.createConnection(config.mysql);
 
-var disconnect = function() {
-  connection.end(function (err) {
-    if (err) {
-      console.log('MYSQL: ', err);
-    } else {
-      console.log('MYSQL: disconnected');
-      }
-  });
-};
-
-/**** FUNCTIONS ****/
-var query = function(cmd, next) {
-  var sql = connection.format(cmd.sql, cmd.inserts);
-  connection.query(sql, next);
-};
-
-var logError = function(error, next) {
-  if (typeof error.source !== 'undefined' &&
-    typeof error.message !== 'undefined' &&
-    typeof error.stack !== 'undefined') {
-    var cmd = {
-      sql: 'Insert into Errors(Source,Message,Data) Select ?,?,?;',
-      inserts: [error.source,error.message,error.stack]
-    };
-    queryWithError(cmd, function errorWriteDone(err, res) {
-      if (err) {
-        console.log('MYSQL: ' + err);
+    connection.connect(function(err) {
+      if(err) {
+        logger.log({
+          caller: 'MYSQL',
+          message: err
+        });
+        setTimeout(self.handleDisconnect(config,'self',next), 2000);
       } else {
+        logger.log({
+          caller: 'MYSQL',
+          message: 'Connected',
+          data: { caller: caller }
+        });
+        if (typeof next === 'function')
+          next();
+      }
+    });
+    connection.on('error', function(err) {
+      logger.log({
+        caller: 'MYSQL',
+        message: err,
+        data: { caller: caller }
+      });
+      if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+        handleDisconnect(caller);
+      } else {
+        throw err;
+      }
+    });
+  };  
+
+  this.disconnect = function() {
+    connection.end(function (err) {
+      if (err) {
+        logger.log({
+          caller: 'MYSQL',
+          message: 'Disconnect',
+          data: err
+        });
+      } else {
+        logger.log({
+          caller: 'MYSQL',
+          message: 'Disconnect'
+        });
+      }
+    });
+  };
+
+  /**** FUNCTIONS ****/
+  this.query = function(cmd, next, attempt) {
+    if (typeof attempt === 'undefined') attempt = 1;
+    var inserts = (typeof cmd.inserts !== 'undefined') ?
+      cmd.inserts : [];
+    var sql = connection.format(cmd.sql, inserts);
+    connection.query(sql, function(err, res) {
+      if (err) {
+        logger.log({
+          caller: 'MYSQL',
+          message: err,
+          data: sql
+        });
+        if (err.code === 'ER_LOCK_DEADLOCK') {
+          console.log('Attempt ' + attempt);
+          if (attempt <= 3) {
+            attempt++;
+            self.query(cmd, next, attempt);
+          }
+        } 
+      } else if (typeof next === 'function') {
         next(res);
       }
     });
-  }
+  };
+
+  this.queryHandleError = function(cmd, next) {
+    var sql = connection.format(cmd.sql, cmd.inserts);
+    connection.query(sql, next);
+  };
+  
 };
 
 /***** EXPORTS *****/
-module.exports.connect = handleDisconnect;
-module.exports.disconnect = disconnect;
-module.exports.query = query;
-module.exports.logError = logError;
+module.exports = DB;

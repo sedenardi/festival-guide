@@ -1,33 +1,21 @@
 var events = require('events'),
   express = require('express'),
-  hbars = require('./hbars.js'),
   util = require('util'),
-  db = require('./db.js'),
+  DB = require('./db.js'),
+  logger = require('./logger.js'),
   queries = require('./queries.js');
 
-var Web = function(config, rootDir) {
-  if(!(this instanceof Web)) return new Web(config, rootDir);
+var Web = function(config) {
+
   var self = this;
+  var db = new DB(config);
+  var rootDir = process.cwd();
   
-  var app = express(),
-    hbs = new hbars(rootDir, config);
+  var app = express();
 
-  app.engine('handlebars', hbs.hbs.engine);
+  app.use(express.static(rootDir + config.web.folders.static));
 
-  app.configure(function() {
-    app.set('views', rootDir + '/web/views');
-    app.set('view engine', 'handlebars');
-    //app.use(express.logger());
-    app.use(express.cookieParser());
-    app.use(express.json());
-    app.use(express.urlencoded())
-    app.use(express.methodOverride());
-    app.use(express.session({ secret: 'roygbiv' }));
-    app.use(app.router);
-    app.use(express.static(rootDir + config.web.folders.static));
-  });
-
-  app.get('/dupes', function (req, res) {
+  /*app.get('/dupes', function (req, res) {
     db.query({
       sql: 'call getDupes();',
       inserts: []
@@ -80,7 +68,7 @@ var Web = function(config, rootDir) {
     } else {
       res.json(402, { error: 'Must specify artistId1 and artistId2.'});      
     }
-  });
+  });*/
 
   app.get('/dump/artists.json', function (req,res) {
     db.query(queries.getAllArtists(), function (err, dbRes) {
@@ -165,9 +153,13 @@ var Web = function(config, rootDir) {
   });
 
   this.startServer = function() {
-    db.connect(config, 'WEB', function webDB() {
+    db.connect('Express', function webDB() {
       app.listen(config.web.port, function webStarted() {
-        console.log('Created web server on port ' + config.web.port);
+        logger.log({
+          caller: 'Express',
+          message: 'Web server started',
+          params: { port: config.web.port }
+        });
       });
     });
   };

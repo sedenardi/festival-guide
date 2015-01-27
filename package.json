@@ -1,6 +1,6 @@
 {
   "name": "festival-guide",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": "Sanders DeNardi",
   "description": "Analyzing and visualizing music festivals.",
   "main": "festival-guide.js",
@@ -9,11 +9,6 @@
     "url": "https://github.com/sedenardi/festival-guide"
   },
   "dependencies" : {
-    "express": "~3.4.8",
-    "mysql": "~2.0.1",
-    "handlebars": "~1.3.0",
-    "moment": "~2.5.1",
-    "express3-handlebars": "~0.5.0"
   },
   "engines": {
     "node": ">=0.10"

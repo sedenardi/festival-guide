@@ -1,5 +1,7 @@
 var fs = require('fs'),
   config = require('./config.json'),
-  web = require('./my_modules/web.js')(config, __dirname);
+  logger = require('./my_modules/logger.js'),
+  Web = require('./my_modules/web.js');
 
+var web = new Web(config);
 web.startServer();
