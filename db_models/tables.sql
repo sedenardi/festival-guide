@@ -50,6 +50,7 @@ CREATE TABLE `appearances` (
   `appearanceId` int(11) NOT NULL AUTO_INCREMENT,
   `artistId` int(11) NOT NULL,
   `festivalId` int(11) NOT NULL,
+  `week` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`appearanceId`),
   KEY `FK_appearances_artistId` (`artistId`),
   KEY `FK_appearances_festivalId` (`festivalId`),
