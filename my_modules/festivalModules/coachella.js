@@ -17,11 +17,9 @@ Coachella.prototype.getFestivalUrls = function() {
 
 Coachella.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
-  fest.artists = [];
-  $('.artist').each(function(i,v) {
-    var artist = $(this).find('h3').text().trim().replace('More ','');
-    fest.artists.push(artist);
-  });
+  fest.artists = $('.artist').map(function(i,v) {
+    return $(this).find('h3').text().trim().replace('More ','');
+  }).get();
   this.generateInserts(fest);
 };
 
