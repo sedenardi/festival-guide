@@ -20,9 +20,7 @@ var findFestivalModules = function() {
       });
       return;
     }
-    for (var i = 0; i < files.length; i++) {
-      startFestival(files[i]);
-    }
+    files.forEach(startFestival);
   });
 };
 
