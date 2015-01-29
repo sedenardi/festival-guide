@@ -44,7 +44,7 @@ var DB = function(config){
     });
   };  
 
-  this.disconnect = function() {
+  this.disconnect = function(next) {
     connection.end(function (err) {
       if (err) {
         logger.log({
@@ -58,6 +58,7 @@ var DB = function(config){
           message: 'Disconnect'
         });
       }
+      next();
     });
   };
 

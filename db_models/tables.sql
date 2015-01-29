@@ -49,11 +49,10 @@ CREATE TABLE `artistsReported` (
 CREATE TABLE `appearances` (
   `appearanceId` int(11) NOT NULL AUTO_INCREMENT,
   `artistId` int(11) NOT NULL,
-  `festivalId` int(11) NOT NULL,
-  `week` tinyint(4) DEFAULT NULL,
+  `festivalDateId` int(11) NOT NULL,
   PRIMARY KEY (`appearanceId`),
   KEY `FK_appearances_artistId` (`artistId`),
-  KEY `FK_appearances_festivalId` (`festivalId`),
+  KEY `FK_appearances_festivalDateId` (`festivalDateId`),
   CONSTRAINT `FK_appearances_artistId` FOREIGN KEY (`artistId`) REFERENCES `artists` (`artistId`),
-  CONSTRAINT `FK_appearances_festivalId` FOREIGN KEY (`festivalId`) REFERENCES `festivals` (`festivalId`)
+  CONSTRAINT `FK_appearances_festivalDateId` FOREIGN KEY (`festivalDateId`) REFERENCES `festivalDates` (`festivalDateId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
