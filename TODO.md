@@ -1,11 +1,50 @@
-- Venn diagram
-- [X] 3 festival max checkbox
-- [X] Popup of artist comparison
-- Artist Mapping
-- [X] Dropping pins at appearances
-- [X] Drawing route
-- Backend tools
-- [ ] Artist editor
-- [ ] Appearance editor
-- [X] De-duper
-- [ ] Festival info import
+https://www.atpfestival.com/events/atpiceland2015
+http://www.readingfestival.com/line-up/artist-a-z
+http://fielddayfestivals.com/line-up/line-up-2015/
+http://isleoflightfest.com/languages/english.php
+http://spring.bostoncalling.com/lineup
+http://treefortmusicfest.com/lineup
+http://www.coralskiesfest.com/#/artists/
+http://www.bigguavafest.com/#/artists/
+http://mmmf.com/line-up/
+http://www.brooklynvegan.com/archives/2014/12/weezer_bone_thu.html
+http://www.waneefestival.com/bands.html
+http://summercampfestival.com/lineup/
+http://thebukuproject.com/lineup/
+http://www.ultramusicfestival.com/lineup
+http://www.bottlerocknapavalley.com/artists/
+http://gasparillamusic.com/2015-lineup/
+http://rockinrio.com/usa/line-up/
+http://shakykneesfestival.com/artists/
+http://www.counterpointfestival.com/2015-lineup-details/
+http://www.wirelessfestival.co.uk/lineup/artists
+http://www.highsierramusic.com/lineup/artist-info/
+http://www.newportjazzfest.org/
+
+http://www.bestival.net/
+http://www.latitudefestival.com/
+http://www.electricforestfestival.com/experience/lineup/
+http://www.sasquatchfestival.com/lineup
+http://gatheringofthevibes.com/
+http://www.osheaga.com/
+http://www.summerfest.com/
+http://www.lollapalooza.com/
+http://pitchforkmusicfestival.com/
+http://www.memphisinmay.org/musicfestival
+http://www.sfoutsidelands.com/home/
+http://nxne.com/
+http://pembertonmusicfestival.com/
+http://www.infofestival.com/
+http://fpsf.com/
+http://www.aclfestival.com/
+http://www.locknfestival.com/
+http://www.northcoastfestival.com/
+http://hopscotchmusicfest.com/
+http://www.glastonburyfestivals.co.uk/line-up/
+http://squamishfestival.com/
+http://capitolhillblockparty.com/
+http://www.bunburyfestival.com/
+http://ottawabluesfest.ca/
+http://bumbershoot.org/2014/12/19/bumbershoot-2015-is-on/
+http://www.newportfolk.org/
+http://www.loufest.com/

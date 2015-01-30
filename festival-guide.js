@@ -3,7 +3,6 @@ var fs = require('fs'),
   logger = require('./my_modules/logger.js'),
   Web = require('./my_modules/web.js'),
   fs = require('fs');
-  Coachella = require('./my_modules/festivalModules/coachella.js');
 
 var web = new Web(config);
 web.startServer();
