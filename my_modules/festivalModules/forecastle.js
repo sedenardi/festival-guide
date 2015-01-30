@@ -10,7 +10,7 @@ util.inherits(Forecastle, Festival);
 
 Forecastle.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Forecastle', festivalDateId: 6, url: 'http://lineup.forecastlefest.com/' }
+    { tag: 'Forecastle', festivalDateId: 9, url: 'http://lineup.forecastlefest.com/' }
   ];
 };
 

@@ -10,7 +10,7 @@ util.inherits(NoisePop, Festival);
 
 NoisePop.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Noise Pop', festivalDateId: 8, url: 'http://lineup.noisepop.com/' }
+    { tag: 'Noise Pop', festivalDateId: 10, url: 'http://lineup.noisepop.com/' }
   ];
 };
 

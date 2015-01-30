@@ -10,7 +10,7 @@ util.inherits(FloydFest, Festival);
 
 FloydFest.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'FloydFest', festivalDateId: 9, url: 'http://lineup.floydfest.com/' }
+    { tag: 'FloydFest', festivalDateId: 11, url: 'http://lineup.floydfest.com/' }
   ];
 };
 

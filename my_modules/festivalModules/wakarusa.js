@@ -10,7 +10,7 @@ util.inherits(Wakarusa, Festival);
 
 Wakarusa.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Wakarusa', festivalDateId: 5, url: 'http://www.wakarusa.com/artist-lineup/' }
+    { tag: 'Wakarusa', festivalDateId: 7, url: 'http://www.wakarusa.com/artist-lineup/' }
   ];
 };
 

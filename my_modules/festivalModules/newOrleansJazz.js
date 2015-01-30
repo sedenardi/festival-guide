@@ -10,7 +10,7 @@ util.inherits(NewOrleansJazz, Festival);
 
 NewOrleansJazz.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'New Orleans Jazz', festivalDateId: 4, url: 'http://lineup.nojazzfest.com/' }
+    { tag: 'New Orleans Jazz', festivalDateId: 6, url: 'http://lineup.nojazzfest.com/' }
   ];
 };
 

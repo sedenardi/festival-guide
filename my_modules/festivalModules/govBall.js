@@ -10,7 +10,7 @@ util.inherits(GovBall, Festival);
 
 GovBall.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Governor\'s Ball', festivalDateId: 3, url: 'http://lineup.governorsballmusicfestival.com/' }
+    { tag: 'Governor\'s Ball', festivalDateId: 4, url: 'http://lineup.governorsballmusicfestival.com/' }
   ];
 };
 

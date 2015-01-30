@@ -10,7 +10,7 @@ util.inherits(Hangout, Festival);
 
 Hangout.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Hangout', festivalDateId: 7, url: 'http://lineup.hangoutmusicfest.com/' }
+    { tag: 'Hangout', festivalDateId: 8, url: 'http://lineup.hangoutmusicfest.com/' }
   ];
 };
 

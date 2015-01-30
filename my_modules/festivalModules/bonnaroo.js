@@ -10,7 +10,7 @@ util.inherits(Bonnaroo, Festival);
 
 Bonnaroo.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Bonnaroo', festivalDateId: 3, url: 'http://lineup.bonnaroo.com/' }
+    { tag: 'Bonnaroo', festivalDateId: 5, url: 'http://lineup.bonnaroo.com/' }
   ];
 };
 
