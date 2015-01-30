@@ -5,6 +5,10 @@ create procedure fixDupe(
 )
 begin
 
+update artistsReported
+set artistId = artistId1
+where artistId = artistId2;
+
 update appearances
 set artistId = artistId1
 where artistId = artistId2;

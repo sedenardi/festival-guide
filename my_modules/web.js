@@ -1,5 +1,6 @@
 var events = require('events'),
   express = require('express'),
+  hbars = require('./hbars.js'),
   util = require('util'),
   DB = require('./db.js'),
   logger = require('./logger.js'),
@@ -11,22 +12,21 @@ var Web = function(config) {
   var db = new DB(config);
   var rootDir = process.cwd();
   
-  var app = express();
+  var app = express(),
+    hbs = new hbars(rootDir, config);
 
+  app.engine('handlebars', hbs.hbs.engine);
+
+  app.set('views', rootDir + '/web/views');
+  app.set('view engine', 'handlebars');
   app.use(express.static(rootDir + config.web.folders.static));
 
-  /*app.get('/dupes', function (req, res) {
+  app.get('/dupes', function (req, res) {
     db.query({
       sql: 'call getDupes();',
       inserts: []
-    }, function (err, dbRes) {
-      if (err) {
-          console.log(JSON.stringify(err));
-          res.send(500);
-          return;
-      }
+    }, function (dbRes) {
       res.render('dupes', {
-        //layout: false,
         dupes: dbRes[0]
       });
     });
@@ -38,13 +38,8 @@ var Web = function(config) {
       db.query({
         sql: 'call fixDupe(?,?)',
         inserts: [req.query.artistId1, req.query.artistId2]
-      }, function (err, dbRes) {
-        if (err) {
-          console.log(JSON.stringify(err));
-          res.send(500);
-          return;
-        }
-        res.send(200);
+      }, function (dbRes) {
+        res.sendStatus(200);
       });
     } else {
       res.json(402, { error: 'Must specify artistId1 and artistId2.'});      
@@ -57,26 +52,16 @@ var Web = function(config) {
       db.query({
         sql: 'call markFalsePositive(?,?)',
         inserts: [req.query.artistId1, req.query.artistId2]
-      }, function (err, dbRes) {
-        if (err) {
-          console.log(JSON.stringify(err));
-          res.send(500);
-          return;
-        }
-        res.send(200);
+      }, function (dbRes) {
+        res.sendStatus(200);
       });
     } else {
       res.json(402, { error: 'Must specify artistId1 and artistId2.'});      
     }
-  });*/
+  });
 
   app.get('/dump/artists.json', function (req,res) {
-    db.query(queries.getAllArtists(), function (err, dbRes) {
-      if (err) {
-        console.log(JSON.stringify(err));
-        res.send(500);
-        return;
-      }
+    db.query(queries.getAllArtists(), function (dbRes) {
       var artists = {};
       for (var i = 0; i < dbRes.length; i++) {
         artists[dbRes[i].artistId] = dbRes[i];
@@ -86,12 +71,7 @@ var Web = function(config) {
   });
 
   app.get('/dump/festivals.json', function (req,res) {
-    db.query(queries.getAllFestivals('startDate'), function (err, dbRes) {
-      if (err) {
-        console.log(JSON.stringify(err));
-        res.send(500);
-        return;
-      }
+    db.query(queries.getAllFestivals('startDate'), function (dbRes) {
       var festivals = {};
       for (var i = 0; i < dbRes.length; i++) {
         festivals[dbRes[i].festivalId] = dbRes[i];
@@ -101,12 +81,7 @@ var Web = function(config) {
   });
 
   app.get('/dump/appearances.json', function (req,res) {
-    db.query(queries.getAllAppearances(), function (err, dbRes) {
-      if (err) {
-        console.log(JSON.stringify(err));
-        res.send(500);
-        return;
-      }
+    db.query(queries.getAllAppearances(), function (dbRes) {
       var appearances = {};
       appearances.byArtist = {};
       appearances.byFestival= {};
@@ -125,12 +100,7 @@ var Web = function(config) {
   });
 
   app.get('/dump/locations.json', function (req,res) {
-    db.query(queries.getAllLocations(), function (err, dbRes) {
-      if (err) {
-        console.log(JSON.stringify(err));
-        res.send(500);
-        return;
-      }
+    db.query(queries.getAllLocations(), function (dbRes) {
       var locations = {};
       for (var i = 0; i < dbRes.length; i++) {
         locations[dbRes[i].locationId] = dbRes[i];
@@ -142,12 +112,7 @@ var Web = function(config) {
   });
 
   app.get('/dump/chordData.json', function (req,res) {
-    db.query(queries.getChordData(), function (err, dbRes) {
-      if (err) {
-        console.log(JSON.stringify(err));
-        res.send(500);
-        return;
-      }
+    db.query(queries.getChordData(), function (dbRes) {
       res.json(dbRes);
     });
   });

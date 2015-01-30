@@ -56,3 +56,18 @@ CREATE TABLE `appearances` (
   CONSTRAINT `FK_appearances_artistId` FOREIGN KEY (`artistId`) REFERENCES `artists` (`artistId`),
   CONSTRAINT `FK_appearances_festivalDateId` FOREIGN KEY (`festivalDateId`) REFERENCES `festivalDates` (`festivalDateId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dupe tables
+CREATE TABLE `hashes`
+(
+  `artistId` int(11) NOT NULL,
+  `hash` varchar(10) NOT NULL,
+  KEY `IX_hashes_hash` (`hash`)
+);
+
+CREATE TABLE `falsepositives`
+(
+  `artistId1` int(11) NOT NULL,
+  `artistId2` int(11) NOT NULL,
+  KEY `IX_falsepositives_artistId1` (`artistId1`)
+);

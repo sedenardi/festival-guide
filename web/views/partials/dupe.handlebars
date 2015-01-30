@@ -1,11 +1,18 @@
 <tr>
   <td>
-    <button type="button" class="btn btn-info dupeButton" data-artist-id1="{{artistId1}}" data-artist-id2="{{artistId2}}">{{artist1}}</button>
+    <button type="button" class="btn btn-info dupeButton" data-artist-id1="{{artistId1}}" data-artist-id2="{{artistId2}}">
+      {{artist1}} - {{artist1Appearances}}
+    </button>
   </td>
   <td>
-    <button type="button" class="btn btn-info dupeButton" data-artist-id1="{{artistId2}}" data-artist-id2="{{artistId1}}">{{artist2}}</button>
+    <button type="button" class="btn btn-info dupeButton" data-artist-id1="{{artistId2}}" data-artist-id2="{{artistId1}}">
+      {{artist2}} - {{artist2Appearances}}
+    </button>
   </td>
   <td>
     <button type="button" class="btn btn-success notDupeButton" data-artist-id1="{{artistId1}}" data-artist-id2="{{artistId2}}">Not Dupes</button>
+  </td>
+  <td>
+    {{matches}} matches, {{diff}} diff
   </td>
 </tr>

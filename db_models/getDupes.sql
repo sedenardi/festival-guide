@@ -29,8 +29,10 @@ having count(1) > 1;
 select 
 	m.artistId1,
 	a1.artist as artist1,
+	(select count(1) from appearances app where app.artistId = m.artistId1) as artist1Appearances,
 	m.artistId2,
 	a2.artist as artist2,
+	(select count(1) from appearances app where app.artistId = m.artistId2) as artist2Appearances,
 	matches,
 	(select count(1) from hashes h where h.artistId = m.artistId1) - matches + 
 	(select count(1) from hashes h where h.artistId = m.artistId2) - matches as diff
