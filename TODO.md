@@ -5,20 +5,15 @@ http://isleoflightfest.com/languages/english.php
 http://spring.bostoncalling.com/lineup
 http://treefortmusicfest.com/lineup
 http://www.coralskiesfest.com/#/artists/
-http://www.bigguavafest.com/#/artists/
 http://mmmf.com/line-up/
 http://www.brooklynvegan.com/archives/2014/12/weezer_bone_thu.html
 http://www.waneefestival.com/bands.html
 http://summercampfestival.com/lineup/
 http://thebukuproject.com/lineup/
 http://www.ultramusicfestival.com/lineup
-http://www.bottlerocknapavalley.com/artists/
 http://gasparillamusic.com/2015-lineup/
 http://rockinrio.com/usa/line-up/
-http://shakykneesfestival.com/artists/
-http://www.counterpointfestival.com/2015-lineup-details/
 http://www.wirelessfestival.co.uk/lineup/artists
-http://www.highsierramusic.com/lineup/artist-info/
 http://www.newportjazzfest.org/
 
 http://www.bestival.net/

@@ -9,7 +9,7 @@ util.inherits(MountainJam, Festival);
 
 MountainJam.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Mountain Jam', festivalDateId: 11, url: 'http://s3.amazonaws.com/goevent-web-mountainjam-2015/widgets/artists/widget_items_eng.json' }
+    { tag: 'Mountain Jam', festivalDateId: 12, url: 'http://s3.amazonaws.com/goevent-web-mountainjam-2015/widgets/artists/widget_items_eng.json' }
   ];
 };
 
