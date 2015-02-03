@@ -39,6 +39,12 @@ Festival.prototype.fetchFestival = function(fest) {
   dl.download(fest.url, fest.json);
 };
 
+Festival.prototype.unCapitalize = function(artist) {
+  return artist.split(' ').map(function(x,k){
+    return x[0] + x.slice(1,x.length).toLowerCase();
+  }).join(' ');
+};
+
 Festival.prototype.generateInserts = function(fest) {
   if (this.debug) {
     logger.log({

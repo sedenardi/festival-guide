@@ -322,7 +322,7 @@ var plotFestivals = function(festivals) {
   var request = {
     origin: festivals[0].location.location,
     destination: festivals[festivals.length - 1].location.location,
-    waypoints: waypts.slice(1,waypts.length-2),
+    waypoints: waypts.slice(1,waypts.length-1),
     travelMode: google.maps.TravelMode.DRIVING
   };
   directionsService.route(request, function(response, status) {

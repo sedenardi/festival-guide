@@ -1,16 +1,9 @@
 https://www.atpfestival.com/events/atpiceland2015
-http://www.readingfestival.com/line-up/artist-a-z
-http://fielddayfestivals.com/line-up/line-up-2015/
-http://isleoflightfest.com/languages/english.php
 http://spring.bostoncalling.com/lineup
-http://www.coralskiesfest.com/#/artists/
-http://www.brooklynvegan.com/archives/2014/12/weezer_bone_thu.html
 http://www.waneefestival.com/bands.html
 http://summercampfestival.com/lineup/
 http://www.ultramusicfestival.com/lineup
-http://gasparillamusic.com/2015-lineup/
 http://rockinrio.com/usa/line-up/
-http://www.wirelessfestival.co.uk/lineup/artists
 http://www.newportjazzfest.org/
 
 http://www.bestival.net/
