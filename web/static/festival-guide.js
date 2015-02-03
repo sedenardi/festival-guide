@@ -5,7 +5,7 @@ d3.selection.prototype.moveParentToFront = function() {
 };
 
 var festivalJSON, artistJSON, appearanceJSON,
-    locationJSON, chordJSON, artistAuto = [];
+    locationJSON, chordJSON, artistAuto = [], festivalArray = [];
 $(document).ready(function() {
   $.ajax({
     url: './artists.json',
@@ -26,6 +26,13 @@ $(document).ready(function() {
     cache: true,
     success: function(data) {
       festivalJSON = data;
+      for (var key in festivalJSON) {
+        festivalArray.push(festivalJSON[key]);
+      }
+      festivalArray.sort(function(a,b){
+        return a.festival.toUpperCase().localeCompare(
+          b.festival.toUpperCase());
+      });
       finishLoading();
     }
   });
@@ -50,13 +57,13 @@ $(document).ready(function() {
     cache: true,
     success: function(data) {
       chordJSON = {};
-      for (var i = 0; i < data.length; i++) {
-        var f1 = 'f' + data[i].festivalId1;
-        var f2 = 'f' + data[i].festivalId2;
+      data.forEach(function(v,i) {
+        var f1 = 'f' + v.festivalId1;
+        var f2 = 'f' + v.festivalId2;
         if (typeof chordJSON[f1] === 'undefined')
           chordJSON[f1] = {};
-        chordJSON[f1][f2] = data[i].count;
-      }
+        chordJSON[f1][f2] = v.count;
+      });
       finishLoading();
     }
   });
@@ -129,13 +136,9 @@ var registerHelpers = function() {
     return locationJSON[obj.locationId].location;
   });
   Handlebars.registerHelper('joinArtists', function(obj) {
-    var s = '';
-    for (var i = 0; i < obj.length; i++) {
-      s += obj[i].artist;
-      if (i < obj.length - 1)
-        s += ', ';
-    }
-    return s;
+    return obj.map(function(v,i) {
+      return v.artist;
+    }).join(', ');
   });
 
   Handlebars.registerPartial('appearance', $('#appearance-partial').html());
@@ -194,10 +197,10 @@ var loadArtistTab = function() {
         artistReq.abort();
       }
       var fests = [];
-      $.each(appearanceJSON.byArtist[datum.artistId], function(i ,v) {
+      appearanceJSON.byArtist[datum.artistId].forEach(function(v,i) {
         var pushed = false;
         var f = festivalJSON[v];
-        $.each(fests, function(j, w) {
+        fests.forEach(function(w,j) {
           if (w.festival === f.festival) {
             w.startDates.push(f.startDate);
             w.endDates.push(f.endDate);
@@ -221,7 +224,7 @@ var loadArtistTab = function() {
       if (fests.length > 1 && fests.length <= 10) {
         plotFestivals(fests);
       } else {
-        $.each(fests, function (i ,v) {
+        fests.forEach(function(v,i) {
           pinFestival(v);
         });
       }
@@ -276,7 +279,7 @@ var pinFestival = function(festival) {
 };
 
 var clearMarkers = function() {
-  $.each(mapMarkers, function (i,v) {
+  mapMarkers.forEach(function(v,i) {
     v.setMap(null);
   });
   mapMarkers.length = 0;
@@ -300,16 +303,11 @@ var dropMarker = function(map, location, festival, markerImg) {
 };
 
 var artistMapInfoWindowContent = function(festival) {
-  var dateString = '';
-
-  $.each(festival.startDates, function(i, v) {
-    dateString += '<span class="festivalMapPopoverFest" data-festivalid="' +
+  var dateString = festival.startDates.map(function(v,i){
+    return '<span class="festivalMapPopoverFest" data-festivalid="' +
       festival.festivalIds[i] + '">' + moment(v).format('dddd, MMMM Do') +
       ' to ' + moment(festival.endDates[i]).format('dddd, MMMM Do') + '</span>';
-    if (i <= festival.startDates.length - 2) {
-      dateString += '<br>';
-    }
-  });
+  }).join('<br>');
 
   return festival.festival + '<br>' +
     festival.location.location + '<br>' +
@@ -317,17 +315,14 @@ var artistMapInfoWindowContent = function(festival) {
 };
 
 var plotFestivals = function(festivals) {
-  var waypts = [];
-  for (var i = 1; i < festivals.length - 1; i++) {
-    waypts.push({
-      location: festivals[i].location.location,
-      stopover: true
-    });
-  }
+  var waypts = festivals.map(function(v,i){
+    return { location: v.location.location, stopover: true };
+  });
+
   var request = {
     origin: festivals[0].location.location,
     destination: festivals[festivals.length - 1].location.location,
-    waypoints: waypts,
+    waypoints: waypts.slice(1,waypts.length-2),
     travelMode: google.maps.TravelMode.DRIVING
   };
   directionsService.route(request, function(response, status) {
@@ -342,10 +337,10 @@ var plotFestivals = function(festivals) {
 };
 
 var dropDirectionMarkers = function(route, festivals) {
-  for (var i = 0; i < route.length; i++) {
+  route.forEach(function(v,i){
     var markerImg = './images/marker' + (i + 1) + '.png';
-    dropMarker(artistMap, route[i].start_location, festivals[i], markerImg);
-  }
+    dropMarker(artistMap, v.start_location, festivals[i], markerImg);
+  });
   var endMarkerImg = './images/marker' + (route.length + 1) + '.png';
   dropMarker(artistMap, route[route.length - 1].end_location, festivals[route.length], endMarkerImg);
 };
@@ -389,7 +384,7 @@ var fetchFestivalInfo = function (festivalId) {
   o.festival = festivalJSON[festivalId];
   o.artists = [];
   var sortedArtistIds = getSortedArtists(festivalId);
-  $.each(sortedArtistIds, function(i ,v) {
+  sortedArtistIds.forEach(function(v,i) {
     if (i%3 === 0) {
       var a = [artistJSON[v]];
       if (sortedArtistIds.length > (i+1)) {
@@ -425,7 +420,7 @@ var wireupArtistPopover = function() {
       var artistId = $(this).attr('data-artist-id');
       var o = {};
       o.info = [];
-      $.each(appearanceJSON.byArtist[artistId], function(i,v) {
+      appearanceJSON.byArtist[artistId].forEach(function(v,i) {
         o.info.push(getFestivalWithLocation(v));
       });
       var pop = Handlebars.compile($('#artistPopover-template').html());
@@ -496,7 +491,7 @@ var dropLocationMarker = function(map, location) {
 var festivalMapInfoWindowContent = function(location) {
   var popup = '<div class=festivalMapLocation>' + location.location + '</div>';
   popup += '<ul class="festivalMapList">';
-  var formatted = $.map(location.festivals, function(v,i) {
+  var formatted = location.festivals.map(function(v,i) {
     return '<li><span class="festivalMapPopoverFest" data-festivalId="' +
       v.festivalId + '">' + v.festival + ' ' +
       moment(v.startDate).format('M/D') + '-' +
@@ -521,14 +516,7 @@ var loadFestivalListTabWithFestival = function(festivalId) {
 var vennWidth, vennHeight;
 var loadVennTab = function() {
   var o = {};
-  o.festivals = [];
-  for (var key in festivalJSON) {
-    o.festivals.push(festivalJSON[key]);
-  }
-  o.festivals.sort(function(a,b){
-    return a.festival.toUpperCase().localeCompare(
-      b.festival.toUpperCase());
-  });
+  o.festivals = festivalArray;
   o.id = 'vennSelect';
   var nav = Handlebars.compile($('#festMultiselect-template').html());
   $('#vennNav').html(nav(o));
@@ -679,7 +667,7 @@ var wireupCircles = function(diagram, overlaps, sets) {
     })
     .on('click', function(d) {
       var festivalIds = [];
-      $.each(d.sets, function(i,v) {
+      d.sets.forEach(function(v,i) {
         festivalIds.push(vennFestivals[v].festivalId);
       });
       createPopover(festivalIds);
@@ -688,7 +676,7 @@ var wireupCircles = function(diagram, overlaps, sets) {
 
 var createPopover = function(festivalIds) {
   var modalTitle = '';
-  $.each(festivalIds, function(i, v) {
+  festivalIds.forEach(function(v,i) {
     modalTitle += festivalJSON[v + ''].festival;
     if (i < festivalIds.length - 2) {
       modalTitle += ', ';
@@ -710,7 +698,6 @@ var createPopover = function(festivalIds) {
 };
 
 var getCommonArtists = function(festivalIds) {
-  var artists = [];
   var data = {
     festivals: [festivalIds[0]],
     artists: appearanceJSON.byFestival[festivalIds[0]]
@@ -721,10 +708,13 @@ var getCommonArtists = function(festivalIds) {
       artists: appearanceJSON.byFestival[festivalIds[i]]
     });
   }
-  for (var j = 0; j < data.artists.length; j++) {
-    artists.push(artistJSON[data.artists[j]]);
-  }
-  return artists.sort(function(a,b){ return (a.artist < b.artist) ? -1 : 1; });
+  var artists = data.artists.map(function(v,i){
+    return artistJSON[v];
+  });
+  return artists.sort(function(a,b){
+    return a.artist.toUpperCase().localeCompare(
+      b.artist.toUpperCase());
+  });
 };
 
 var paletteMapping = [0,4,8,12,16,1,5,9,13,17,2,6,10,14,18,3,7,11,15,19];
@@ -736,14 +726,7 @@ var chordFill = function(i) {
 var chordWidth, chordHeight, chordFestivalIds = [];
 var loadChordTab = function() {
   var o = {};
-  o.festivals = [];
-  for (var key in festivalJSON) {
-    o.festivals.push(festivalJSON[key]);
-  }
-  o.festivals.sort(function(a,b){
-    return a.festival.toUpperCase().localeCompare(
-      b.festival.toUpperCase());
-  });
+  o.festivals = festivalArray;
   o.id = 'chordSelect';
   var nav = Handlebars.compile($('#festMultiselect-template').html());
   $('#chordNav').html(nav(o));
@@ -779,16 +762,11 @@ var loadChordTab = function() {
 };
 
 var getChordMatrix = function(festivalIds) {
-  var matrix = [];
-  for (var i = 0; i < festivalIds.length; i++) {
-    var a = [];
-    var f1 = 'f' + festivalIds[i];
-    for (var j = 0; j < festivalIds.length; j++) {
-      var f2 = 'f' + festivalIds[j];
-      a.push(chordJSON[f1][f2]);
-    }
-    matrix.push(a);
-  }
+  var matrix = festivalIds.map(function(v,i){
+    return festivalIds.map(function(w,j){
+      return chordJSON['f'+v]['f'+w];
+    });
+  });
   return matrix;
 };
 
@@ -876,13 +854,9 @@ var makeChordDiagram = function(festivalIds) {
 };
 
 var loadSuggestTab = function() {
-  var suggestAuto = [];
-  for (var i = 0; i < artistAuto.length; i++) {
-    suggestAuto.push({
-      id: artistAuto[i].artistId,
-      text: artistAuto[i].artist
-    });
-  }
+  var suggestAuto = artistAuto.map(function(v,i){
+    return { id: v.artistId, text: v.artist };
+  });
   $('#suggestInput').css('width','100%');
   $('#suggestInput').select2({
     data: suggestAuto,
@@ -916,24 +890,23 @@ var loadSuggestTab = function() {
 
 var getSuggestedFestivals = function(artistIds) {
   var festivals = {}, maxArtist = 0;
-  for (var i = 0; i < artistIds.length; i++) {
-    var artist = artistJSON[artistIds[i]];
-    var festIds = appearanceJSON.byArtist[artist.artistId];
-    for (var j = 0; j < festIds.length; j++) {
-      var festId = festIds[j];
-      if (typeof festivals[festId] === 'undefined') {
-        festivals[festId] = {
-          festival: festivalJSON[festId],
+  artistIds.forEach(function(v,i){
+    var artist = artistJSON[v];
+    var festIds = appearanceJSON.byArtist[v];
+    festIds.forEach(function(w,j){
+      if (typeof festivals[w] === 'undefined') {
+        festivals[w] = {
+          festival: festivalJSON[w],
           artists: [artist]
         };
       } else {
-        festivals[festId].artists.push(artist);
+        festivals[w].artists.push(artist);
       }
-      if (festivals[festId].artists.length > maxArtist) {
-        maxArtist = festivals[festId].artists.length;
+      if (festivals[w].artists.length > maxArtist) {
+        maxArtist = festivals[w].artists.length;
       }
-    }
-  }
+    });
+  });
   var tier1 = (maxArtist/3),
       tier2 = tier1 * 2;
   var festArray = [];
@@ -957,13 +930,9 @@ var getSuggestedFestivals = function(artistIds) {
 
 var wcWidth, wcHeight;
 var loadWCSuggestTab = function() {
-  var suggestAuto = [];
-  for (var i = 0; i < artistAuto.length; i++) {
-    suggestAuto.push({
-      id: artistAuto[i].artistId,
-      text: artistAuto[i].artist
-    });
-  }
+  var suggestAuto = artistAuto.map(function(v,i){
+    return { id: v.artistId, text: v.artist };
+  });
   $('#wcsuggestInput').css('width','100%');
   $('#wcsuggestInput').select2({
     data: suggestAuto,
@@ -1061,14 +1030,11 @@ var drawWC = function(festivals) {
 
         var location = locationJSON[d.festival.locationId].location,
             startDate = moment(d.festival.startDate).format('M/D'),
-            endDate = moment(d.festival.endDate).format('M/D'),
-            artists = '';
-
-        for (var j = 0; j < d.artists.length; j++) {
-          artists += d.artists[j].artist;
-          if (j < d.artists.length-1)
-            artists += ', ';
-        }
+            endDate = moment(d.festival.endDate).format('M/D');
+        
+        var artists = d.artists.map(function(v,i){
+          return v.artist;
+        }).join(', ');
 
         var content = location + ' - ' + startDate + ' to ' + endDate + '<br>' + artists;
         tooltip.transition().style('display', 'inline');
@@ -1079,7 +1045,7 @@ var drawWC = function(festivals) {
       })
       .on('mouseout', function(d,i) {
         d3.select(this.parentNode).transition()
-          .attr('transform', null);
+          .attr('transform', 'matrix(1, 0, 0, 1, 0, 0)');
 
         tooltip.transition().style('display', 'none');
       })
