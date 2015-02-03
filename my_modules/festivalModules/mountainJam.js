@@ -9,12 +9,12 @@ util.inherits(MountainJam, Festival);
 
 MountainJam.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Mountain Jam', festivalDateId: 12, url: 'http://s3.amazonaws.com/goevent-web-mountainjam-2015/widgets/artists/widget_items_eng.json' }
+    { tag: 'Mountain Jam', festivalDateId: 12, url: 'http://s3.amazonaws.com/goevent-web-mountainjam-2015/widgets/artists/widget_items_eng.json', json: true }
   ];
 };
 
 MountainJam.prototype.parseFestival = function(fest,data) {
-  var artists = JSON.parse(data);
+  var artists = data;
 
   fest.artists = artists[0].headliner.map(function(v,i) {
     return artists[0].artists[v].title;

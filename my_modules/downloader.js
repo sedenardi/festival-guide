@@ -7,11 +7,13 @@ var Downloader = function() {
 
   var self = this;  
   
-  this.download = function(url, attempt) {
+  this.download = function(url, json, attempt) {
+    if (typeof json === 'undefined') json = false;
     if (typeof attempt === 'undefined') attempt = 1;
     request({
       url: url,
-      timeout: 30000
+      timeout: 30000,
+      json: json
     }, function (error, response, body) {
       if (error || response.statusCode !== 200) {
         logger.log({
@@ -19,6 +21,7 @@ var Downloader = function() {
           message: 'error',
           params: {
             url: url,
+            json: json,
             attempt: attempt
           },
           data: error
@@ -28,11 +31,11 @@ var Downloader = function() {
           if (attempt < 10) {
             var timeout = attempt * 1000;
             setTimeout(function permitRetry(){
-              self.download(url, attempt + 1);
+              self.download(url, json, attempt + 1);
             },timeout);
           } else {
             setTimeout(function waitLonger() {
-              self.download(url);
+              self.download(url, json);
             },60000);
           }
         }

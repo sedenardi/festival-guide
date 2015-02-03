@@ -5,7 +5,9 @@ var util = require('util'),
     Downloader = require('../downloader.js'),
     DB = require('../db.js');
 
-var Festival = function() { };
+var Festival = function() {
+  this.debug = false;
+};
 
 util.inherits(Festival, events.EventEmitter);
 
@@ -13,8 +15,10 @@ Festival.prototype.getFestivalUrls = function() {
   return [];
 };
 
-Festival.prototype.start = function() {
+Festival.prototype.start = function(debug) {
   var self = this;
+  if (typeof debug !== 'undefined')
+    this.debug = debug;
   var urls = this.getFestivalUrls();
   urls.forEach(function(v,i) {
     self.fetchFestival(v);
@@ -32,10 +36,19 @@ Festival.prototype.fetchFestival = function(fest) {
   dl.on('data', function(res) {
     self.parseFestival(fest,res);
   });
-  dl.download(fest.url);
+  dl.download(fest.url, fest.json);
 };
 
 Festival.prototype.generateInserts = function(fest) {
+  if (this.debug) {
+    logger.log({
+      caller: 'Festival',
+      message: 'debug',
+      params: fest
+    });
+    return;
+  }
+
   var artistTable = '(' + Array.apply(null,new Array(fest.artists.length)).map(function(){
     return 'select ? as `artistReported`';
   }).join(' UNION ') + ')';
