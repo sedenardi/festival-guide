@@ -93,9 +93,9 @@ var finishLoading = function() {
     loadArtistTab();
     loadFestivalListTab();
     loadFestivalMapTab();
-    loadVennTab();
+    //loadVennTab();
     loadChordTab();
-    loadSuggestTab();
+    //loadSuggestTab();
     loadWCSuggestTab();
     var url = document.location.toString();
     if (url.match('#')) {
