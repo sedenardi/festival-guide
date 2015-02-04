@@ -42,7 +42,7 @@ var DB = function(config){
         throw err;
       }
     });
-  };  
+  };
 
   this.disconnect = function(next) {
     connection.end(function (err) {
@@ -81,7 +81,7 @@ var DB = function(config){
             attempt++;
             self.query(cmd, next, attempt);
           }
-        } 
+        }
       } else if (typeof next === 'function') {
         next(res);
       }

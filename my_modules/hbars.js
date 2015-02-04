@@ -11,7 +11,7 @@ var exphbs = function(rootDir, config) {
         return JSON.stringify(obj, null, 2);
       },
       prettyDateRange: function(obj) {
-        return moment(obj.startDate).format('dddd, MMMM Do') + 
+        return moment(obj.startDate).format('dddd, MMMM Do') +
           ' to ' + moment(obj.endDate).format('dddd, MMMM Do');
       }
     },

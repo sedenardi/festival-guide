@@ -1,6 +1,5 @@
 CREATE TABLE `locations` (
   `locationId` tinyint(4) NOT NULL AUTO_INCREMENT,
-  `venue` varchar(100) NOT NULL,
   `city` varchar(50) NOT NULL,
   `state` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,

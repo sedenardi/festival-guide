@@ -9,7 +9,7 @@ var queries = function() {
     var festivalDates = self.getAllFestivalDates();
     var appearances = self.getAllAppearances();
     var chordData = self.getChordData();
-    var sql = locations.cmd.sql + 
+    var sql = locations.cmd.sql +
       festivals.cmd.sql +
       artists.cmd.sql +
       festivalDates.cmd.sql +

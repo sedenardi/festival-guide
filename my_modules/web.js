@@ -42,7 +42,7 @@ var Web = function(config) {
         res.sendStatus(200);
       });
     } else {
-      res.json(402, { error: 'Must specify artistId1 and artistId2.'});      
+      res.json(402, { error: 'Must specify artistId1 and artistId2.'});
     }
   });
 
@@ -56,7 +56,7 @@ var Web = function(config) {
         res.sendStatus(200);
       });
     } else {
-      res.json(402, { error: 'Must specify artistId1 and artistId2.'});      
+      res.json(402, { error: 'Must specify artistId1 and artistId2.'});
     }
   });
 

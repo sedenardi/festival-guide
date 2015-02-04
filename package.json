@@ -15,7 +15,8 @@
     "request": "^2.51.0",
     "express": "^4.11.1",
     "handlebars": "^2.0.0",
-    "express-handlebars": "^1.1.0"
+    "express-handlebars": "^1.1.0",
+    "node-geocoder": "^2.14.0"
   },
   "engines": {
     "node": ">=0.10"

@@ -5,7 +5,7 @@ var logger = require('./logger.js'),
 
 var Downloader = function() {
 
-  var self = this;  
+  var self = this;
   
   this.download = function(url, json, attempt) {
     if (typeof json === 'undefined') json = false;

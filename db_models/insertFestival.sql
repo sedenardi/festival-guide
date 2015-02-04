@@ -1,5 +1,5 @@
-insert into locations(venue,city,state,country)
-select 'Empire Polo Club','Indio','CA','USA';
+insert into locations(city,state,country)
+select 'Indio','CA','USA';
 
 select * from locations;
 

@@ -14,12 +14,12 @@ var pad = function (num, size) {
 };
 
 var formatDate = function(date) {
-  return date.getFullYear() + '-' + 
-    pad((date.getMonth() + 1),2) + '-' + 
-    pad(date.getDate(),2) + ' ' + 
-    pad(date.getHours(),2) + ':' + 
-    pad(date.getMinutes(),2) + ':' + 
-    pad(date.getSeconds(),2) + ':' + 
+  return date.getFullYear() + '-' +
+    pad((date.getMonth() + 1),2) + '-' +
+    pad(date.getDate(),2) + ' ' +
+    pad(date.getHours(),2) + ':' +
+    pad(date.getMinutes(),2) + ':' +
+    pad(date.getSeconds(),2) + ':' +
     date.getMilliseconds();
 };
 

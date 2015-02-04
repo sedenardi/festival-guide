@@ -2,7 +2,8 @@ var fs = require('fs'),
   config = require('./config.json'),
   logger = require('./my_modules/logger.js'),
   Web = require('./my_modules/web.js'),
-  fs = require('fs');
+  fs = require('fs'),
+  Geocoder = require('./my_modules/geocoder.js');
 
 var web = new Web(config);
 web.startServer();
@@ -36,17 +37,25 @@ var startFestival = function(fileName) {
       params: data
     });
     festivalsDone++;
-    checkDone();
+    checkFestDone();
   });
   fest.start();
 };
 
-var checkDone = function() {
+var checkFestDone = function() {
   if (festivalsDone === festivalsFound) {
     logger.log({
-      caller: 'checkDone',
-      message: 'done'
+      caller: 'checkFestDone',
+      message: 'Festivals done'
     });
+    var geocoder = new Geocoder();
+    geocoder.on('done', function() {
+      logger.log({
+        caller: 'checkFestDone',
+        message: 'Geocoder done'
+      });
+    });
+    geocoder.start();
   }
 };
 
