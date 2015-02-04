@@ -41,7 +41,7 @@ var queries = function() {
       cmd: { sql: 'select * from locations;' },
       process: function(dbRes) {
         return dbRes.map(function(v,i){
-          return [v.locationId,v.venue,v.city,v.state,v.country,parseFloat(v.lat),parseFloat(v.lng)];
+          return [v.locationId,v.city,v.state,v.country,parseFloat(v.lat),parseFloat(v.lng)];
         });
       }
     };

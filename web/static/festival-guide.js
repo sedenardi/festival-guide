@@ -9,12 +9,11 @@ var inflateLocations = function(data) {
   data.locations.forEach(function(v,i){
     var location = {
       locationId: v[0],
-      venue: v[1],
-      city: v[2],
-      state: v[3],
-      country: v[4],
-      lat: v[5],
-      lng: v[6]
+      city: v[1],
+      state: v[2],
+      country: v[3],
+      lat: v[4],
+      lng: v[5]
     };
     locationJSON2[location.locationId] = location;
   });
@@ -37,13 +36,12 @@ var inflateFestivalDates = function(data) {
     } else {
       festivalDateJSON.byFestival[festivalDate.festivalId].push(festivalDate);
     }
-  })
+  });
 };
 
 var festivalJSON2 = {}, festivalArray2 = [];
 var inflateFestivals = function(data) {
   data.festivals.forEach(function(v,i){
-    [v.festivalId,v.festival,v.locationId,v.website]
     var festival = {
       festivalId: v[0],
       festival: v[1],
@@ -111,7 +109,7 @@ var inflateChord = function(data) {
       if (typeof chordJSON2[id2] === 'undefined')
         chordJSON2[id2] = {};
       chordJSON2[id2][id1] = count;
-    }    
+    }
   });
 };
 
