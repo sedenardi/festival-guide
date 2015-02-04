@@ -1,6 +1,6 @@
 {
   "name": "festival-guide",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "author": "Sanders DeNardi",
   "description": "Analyzing and visualizing music festivals.",
   "main": "festival-guide.js",
