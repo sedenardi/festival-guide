@@ -7,7 +7,9 @@ var fs = require('fs'),
 var web = new Web(config);
 web.startServer();
 
-var modulePath = './my_modules/festivalModules/';
+var modulePath = './my_modules/festivalModules/',
+    festivalsFound = 0,
+    festivalsDone = 0;
 
 var findFestivalModules = function() {
   fs.readdir(modulePath, function(err, files) {
@@ -19,6 +21,7 @@ var findFestivalModules = function() {
       });
       return;
     }
+    festivalsFound = files.length;
     files.forEach(startFestival);
   });
 };
@@ -32,8 +35,19 @@ var startFestival = function(fileName) {
       message: 'done',
       params: data
     });
+    festivalsDone++;
+    checkDone();
   });
   fest.start();
+};
+
+var checkDone = function() {
+  if (festivalsDone === festivalsFound) {
+    logger.log({
+      caller: 'checkDone',
+      message: 'done'
+    });
+  }
 };
 
 findFestivalModules();

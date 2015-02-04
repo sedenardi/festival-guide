@@ -60,60 +60,59 @@ var Web = function(config) {
     }
   });
 
-  app.get('/dump/artists.json', function (req,res) {
-    db.query(queries.getAllArtists(), function (dbRes) {
-      var artists = {};
-      for (var i = 0; i < dbRes.length; i++) {
-        artists[dbRes[i].artistId] = dbRes[i];
-      }
+  app.get('/artists.json', function (req,res) {
+    var query = queries.getAllArtists();
+    db.query(query.cmd, function (dbRes) {
+      var artists = query.process(dbRes);
       res.json(artists);
     });
   });
 
-  app.get('/dump/festivals.json', function (req,res) {
-    db.query(queries.getAllFestivals('startDate'), function (dbRes) {
-      var festivals = {};
-      for (var i = 0; i < dbRes.length; i++) {
-        festivals[dbRes[i].festivalId] = dbRes[i];
-      }
-      res.json(festivals);
-    });
-  });
-
-  app.get('/dump/appearances.json', function (req,res) {
-    db.query(queries.getAllAppearances(), function (dbRes) {
-      var appearances = {};
-      appearances.byArtist = {};
-      appearances.byFestival= {};
-      for (var i = 0; i < dbRes.length; i++) {
-        if (typeof appearances.byArtist[dbRes[i].artistId] === 'undefined') {
-          appearances.byArtist[dbRes[i].artistId] = [];
-        }
-        appearances.byArtist[dbRes[i].artistId].push(dbRes[i].festivalId);
-        if (typeof appearances.byFestival[dbRes[i].festivalId] === 'undefined') {
-          appearances.byFestival[dbRes[i].festivalId] = [];
-        }
-        appearances.byFestival[dbRes[i].festivalId].push(dbRes[i].artistId);
-      }
-      res.json(appearances);
-    });
-  });
-
-  app.get('/dump/locations.json', function (req,res) {
-    db.query(queries.getAllLocations(), function (dbRes) {
-      var locations = {};
-      for (var i = 0; i < dbRes.length; i++) {
-        locations[dbRes[i].locationId] = dbRes[i];
-        locations[dbRes[i].locationId].lat = parseFloat(dbRes[i].lat);
-        locations[dbRes[i].locationId].lng = parseFloat(dbRes[i].lng);
-      }
+  app.get('/locations.json', function (req,res) {
+    var query = queries.getAllLocations();
+    db.query(query.cmd, function (dbRes) {
+      var locations = query.process(dbRes);
       res.json(locations);
     });
   });
 
-  app.get('/dump/chordData.json', function (req,res) {
-    db.query(queries.getChordData(), function (dbRes) {
-      res.json(dbRes);
+  app.get('/festivals.json', function (req,res) {
+    var query = queries.getAllFestivals();
+    db.query(query.cmd, function (dbRes) {
+      var festivals = query.process(dbRes);
+      res.json(festivals);
+    });
+  });
+
+  app.get('/festivalDates.json', function (req,res) {
+    var query = queries.getAllFestivalDates();
+    db.query(query.cmd, function (dbRes) {
+      var festivalDates = query.process(dbRes);
+      res.json(festivalDates);
+    });
+  });
+
+  app.get('/appearances.json', function (req,res) {
+    var query = queries.getAllAppearances();
+    db.query(query.cmd, function (dbRes) {
+      var appearances = query.process(dbRes);
+      res.json(appearances);
+    });
+  });
+
+  app.get('/chordData.json', function (req,res) {
+    var query = queries.getChordData();
+    db.query(query.cmd, function (dbRes) {
+      var chord = query.process(dbRes);
+      res.json(chord);
+    });
+  });
+
+  app.get('/allInfo.json', function (req,res) {
+    var query = queries.getAllInfo();
+    db.query(query.cmd, function (dbRes) {
+      var info = query.process(dbRes);
+      res.json(info);
     });
   });
 

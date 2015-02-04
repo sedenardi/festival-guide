@@ -4,9 +4,133 @@ d3.selection.prototype.moveParentToFront = function() {
   });
 };
 
+var locationJSON2 = {};
+var inflateLocations = function(data) {
+  data.locations.forEach(function(v,i){
+    var location = {
+      locationId: v[0],
+      venue: v[1],
+      city: v[2],
+      state: v[3],
+      country: v[4],
+      lat: v[5],
+      lng: v[6]
+    };
+    locationJSON2[location.locationId] = location;
+  });
+};
+
+var festivalDateJSON = { byFestivalDate: {}, byFestival: {} };
+var inflateFestivalDates = function(data) {
+  data.festivalDates.forEach(function(v,i){
+    var festivalDate = {
+      festivalDateId: v[0],
+      festivalId: v[1],
+      week: v[2],
+      startDate: v[3],
+      endDate: v[4]
+    };
+    festivalDateJSON.byFestivalDate[festivalDate.festivalDateId] = festivalDate;
+
+    if (typeof festivalDateJSON.byFestival[festivalDate.festivalId] === 'undefined') {
+      festivalDateJSON.byFestival[festivalDate.festivalId] = [festivalDate];
+    } else {
+      festivalDateJSON.byFestival[festivalDate.festivalId].push(festivalDate);
+    }
+  })
+};
+
+var festivalJSON2 = {}, festivalArray2 = [];
+var inflateFestivals = function(data) {
+  data.festivals.forEach(function(v,i){
+    [v.festivalId,v.festival,v.locationId,v.website]
+    var festival = {
+      festivalId: v[0],
+      festival: v[1],
+      locationId: v[2],
+      website: v[3]
+    };
+    festival.dates = festivalDateJSON.byFestival[festival.festivalId];
+    festivalJSON2[festival.festivalId] = festival;
+    festivalArray2.push(festival);
+  });
+  festivalArray2.sort(function(a,b){
+    return a.festival.toUpperCase().localeCompare(
+      b.festival.toUpperCase());
+  });
+};
+
+var artistJSON2 = {}, artistAuto2 = [];
+var inflateArtists = function(data) {
+  data.artists.forEach(function(v,i){
+    var artist = {
+      artistId: v[0],
+      artist: v[1]
+    };
+    artistJSON2[artist.artistId] = artist;
+    artistAuto2.push(artist);
+  });
+  artistAuto2.sort(function(a,b) {
+    return a.artist.toUpperCase().localeCompare(b.artist.toUpperCase());
+  });
+};
+
+var appearanceJSON2 = { byArtist: {}, byFestival: {} };
+var inflateAppearances = function(data) {
+  data.appearances.forEach(function(v,i){
+    var festivalDateId = v[0],
+        artistId = v[1],
+        festivalId = festivalDateJSON.byFestivalDate[v[0]].festivalId;
+    
+    if (typeof appearanceJSON2.byArtist[artistId] === 'undefined') {
+      appearanceJSON2.byArtist[artistId] = [festivalId];
+    } else {
+      appearanceJSON2.byArtist[artistId].push(festivalId);
+    }
+
+    if (typeof appearanceJSON2.byFestival[festivalId] === 'undefined') {
+      appearanceJSON2.byFestival[festivalId] = [artistId];
+    } else {
+      appearanceJSON2.byFestival[festivalId].push(artistId);
+    }
+  });
+};
+
+var chordJSON2 = {};
+var inflateChord = function(data) {
+  data.chordData.forEach(function(v,i){
+    var id1 = v[0],
+        id2 = v[1],
+        count = v[2];
+
+    if (typeof chordJSON2[id1] === 'undefined')
+      chordJSON2[id1] = {};
+    chordJSON2[id1][id2] = count;
+
+    if (id1 !== id2) {
+      if (typeof chordJSON2[id2] === 'undefined')
+        chordJSON2[id2] = {};
+      chordJSON2[id2][id1] = count;
+    }    
+  });
+};
+
 var festivalJSON, artistJSON, appearanceJSON,
     locationJSON, chordJSON, artistAuto = [], festivalArray = [];
 $(document).ready(function() {
+  $.ajax({
+    url: './allInfo.json',
+    cache: true,
+    success: function(data) {
+      inflateLocations(data);
+      inflateFestivalDates(data);
+      inflateFestivals(data);
+      inflateArtists(data);
+      inflateAppearances(data);
+      inflateChord(data);
+      //finishLoading();
+    }
+  });
   $.ajax({
     url: './artists.json',
     cache: true,
