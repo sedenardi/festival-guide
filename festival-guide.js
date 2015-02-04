@@ -3,7 +3,9 @@ var fs = require('fs'),
   logger = require('./my_modules/logger.js'),
   Web = require('./my_modules/web.js'),
   fs = require('fs'),
-  Geocoder = require('./my_modules/geocoder.js');
+  Geocoder = require('./my_modules/geocoder.js'),
+  DB = require('./my_modules/db.js'),
+  queries = require('./my_modules/queries.js');
 
 var web = new Web(config);
 web.startServer();
@@ -54,9 +56,36 @@ var checkFestDone = function() {
         caller: 'checkFestDone',
         message: 'Geocoder done'
       });
+      dumpFile();
     });
     geocoder.start();
   }
+};
+
+var dumpFile = function() {
+  var db = new DB(config);
+  db.connect('Festival Guide', function() {
+    var query = queries.getAllInfo();
+    db.query(query.cmd, function (dbRes) {
+      var info = query.process(dbRes);
+      var str = JSON.stringify(info);
+      fs.writeFile('./web/static/allInfo.json',str,function(err){
+        if (err) {
+          logger.log({
+            caller: 'dumpFile',
+            message: 'error',
+            data: err
+          });
+        }
+        db.disconnect(function(){
+          logger.log({
+            caller: 'dumpFile',
+            message: 'done'
+          });
+        });
+      });
+    });
+  });
 };
 
 findFestivalModules();
