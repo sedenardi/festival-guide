@@ -9,7 +9,6 @@ http://www.newportjazzfest.org/
 http://www.bestival.net/
 http://www.latitudefestival.com/
 http://www.electricforestfestival.com/experience/lineup/
-http://www.sasquatchfestival.com/lineup
 http://gatheringofthevibes.com/
 http://www.osheaga.com/
 http://www.summerfest.com/

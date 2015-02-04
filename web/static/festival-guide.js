@@ -160,6 +160,28 @@ var inflateChord = function(data) {
   });
 };
 
+var doStats = function() {
+  var statFest = festivalArray.length;
+  var statArtist = artistAuto.length;
+
+  var statCity = 0;
+  var countryHash = {};
+  for (var key in locationHash) {
+    statCity++;
+    var country = locationHash[key].country;
+    if (typeof countryHash[country] === 'undefined')
+      countryHash[country] = country;
+  }
+  var statCountry = 0;
+  for (var c in countryHash)
+    statCountry++;
+
+  $('#statFest').text(statFest);
+  $('#statArtist').text(statArtist);
+  $('#statCity').text(statCity);
+  $('#statCountry').text(statCountry);
+};
+
 $(document).ready(function() {
   $.ajax({
     url: './allInfo.json',
@@ -171,6 +193,7 @@ $(document).ready(function() {
       inflateArtists(data);
       inflateAppearances(data);
       inflateChord(data);
+      doStats();
       finishLoading();
     }
   });
