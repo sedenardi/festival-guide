@@ -11,7 +11,6 @@
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
     <script src="http://d3js.org/d3.v3.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
-    <script src="./venn.js"></script>
     <script src="./palette.js"></script>
     <script src="./d3.layout.cloud.js"></script>
     <script src="./festival-guide.js"></script>
@@ -40,9 +39,7 @@
             <li class="featureTab active" data-feature="festival-map"><a data-toggle="tab" href="#festival-map">Festival Map</a></li>
             <li class="featureTab" data-feature="artists"><a data-toggle="tab" href="#artists">Artist Map</a></li>
             <li class="featureTab" data-feature="festival-list"><a data-toggle="tab" href="#festival-list">Festival List</a></li>
-            <li class="featureTab" data-feature="venn"><a data-toggle="tab" href="#venn" style="display:none;">Venn Diagram</a></li>
             <li class="featureTab" data-feature="chord"><a data-toggle="tab" href="#chord">Compare</a></li>
-            <li class="featureTab" data-feature="suggest"><a data-toggle="tab" href="#suggest" style="display:none;">Suggester</a></li>
             <li class="featureTab" data-feature="wcsuggest"><a data-toggle="tab" href="#wcsuggest">Suggester</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -74,22 +71,10 @@
           <div id="festivalListInfo"></div>
         </div>
       </div>
-      <div class="tab-pane fade" id="venn">
-        <h4>Choose up to 3 festivals to compare, click overlapping areas to see common artists</h3>
-        <div id="vennBody">
-          <div id="vennNav"></div>
-          <div id='venn_d'></div>          
-        </div>
-      </div>
       <div class="tab-pane fade" id="chord">
         <h4>Choose at least 3 festivals to compare, click connections to see common artists</h3>
         <div id="chordNav"></div>
         <div id="chordBody"></div>
-      </div>
-      <div class="tab-pane fade" id="suggest">
-        <h4>Type in the artists you'd like to see</h3>
-        <input type="hidden" id="suggestInput">
-        <div id="suggestBody"></div>
       </div>
       <div class="tab-pane fade" id="wcsuggest">
         <h4>Type in the artists you'd like to see</h3>
@@ -142,17 +127,8 @@
       </div>
     </div>
 
-    <script id="festivalNav-template" type="text/x-handlebars-template">
-      <select id="festivalSelect">
-        <option></option>
-      {{#each festivals}}
-        <option value="{{festivalId}}">{{festivalWithLocationAndDates this}}</option>
-      {{/each}}
-      </select>
-    </script>
-
     <script id="appearance-partial" type="text/x-handlebars-template">
-      <span class="appearance">{{festivalWithWeek this}} - {{location this}} - {{prettyDateRange this}}</span>
+      <span class="appearance">{{festival}} - {{location this}} - {{prettyDateRange this}}</span>
     </script>
 
     <script id="artist-partial" type="text/x-handlebars-template">
@@ -184,19 +160,19 @@
     </script>
 
     <script id="festMultiselect-template" type="text/x-handlebars-template">
-      <select id="{{id}}" multiple>
+      <select id="{{id}}" {{multiple}}>
         <option></option>
       {{#each festivals}}
-        <option value="{{festivalId}}">{{festivalWithWeek this}}</option>
+        <option value="{{festivalId}}">{{festivalWithLocationAndDates this}}</option>
       {{/each}}
       </select>
     </script>
 
     <script id="artistList-template" type="text/x-handlebars-template">
       {{#if artists.length}}
-      <div id="vennListContainer">
+      <div class="artistListContainer">
       {{#each artists}}
-        <div class="vennListArtist">{{this.artist}}</div>
+        <div class="listArtist">{{this.artist}}</div>
       {{/each}}
       </div>
       {{else}}

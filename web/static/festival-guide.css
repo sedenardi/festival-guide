@@ -38,10 +38,6 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
-#venn_d {
-  margin-top: 20px;
-}
-
 .artist {
   padding-top: 3px;
   padding-bottom: 3px;
@@ -144,10 +140,10 @@ text {
   padding: 0 5px;
 }
 
-#vennListContainer {
+.artistListContainer {
   display: inline-block;
 }
-.vennListArtist {
+.listArtist {
   width: 186px;
   float: left;
 }
