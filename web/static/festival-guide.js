@@ -273,7 +273,7 @@ var refreshMaps = function(feature) {
   } else if (feature === 'festival-map') {
     setTimeout(function() {
       google.maps.event.trigger(festivalMap, 'resize');
-      festivalMap.setCenter(worldCenter);
+      festivalMap.fitBounds(worldCenter);
     }, 300);
   }
 };
