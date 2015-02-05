@@ -5,6 +5,9 @@ http://summercampfestival.com/lineup/
 http://www.ultramusicfestival.com/lineup
 http://rockinrio.com/usa/line-up/
 http://www.newportjazzfest.org/
+http://lightninginabottle.org/lineup/
+http://thepeachmusicfestival.com/index.php/line-up
+http://fieldtriplife.com/
 
 http://www.bestival.net/
 http://www.latitudefestival.com/

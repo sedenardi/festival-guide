@@ -367,10 +367,11 @@ var loadArtistTab = function() {
   directionsService = new google.maps.DirectionsService();
 };
 
-var getMapOptions = function(center) {
+var getMapOptions = function() {
+  var minZoom = $(window).width() < 640 ? 1 : 2;
   return {
     maxZoom: 10,
-    minZoom: 3,
+    minZoom: minZoom,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     disableDefaultUI: false,
     scrollwheel: true,
@@ -653,7 +654,7 @@ var loadChordTab = function() {
       });
 
     $('#chordNav .select2-search-choice').removeClass('chordChoice');
-    if (e.val.length > 2) {
+    if (e.val.length > 1) {
       $.each($('#chordNav .select2-search-choice'), function(i,v) {
         $(v).css('background-color', chordFill(i));
         var rgb = $(v).css('background-color');

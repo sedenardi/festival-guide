@@ -3,6 +3,7 @@
   <head>
     <title>Festival Guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="/analytics.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
@@ -72,7 +73,7 @@
         </div>
       </div>
       <div class="tab-pane fade" id="chord">
-        <h4>Choose at least 3 festivals to compare, click connections to see common artists</h3>
+        <h4>Choose at least 2 festivals to compare, click connections to see common artists</h3>
         <div id="chordNav"></div>
         <div id="chordBody"></div>
       </div>
@@ -139,7 +140,7 @@
     </div>
 
     <script id="appearance-partial" type="text/x-handlebars-template">
-      <span class="appearance">{{festival}} - {{location this}} - {{prettyDateRange this}}</span>
+      <span class="appearance">{{festival}} - {{location this}} - {{prettyDateRange this}} - <a href="http://{{website}}" target="_blank">Website</a></span>
     </script>
 
     <script id="artist-partial" type="text/x-handlebars-template">
