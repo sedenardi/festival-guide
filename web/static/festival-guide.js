@@ -4,7 +4,7 @@ d3.selection.prototype.moveParentToFront = function() {
   });
 };
 
-var locationHash = {};
+var locationHash = {}, locationArray = [], worldCenter;
 var inflateLocations = function(data) {
   data.locations.forEach(function(v,i){
     var location = {
@@ -24,7 +24,14 @@ var inflateLocations = function(data) {
     if (location.country.length) locArray.push(location.country);
     location.location = locArray.join(', ');
 
+    locationArray.push(location);
     locationHash[location.locationId] = location;
+  });
+
+  worldCenter = new google.maps.LatLngBounds();
+  locationArray.forEach(function(v,i){
+    var latlng = new google.maps.LatLng(v.lat, v.lng);
+    worldCenter.extend(latlng);
   });
 };
 
@@ -261,25 +268,24 @@ var refreshMaps = function(feature) {
   if (feature === 'artists') {
     setTimeout(function() {
       google.maps.event.trigger(artistMap, 'resize');
-      artistMap.setCenter(artistMapCenter);
+      artistMap.fitBounds(artistBounds);
     }, 300);
   } else if (feature === 'festival-map') {
     setTimeout(function() {
       google.maps.event.trigger(festivalMap, 'resize');
-      festivalMap.setCenter(festivalMapCenter);
+      festivalMap.setCenter(worldCenter);
     }, 300);
   }
 };
 
-var geocoder = new google.maps.Geocoder,
-  infowindow = new google.maps.InfoWindow(),
+var infowindow = new google.maps.InfoWindow(),
   artistMap,
   mapMarkers = [],
   directionsDisplay,
   directionsService,
   artistReq = null,
   currentArtist = 0,
-  artistMapCenter;
+  artistBounds;
 
 var loadArtistTab = function() {
   var artists = new Bloodhound({
@@ -331,6 +337,12 @@ var loadArtistTab = function() {
         fests.forEach(function(v,i) {
           dropMarker(artistMap, v.location, v);
         });
+        artistBounds = new google.maps.LatLngBounds();
+        fests.forEach(function(v,i){
+          var latlng = new google.maps.LatLng(v.location.lat, v.location.lng);
+          artistBounds.extend(latlng);
+        });
+        artistMap.fitBounds(artistBounds);
       }
     }
     $('#artistInput').blur();
@@ -341,15 +353,10 @@ var loadArtistTab = function() {
   $('#artist-map-canvas').css('height',height);
   $('#artistInput').css('width',width);
 
-  geocoder.geocode( { 'address': 'United States of America'}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      artistMapCenter = results[0].geometry.location;
-      var myOptions = getMapOptions(results[0].geometry.location);
-      artistMap = new google.maps.Map($('#artist-map-canvas')[0], myOptions);
-    } else {
-      alert('Google Maps error: ' + status);
-    }
-  });
+  var myOptions = getMapOptions();
+  artistMap = new google.maps.Map($('#artist-map-canvas')[0], myOptions);
+  artistBounds = worldCenter;
+  artistMap.fitBounds(artistBounds);
 
   directionsDisplay = new google.maps.DirectionsRenderer();
   directionsDisplay.setOptions({
@@ -361,12 +368,9 @@ var loadArtistTab = function() {
 };
 
 var getMapOptions = function(center) {
-  var zoom = $(window).width() < 640 ? 3 : 4;
   return {
-    zoom: zoom,
     maxZoom: 10,
     minZoom: 3,
-    center: center,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     disableDefaultUI: false,
     scrollwheel: true,
@@ -509,20 +513,14 @@ var wireupArtistPopover = function() {
   });
 };
 
-var festivalMap, festivalMapCenter;
+var festivalMap;
 var loadFestivalMapTab = function() {
   var height = $(window).height() - 50 - 53 - 10;
   $('#festival-map-canvas').css('height',height);
-  geocoder.geocode( { 'address': 'United States of America'}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      festivalMapCenter = results[0].geometry.location;
-      var myOptions = getMapOptions(results[0].geometry.location);
-      festivalMap = new google.maps.Map($('#festival-map-canvas')[0], myOptions);
-      plotAllFestivals();
-    } else {
-      alert('Google Maps error: ' + status);
-    }
-  });
+  var myOptions = getMapOptions();
+  festivalMap = new google.maps.Map($('#festival-map-canvas')[0], myOptions);
+  festivalMap.fitBounds(worldCenter);
+  plotAllFestivals();
 };
 
 var plotAllFestivals = function() {
