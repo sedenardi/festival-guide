@@ -838,7 +838,7 @@ var loadWCSuggestTab = function() {
     }
   });
   wcWidth = $(window).width() - 10 - 10;
-  wcHeight = $(window).height() - 10 - 50 - 39 - 34 - 20 - 10;
+  wcHeight = $(window).height() - 10 - 50 - 39 - 34 - 20 - 10 - 30;
 };
 
 var drawWC = function(festivals) {
@@ -881,7 +881,9 @@ var drawWC = function(festivals) {
       .append('g')
       .append('text')
       .style('font-size', function(d) { return d.size + 'px'; })
-      .style('font-family', 'Impact')
+      .style('font-family', '\'Open Sans\', sans-serif')
+      .style('font-weight', 'bold')
+      .style('letter-spacing', '-1px')
       //.style('fill', function(d, i) { return fill(i); })
       //.style('fill', function(d, i) { return colorFill(d.artists.length); })
       .style('fill', '#212121')
@@ -939,7 +941,7 @@ var drawWC = function(festivals) {
     .padding(5)
     .rotate(0)
     .overflow(true)
-    .font('Impact')
+    .font('\'Open Sans\', sans-serif')
     .fontSize(function(d) { return fontSize(d.artists.length); })
     .text(function(d) { return d.festival.festival; })
     .on('end', draw)
