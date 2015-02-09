@@ -69,7 +69,8 @@ var dumpFile = function() {
     db.query(query.cmd, function (dbRes) {
       var info = query.process(dbRes);
       var str = JSON.stringify(info);
-      fs.writeFile('./web/static/allInfo.json',str,function(err){
+      var fileName = './web/static/allInfo-' + (new Date()).toISOString() + '.json';
+      fs.writeFile(fileName,str,function(err){
         if (err) {
           logger.log({
             caller: 'dumpFile',
