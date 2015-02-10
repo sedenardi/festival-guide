@@ -133,6 +133,29 @@ order by f1.festivalId,f2.festivalId;';
     };
   };
 
+  var getBlacklist = function() {
+    var sql = '\
+select \
+  a.artistId \
+, a.artist \
+, case \
+  when exists (select 1 from artistBlacklist ab where ab.artistId = a.artistId) \
+    then true \
+  else false \
+  end as blacklisted \
+, group_concat(f.festival SEPARATOR \', \') as festivals \
+from artists a \
+  inner join appearances ap \
+    on ap.artistId = a.artistId \
+  inner join festivalDates fd \
+    on fd.festivalDateId = ap.festivalDateId \
+  inner join festivals f \
+    on f.festivalId = fd.festivalId \
+group by a.artistId,a.artist \
+order by artist asc;';
+    return { sql: sql };
+  };
+
 };
 
 module.exports = new queries();
