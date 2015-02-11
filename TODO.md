@@ -1,10 +1,8 @@
 https://www.atpfestival.com/events/atpiceland2015
 http://spring.bostoncalling.com/lineup
 http://www.waneefestival.com/bands.html
-http://summercampfestival.com/lineup/
 http://www.ultramusicfestival.com/lineup
 http://rockinrio.com/usa/line-up/
-http://www.newportjazzfest.org/
 http://lightninginabottle.org/lineup/
 http://thepeachmusicfestival.com/index.php/line-up
 http://fieldtriplife.com/

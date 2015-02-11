@@ -45,6 +45,12 @@ Festival.prototype.unCapitalize = function(artist) {
   }).join(' ');
 };
 
+Festival.prototype.capitalize = function(artist) {
+  return artist.split(' ').map(function(x,k){
+    return x[0].toUpperCase() + x.slice(1,x.length);
+  }).join(' ');
+};
+
 Festival.prototype.generateInserts = function(fest) {
   if (this.debug) {
     logger.log({
