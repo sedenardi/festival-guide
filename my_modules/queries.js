@@ -59,8 +59,11 @@ var queries = function() {
   };
 
   this.getAllArtists = function() {
+    var sql = 'select * from artists ar where exists ' +
+      '(select 1 from appearances ap where ap.artistId = ar.artistId) ' +
+      'and not exists (select 1 from artistBlacklist ab where ab.artistId = ar.artistId);';
     return {
-      cmd: { sql: 'select * from artists;' },
+      cmd: { sql: sql },
       process: function(dbRes) {
         return dbRes.map(function(v,i){
           return [v.artistId,v.artist];
@@ -81,8 +84,10 @@ var queries = function() {
   };
 
   this.getAllAppearances = function() {
+    var sql = 'select * from appearances ap where not exists ' +
+      '(select 1 from artistBlacklist ab where ab.artistId = ap.artistId);';
     return {
-      cmd: { sql: 'select * from appearances;' },
+      cmd: { sql: sql },
       process: function(dbRes) {
         return dbRes.map(function(v,i){
           return [v.festivalDateId,v.artistId];
@@ -133,7 +138,7 @@ order by f1.festivalId,f2.festivalId;';
     };
   };
 
-  var getBlacklist = function() {
+  this.getBlacklist = function() {
     var sql = '\
 select \
   a.artistId \
@@ -154,6 +159,25 @@ from artists a \
 group by a.artistId,a.artist \
 order by artist asc;';
     return { sql: sql };
+  };
+
+  this.addBlacklist = function(artistId) {
+    var sql = '\
+insert into artistBlacklist(artistId) \
+select t.artistId from (select ? as `artistId`) t \
+where not exists \
+(select 1 from artistBlacklist ab where ab.artistId = t.artistId);'
+    return {
+      sql: sql,
+      inserts: [artistId,artistId]
+    };
+  };
+
+  this.unBlacklist = function(artistId) {
+    return {
+      sql: 'delete from artistBlacklist where artistId = ?;',
+      inserts: [artistId]
+    };
   };
 
 };

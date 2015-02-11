@@ -1,0 +1,17 @@
+{{#if blacklisted}}
+<tr>
+  <td>
+    <button type="button" class="btn blacklisted" data-artist-id="{{artistId}}">
+      {{artist}} - {{festivals}}
+    </button>
+  </td>
+</tr>
+{{else}}
+<tr>
+  <td>
+    <button type="button" class="btn notBlacklisted" data-artist-id="{{artistId}}">
+      {{artist}} - {{festivals}}
+    </button>
+  </td>
+</tr>
+{{/if}}

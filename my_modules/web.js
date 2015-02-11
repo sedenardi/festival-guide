@@ -60,6 +60,34 @@ var Web = function(config) {
     }
   });
 
+  app.get('/blacklist', function (req, res) {
+    db.query(queries.getBlacklist(), function (dbRes) {
+      res.render('blacklist', {
+        blacklist: dbRes
+      });
+    });
+  });
+
+  app.get('/addBlacklist', function (req, res) {
+    if (typeof req.query.artistId !== 'undefined') {
+      db.query(queries.addBlacklist(req.query.artistId), function (dbRes) {
+        res.sendStatus(200);
+      });
+    } else {
+      res.json(402, { error: 'Must specify artistId.'});
+    }
+  });
+
+  app.get('/unBlacklist', function (req, res) {
+    if (typeof req.query.artistId !== 'undefined') {
+      db.query(queries.unBlacklist(req.query.artistId), function (dbRes) {
+        res.sendStatus(200);
+      });
+    } else {
+      res.json(402, { error: 'Must specify artistId.'});
+    }
+  });
+
   app.get('/artists.json', function (req,res) {
     var query = queries.getAllArtists();
     db.query(query.cmd, function (dbRes) {

@@ -1,0 +1,52 @@
+<h4>Blacklist</h4>
+<style>
+  .notBlacklisted {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+  }
+  .blacklisted {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+  }
+</style>
+<div>
+  <table>
+    <tbody>
+    {{#each blacklist}}
+      {{> blacklist this}}
+    {{/each}}
+    </tbody>
+  </table>
+</div>
+<script>
+$(document).on('click', '.blacklisted', function() {
+  var self = this;
+  var id = $(this).attr('data-artist-id');
+  $.ajax({
+    url: './unBlacklist',
+    type: 'GET',
+    data: {
+      artistId: id
+    },
+    success: function (response) {
+      $(self).removeClass('blacklisted').addClass('notBlacklisted');
+    }
+  });
+});
+$(document).on('click', '.notBlacklisted', function() {
+  var self = this;
+  var id = $(this).attr('data-artist-id');
+  $.ajax({
+    url: './addBlacklist',
+    type: 'GET',
+    data: {
+      artistId: id
+    },
+    success: function (response) {
+      $(self).removeClass('notBlacklisted').addClass('blacklisted');
+    }
+  });
+});
+</script>

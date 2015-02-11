@@ -26,18 +26,15 @@ var Downloader = function() {
           },
           data: error
         });
-        if (error.code === 'ETIMEDOUT' ||
-          error.code === 'ESOCKETTIMEDOUT') {
-          if (attempt < 10) {
-            var timeout = attempt * 1000;
-            setTimeout(function permitRetry(){
-              self.download(url, json, attempt + 1);
-            },timeout);
-          } else {
-            setTimeout(function waitLonger() {
-              self.download(url, json);
-            },60000);
-          }
+        if (attempt < 10) {
+          var timeout = attempt * 1000;
+          setTimeout(function permitRetry(){
+            self.download(url, json, attempt + 1);
+          },timeout);
+        } else {
+          setTimeout(function waitLonger() {
+            self.download(url, json);
+          },60000);
         }
         return;
       }

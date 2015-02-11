@@ -17,7 +17,7 @@ Bonnaroo.prototype.getFestivalUrls = function() {
 Bonnaroo.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('.ds-level-override').map(function(v,i) {
+  fest.artists = $('.ds-lineup').first().find('.ds-level-override').map(function(v,i) {
     return $(this).find('.w').map(function(w,j){
       return $(this).find('a').text().trim();
     }).get();

@@ -70,3 +70,9 @@ CREATE TABLE `falsepositives`
   `artistId2` int(11) NOT NULL,
   KEY `IX_falsepositives_artistId1` (`artistId1`)
 );
+
+CREATE TABLE `artistBlacklist`
+(
+  `artistId` int(11) NOT NULL,
+  KEY `FK_artistBlacklist_artistId` (`artistId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

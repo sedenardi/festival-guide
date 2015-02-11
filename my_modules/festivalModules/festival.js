@@ -76,10 +76,16 @@ Festival.prototype.generateInserts = function(fest) {
 
   sql += 'insert into appearances(artistId,festivalDateId) select ar.artistId, ? as `festivalDateId` ' +
     'from artistsReported ar where exists (select 1 from ' + artistTable + ' t2 where t2.artistReported = ar.artistReported) ' +
-    'and not exists (select 1 from appearances ap where ap.artistId = ar.artistId and ap.festivalDateId = ?);';
+    'and not exists (select 1 from appearances ap where ap.artistId = ar.artistId and ap.festivalDateId = ?); ';
   inserts.push(fest.festivalDateId);
   inserts = inserts.concat(fest.artists);
   inserts.push(fest.festivalDateId);
+
+  sql += 'delete ap from appearances ap where ap.festivalDateId = ? and not exists ' +
+    '(select 1 from artistsReported t1 inner join ' + artistTable + ' t2 on t2.artistReported = t1.artistReported ' +
+    'where t1.artistId = ap.artistId);';
+  inserts.push(fest.festivalDateId);  
+  inserts = inserts.concat(fest.artists);
 
   this.insertAppearances(fest.tag, { sql: sql, inserts: inserts });
 };
