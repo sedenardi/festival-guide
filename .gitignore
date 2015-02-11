@@ -4,4 +4,4 @@ config_real.json
 config_shell.json
 *.pyc
 .htaccess
-web/static/allInfo-*
+web/static/allInfo.json
