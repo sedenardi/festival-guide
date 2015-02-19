@@ -2,7 +2,7 @@ var util = require('util'),
     Festival = require('./festival.js');
 
 var MountainJam = function() {
-  MountainJam.super_.call(this);
+  Festival.super_.call(this);
 };
 
 util.inherits(MountainJam, Festival);

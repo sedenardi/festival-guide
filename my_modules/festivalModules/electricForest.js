@@ -3,22 +3,22 @@ var util = require('util'),
     cheerio = require('cheerio');
 
 var ElectricForest = function() {
-  ElectricForest.super_.call(this);
+  Festival.super_.call(this);
 };
 
 util.inherits(ElectricForest, Festival);
 
 ElectricForest.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Electric Forest', festivalDateId: 37, url: 'http://www.clickondetroit.com/entertainment/michigans-electric-forest-releases-2015-lineup/31229174' }
+    { tag: 'Electric Forest', festivalDateId: 37, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11043' }
   ];
 };
 
 ElectricForest.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('.article-body').find('strong').map(function(v,i) {
-    return $(this).text().trim();
+  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
+    return $(this).text().replace('*','').trim()
   }).get();
   this.generateInserts(fest);
 };

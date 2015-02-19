@@ -2,7 +2,7 @@ var util = require('util'),
     Festival = require('./festival.js');
 
 var Treefort = function() {
-  Treefort.super_.call(this);
+  Festival.super_.call(this);
 };
 
 util.inherits(Treefort, Festival);

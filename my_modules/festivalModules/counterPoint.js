@@ -3,7 +3,7 @@ var util = require('util'),
     cheerio = require('cheerio');
 
 var CounterPoint = function() {
-  CounterPoint.super_.call(this);
+  Festival.super_.call(this);
 };
 
 util.inherits(CounterPoint, Festival);

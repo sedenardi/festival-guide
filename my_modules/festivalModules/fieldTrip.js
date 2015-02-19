@@ -3,26 +3,23 @@ var util = require('util'),
     cheerio = require('cheerio');
 
 var FieldTrip = function() {
-  FieldTrip.super_.call(this);
+  Festival.super_.call(this);
 };
 
 util.inherits(FieldTrip, Festival);
 
 FieldTrip.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Field Trip', festivalDateId: 38, url: 'http://www.brooklynvegan.com/archives/2015/02/torontos_field.html' }
+    { tag: 'Field Trip', festivalDateId: 38, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11296' }
   ];
 };
 
 FieldTrip.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('#more').find('p').eq(2).html()
-    .split('</strong>')[1].split('<br>').map(function(v,i) {
-      return v.trim().replace('&amp;','&');
-    }).filter(function(v,i) {
-      return v.length;
-    });
+  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
+    return $(this).text().replace('*','').trim()
+  }).get();
   this.generateInserts(fest);
 };
 

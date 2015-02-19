@@ -3,7 +3,7 @@ var util = require('util'),
     cheerio = require('cheerio');
 
 var NoisePop = function() {
-  NoisePop.super_.call(this);
+  Festival.super_.call(this);
 };
 
 util.inherits(NoisePop, Festival);
