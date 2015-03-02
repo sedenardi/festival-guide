@@ -17,7 +17,7 @@ Reading.prototype.getFestivalUrls = function() {
 Reading.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('.media--grid__item').map(function(v,i) {
+  fest.artists = $('a.media--grid__item').map(function(v,i) {
     return $(this).attr('title').trim();
   }).get();
   this.generateInserts(fest);
