@@ -10,16 +10,14 @@ util.inherits(Ultra, Festival);
 
 Ultra.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Ultra', festivalDateId: 49, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11154' }
+    { tag: 'Ultra', festivalDateId: 49, url: 'http://festivals.jambase.com/festival/ultra-music-festival' }
   ];
 };
 
 Ultra.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
-    return $(this).text().replace('*','').trim()
-  }).get();
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

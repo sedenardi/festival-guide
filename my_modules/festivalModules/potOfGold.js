@@ -10,16 +10,14 @@ util.inherits(PotOfGold, Festival);
 
 PotOfGold.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Pot Of Gold', festivalDateId: 61, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11107' }
+    { tag: 'Pot Of Gold', festivalDateId: 61, url: 'http://festivals.jambase.com/festival/pot-of-gold-music-festival' }
   ];
 };
 
 PotOfGold.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
-    return $(this).text().replace('*','').trim()
-  }).get();
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

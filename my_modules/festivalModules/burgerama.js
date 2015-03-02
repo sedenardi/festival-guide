@@ -10,16 +10,14 @@ util.inherits(Burgerama, Festival);
 
 Burgerama.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Burgerama', festivalDateId: 28, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11051' }
+    { tag: 'Burgerama', festivalDateId: 28, url: 'http://festivals.jambase.com/festival/burgerama-four' }
   ];
 };
 
 Burgerama.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
-    return $(this).text().replace('*','').trim()
-  }).get();
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

@@ -55,6 +55,14 @@ Festival.prototype.replaceWhitespace = function(artist) {
   return artist.replace(/\s{2,}/g, ' ');
 };
 
+Festival.prototype.getFromJamBase = function($) {
+  return $('.performances').map(function(v,i) {
+    return $(this).find('a').text().trim();
+  }).get().filter(function(v,i) {
+    return v.length;
+  });
+};
+
 Festival.prototype.generateInserts = function(fest) {
   if (this.debug) {
     logger.log({

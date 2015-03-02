@@ -10,16 +10,14 @@ util.inherits(ThePeach, Festival);
 
 ThePeach.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'The Peach', festivalDateId: 48, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11081' }
+    { tag: 'The Peach', festivalDateId: 48, url: 'http://festivals.jambase.com/festival/peach-music-festival' }
   ];
 };
 
 ThePeach.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
-    return $(this).text().replace('*','').trim()
-  }).get();
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

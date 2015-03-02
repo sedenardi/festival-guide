@@ -10,16 +10,14 @@ util.inherits(Wanee, Festival);
 
 Wanee.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Wanee', festivalDateId: 50, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=10939' }
+    { tag: 'Wanee', festivalDateId: 50, url: 'http://festivals.jambase.com/festival/wanee-music-festival' }
   ];
 };
 
 Wanee.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
-    return $(this).text().replace('*','').trim()
-  }).get();
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

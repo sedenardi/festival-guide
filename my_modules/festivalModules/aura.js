@@ -10,16 +10,14 @@ util.inherits(Aura, Festival);
 
 Aura.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Aura', festivalDateId: 47, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=10701' }
+    { tag: 'Aura', festivalDateId: 47, url: 'http://festivals.jambase.com/festival/aura-music-arts-festival' }
   ];
 };
 
 Aura.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
-    return $(this).text().replace('*','').trim()
-  }).get();
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

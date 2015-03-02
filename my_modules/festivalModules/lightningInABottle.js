@@ -17,9 +17,7 @@ LightningInABottle.prototype.getFestivalUrls = function() {
 LightningInABottle.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
-    return $(this).text().replace('*','').trim()
-  }).get();
+  fest.artists = [];//this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

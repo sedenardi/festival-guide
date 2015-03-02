@@ -10,17 +10,15 @@ util.inherits(RockinRioUSA, Festival);
 
 RockinRioUSA.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Rock in Rio USA', festivalDateId: 54, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11011' },
-    { tag: 'Rock in Rio USA', festivalDateId: 55, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11012' }
+    { tag: 'Rock in Rio USA', festivalDateId: 54, url: 'http://festivals.jambase.com/festival/rock-in-rio-usa-weekend-1' },
+    { tag: 'Rock in Rio USA', festivalDateId: 55, url: 'http://festivals.jambase.com/festival/rock-in-rio-usa-weekend-2' }
   ];
 };
 
 RockinRioUSA.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
-    return $(this).text().replace('*','').trim()
-  }).get();
+  fest.artists = [];//this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

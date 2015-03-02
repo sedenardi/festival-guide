@@ -10,16 +10,14 @@ util.inherits(ElectricForest, Festival);
 
 ElectricForest.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Electric Forest', festivalDateId: 37, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11043' }
+    { tag: 'Electric Forest', festivalDateId: 37, url: 'http://festivals.jambase.com/festival/electric-forest' }
   ];
 };
 
 ElectricForest.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('#ctl00_MainContent_festivalLineup_lstLineup').find('li').map(function(v,i) {
-    return $(this).text().replace('*','').trim()
-  }).get();
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

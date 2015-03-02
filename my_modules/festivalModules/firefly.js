@@ -10,18 +10,14 @@ util.inherits(Firefly, Festival);
 
 Firefly.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Firefly', festivalDateId: 44, url: 'http://www.jambase.com/Articles/124068/Firefly-Music-Festival-2015-Initial-Lineup-Announcement' }
+    { tag: 'Firefly', festivalDateId: 44, url: 'http://festivals.jambase.com/festival/firefly-music-festival' }
   ];
 };
 
 Firefly.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('.articleWrap').find('p').find('span').map(function(v,i) {
-    return $(this).text().trim()
-  }).get().filter(function(v,i){
-    return v.length;
-  });
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 
