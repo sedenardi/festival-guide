@@ -51,6 +51,10 @@ Festival.prototype.capitalize = function(artist) {
   }).join(' ');
 };
 
+Festival.prototype.replaceWhitespace = function(artist) {
+  return artist.replace(/\s{2,}/g, ' ');
+};
+
 Festival.prototype.generateInserts = function(fest) {
   if (this.debug) {
     logger.log({

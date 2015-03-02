@@ -18,7 +18,7 @@ Lockn.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
   fest.artists = $('.lineup-module').find('li').map(function(v,i) {
-    return $(this).text().trim()
+    return $(this).text().trim();
   }).get();
   this.generateInserts(fest);
 };
