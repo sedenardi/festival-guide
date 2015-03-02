@@ -10,7 +10,7 @@ util.inherits(FieldTrip, Festival);
 
 FieldTrip.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Field Trip', festivalDateId: 38, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11296' }
+    { tag: 'Field Trip', festivalDateId: 38, url: 'http://festivals.jambase.com/festival/rock-in-rio-usa-weekend-1' }
   ];
 };
 

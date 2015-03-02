@@ -10,7 +10,7 @@ util.inherits(LightningInABottle, Festival);
 
 LightningInABottle.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Lightning in a Bottle', festivalDateId: 36, url: 'http://www.jambase.com/Festivals/Festival.aspx?festivalId=11174' }
+    { tag: 'Lightning in a Bottle', festivalDateId: 36, url: 'http://festivals.jambase.com/festival/rock-in-rio-usa-weekend-1' }
   ];
 };
 
