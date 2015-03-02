@@ -29,7 +29,8 @@ Festival.prototype.fetchFestival = function(fest) {
   logger.log({
     caller: 'Festival',
     message: 'starting',
-    params: fest.tag
+    params: fest.tag,
+    minData: fest.tag
   });
   var self = this;
   var dl = new Downloader();
@@ -68,8 +69,10 @@ Festival.prototype.generateInserts = function(fest) {
     logger.log({
       caller: 'Festival',
       message: 'debug',
-      params: fest
+      params: fest,
+      minData: fest.tag
     });
+    console.log(fest);
     return;
   }
 
