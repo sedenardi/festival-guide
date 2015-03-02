@@ -51,7 +51,8 @@ var Geocoder = function() {
       logger.log({
         caller: 'Geocoder',
         message: 'recording',
-        data: res
+        data: res,
+        minData: l
       });
       db.query(geocodeQuery(location,res), function(){
         setTimeout(processNext,5000);
