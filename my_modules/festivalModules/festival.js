@@ -76,6 +76,11 @@ Festival.prototype.generateInserts = function(fest) {
     return;
   }
 
+  if (!fest.artists.length) {
+    this.insertAppearances(fest.tag, { sql: 'select 1;' });
+    return;
+  }
+
   var artistTable = '(' + Array.apply(null,new Array(fest.artists.length)).map(function(){
     return 'select ? as `artistReported`';
   }).join(' UNION ') + ')';
