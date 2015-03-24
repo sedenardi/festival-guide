@@ -10,14 +10,14 @@ util.inherits(LightningInABottle, Festival);
 
 LightningInABottle.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Lightning in a Bottle', festivalDateId: 36, url: 'http://festivals.jambase.com/festival/rock-in-rio-usa-weekend-1' }
+    { tag: 'Lightning in a Bottle', festivalDateId: 36, url: 'http://festivals.jambase.com/festival/lightning-in-a-bottle' }
   ];
 };
 
 LightningInABottle.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = [];//this.getFromJamBase($);
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

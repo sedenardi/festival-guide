@@ -24,7 +24,8 @@ var Downloader = function() {
             json: json,
             attempt: attempt
           },
-          data: error
+          data: error,
+          minData: url
         });
         if (attempt < 10) {
           var timeout = attempt * 1000;
