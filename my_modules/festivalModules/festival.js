@@ -73,6 +73,7 @@ Festival.prototype.generateInserts = function(fest) {
       minData: fest.tag
     });
     console.log(JSON.stringify(fest));
+    this.emit('done', fest.tag);
     return;
   }
 

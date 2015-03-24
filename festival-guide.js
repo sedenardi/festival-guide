@@ -36,7 +36,8 @@ var startFestival = function(fileName) {
     logger.log({
       caller: 'Festival',
       message: 'done',
-      params: data
+      params: data,
+      minData: data
     });
     festivalsDone++;
     checkFestDone();

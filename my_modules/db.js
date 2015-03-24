@@ -77,10 +77,8 @@ var DB = function(config){
         });
         if (err.code === 'ER_LOCK_DEADLOCK') {
           console.log('Attempt ' + attempt);
-          if (attempt <= 3) {
-            attempt++;
-            self.query(cmd, next, attempt);
-          }
+          attempt++;
+          self.query(cmd, next, attempt);
         }
       } else if (typeof next === 'function') {
         next(res);
