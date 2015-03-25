@@ -61,7 +61,8 @@ CREATE TABLE `hashes`
 (
   `artistId` int(11) NOT NULL,
   `hash` varchar(10) NOT NULL,
-  KEY `IX_hashes_hash` (`hash`)
+  KEY `IX_hashes_hash` (`hash`),
+  KEY `IX_hashes_artistId` (`artistId`)
 );
 
 CREATE TABLE `falsepositives`

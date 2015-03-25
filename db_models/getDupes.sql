@@ -26,6 +26,9 @@ where not exists
 group by h1.artistId,h2.artistId
 having count(1) > 1;
 
+create index ix_matches1 on matches(artistId1);
+create index ix_matches2 on matches(artistId2);
+
 select 
 	m.artistId1,
 	a1.artist as artist1,
