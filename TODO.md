@@ -2,7 +2,6 @@ http://isleofwightfestival.com/line-up.aspx
 http://www.bestival.ca/
 http://www.latitudefestival.com/
 http://gatheringofthevibes.com/
-http://www.lollapalooza.com/
 
 http://pembertonmusicfestival.com/
 http://www.infofestival.com/

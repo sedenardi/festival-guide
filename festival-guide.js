@@ -11,6 +11,7 @@ var web = new Web(config);
 web.startServer();
 
 var modulePath = './my_modules/festivalModules/',
+    festivalModules = [],
     festivalsFound = 0,
     festivalsDone = 0;
 
@@ -24,12 +25,14 @@ var findFestivalModules = function() {
       });
       return;
     }
-    festivalsFound = files.length;
-    files.forEach(startFestival);
+    festivalModules = files;
+    festivalsFound = festivalModules.length;
+    startFestival();
   });
 };
 
 var startFestival = function(fileName) {
+  var fileName = festivalModules[festivalsDone];
   var festReq = require(modulePath + fileName);
   var fest = new festReq();
   fest.on('done', function(data) {
@@ -60,6 +63,8 @@ var checkFestDone = function() {
       dumpFile();
     });
     geocoder.start();
+  } else {
+    startFestival();
   }
 };
 

@@ -18,12 +18,11 @@ Gasparilla.prototype.parseFestival = function(fest,data) {
   var self = this;
   var $ = cheerio.load(data);
 
-  fest.artists = $('.entry-content').find('p').map(function(v,i) {
-    return $(this).find('a').map(function(w,j){
-      var artist = $(this).text().trim();
-      return self.unCapitalize(artist);
-    }).get();
-  }).get();
+  fest.artists = $('label').map(function(v,i) {
+    return self.unCapitalize($(this).next('a').text().trim());
+  }).get().filter(function(v,i) {
+    return v.length && v !== 'undefined';
+  });
   this.generateInserts(fest);
 };
 

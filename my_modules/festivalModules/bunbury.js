@@ -15,12 +15,13 @@ Bunbury.prototype.getFestivalUrls = function() {
 };
 
 Bunbury.prototype.parseFestival = function(fest,data) {
+  var self = this;
   var $ = cheerio.load(data);
 
   fest.artists = $('.lineup').find('li').map(function(v,i) {
-    return $(this).find('span').first().text().trim();
+    return self.unCapitalize($(this).find('span').first().text().trim());
   }).get().concat($('.lineup-list').find('li').map(function(v,i) {
-    return $(this).text().trim();
+    return self.unCapitalize($(this).text().trim());
   }).get());
   this.generateInserts(fest);
 };

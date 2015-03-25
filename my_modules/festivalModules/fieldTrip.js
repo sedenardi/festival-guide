@@ -10,14 +10,16 @@ util.inherits(FieldTrip, Festival);
 
 FieldTrip.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Field Trip', festivalDateId: 38, url: 'http://festivals.jambase.com/festival/rock-in-rio-usa-weekend-1' }
+    { tag: 'Field Trip', festivalDateId: 38, url: 'http://consequenceofsound.net/festival/field-trip-music-arts-festival-2015/' }
   ];
 };
 
 FieldTrip.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = [];//this.getFromJamBase($);
+  fest.artists = $('#festival-tab-lineup').find('.artist').map(function(v,i) {
+    return $(this).text().trim();
+  }).get();
   this.generateInserts(fest);
 };
 
