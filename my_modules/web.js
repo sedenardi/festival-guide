@@ -4,9 +4,10 @@ var events = require('events'),
   util = require('util'),
   DB = require('./db.js'),
   logger = require('./logger.js'),
-  queries = require('./queries.js');
+  queries = require('./queries.js'),
+  config = require('../config.json');
 
-var Web = function(config) {
+var Web = function(dumpFunc) {
 
   var self = this;
   var db = new DB(config);
@@ -141,6 +142,12 @@ var Web = function(config) {
     db.query(query.cmd, function (dbRes) {
       var info = query.process(dbRes);
       res.json(info);
+    });
+  });
+
+  app.get('/dumpFile', function (req,res) {
+    dumpFunc(function() {
+      res.sendStatus(200);
     });
   });
 

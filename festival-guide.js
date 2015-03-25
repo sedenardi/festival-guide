@@ -7,9 +7,6 @@ var fs = require('fs'),
   DB = require('./my_modules/db.js'),
   queries = require('./my_modules/queries.js');
 
-var web = new Web(config);
-web.startServer();
-
 var modulePath = './my_modules/festivalModules/',
     festivalModules = [],
     festivalsFound = 0,
@@ -68,7 +65,7 @@ var checkFestDone = function() {
   }
 };
 
-var dumpFile = function() {
+var dumpFile = function(cb) {
   var db = new DB(config);
   db.connect('Festival Guide', function() {
     var query = queries.getAllInfo();
@@ -89,10 +86,15 @@ var dumpFile = function() {
             caller: 'dumpFile',
             message: 'done'
           });
+          if (typeof cb === 'function')
+            cb();
         });
       });
     });
   });
 };
+
+var web = new Web(dumpFile);
+web.startServer();
 
 findFestivalModules();
