@@ -180,7 +180,7 @@ var dumpFile = function(cb) {
   });
 };
 
-/*var web = new Web(dumpFile);
-web.startServer();*/
+var web = new Web(dumpFile);
+web.startServer();
 
 findFestivalModules();

@@ -123,7 +123,7 @@ Festival.prototype.insertAppearances = function(tag,cmd) {
   db.connect(tag, function() {
     db.query(cmd, function() {
       db.disconnect(function() {
-        this.finish(tag);
+        self.finish(tag);
       });
     });
   });
