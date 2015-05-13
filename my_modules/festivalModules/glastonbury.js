@@ -10,7 +10,7 @@ util.inherits(Glastonbury, Festival);
 
 Glastonbury.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Glastonbury', festivalDateId: 86, url: 'http://www.glastonburyfestivals.co.uk/line-up/' }
+    { tag: 'Glastonbury', festivalDateId: 87, url: 'http://www.glastonburyfestivals.co.uk/line-up/' }
   ];
 };
 
