@@ -17,8 +17,8 @@ BealeStreet.prototype.getFestivalUrls = function() {
 BealeStreet.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('.tab-pane').first().find('h1').map(function(v,i) {
-    return $(this).text().trim();
+  fest.artists = $('.sw-portfolio-projects-list').find('li').map(function() {
+    return $(this).find('.sw-portfolio-project-thumbnail-link').attr('title');
   }).get();
   this.generateInserts(fest);
 };

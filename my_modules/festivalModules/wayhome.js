@@ -10,18 +10,14 @@ util.inherits(Wayhome, Festival);
 
 Wayhome.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'WAYHOME', festivalDateId: 43, url: 'http://wayhome.com/' }
+    { tag: 'WAYHOME', festivalDateId: 43, url: 'http://festivals.jambase.com/festival/wayhome-music-arts' }
   ];
 };
 
 Wayhome.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('.holder').html().trim()
-    .split('<strong>')[1].split('&amp; More</p>')[0]
-    .replace('</strong>&#xA0;','/').split('/').map(function(v,i){
-      return v.trim();
-    });
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

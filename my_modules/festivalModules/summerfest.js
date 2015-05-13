@@ -18,7 +18,7 @@ Summerfest.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
   fest.artists = $('.lineup-item-title').map(function(v,i) {
-    return $(this).text().split('\n')[0].trim();
+    return $(this).find('.artist').text().trim();
   }).get();
   this.generateInserts(fest);
 };

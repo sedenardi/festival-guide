@@ -17,14 +17,9 @@ Bestival.prototype.getFestivalUrls = function() {
 Bestival.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('ul[data-rel="live-music-from"]').find('li').map(function(){
+  fest.artists = $('ul[data-rel="mind-expanding-music"]').find('li').map(function(){
     return $(this).text().trim();
-  }).get().concat(
-  $('ul[data-rel="dj-sets-from-rob-da-bank-and-friends"]').find('li').map(function(){
-    return $(this).text().trim();
-  }).get()).filter(function(v,i){
-    return v.length;
-  });
+  }).get();
   this.generateInserts(fest);
 };
 

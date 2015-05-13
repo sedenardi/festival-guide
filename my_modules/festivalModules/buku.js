@@ -10,18 +10,14 @@ util.inherits(BUKU, Festival);
 
 BUKU.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'BUKU Music + Art Project', festivalDateId: 19, url: 'http://thebukuproject.com/lineup/' }
+    { tag: 'BUKU Music + Art Project', festivalDateId: 19, url: 'http://festivals.jambase.com/festival/buku-music-art-project' }
   ];
 };
 
 BUKU.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('.artist').map(function(v,i) {
-    return $(this).find('.title').map(function(w,j){
-      return $(this).text().trim();
-    }).get();
-  }).get();
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

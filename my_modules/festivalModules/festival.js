@@ -7,6 +7,8 @@ var util = require('util'),
 
 var Festival = function() {
   this.debug = false;
+  this.urls = null;
+  this.done = 0;
 };
 
 util.inherits(Festival, events.EventEmitter);
@@ -16,13 +18,11 @@ Festival.prototype.getFestivalUrls = function() {
 };
 
 Festival.prototype.start = function(debug) {
-  var self = this;
   if (typeof debug !== 'undefined')
     this.debug = debug;
-  var urls = this.getFestivalUrls();
-  urls.forEach(function(v,i) {
-    self.fetchFestival(v);
-  });
+  this.urls = this.getFestivalUrls();
+  this.done = 0;
+  this.fetchFestival(this.urls[this.done]);
 };
 
 Festival.prototype.fetchFestival = function(fest) {
@@ -73,7 +73,7 @@ Festival.prototype.generateInserts = function(fest) {
       minData: fest.tag
     });
     console.log(JSON.stringify(fest));
-    this.emit('done', fest.tag);
+    this.finish(fest.tag);
     return;
   }
 
@@ -111,7 +111,7 @@ Festival.prototype.generateInserts = function(fest) {
   sql += 'delete ap from appearances ap where ap.festivalDateId = ? and not exists ' +
     '(select 1 from artistsReported t1 inner join ' + artistTable + ' t2 on t2.artistReported = t1.artistReported ' +
     'where t1.artistId = ap.artistId);';
-  inserts.push(fest.festivalDateId);  
+  inserts.push(fest.festivalDateId);
   inserts = inserts.concat(fest.artists);
 
   this.insertAppearances(fest.tag, { sql: sql, inserts: inserts });
@@ -123,10 +123,18 @@ Festival.prototype.insertAppearances = function(tag,cmd) {
   db.connect(tag, function() {
     db.query(cmd, function() {
       db.disconnect(function() {
-        self.emit('done', tag);
+        this.finish(tag);
       });
     });
   });
+};
+
+Festival.prototype.finish = function(tag) {
+  this.done++;
+  var advance = this.done === this.urls.length;
+  this.emit('done', { tag: tag, advance: advance });
+  if (!advance)
+    this.fetchFestival(this.urls[this.done]);
 };
 
 module.exports = Festival;

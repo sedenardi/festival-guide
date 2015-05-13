@@ -1,5 +1,6 @@
 var util = require('util'),
-    Festival = require('./festival.js');
+    Festival = require('./festival.js'),
+    cheerio = require('cheerio');
 
 var Treefort = function() {
   Festival.super_.call(this);
@@ -9,16 +10,14 @@ util.inherits(Treefort, Festival);
 
 Treefort.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Treefort Music Fest', festivalDateId: 20, url: 'http://treefortservices.azurewebsites.net/api/artists', json: true }
+    { tag: 'Treefort Music Fest', festivalDateId: 20, url: 'http://festivals.jambase.com/festival/treefort-music-fest', }
   ];
 };
 
 Treefort.prototype.parseFestival = function(fest,data) {
-  var artists = data;
+  var $ = cheerio.load(data);
 
-  fest.artists = artists.map(function(v,i) {
-    return v.Name;
-  });
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 

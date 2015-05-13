@@ -10,16 +10,14 @@ util.inherits(BigGuava, Festival);
 
 BigGuava.prototype.getFestivalUrls = function() {
   return [
-    { tag: 'Big Guava', festivalDateId: 13, url: 'http://www.bigguavafest.com/#/artists/' }
+    { tag: 'Big Guava', festivalDateId: 13, url: 'http://festivals.jambase.com/festival/big-guava-music-festival' }
   ];
 };
 
 BigGuava.prototype.parseFestival = function(fest,data) {
   var $ = cheerio.load(data);
 
-  fest.artists = $('.artist-name').map(function(v,i) {
-    return $(this).text().trim();
-  }).get();
+  fest.artists = this.getFromJamBase($);
   this.generateInserts(fest);
 };
 
