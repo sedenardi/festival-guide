@@ -184,3 +184,4 @@ var web = new Web(dumpFile);
 web.startServer();
 
 findFestivalModules();
+//checkFestDone();

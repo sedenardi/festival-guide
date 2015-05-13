@@ -44,7 +44,8 @@ var Geocoder = function() {
           caller: 'Geocoder',
           message: 'error',
           params: { locationString: l },
-          data: err
+          data: err,
+          minData: l + ' - ' + err.message
         });
         return;
       }
